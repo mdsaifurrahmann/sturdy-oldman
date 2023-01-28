@@ -1,0 +1,61 @@
+.main__slider {
+    @apply mb-4;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        @apply text-amber-400 #{!important};
+    }
+
+    .swiper-pagination .swiper-pagination-bullet-active {
+        @apply bg-amber-400 #{!important};
+    }
+}
+
+.apa-block {
+    .title {
+        @apply font-semibold text-gray-800 text-lg underline decoration-wavy underline-offset-4 decoration-gray-800;
+    }
+
+    .apa-grid {
+        @apply grid grid-cols-4 gap-6 justify-center items-center my-4;
+
+        .apa-block-img {
+            @apply hidden xs:block md:hidden xm:block md:col-span-1;
+        }
+
+        .apa-items {
+            @apply col-span-4 xs:col-span-3 md:col-span-4 xm:col-span-3;
+        }
+    }
+}
+
+.history {
+    @apply mb-4 text-gray-600;
+}
+
+.machinery {
+    @apply mb-4;
+
+    p {
+        @apply text-gray-600;
+    }
+
+    ol {
+        li {
+            @apply text-gray-600;
+        }
+    }
+}
+
+.message {
+    @apply mb-4;
+
+    img {
+        @apply w-36;
+    }
+
+    p,
+    i {
+        @apply text-gray-600;
+    }
+}
