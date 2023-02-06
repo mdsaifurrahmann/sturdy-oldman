@@ -1,4 +1,4 @@
-@extends('layouts/gridLayout')
+@extends('layouts/fullLayoutClient')
 
 @section('title', 'Home')
 @section('ins-name', 'Dinajpur Textile Institute')
@@ -89,118 +89,48 @@
 
     {{-- APA --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <div class="apa-block card">
-            <h4 class="title">
-                বার্ষিক কর্মসম্পাদন চুক্তি</h4>
-            <div class="apa-grid">
-                <div class="apa-block-img">
-                    <img src="{{ asset(mix('images/apa/apa.png')) }}" alt="apa-1">
-                </div>
-                <div class=" apa-items">
-                    <ul class="flex flex-col gap-1 arrow">
-                        <li class="apa-item"><a href="#">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</a></li>
-                        <li class="apa-item"><a href="#">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</a></li>
-                        <li class="apa-item"><a href="#">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</a></li>
-                        <li class="apa-item"><a href="#">এপিএ এমএস সফটওয়্যার লিংক</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-apa.apa-grid title="বার্ষিক কর্মসম্পাদন চুক্তি" src="{{ asset(mix('images/apa/apa.png')) }}">
+            <x-apa-item action="#">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</x-apa-item>
+            <x-apa-item action="#">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</x-apa-item>
+            <x-apa-item action="#">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</x-apa-item>
+            <x-apa-item action="#">এপিএ এমএস সফটওয়্যার লিংক</x-apa-item>
+        </x-apa.apa-grid>
 
-        <div class="apa-block card">
-            <h4 class="title">
-                সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</h4>
-            <div class="apa-grid">
-                <div class="apa-block-img">
-                    <img src="{{ asset(mix('images/apa/citizen.svg')) }}" alt="apa-1">
-                </div>
-                <div class="apa-items">
-                    <ul class="flex flex-col gap-1 arrow">
-                        <li class="apa-item"><a href="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস
-                                চার্টার)</a></li>
-                        <li class="apa-item"><a href="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</a>
-                        </li>
-                        <li class="apa-item"><a href="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
-                                প্রতিবেদন</a></li>
-                        <li class="apa-item"><a href="#">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)" src="{{ asset(mix('images/apa/citizen.svg')) }}">
+            <x-apa-item action="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa-item>
+            <x-apa-item action="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa-item>
+            <x-apa-item action="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa-item>
+            <x-apa-item action="#">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</x-apa-item>
+        </x-apa.apa-grid>
 
-        <div class="apa-block card">
-            <h4 class="title">
-                জাতীয় শুদ্ধাচার কৌশল</h4>
-            <div class="apa-grid">
-                <div class="apa-block-img">
-                    <img src="{{ asset(mix('images/apa/nis.png')) }}" alt="apa-1">
-                </div>
-                <div class="apa-items">
-                    <ul class="flex flex-col gap-1 arrow">
-                        <li class="apa-item"><a href="#">জাতীয় শুদ্ধাচার কৌশল</a></li>
-                        <li class="apa-item"><a href="#">কমিটিসমূহ</a></li>
-                        <li class="apa-item"><a href="#">কর্মপরিকল্পনা</a></li>
-                        <li class="apa-item"><a href="#">প্রতিবেদনসমূহ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-apa.apa-grid title="জাতীয় শুদ্ধাচার কৌশল" src="{{ asset(mix('images/apa/nis.png')) }}">
+            <x-apa-item action="#">জাতীয় শুদ্ধাচার কৌশল</x-apa-item>
+            <x-apa-item action="#">কমিটিসমূহ</x-apa-item>
+            <x-apa-item action="#">কর্মপরিকল্পনা</x-apa-item>
+            <x-apa-item action="#">প্রতিবেদনসমূহ</x-apa-item>
+        </x-apa.apa-grid>
 
-        <div class="apa-block card">
-            <h4 class="title">
-                উদ্ভাবনী কার্যক্রম</h4>
-            <div class="apa-grid">
-                <div class="apa-block-img">
-                    <img src="{{ asset(mix('images/apa/idea.svg')) }}" alt="apa-1">
-                </div>
-                <div class="apa-items">
-                    <ul class="flex flex-col gap-1 arrow">
-                        <li class="apa-item"><a href="#">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</a></li>
-                        <li class="apa-item"><a href="#">ইনোভেশন টিম</a></li>
-                        <li class="apa-item"><a href="#">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</a></li>
-                        <li class="apa-item"><a href="#">উদ্ভাবনী প্রকল্পসমূহ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-apa.apa-grid title="উদ্ভাবনী কার্যক্রম" src="{{ asset(mix('images/apa/idea.svg')) }}">
+            <x-apa-item action="#">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</x-apa-item>
+            <x-apa-item action="#">ইনোভেশন টিম</x-apa-item>
+            <x-apa-item action="#">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</x-apa-item>
+            <x-apa-item action="#">উদ্ভাবনী প্রকল্পসমূহ</x-apa-item>
+        </x-apa.apa-grid>
 
-        <div class="apa-block card">
-            <h4 class="title">
-                তথ্য অধিকার</h4>
-            <div class="apa-grid">
-                <div class="apa-block-img">
-                    <img src="{{ asset(mix('images/apa/info.svg')) }}" alt="apa-1">
-                </div>
-                <div class="apa-items">
-                    <ul class="flex flex-col gap-1 arrow">
-                        <li class="apa-item"><a href="#">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল
-                                কর্তৃপক্ষ</a></li>
-                        <li class="apa-item"><a href="#">আবেদন ও আপিল ফরম</a></li>
-                        <li class="apa-item"><a href="#">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</a></li>
-                        <li class="apa-item"><a href="#">আইন/বিধি/কমিটি/নির্দেশিকা</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-apa.apa-grid title="তথ্য অধিকার" src="{{ asset(mix('images/apa/info.svg')) }}">
+            <x-apa-item action="#">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল কর্তৃপক্ষ</x-apa-item>
+            <x-apa-item action="#">আবেদন ও আপিল ফরম</x-apa-item>
+            <x-apa-item action="#">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</x-apa-item>
+            <x-apa-item action="#">আইন/বিধি/কমিটি/নির্দেশিকা</x-apa-item>
+        </x-apa.apa-grid>
 
-        <div class="apa-block card">
-            <h4 class="title">
-                অভিযোগ প্রতিকার ব্যবস্থাপনা</h4>
-            <div class="apa-grid">
-                <div class="apa-block-img">
-                    <img src="{{ asset(mix('images/apa/flag.svg')) }}" alt="apa-1">
-                </div>
-                <div class="apa-items">
-                    <ul class="flex flex-col gap-1 arrow">
-                        <li class="apa-item"><a href="#">অনিক ও আপিল কর্মকর্তাগণ</a></li>
-                        <li class="apa-item"><a href="#">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
-                                প্রতিবেদন</a></li>
-                        <li class="apa-item"><a href="#">অভিযোগ দাখিল (অনলাইনে আবেদন)</a></li>
-                        <li class="apa-item"><a href="#">আইন/বিধি/নীতিমালা/পরিপত্র/</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <x-apa.apa-grid title="অভিযোগ প্রতিকার ব্যবস্থাপনা" src="{{ asset(mix('images/apa/flag.svg')) }}">
+            <x-apa-item action="#">অনিক ও আপিল কর্মকর্তাগণ</x-apa-item>
+            <x-apa-item action="#">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
+                প্রতিবেদন</x-apa-item>
+            <x-apa-item action="#">অভিযোগ দাখিল (অনলাইনে আবেদন)</x-apa-item>
+            <x-apa-item action="#">আইন/বিধি/নীতিমালা/পরিপত্র</x-apa-item>
+        </x-apa.apa-grid>
     </div>
 
     {{-- History --}}

@@ -17,10 +17,14 @@
     }
 
     .apa-grid {
-        @apply grid grid-cols-4 gap-6 justify-center items-center my-4;
+        @apply grid grid-cols-4 gap-6 justify-center items-center my-4 h-full;
 
         .apa-block-img {
             @apply hidden xs:block md:hidden xm:block md:col-span-1;
+
+            img {
+                @apply w-[84px] h-[84px] object-cover;
+            }
         }
 
         .apa-items {
