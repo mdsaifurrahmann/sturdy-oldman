@@ -3,7 +3,7 @@ module.exports = {
   content: [
     './resources/js/frontend/**/*.js',
     './resources/views/frontend/**/*.blade.php',
-    './resources/views/layouts/fullLayoutClient.blade.php',
+    './resources/views/layouts/**/*.blade.php',
     './resources/views/components/**/*.blade.php',
   ],
   presets: [],

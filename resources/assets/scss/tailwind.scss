@@ -296,11 +296,15 @@ ul.arrow {
             }
 
             ul {
-                @apply text-stone-100;
+                @apply text-stone-100 flex flex-col gap-1;
 
                 li {
                     a {
-                        @apply text-stone-100 #{ !important};
+                        @apply transition-all  inline-block text-stone-100 #{ !important};
+
+                        &:hover {
+                            @apply text-amber-400 #{ !important};
+                        }
                     }
                 }
             }
