@@ -175,7 +175,7 @@ ul.arrow {
                 }
 
                 .layer__2 {
-                    @apply xm:absolute w-full xm:w-64 bg-amber-400 border-l-[6px] border-amber-500 divide-y divide-amber-500 top-[58px] transition-all duration-300 opacity-0 invisible left-full hidden xm:block z-10;
+                    @apply xm:absolute w-full xm:w-64 bg-amber-400 border-l-[6px] border-amber-500 divide-y divide-amber-500 top-[58px] transition-all ease-linear duration-300 opacity-0 invisible left-full hidden xm:block z-10;
 
                     .menu-item {
                         .menu-link {

@@ -1,5 +1,6 @@
 {
-    "/js/client/global.js": "/js/client/global.js",
+    "/js/client/global__core.js": "/js/client/global__core.js",
+    "/js/client/global__jq.js": "/js/client/global__jq.js",
     "/js/client/home.js": "/js/client/home.js",
     "/js/core/app-menu.js": "/js/core/app-menu.js",
     "/js/core/app.js": "/js/core/app.js",
@@ -9,6 +10,7 @@
     "/css/base/plugins/extensions/ext-component-media-player.css": "/css/base/plugins/extensions/ext-component-media-player.css",
     "/css/base/plugins/extensions/ext-component-drag-drop.css": "/css/base/plugins/extensions/ext-component-drag-drop.css",
     "/css/base/plugins/extensions/ext-component-context-menu.css": "/css/base/plugins/extensions/ext-component-context-menu.css",
+    "/css/tailwind.css": "/css/tailwind.css",
     "/css/style.css": "/css/style.css",
     "/css-rtl/style-rtl.css": "/css-rtl/style-rtl.css",
     "/css-rtl/custom-rtl.css": "/css-rtl/custom-rtl.css",
@@ -1125,6 +1127,7 @@
     "/images/apa/apa.png": "/images/apa/apa.png",
     "/images/apa/citizen.svg": "/images/apa/citizen.svg",
     "/images/apa/flag.svg": "/images/apa/flag.svg",
+    "/images/apa/helpline.jpg": "/images/apa/helpline.jpg",
     "/images/apa/idea.svg": "/images/apa/idea.svg",
     "/images/apa/info.svg": "/images/apa/info.svg",
     "/images/apa/nis.png": "/images/apa/nis.png",
@@ -1446,7 +1449,5 @@
     "/images/slider/08.jpg": "/images/slider/08.jpg",
     "/images/slider/09.jpg": "/images/slider/09.jpg",
     "/images/slider/10.jpg": "/images/slider/10.jpg",
-    "/images/svg/google.svg": "/images/svg/google.svg",
-    "/css/tailwind.css": "/css/tailwind.css",
-    "/images/apa/helpline.jpg": "/images/apa/helpline.jpg"
+    "/images/svg/google.svg": "/images/svg/google.svg"
 }

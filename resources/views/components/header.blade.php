@@ -29,34 +29,26 @@
         <ul class="xm:!flex gap-1 items-center justify-center w-full sm:w-9/12 mx-auto xm:w-auto overflow-hidden xm:overflow-visible"
             style="display:none" id="main-menu">
             <li class="menu-item active"><a href="#" class="menu-link">Home</a></li>
+            <li class="menu-item has__child"><a href="#" class="menu-link">Administration</a>
+                <ul class="layer__2">
+                    <li class="menu-item"><a href="/former" class="menu-link">Former principals</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Ex-Officers and Employees</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Citizen Charter</a></li>
+                </ul>
+            </li>
             <li class="menu-item has__child"><a href="#" class="menu-link">About Us</a>
-                <ul class="layer__2" id="layer__2">
-                    <li class="menu-item"><a href="#" class="menu-link">Infrustructure</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Teachers Info</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 3</a></li>
-                </ul>
-            </li>
-            <li class="menu-item has__child"><a href="#" class="menu-link" id="has__child">Academic</a>
 
-                <ul class="layer__2" id="layer__2">
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 1</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 2</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 3</a></li>
+                <ul class="layer__2">
+                    <li class="menu-item"><a href="#" class="menu-link">History</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Principle</a></li>
+                    <li class="menu-item"><a href="#" class="menu-link">Infrastructure</a></li>
                 </ul>
 
             </li>
-            <li class="menu-item has__child"><a href="#" class="menu-link" id="has__child">Campus</a>
-
-                <ul class="layer__2" id="layer__2">
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 1</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 2</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Academic 3</a></li>
-                </ul>
-
-            </li>
-            <li class="menu-item"><a href="#" class="menu-link">Notice Board</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Gallery</a></li>
             <li class="menu-item"><a href="#" class="menu-link">Admission</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Gallery</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Stipend</a></li>
+            <li class="menu-item"><a href="#" class="menu-link">Job Corner</a></li>
             <li class="menu-item"><a href="#" class="menu-link">Contact Us</a></li>
             <li class="menu-item"><a href="#" class="menu-link">Student Database</a></li>
         </ul>

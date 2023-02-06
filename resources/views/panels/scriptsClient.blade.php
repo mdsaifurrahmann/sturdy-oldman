@@ -12,7 +12,8 @@
 <!-- BEGIN: Theme JS-->
 
 {{-- Global Script --}}
-<script src={{ asset(mix('js/client/global.js')) }}></script>
+<script src={{ asset(mix('js/client/global__jq.js')) }}></script>
+<script src={{ asset(mix('js/client/global__core.js'))}}></script>
 
 {{-- <script src="{{ asset(mix('js/core/app-menu.js')) }}"></script> --}}
 <script src="{{ asset(mix('js/core/app-client.js')) }}"></script>

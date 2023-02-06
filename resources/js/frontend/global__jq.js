@@ -4,6 +4,7 @@ $(document).ready(function () {
     var burger = $('#burger');
     var has__child = $('.has__child');
 
+
     if (width <= 990) {
         if (burger.length > 0) {
             $('#burger').click(function () {
@@ -13,12 +14,13 @@ $(document).ready(function () {
         }
 
         if (has__child.length > 0) {
-            $('.has__child').click(function (e) {
-                e.preventDefault();
-                $(this).children('.layer__2').toggleClass('open');
+            $(has__child).click(function (e){
+                $(this).children('.layer__2').slideToggle(150).toggleClass('open');
             });
         }
+
     }
+
 
 
     // on scroll fixed header
@@ -32,4 +34,7 @@ $(document).ready(function () {
     );
 
 });
+
+
+
 
