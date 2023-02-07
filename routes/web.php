@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\pageIndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'create'])->name('home');
+Route::get('infrastructure', [pageIndexController::class, 'infrastructure'])->name('infrastructure');
 //Route::get('home', [StaterkitController::class, 'home'])->name('home');
 // Route Components
 //Route::get('layouts/collapsed-menu', [StaterkitController::class, 'collapsed_menu'])->name('collapsed-menu');
