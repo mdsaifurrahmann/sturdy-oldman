@@ -1,26 +1,39 @@
-.infrastructure__title{
+.infrastructure__title {
     @apply text-center text-gray-800;
-    h3{
+    h3 {
         @apply font-semibold text-xl;
     }
 }
 
-table{
+table {
+    @apply border border-gray-400 border-collapse border-spacing-0 table-auto w-full text-center my-2 text-gray-800;
 
-    @apply border border-gray-400 border-collapse border-spacing-0 table-auto w-full text-center my-2 text-gray-800 rounded-sm;
+    tr {
+        @apply transition-all duration-150 ease-linear;
 
-    th, tr, td {
-        @apply border border-gray-400 p-2 rounded-sm;
+        &:nth-child(odd) {
+            @apply bg-zinc-100;
+        }
+        &:nth-child(even) {
+            @apply bg-zinc-200;
+        }
     }
 
-    th{
+    th,
+    tr,
+    td {
+        @apply border border-gray-400 p-2;
+    }
+
+    th {
         @apply font-semibold;
     }
-
 }
 
-table.table-b{
-    td, th, tr{
+table.table-b {
+    td,
+    th,
+    tr {
         @apply text-left;
     }
 }

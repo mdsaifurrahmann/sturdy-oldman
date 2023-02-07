@@ -1,7 +1,7 @@
 <div class="col-span-1">
 
     {{-- Principle --}}
-    <div class="!p-6 card principle">
+    <div class="!p-6 card principle mt-4 lg:mt-0">
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
                 <img src="{{ asset(mix('images/avatars/principal.jpg')) }}" alt="principle of dinajpur textile institute">

@@ -20,4 +20,14 @@ class pageIndexController extends Controller
     {
         return view('frontend.pages.principal');
     }
+
+    public function formerPrincipals()
+    {
+        return view('frontend.pages.former-principals');
+    }
+
+    public function exEmployees()
+    {
+        return view('frontend.pages.ex-employees');
+    }
 }

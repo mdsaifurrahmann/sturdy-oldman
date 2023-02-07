@@ -30,10 +30,14 @@
             style="display:none" id="main-menu">
             <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}"
                     class="menu-link">Home</a></li>
-            <li class="menu-item has__child"><a href="#" class="menu-link">Administration</a>
+            <li
+                class="menu-item has__child {{ request()->routeIs('former-principals') || request()->routeIs('ex-employees') ? 'active' : '' }}">
+                <a href="#" class="menu-link">Administration</a>
                 <ul class="layer__2">
-                    <li class="menu-item"><a href="#" class="menu-link">Former principals</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Ex-Officers and Employees</a></li>
+                    <li class="menu-item"><a href="{{ route('former-principals') }}" class="menu-link">Former
+                            principals</a></li>
+                    <li class="menu-item"><a href="{{ route('ex-employees') }}" class="menu-link">Ex-Officers and
+                            Employees</a></li>
                     <li class="menu-item"><a href="#" class="menu-link">Citizen Charter</a></li>
                 </ul>
             </li>
