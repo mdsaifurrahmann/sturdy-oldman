@@ -1,7 +1,7 @@
 let class_has_child = document.querySelectorAll('.has__child');
 
 class_has_child.forEach((e) => {
-    e.firstChild.setAttribute('has__child', '');
+    e.firstElementChild.setAttribute('has__child', '');
 });
 
 let getAnchorChild = document.querySelectorAll('[has__child]');

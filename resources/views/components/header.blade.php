@@ -28,8 +28,8 @@
 
         <ul class="xm:!flex gap-1 items-center justify-center w-full sm:w-9/12 mx-auto xm:w-auto overflow-hidden xm:overflow-visible"
             style="display:none" id="main-menu">
-            <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{route('home')}}"
-                                                                 class="menu-link">Home</a></li>
+            <li class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}"><a href="{{ route('home') }}"
+                    class="menu-link">Home</a></li>
             <li class="menu-item has__child"><a href="#" class="menu-link">Administration</a>
                 <ul class="layer__2">
                     <li class="menu-item"><a href="#" class="menu-link">Former principals</a></li>
@@ -37,13 +37,15 @@
                     <li class="menu-item"><a href="#" class="menu-link">Citizen Charter</a></li>
                 </ul>
             </li>
-            <li class="menu-item has__child {{ request()->routeIs('infrastructure') ? 'active' : '' }}"><a href="#"
-                                                                                               class="menu-link">About Us</a>
+            <li
+                class="menu-item has__child {{ request()->routeIs('infrastructure') || request()->routeIs('history') || request()->routeIs('principal') ? 'active' : '' }}">
+                <a href="#" class="menu-link">About Us</a>
 
                 <ul class="layer__2">
-                    <li class="menu-item"><a href="#" class="menu-link">History</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Principle</a></li>
-                    <li class="menu-item"><a href="{{route('infrastructure')}}" class="menu-link">Infrastructure</a></li>
+                    <li class="menu-item"><a href="{{ route('history') }}" class="menu-link">History</a></li>
+                    <li class="menu-item"><a href="{{ route('principal') }}" class="menu-link">Principle</a></li>
+                    <li class="menu-item"><a href="{{ route('infrastructure') }}" class="menu-link">Infrastructure</a>
+                    </li>
                 </ul>
 
             </li>

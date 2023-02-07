@@ -149,34 +149,9 @@
             year 1980 AD, the government changed the name of the District Weaving School to District
             Textile
             Institute, abolishing the one-year artisan program and introducing a two-year certificate
-            program. Later, a 3-year diploma-in-textile technology <a href="#"
+            program. Later, a 3-year diploma-in-textile technology <a href="{{ route('history') }}"
                 class="text-amber-500 hover:text-amber-600 transition-all font-semibold">Read
                 More...</a>
-
-            {{-- The former Dinajpur District Weaving School used to offer a one-year vocational course. In
-                                the
-                                year 1980 AD, the government changed the name of the District Weaving School to District
-                                Textile
-                                Institute, abolishing the one-year artisan program and introducing a two-year certificate
-                                program. Later, a 3-year diploma-in-textile technology course was introduced through a
-                                development project from the academic year 1993-1994 and the certificate course was
-                                eliminated
-                                due to the enormous need for middle-level technicians in textile plants.
-
-                                50 seats were authorized for the specified course. 80 seats were eventually added in phases.
-                                The
-                                course's length was increased from three to four years beginning with the 2001–2002 academic
-                                year, and the name was changed to Diploma in Textile Engineering. The government began
-                                offering
-                                the Diploma in Textile Engineering course through a second shift program in the academic
-                                year
-                                2004–2005 with 80 seats because to the rising demand for textile ships. The academic year
-                                2012–2013 has been completed by the students admitted during the second shift. Students were
-                                thereafter admitted in one shift up until the academic year of 2015–2016. Students are now
-                                being
-                                admitted from the current academic year in the first and second shifts. There are 200 seats
-                                available. --}}
-
         </p>
 
     </div>
@@ -211,7 +186,7 @@
         {{-- <h4 class="card__title">Message From Principal:</h4> --}}
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
             <div class="sm:col-span-1 flex justify-center">
-                <img src="{{ asset(mix('images/avatars/8.png')) }}" alt="Principle Says" class="rounded-full">
+                <img src="{{ asset(mix('images/avatars/principal.jpg')) }}" alt="Principle Says" class="rounded-full">
             </div>
 
             <div class="sm:col-span-3 flex flex-col">
@@ -221,9 +196,9 @@
                     equipped with modern equipment for conducting practical classes. The subject teachers
                     conduct the practical classes and the workshops help. Department based workshops and</p>
                 <p class="block mt-2">
-                    <strong><i>Md. Atiqur Rahman</i></strong>
-                    <i class="block">Principle</i>
-                    <i class="block">Textile Institute Dinajpur</i>
+                    <strong><i>MD. Atiqur Rahman Prodhan</i></strong>
+                    <i class="block">Principal in Charge</i>
+                    <i class="block">Textile Institute, Dinajpur</i>
                 </p>
             </div>
         </div>

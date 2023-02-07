@@ -1,21 +1,22 @@
 <div class="col-span-1">
 
     {{-- Principle --}}
-    <div class="!p-10 card principle">
+    <div class="!p-6 card principle">
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
-                <img src="{{ asset(mix('images/avatars/8.png')) }}" alt="principle of dinajpur textile institute">
+                <img src="{{ asset(mix('images/avatars/principal.jpg')) }}" alt="principle of dinajpur textile institute">
             </div>
             <div class="principle__info">
-                <h4 class="text-lg font-semibold text-gray-800">Dr. Md. Abdul Mannan</h4>
-                <p class="text-gray-500">Principal</p>
+                <h4 class="text-lg font-semibold text-gray-800">MD. Atiqur Rahman Prodhan</h4>
+                <p class="text-gray-500">Principal in Charge</p>
+                <p class="text-gray-500">Textile Institute, Dinajpur</p>
             </div>
         </div>
         <div class="btn__group">
             <a href="#" class="btn__item call">
                 Call
             </a>
-            <a href="#" class="btn__item details">
+            <a href="{{ route('principal') }}" class="btn__item details">
                 Details
             </a>
         </div>
