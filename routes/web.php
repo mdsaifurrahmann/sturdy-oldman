@@ -21,6 +21,10 @@ Route::get('history', [pageIndexController::class, 'history'])->name('history');
 Route::get('principal', [pageIndexController::class, 'principal'])->name('principal');
 Route::get('former-principals', [pageIndexController::class, 'formerPrincipals'])->name('former-principals');
 Route::get('ex-employees', [pageIndexController::class, 'exEmployees'])->name('ex-employees');
+Route::get('notices', [pageIndexController::class, 'notices'])->name('notices');
+Route::get('admission', [pageIndexController::class, 'admissionList'])->name('admission');
+Route::get('stipend', [pageIndexController::class, 'stipends'])->name('stipend');
+Route::get('jobs', [pageIndexController::class, 'jobs'])->name('jobs');
 //Route::get('home', [StaterkitController::class, 'home'])->name('home');
 // Route Components
 //Route::get('layouts/collapsed-menu', [StaterkitController::class, 'collapsed_menu'])->name('collapsed-menu');

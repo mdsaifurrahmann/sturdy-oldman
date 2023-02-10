@@ -30,4 +30,20 @@ class pageIndexController extends Controller
     {
         return view('frontend.pages.ex-employees');
     }
+
+    public function notices(){
+        return view('frontend.pages.notice.notice-list');
+    }
+
+    public function stipends(){
+        return view('frontend.pages.stipend.stipend-list');
+    }
+
+    public function admissionList(){
+        return view('frontend.pages.admission.admission-list');
+    }
+
+    public function jobs(){
+        return view('frontend.pages.job.job-list');
+    }
 }

@@ -54,9 +54,9 @@
 
             </li>
             <li class="menu-item"><a href="#" class="menu-link">Gallery</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Admission</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Stipend</a></li>
-            <li class="menu-item"><a href="#" class="menu-link">Job Corner</a></li>
+            <li class="menu-item {{request()->routeIs('admission') ? 'active' : ''}}"><a href="{{route('admission')}}" class="menu-link">Admission</a></li>
+            <li class="menu-item {{request()->routeIs('stipend') ? 'active' : ''}}"><a href="{{route('stipend')}}" class="menu-link">Stipend</a></li>
+            <li class="menu-item {{request()->routeIs('jobs') ? 'active' : ''}}"><a href="{{route('jobs')}}" class="menu-link">Job Corner</a></li>
             <li class="menu-item"><a href="#" class="menu-link">Contact Us</a></li>
             <li class="menu-item"><a href="#" class="menu-link">Student Database</a></li>
         </ul>

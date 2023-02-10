@@ -1,3 +1,6 @@
-<div>
-    <!-- Knowing is not enough; we must apply. Being willing is not enough; we must do. - Leonardo da Vinci -->
-</div>
+<table class="!text-left">
+    <x-down-head/>
+    <tbody>
+    {{ $slot }}
+    </tbody>
+</table>

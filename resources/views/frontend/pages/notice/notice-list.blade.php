@@ -14,18 +14,16 @@
 
 @section('main-content')
 
-    <!-- page title -->
-
     <div class="card text-center text-gray-800">
         <h2 class="font-semibold text-2xl text-center underline decoration-gray-800 underline-offset-4">
-            {{ __('Stipend News') }}
+            {{ __('Notice Board:') }}
         </h2>
 
 
         <div class="mt-4 overflow-auto">
 
             <x-down-table>
-                
+
                 <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
                             action="{{route('notices')}}"/>
                 <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"

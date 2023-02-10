@@ -83,7 +83,7 @@
                     Semester Examination-2021 Notice</a></li>
         </ul>
 
-        <a href="#" class="btn bg-amber-400 self-end mt-6 text-sm">View
+        <a href="{{route('notices')}}" class="btn bg-amber-400 self-end mt-6 text-sm">View
             All Notices</a>
     </div>
 

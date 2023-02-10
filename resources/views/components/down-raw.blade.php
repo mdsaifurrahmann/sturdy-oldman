@@ -1,3 +1,4 @@
-<div>
-    <!-- Smile, breathe, and go slowly. - Thich Nhat Hanh -->
-</div>
+<tr>
+    <td><a href="{{$action}}"> {{  $title }} </a></td>
+    <td>{{ $date }}</td>
+</tr>
