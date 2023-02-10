@@ -5,32 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/downHead.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/downRaw.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/down-head.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/down-raw.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_1_27_23__4_28_PM.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dti-www.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/View/Components/attachment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/View/Components/detail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/attachment.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/detail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/admission/single.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/job/single.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/frontend/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/frontend/home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/scss/frontend/infrastructure.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/scss/frontend/infrastructure.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/down-head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/down-head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +171,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Md. Saifur Rahman/sturdy-oldman/resources/views/frontend/pages/jobs",
+    "last_opened_file_path": "C:/Users/Md. Saifur Rahman/sturdy-oldman/resources/views/frontend/pages/stipend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -194,8 +184,10 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\jobs" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\stipend" />
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\notice" />
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\job" />
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\jobs" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\admission" />
     </key>
   </component>
@@ -214,7 +206,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676040889649</updated>
       <workItem from="1676040891617" duration="4817000" />
-      <workItem from="1676046047649" duration="1975000" />
+      <workItem from="1676046047649" duration="7720000" />
     </task>
     <servers />
   </component>

@@ -25,6 +25,12 @@ Route::get('notices', [pageIndexController::class, 'notices'])->name('notices');
 Route::get('admission', [pageIndexController::class, 'admissionList'])->name('admission');
 Route::get('stipend', [pageIndexController::class, 'stipends'])->name('stipend');
 Route::get('jobs', [pageIndexController::class, 'jobs'])->name('jobs');
+Route::get('admission/detail/{name}', [pageIndexController::class, 'admissionDetails'])->name('admission-details');
+Route::get('notice/detail/{name}', [pageIndexController::class, 'noticeDetails'])->name('notice-details');
+Route::get('stipend/detail/{name}', [pageIndexController::class, 'stipendDetails'])->name('stipend-details');
+Route::get('job/detail/{name}', [pageIndexController::class, 'jobDetails'])->name('job-details');
+
+
 //Route::get('home', [StaterkitController::class, 'home'])->name('home');
 // Route Components
 //Route::get('layouts/collapsed-menu', [StaterkitController::class, 'collapsed_menu'])->name('collapsed-menu');

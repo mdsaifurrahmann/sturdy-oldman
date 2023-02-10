@@ -27,13 +27,7 @@
             <x-down-table>
 
                 <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
+                            action="{{route('admission-details', 'test')}}"/>
 
             </x-down-table>
 

@@ -31,19 +31,43 @@ class pageIndexController extends Controller
         return view('frontend.pages.ex-employees');
     }
 
-    public function notices(){
+    public function notices()
+    {
         return view('frontend.pages.notice.notice-list');
     }
 
-    public function stipends(){
+    public function noticeDetails($name)
+    {
+        return view('frontend.pages.notice.single', compact('name'));
+    }
+
+    public function stipends()
+    {
         return view('frontend.pages.stipend.stipend-list');
     }
 
-    public function admissionList(){
+    public function stipendDetails($name)
+    {
+        return view('frontend.pages.stipend.single', compact('name'));
+    }
+
+    public function admissionList()
+    {
         return view('frontend.pages.admission.admission-list');
     }
 
-    public function jobs(){
+    public function admissionDetails($name)
+    {
+        return view('frontend.pages.admission.single', compact('name'));
+    }
+
+    public function jobs()
+    {
         return view('frontend.pages.job.job-list');
+    }
+
+    public function jobDetails($name)
+    {
+        return view('frontend.pages.job.single', compact('name'));
     }
 }

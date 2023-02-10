@@ -25,15 +25,9 @@
         <div class="mt-4 overflow-auto">
 
             <x-down-table>
-                
+
                 <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notices')}}"/>
+                            action="{{route('stipend-details','name')}}"/>
 
             </x-down-table>
 
