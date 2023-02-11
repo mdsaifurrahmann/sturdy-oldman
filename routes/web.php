@@ -29,6 +29,9 @@ Route::get('admission/detail/{name}', [pageIndexController::class, 'admissionDet
 Route::get('notice/detail/{name}', [pageIndexController::class, 'noticeDetails'])->name('notice-details');
 Route::get('stipend/detail/{name}', [pageIndexController::class, 'stipendDetails'])->name('stipend-details');
 Route::get('job/detail/{name}', [pageIndexController::class, 'jobDetails'])->name('job-details');
+Route::get('gallery', [pageIndexController::class, 'gallery'])->name('gallery');
+Route::get('album/{name}', [pageIndexController::class, 'gallerySingle'])->name('album');
+Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
 
 
 //Route::get('home', [StaterkitController::class, 'home'])->name('home');

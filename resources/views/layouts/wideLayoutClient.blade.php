@@ -47,8 +47,6 @@
     {{-- Include core + vendor Styles --}}
     @include('panels/stylesClient')
 
-    {{-- Include core + vendor Styles --}}
-    @include('panels/stylesClient')
 </head>
 
 <body class="blank-page bg-slate-100 overflow-x-hidden" data-col="blank-page" data-asset-path="{{ asset('/') }}">
@@ -60,16 +58,8 @@
 
 <main>
     <div class="container">
-        <div class="grid grid-cols-1 lg:grid-cols-4 lg:gap-6">
-
-            <div class="col-span-3">
-
-                @yield('main-content')
-
-            </div> {{-- End of main content --}
-
-                {{-- Aside/Left bar --}}
-            <x-aside/>
+        <div class="grid grid-cols-1">
+            @yield('main-content')
         </div>
     </div>
 </main>

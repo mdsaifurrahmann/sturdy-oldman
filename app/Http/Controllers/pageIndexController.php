@@ -70,4 +70,19 @@ class pageIndexController extends Controller
     {
         return view('frontend.pages.job.single', compact('name'));
     }
+
+    public function gallery()
+    {
+        return view('frontend.pages.gallery.album');
+    }
+
+    public function gallerySingle($name)
+    {
+        return view('frontend.pages.gallery.single', compact('name'));
+    }
+
+    public function contact()
+    {
+        return view('frontend.pages.contact');
+    }
 }

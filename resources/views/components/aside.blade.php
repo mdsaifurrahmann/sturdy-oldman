@@ -4,7 +4,8 @@
     <div class="!p-6 card principle mt-4 lg:mt-0">
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
-                <img src="{{ asset(mix('images/avatars/principal.jpg')) }}" alt="principle of dinajpur textile institute">
+                <img src="{{ asset(mix('images/avatars/principal.jpg')) }}"
+                     alt="principle of dinajpur textile institute">
             </div>
             <div class="principle__info">
                 <h4 class="text-lg font-semibold text-gray-800">MD. Atiqur Rahman Prodhan</h4>
@@ -71,14 +72,6 @@
         <h4 class="card__title">Emergency Hotlines:</h4>
 
         <img src="{{ asset(mix('images/apa/helpline.jpg')) }}" alt="hotlines" class="mix-blend-multiply">
-    </div>
-
-    {{-- Map --}}
-    <div class="card !p-0 mb-4 overflow-hidden">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3597.7189935636243!2d88.63634351429451!3d25.614252320940796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fb52809c0d60f1%3A0x543ab46472d6f3f6!2sTextile%20Institute%2C%20Dinajpur!5e0!3m2!1sen!2sbd!4v1674937362090!5m2!1sen!2sbd"
-            width="300" height="190" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
 
