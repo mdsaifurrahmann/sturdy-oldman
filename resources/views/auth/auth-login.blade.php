@@ -89,6 +89,7 @@
                     @if (Session::has('attempt-failed'))
                         <div class="alert alert-danger p-1 text-center">
                             {{ Session::get('attempt-failed') }}
+                            {{ substr((Session::get('end_time') - time()) / 60,0, 2) }} Minutes left
                         </div>
                     @else
                         <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">

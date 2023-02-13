@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="gallery single &amp; contact done. heading to backend">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/FortifyServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/FortifyServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/NukeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/NukeServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/auth-login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/auth-login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +226,7 @@
       <workItem from="1676137600690" duration="15203000" />
       <workItem from="1676221623081" duration="6798000" />
       <workItem from="1676296895137" duration="640000" />
-      <workItem from="1676303013395" duration="20258000" />
+      <workItem from="1676303013395" duration="26049000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>
