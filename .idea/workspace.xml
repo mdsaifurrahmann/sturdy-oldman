@@ -5,80 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="gallery single &amp; contact done. heading to backend">
-      <change afterPath="$PROJECT_DIR$/app/View/Components/album.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/frontend/gallery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/frontend/album.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/frontend/gallery.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/fonts/lg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/fonts/lg.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/fonts/lg.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/fonts/lg.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/images/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/_lg-fonts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/_lg-mixins.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/_lg-theme-default.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/_lg-variables.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-autoplay.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-comments.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-fullscreen.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-medium-zoom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-pager.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-relative-caption.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-rotate.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-share.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-thumbnail.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-transitions.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-video.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lg-zoom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lightgallery-bundle.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lightgallery-core.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/lightgallery.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-lollipop-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-lollipop.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-rotate-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-rotate.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-scale-up.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-circular-vertical.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-circular.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-cross-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-cross.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-only-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-only-y-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-only-y.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-only.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-ver-cross-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-ver-cross.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-ver-rev.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew-ver.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-skew.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-vertical-growth.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-slide-vertical.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-soft-zoom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-tube.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-zoom-in-big.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-zoom-in-out.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-zoom-in.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-zoom-out-big.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-zoom-out-in.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/scss/lightgallery/scss/transitions/_lg-zoom-out.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/album.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/album.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/single.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/wideLayoutClient.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/Fortify/CreateNewUser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/Fortify/PasswordValidationRules.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/Fortify/ResetUserPassword.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserPassword.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/Fortify/UpdateUserProfileInformation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Users.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/FortifyServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Providers/NukeServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/fortify.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_200000_add_two_factor_columns_to_users_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/auth-forgot-password.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/auth-login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/auth-register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/auth-reset-password.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/auth/auth-verify-email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/stylesClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/stylesClient.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/submenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/submenu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,10 +170,15 @@
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/bacon/bacon-qr-code" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/constant_time_encoding" />
+      <path value="$PROJECT_DIR$/vendor/pragmarx/google2fa" />
+      <path value="$PROJECT_DIR$/vendor/laravel/fortify" />
+      <path value="$PROJECT_DIR$/vendor/dasprid/enum" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2LYH2AqHo5wcDSeTqPsEySJ8qdH" />
   <component name="ProjectLevelVcsManager">
@@ -232,7 +196,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/Md. Saifur Rahman/sturdy-oldman/resources/scss/frontend",
+    "last_opened_file_path": "C:/Users/Md. Saifur Rahman/sturdy-oldman/resources/views/layouts",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -243,15 +207,20 @@
     "settings.editor.splitter.proportion": "0.24648283",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\layouts" />
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\panels" />
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\auth" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\scss\frontend" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\gallery" />
-      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\layouts" />
-      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\stipend" />
-      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\notice" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\scss\lightgallery" />
@@ -284,8 +253,19 @@
       <workItem from="1676064161450" duration="202000" />
       <workItem from="1676064372564" duration="344000" />
       <workItem from="1676064730413" duration="598000" />
-      <workItem from="1676137600690" duration="15091000" />
+      <workItem from="1676137600690" duration="15203000" />
+      <workItem from="1676221623081" duration="6798000" />
+      <workItem from="1676296895137" duration="640000" />
+      <workItem from="1676303013395" duration="8371000" />
     </task>
+    <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
+      <created>1676154757261</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676154757261</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

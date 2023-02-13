@@ -1,16 +1,23 @@
-@php
-    $configData = Helper::applClasses();
-@endphp
-<div
-    class="main-menu menu-fixed {{ $configData['theme'] === 'dark' || $configData['theme'] === 'semi-dark' ? 'menu-dark' : 'menu-light' }} menu-accordion menu-shadow"
-    data-scroll-to-active="true">
-    <div class="navbar-header">
-        <ul class="nav navbar-nav flex-row">
-            <li class="nav-item me-auto">
-                <a class="navbar-brand" href="{{ url('/') }}">
-          <span class="brand-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                 viewBox="0 0 47.45 47.45" height="38">
+@extends('layouts/fullLayoutMaster')
+
+@section('title', 'Prodigy Forgot Password')
+
+@section('page-style')
+    {{-- Page Css files --}}
+    <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/form-validation.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/base/pages/authentication.css')) }}">
+@endsection
+
+@section('content')
+    <div class="auth-wrapper auth-basic px-2">
+        <div class="auth-inner my-2">
+            <!-- Forgot Password basic -->
+            <div class="card mb-0">
+                <div class="card-body">
+                    <a href="{{ route('home') }}" class="brand-logo align-items-center justify-center">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             viewBox="0 0 47.45 47.45" height="38">
                             <defs>
                                 <linearGradient id="linear-gradient" x1="11.02" y1="11.1" x2="18.08" y2="15.18"
                                                 gradientUnits="userSpaceOnUse">
@@ -54,61 +61,53 @@
                                 </g>
                             </g>
                         </svg>
-          </span>
-                    <h2 class="brand-text">Prodigy</h2>
-                </a>
-            </li>
-            <li class="nav-item nav-toggle">
-                <a class="nav-link modern-nav-toggle pe-0" data-toggle="collapse">
-                    <i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i>
-                    <i class="d-none d-xl-block collapse-toggle-icon font-medium-4 text-primary" data-feather="disc"
-                       data-ticon="disc"></i>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="shadow-bottom" style="display: block; height: 1rem; margin-top: 0"></div>
-    <div class="main-menu-content">
-        <ul class="navigation navigation-main" style="margin-top: 1rem" id="main-menu-navigation"
-            data-menu="menu-navigation">
-            {{-- Foreach menu item starts --}}
-            @if (isset($menuData[0]))
-                @foreach ($menuData[0]->menu as $menu)
-                    @if (isset($menu->navheader))
-                        <li class="navigation-header">
-                            <span>{{ __('locale.' . $menu->navheader) }}</span>
-                            <i data-feather="more-horizontal"></i>
-                        </li>
+                        <h2 class="brand-text text-primary ms-1 mb-0">{{ env('APP_NAME') }}</h2>
+                    </a>
+                    @if (session('status'))
+                        <div class="alert alert-info p-1 text-center">
+                            {{ session('status') }}
+                        </div>
                     @else
-                        {{-- Add Custom Class with nav-item --}}
-                        @php
-                            $custom_classes = '';
-                            if (isset($menu->classlist)) {
-                                $custom_classes = $menu->classlist;
-                            }
-                        @endphp
-                        <li class="nav-item {{ $custom_classes }} {{ Route::currentRouteName() === $menu->slug ? 'active' : '' }}"
-                            style="margin: 5px 0">
-                            <a href="{{ isset($menu->url) ? url($menu->url) : 'javascript:void(0)' }}"
-                               class="d-flex align-items-center"
-                               target="{{ isset($menu->newTab) ? '_blank' : '_self' }}">
-                                <i data-feather="{{ $menu->icon }}"></i>
-                                <span class="menu-title text-truncate">{{ __($menu->name) }}</span>
-                                @if (isset($menu->badge))
-                                        <?php $badgeClasses = 'badge rounded-pill badge-light-primary ms-auto me-1'; ?>
-                                    <span
-                                        class="{{ isset($menu->badgeClass) ? $menu->badgeClass : $badgeClasses }}">{{ $menu->badge }}</span>
-                                @endif
-                            </a>
-                            @if (isset($menu->submenu))
-                                @include('panels/submenu', ['menu' => $menu->submenu])
-                            @endif
-                        </li>
+                        <h4 class="card-title mb-1">Forgot Password? 🔒</h4>
+                        <p class="card-text mb-2">Enter your email and we'll send you instructions to reset your
+                            password</p>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger py-1">
+                                @foreach ($errors->all() as $error)
+                                    <div class="fw-bold text-center">{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        @endif
+
+
+                        <form class="auth-forgot-password-form mt-2" action="{{ route('password.email') }}"
+                              method="POST">
+                            @csrf
+                            <div class="mb-1">
+                                <label for="forgot-password-email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="forgot-password-email" name="email"
+                                       placeholder="john@example.com"
+                                       aria-describedby="forgot-password-email" tabindex="1" autofocus/>
+                            </div>
+                            <button class="btn btn-primary w-100" tabindex="2" type="submit">Send reset link</button>
+                        </form>
                     @endif
-                @endforeach
-            @endif
-            {{-- Foreach menu item ends --}}
-        </ul>
+
+                    <p class="mt-2 text-center">
+                        <a href="{{ route('login') }}"> <i data-feather="chevron-left"></i> Back to login </a>
+                    </p>
+                </div>
+            </div>
+            <!-- /Forgot Password basic -->
+        </div>
     </div>
-</div>
-<!-- END: Main Menu-->
+@endsection
+
+@section('vendor-script')
+    <script src="{{ asset(mix('vendors/js/forms/validation/jquery.validate.min.js')) }}"></script>
+@endsection
+
+@section('page-script')
+    <script src="{{ asset(mix('js/scripts/pages/auth-forgot-password.js')) }}"></script>
+@endsection

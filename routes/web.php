@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\pageIndexController;
+use App\Http\Controllers\StaterkitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::get('album/{name}', [pageIndexController::class, 'gallerySingle'])->name(
 Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
 
 
-//Route::get('home', [StaterkitController::class, 'home'])->name('home');
+Route::get('authenticated/govern', [StaterkitController::class, 'home'])->name('govern')->middleware('auth');
 // Route Components
 //Route::get('layouts/collapsed-menu', [StaterkitController::class, 'collapsed_menu'])->name('collapsed-menu');
 //Route::get('layouts/full', [StaterkitController::class, 'layout_full'])->name('layout-full');
