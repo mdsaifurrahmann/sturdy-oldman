@@ -2,12 +2,6 @@
 
 namespace App\Providers;
 
-use Exception;
-use Illuminate\Support\Str;
-use App\Actions\Fortify\CreateNewUser;
-use App\Actions\Fortify\ResetUserPassword;
-use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -18,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
+use Illuminate\Support\Str;
+
 
 class NukeServiceProvider extends ServiceProvider
 {
@@ -38,6 +34,12 @@ class NukeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        RateLimiter::for('login', function (Request $request) {
+            $email = (string)$request->email;
+
+            return Limit::perMinute(5)->by($email . $request->ip());
+        });
+
         Fortify::loginView(function () {
             return view('auth.auth-login');
         });
@@ -61,7 +63,7 @@ class NukeServiceProvider extends ServiceProvider
         // Authenticate
         Fortify::authenticateUsing(function (Request $request) {
             if (!$this->checkTooManyFailedAttempts()) {
-                return session()->put(['attempt-failed' => 'Too many attempts failed. IP Blocked for 1 Hours', 'end_time' => time() + 3600]);
+                return session()->put(['attempt-failed' => 'Too many attempts failed. IP Blocked for 1 Hours', 'end_time' => time() + 10]);
             }
 
             $user = User::where('email', $request->email)
@@ -71,9 +73,12 @@ class NukeServiceProvider extends ServiceProvider
             if ($user && Hash::check($request->password, $user->password)) {
                 RateLimiter::clear($this->throttleKey());
                 return $user;
+            } else {
+                RateLimiter::hit($this->throttleKey(), $seconds = 3600);
+                return session()->flash('error', 'You have ' . RateLimiter::remaining($this->throttleKey(), 4) . ' attempts left');
             }
 
-            RateLimiter::hit($this->throttleKey(), $seconds = 3600);
+//            RateLimiter::hit($this->throttleKey(), $seconds = 3600);
 
         });
 
@@ -108,6 +113,6 @@ class NukeServiceProvider extends ServiceProvider
      */
     public function throttleKey()
     {
-        return Str::lower(request('email')) . '|' . request()->ip();
+        return Str::lower(request('email')) && request()->ip();
     }
 }

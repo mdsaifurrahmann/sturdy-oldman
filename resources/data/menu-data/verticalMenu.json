@@ -2,46 +2,24 @@
     "menu": [
         {
             "url": "authenticated/govern",
-            "name": "Home",
-            "icon": "home",
+            "name": "Dashboard",
+            "icon": "activity",
             "slug": "govern"
         },
         {
-            "name": "Page Layouts",
-            "icon": "mail",
+            "navheader": "Page Settings",
+            "slug": ""
+        },
+        {
+            "name": "Home Page",
+            "icon": "home",
             "slug": "",
-            "badge": "5",
-            "badgeClass": "badge rounded-pill badge-light-danger ms-auto me-1",
             "submenu": [
                 {
-                    "url": "layouts/collapsed-menu",
-                    "name": "Collapsed Menu",
+                    "url": "authenticated/govern/homepage/slider",
+                    "name": "Sliders",
                     "icon": "circle",
-                    "slug": "collapsed-menu"
-                },
-                {
-                    "url": "layouts/full",
-                    "name": "Layout Full",
-                    "icon": "circle",
-                    "slug": "layout-full"
-                },
-                {
-                    "url": "layouts/without-menu",
-                    "name": "Without Menu",
-                    "icon": "circle",
-                    "slug": "without-menu"
-                },
-                {
-                    "url": "layouts/empty",
-                    "name": "Layout Empty",
-                    "icon": "circle",
-                    "slug": "layout-empty"
-                },
-                {
-                    "url": "layouts/blank",
-                    "name": "Layout Blank",
-                    "icon": "circle",
-                    "slug": "layout-blank"
+                    "slug": "slider"
                 }
             ]
         }

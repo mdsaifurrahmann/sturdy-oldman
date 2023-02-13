@@ -66,23 +66,29 @@
 
                     <h4 class="card-title mb-1 text-center">Welcome to {{ env('APP_NAME') }} 👋</h4>
 
+
                     @if (session('status'))
                         <div class="alert alert-info p-1 text-center">
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger p-1 text-center">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
                     @php
-                        if (Session::has('attemp-failed')) {
+                        if (Session::has('attempt-failed')) {
                             if (Session::get('end_time') < time()) {
-                                session()->forget('attemp-failed', 'end_time');
+                                session()->forget('attempt-failed', 'end_time');
                             }
                         }
                     @endphp
 
-                    @if (Session::has('attemp-failed'))
+                    @if (Session::has('attempt-failed'))
                         <div class="alert alert-danger p-1 text-center">
-                            {{ Session::get('attemp-failed') }}
+                            {{ Session::get('attempt-failed') }}
                         </div>
                     @else
                         <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST">

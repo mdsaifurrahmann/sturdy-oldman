@@ -71,10 +71,14 @@
                         </ul>
                         <ul class="nav navbar-nav">
                             <li class="nav-item d-none d-lg-block">
-                                <a class="nav-link nav-link-style">
-                                    <i class="ficon"
-                                       data-feather="{{ $configData['theme'] === 'dark' ? 'sun' : 'moon' }}"></i>
-                                </a>
+                                {{--                                <a class="nav-link nav-link-style">--}}
+                                {{--                                    <i class="ficon"--}}
+                                {{--                                       data-feather="{{ $configData['theme'] === 'dark' ? 'sun' : 'moon' }}"></i>--}}
+                                {{--                                </a>--}}
+
+                                <!-- welcome -->
+                                Welcome back, {{ Auth::user()->name }}! <span style="font-size: 24px">👋</span>
+
                             </li>
                         </ul>
                     </div>
@@ -105,11 +109,12 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item"
                                    href="{{ Route::has('profile.show') ? route('profile.show') : 'javascript:void(0)' }}">
-                                    <i class="me-50" data-feather="user"></i> Profile
+                                    <i class="me-50" data-feather="user"></i> Update Profile
                                 </a>
 
-                                <a class="dropdown-item" href="#">
-                                    <i class="me-50" data-feather="settings"></i> Settings
+                                <a class="dropdown-item"
+                                   href="{{ Route::has('profile.show') ? route('profile.show') : 'javascript:void(0)' }}">
+                                    <i class="me-50" data-feather="key"></i> Change Password
                                 </a>
 
 
