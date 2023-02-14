@@ -19,21 +19,19 @@
         <div class="swiper-wrapper">
             <!-- Slides -->
 
-            @foreach($data as $key => $slide)
-
+            @foreach ($sliders as $key => $slide)
                 <div class="swiper-slide">
-                    <img src="{{ asset(mix('images/slider/'.$slide->image)) }}" alt="slider-1"
-                         class="object-cover w-full h-[inherit]">
+                    <img src="{{ asset('images/slider/' . $slide->image) }}" alt="slider-1"
+                        class="object-cover w-full h-[inherit]">
 
                     <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                     <div class="absolute top-[22rem]">
                         <div class="p-8">
-                            <h1 class="text-xl font-bold text-white">{{$slide->title}}</h1>
-                            <p class="text-base text-white">{{$slide->desc}}</p>
+                            <h1 class="text-xl font-bold text-white">{{ $slide->title }}</h1>
+                            <p class="text-base text-white">{{ $slide->desc }}</p>
                         </div>
                     </div>
                 </div>
-
             @endforeach
 
 
@@ -65,7 +63,7 @@
                     Semester Examination-2021 Notice</a></li>
         </ul>
 
-        <a href="{{route('notices')}}" class="btn bg-amber-400 self-end mt-6 text-sm">View
+        <a href="{{ route('notices') }}" class="btn bg-amber-400 self-end mt-6 text-sm">View
             All Notices</a>
     </div>
 
@@ -78,8 +76,7 @@
             <x-apa.apa-item action="#">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)"
-                        src="{{ asset(mix('images/apa/citizen.svg')) }}">
+        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)" src="{{ asset(mix('images/apa/citizen.svg')) }}">
             <x-apa.apa-item action="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
             <x-apa.apa-item action="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
             <x-apa.apa-item action="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
@@ -134,7 +131,7 @@
             Textile
             Institute, abolishing the one-year artisan program and introducing a two-year certificate
             program. Later, a 3-year diploma-in-textile technology <a href="{{ route('history') }}"
-                                                                      class="text-amber-500 hover:text-amber-600 transition-all font-semibold">Read
+                class="text-amber-500 hover:text-amber-600 transition-all font-semibold">Read
                 More...</a>
         </p>
 

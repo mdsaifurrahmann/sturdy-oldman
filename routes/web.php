@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 */
 
 // public route
-Route::get('/', [HomeController::class, 'sliderList'])->name('home');
+Route::get('/', [pageIndexController::class, 'home'])->name('home');
 Route::get('infrastructure', [pageIndexController::class, 'infrastructure'])->name('infrastructure');
 Route::get('history', [pageIndexController::class, 'history'])->name('history');
 Route::get('principal', [pageIndexController::class, 'principal'])->name('principal');
@@ -41,12 +41,13 @@ Route::group(['prefix' => 'authenticated/govern'], function () {
         Route::get('/', [pageIndexController::class, 'govern'])->name('govern');
 
         Route::Group(['prefix' => 'homepage'], function () {
-            Route::get('slider', [pageIndexController::class, 'slider'])->name('slider');
-            Route::post('slider-store', [HomeController::class, 'create'])->name('slider-store');
-            Route::get('slider-list', [HomeController::class, 'sliderList'])->name('slider-list');
-            Route::get('slider-delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
+            Route::group(['prefix' => 'slider'], function () {
+                Route::get('add', [pageIndexController::class, 'slider'])->name('slider');
+                Route::post('add', [HomeController::class, 'create'])->name('slider-store');
+                Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
+                Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
+            });
         });
-
     });
 });
 

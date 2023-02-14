@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class pageIndexController extends Controller
 {
     public function home()
     {
-        return view('frontend.home');
+        $sliders = json_decode(DB::table('home_data')->where('target', 'slider')->value('data'));
+        return view('frontend.home', compact('sliders'));
     }
 
     public function infrastructure()
@@ -99,6 +101,6 @@ class pageIndexController extends Controller
 
     public function slider()
     {
-        return view('area52.home.slider');
+        return view('area52.home.slider.add-slider');
     }
 }

@@ -16,10 +16,23 @@
             "slug": "",
             "submenu": [
                 {
-                    "url": "authenticated/govern/homepage/slider",
                     "name": "Sliders",
-                    "icon": "circle",
-                    "slug": "slider"
+                    "icon": "sliders",
+                    "slug": "",
+                    "submenu": [
+                        {
+                            "url": "authenticated/govern/homepage/slider/add",
+                            "name": "Add Slider",
+                            "icon": "circle",
+                            "slug": "slider"
+                        },
+                        {
+                            "url": "authenticated/govern/homepage/slider/list",
+                            "name": "Slider List",
+                            "icon": "circle",
+                            "slug": "slider-list"
+                        }
+                    ]
                 }
             ]
         }
