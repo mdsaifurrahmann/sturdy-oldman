@@ -14,47 +14,29 @@
 
 @section('main-content')
 
-
     {{-- swiper slider --}}
     <div class="swiper main__slider h-[500px] rounded-lg">
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide">
-                <img src="{{ asset(mix('images/slider/01.jpg')) }}" alt="slider-1" class="object-cover w-full h-[inherit]">
 
-                <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
-                <div class="absolute top-[22rem]">
-                    <div class="p-8">
-                        <h1 class="text-xl font-bold text-white">Slider 1</h1>
-                        <p class="text-base text-white">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Quisquam, quod.</p>
+            @foreach($data as $key => $slide)
+
+                <div class="swiper-slide">
+                    <img src="{{ asset(mix('images/slider/'.$slide->image)) }}" alt="slider-1"
+                         class="object-cover w-full h-[inherit]">
+
+                    <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
+                    <div class="absolute top-[22rem]">
+                        <div class="p-8">
+                            <h1 class="text-xl font-bold text-white">{{$slide->title}}</h1>
+                            <p class="text-base text-white">{{$slide->desc}}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide">
-                <img src="{{ asset(mix('images/slider/02.jpg')) }}" alt="slider-1" class="object-cover w-full h-[inherit]">
 
-                <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
-                <div class="absolute top-[22rem]">
-                    <div class="p-8">
-                        <h1 class="text-xl font-bold text-white">Slider 1</h1>
-                        <p class="text-base text-white">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Quisquam, quod.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <img src="{{ asset(mix('images/slider/03.jpg')) }}" alt="slider-1" class="object-cover w-full h-[inherit]">
+            @endforeach
 
-                <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
-                <div class="absolute top-[22rem]">
-                    <div class="p-8">
-                        <h1 class="text-xl font-bold text-white">Slider 1</h1>
-                        <p class="text-base text-white">Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Quisquam, quod.</p>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
@@ -96,7 +78,8 @@
             <x-apa.apa-item action="#">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)" src="{{ asset(mix('images/apa/citizen.svg')) }}">
+        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)"
+                        src="{{ asset(mix('images/apa/citizen.svg')) }}">
             <x-apa.apa-item action="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
             <x-apa.apa-item action="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
             <x-apa.apa-item action="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
@@ -127,7 +110,8 @@
         <x-apa.apa-grid title="অভিযোগ প্রতিকার ব্যবস্থাপনা" src="{{ asset(mix('images/apa/flag.svg')) }}">
             <x-apa.apa-item action="#">অনিক ও আপিল কর্মকর্তাগণ</x-apa.apa-item>
             <x-apa.apa-item action="#">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
-                প্রতিবেদন</x-apa.apa-item>
+                প্রতিবেদন
+            </x-apa.apa-item>
             <x-apa.apa-item action="#">অভিযোগ দাখিল (অনলাইনে আবেদন)</x-apa.apa-item>
             <x-apa.apa-item action="#">আইন/বিধি/নীতিমালা/পরিপত্র</x-apa.apa-item>
         </x-apa.apa-grid>
@@ -150,7 +134,7 @@
             Textile
             Institute, abolishing the one-year artisan program and introducing a two-year certificate
             program. Later, a 3-year diploma-in-textile technology <a href="{{ route('history') }}"
-                class="text-amber-500 hover:text-amber-600 transition-all font-semibold">Read
+                                                                      class="text-amber-500 hover:text-amber-600 transition-all font-semibold">Read
                 More...</a>
         </p>
 
@@ -204,7 +188,6 @@
         </div>
 
     </div>
-
 
 @stop
 

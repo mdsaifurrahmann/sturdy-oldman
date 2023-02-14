@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('home_data', function (Blueprint $table) {
             $table->id();
             $table->string('target');
-            $table->string('data');
+            $table->json('data')->nullable();
             $table->timestamps();
         });
     }

@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class pageIndexController extends Controller
 {
+    public function home()
+    {
+        return view('frontend.home');
+    }
+
     public function infrastructure()
     {
         return view('frontend.pages.infrastructure');
@@ -84,5 +89,16 @@ class pageIndexController extends Controller
     public function contact()
     {
         return view('frontend.pages.contact');
+    }
+
+    //    Backend Being
+    public function govern()
+    {
+        return view('area52.govern');
+    }
+
+    public function slider()
+    {
+        return view('area52.home.slider');
     }
 }

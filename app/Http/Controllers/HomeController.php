@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\File;
 
 
-class HomeSliderController extends Controller
+class HomeController extends Controller
 {
     /**
      * @throws ValidationException

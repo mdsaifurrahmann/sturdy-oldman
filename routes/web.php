@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\pageIndexController;
-use App\Http\Controllers\StaterkitController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,8 @@ use App\Http\Controllers\StaterkitController;
 |
 */
 
-Route::get('/', [HomeController::class, 'create'])->name('home');
+// public route
+Route::get('/', [HomeController::class, 'sliderList'])->name('home');
 Route::get('infrastructure', [pageIndexController::class, 'infrastructure'])->name('infrastructure');
 Route::get('history', [pageIndexController::class, 'history'])->name('history');
 Route::get('principal', [pageIndexController::class, 'principal'])->name('principal');
@@ -34,15 +34,24 @@ Route::get('gallery', [pageIndexController::class, 'gallery'])->name('gallery');
 Route::get('album/{name}', [pageIndexController::class, 'gallerySingle'])->name('album');
 Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
 
+// Authenticated Route
 
-Route::get('authenticated/govern', [StaterkitController::class, 'home'])->name('govern')->middleware('auth');
-// Route Components
-//Route::get('layouts/collapsed-menu', [StaterkitController::class, 'collapsed_menu'])->name('collapsed-menu');
-//Route::get('layouts/full', [StaterkitController::class, 'layout_full'])->name('layout-full');
-//Route::get('layouts/without-menu', [StaterkitController::class, 'without_menu'])->name('without-menu');
-//Route::get('layouts/empty', [StaterkitController::class, 'layout_empty'])->name('layout-empty');
-//Route::get('layouts/blank', [StaterkitController::class, 'layout_blank'])->name('layout-blank');
-//Route::get('layouts/client', [StaterkitController::class, 'layout_client'])->name('layout-client');
+Route::group(['prefix' => 'authenticated/govern'], function () {
+    Route::group(['middleware' => ['auth', 'verified']], function () {
+        Route::get('/', [pageIndexController::class, 'govern'])->name('govern');
+
+        Route::Group(['prefix' => 'homepage'], function () {
+            Route::get('slider', [pageIndexController::class, 'slider'])->name('slider');
+            Route::post('slider-store', [HomeController::class, 'create'])->name('slider-store');
+            Route::get('slider-list', [HomeController::class, 'sliderList'])->name('slider-list');
+            Route::get('slider-delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
+        });
+
+    });
+});
+
+
+
 
 
 // locale Route
