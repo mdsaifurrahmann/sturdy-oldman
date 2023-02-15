@@ -6,7 +6,14 @@
 @section('keywords', 'Dinajpur Textile Institute')
 
 @section('content')
-    <!-- Kick start -->
+
+    @if(Session::has('error'))
+        <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+            <strong>Error!</strong> {{ Session::get('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">Kick start your next project 🚀</h4>

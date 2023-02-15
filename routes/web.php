@@ -36,23 +36,33 @@ Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
 
 // Authenticated Route
 
-Route::group(['prefix' => 'authenticated/govern'], function () {
-    Route::group(['middleware' => ['auth', 'verified']], function () {
-        Route::get('/', [pageIndexController::class, 'govern'])->name('govern');
+Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(function () {
+    Route::get('/', [pageIndexController::class, 'govern'])->name('govern');
 
-        Route::Group(['prefix' => 'homepage'], function () {
-            Route::group(['prefix' => 'slider'], function () {
-                Route::get('add', [pageIndexController::class, 'slider'])->name('slider');
-                Route::post('add', [HomeController::class, 'create'])->name('slider-store');
-                Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
-                Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
-            });
+    Route::prefix('homepage')->group(function () {
+        Route::prefix('slider')->group(function () {
+            Route::get('add', [pageIndexController::class, 'slider'])->name('slider');
+            Route::post('add', [HomeController::class, 'create'])->name('slider-store');
+            Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
+            Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
         });
     });
 });
 
-
-
+//Route::group(['prefix' => 'authenticated/govern'], function () {
+//    Route::group(['middleware' => ['auth', 'verified']], function () {
+//        Route::get('/', [pageIndexController::class, 'govern'])->name('govern');
+//
+//        Route::Group(['prefix' => 'homepage'], function () {
+//            Route::group(['prefix' => 'slider'], function () {
+//                Route::get('add', [pageIndexController::class, 'slider'])->name('slider');
+//                Route::post('add', [HomeController::class, 'create'])->name('slider-store');
+//                Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
+//                Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
+//            });
+//        });
+//    });
+//});
 
 
 // locale Route

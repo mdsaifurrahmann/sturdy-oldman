@@ -17,6 +17,15 @@ class HomeController extends Controller
      */
     public function create(Request $request)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         try {
             $slider = $request->slider;
             $data = [];
@@ -68,6 +77,15 @@ class HomeController extends Controller
 
     public function sliderList()
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $sliders = json_decode(DB::table('home_data')->where('target', 'slider')->value('data'));
         return view('area52.home.slider.list-slider', compact('sliders'));
     }
