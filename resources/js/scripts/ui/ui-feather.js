@@ -2,9 +2,7 @@
     File Name: ui-feather.js
     Description: Feather Icons
     ----------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+
 ==========================================================================================*/
 
 $(function () {
@@ -23,14 +21,14 @@ $(function () {
       if (iconsContainer.length) {
         iconsContainer.append(
           '<div class="card icon-card cursor-pointer text-center mb-2 mx-50" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="top" title="' +
-            icon +
-            '" data-icon="<i data-feather=\'' +
-            icon +
-            '\'></i>"> <div class="card-body"> <div class="icon-wrapper">' +
-            feather.icons[icon].toSvg() +
-            '</div><p class="icon-name text-truncate mb-0 mt-1">' +
-            icon +
-            '</p> </div></div>'
+          icon +
+          '" data-icon="<i data-feather=\'' +
+          icon +
+          '\'></i>"> <div class="card-body"> <div class="icon-wrapper">' +
+          feather.icons[icon].toSvg() +
+          '</div><p class="icon-name text-truncate mb-0 mt-1">' +
+          icon +
+          '</p> </div></div>'
         );
       }
     });

@@ -2,10 +2,6 @@
   File Name: app-menu.js
   Description: Menu navigation, custom scrollbar, hover scroll bar, multilevel menu
   initialization and manipulations
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: hhttp://www.themeforest.net/user/pixinvent
 ==========================================================================================*/
 (function (window, document, $) {
   'use strict';
@@ -19,6 +15,7 @@
   var $window = $(window);
   var menuWrapper_el = $('div[data-menu="menu-wrapper"]').html();
   var menuWrapperClasses = $('div[data-menu="menu-wrapper"]').attr('class');
+
 
   // Main menu
   $.app.menu = {

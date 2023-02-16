@@ -2,13 +2,11 @@
     File Name: app-user-list.js
     Description: User List page
     --------------------------------------------------------------------------------------
-    Item Name: Vuexy  - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: PIXINVENT
-    Author URL: http://www.themeforest.net/user/pixinvent
+
 
 ==========================================================================================*/
 $(function () {
-  ;('use strict')
+  ; ('use strict')
 
   var dtUserTable = $('.user-list-table'),
     newUserSidebar = $('.new-user-modal'),
@@ -264,18 +262,18 @@ $(function () {
             var data = $.map(columns, function (col, i) {
               return col.columnIndex !== 6 // ? Do not show row in modal popup if title is blank (for check box)
                 ? '<tr data-dt-row="' +
-                    col.rowIdx +
-                    '" data-dt-column="' +
-                    col.columnIndex +
-                    '">' +
-                    '<td>' +
-                    col.title +
-                    ':' +
-                    '</td> ' +
-                    '<td>' +
-                    col.data +
-                    '</td>' +
-                    '</tr>'
+                col.rowIdx +
+                '" data-dt-column="' +
+                col.columnIndex +
+                '">' +
+                '<td>' +
+                col.title +
+                ':' +
+                '</td> ' +
+                '<td>' +
+                col.data +
+                '</td>' +
+                '</tr>'
                 : ''
             }).join('')
             return data ? $('<table class="table"/>').append('<tbody>' + data + '</tbody>') : false
@@ -358,10 +356,10 @@ $(function () {
               .each(function (d, j) {
                 select.append(
                   '<option value="' +
-                    statusObj[d].title +
-                    '" class="text-capitalize">' +
-                    statusObj[d].title +
-                    '</option>'
+                  statusObj[d].title +
+                  '" class="text-capitalize">' +
+                  statusObj[d].title +
+                  '</option>'
                 )
               })
           })
