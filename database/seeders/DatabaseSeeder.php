@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             NukeOperator::class,
             NukeMaster::class,
-            homeSlider::class,
+            Data::class,
         ]);
     }
 }

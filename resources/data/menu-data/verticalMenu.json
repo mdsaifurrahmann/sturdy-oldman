@@ -35,6 +35,12 @@
                     ]
                 }
             ]
+        },
+        {
+            "url": "authenticated/govern/history",
+            "name": "History",
+            "icon": "align-left",
+            "slug": "authenticated/govern/history"
         }
     ]
 }

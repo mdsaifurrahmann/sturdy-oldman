@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageIndexController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
             Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
             Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
         });
+    });
+
+    Route::prefix('history')->group(function () {
+        Route::get('/', [pageIndexController::class, 'updatehistory'])->name('update-history');
+        Route::post('update', [HistoryController::class, 'update'])->name('update-history');
     });
 });
 

@@ -39,47 +39,42 @@
         </div>
         <div class="card-body">
             <div>
-                <div>
-
-                    @foreach ($sliders as $key => $slide)
-                        <div class="row d-flex align-items-center">
-                            <div class="col-md-3 col-12">
-                                <div class="mb-1">
-                                    <img src="{{ asset('/images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
-                                        width="120" height="70" style="object-fit: cover; border-radius: 6px">
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <div class="mb-1">
-                                    <input type="text" class="form-control disable" aria-describedby="sliderTitle"
-                                        readonly value="{{ $slide->title }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-12">
-                                <div class="mb-1">
-                                    <input type="text" class="form-control disable" aria-describedby="sliderDesc"
-                                        readonly value="{{ $slide->desc }}" />
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-12">
-                                <div class="mb-1">
-
-                                    <form action="{{ route('slider-delete', $key) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
-                                            <i data-feather="x" class="me-25"></i>
-                                            <span>Delete</span>
-                                        </button>
-                                    </form>
-                                </div>
+                @foreach ($sliders as $key => $slide)
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1">
+                                <img src="{{ asset('/images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
+                                    width="120" height="70" style="object-fit: cover; border-radius: 6px">
                             </div>
                         </div>
-                        <hr>
-                    @endforeach
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1">
+                                <input type="text" class="form-control disable" aria-describedby="sliderTitle" readonly
+                                    value="{{ $slide->title }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="mb-1">
+                                <input type="text" class="form-control disable" aria-describedby="sliderDesc" readonly
+                                    value="{{ $slide->desc }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-12">
+                            <div class="mb-1">
 
-
-                </div>
+                                <form action="{{ route('slider-delete', $key) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
+                                        <i data-feather="x" class="me-25"></i>
+                                        <span>Delete</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                @endforeach
             </div>
         </div>
     </div>

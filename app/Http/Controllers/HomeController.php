@@ -58,12 +58,11 @@ class HomeController extends Controller
                 }
             }
 
-            $retriveData = json_decode(DB::table('home_data')->where('target', 'slider')->value('data'));
+            $retriveData = json_decode(DB::table('data')->where('target', 'slider')->value('data'));
 
             $final = array_merge($retriveData, $data);
 
-            DB::table('home_data')->update([
-                'target' => 'slider',
+            DB::table('data')->where('target', 'slider')->update([
                 'data' => json_encode($final),
             ]);
 
@@ -86,13 +85,13 @@ class HomeController extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $sliders = json_decode(DB::table('home_data')->where('target', 'slider')->value('data'));
+        $sliders = json_decode(DB::table('data')->where('target', 'slider')->value('data'));
         return view('area52.home.slider.list-slider', compact('sliders'));
     }
 
     public function destroy($id)
     {
-        $data = json_decode(DB::table('home_data')->where('target', 'slider')->value('data'));
+        $data = json_decode(DB::table('data')->where('target', 'slider')->value('data'));
 
         $reinsert = array();
 
@@ -105,7 +104,7 @@ class HomeController extends Controller
             }
         }
 
-        DB::table('home_data')->where('target', 'slider')->update([
+        DB::table('data')->where('target', 'slider')->update([
             'data' => json_encode($reinsert),
         ]);
 

@@ -20,11 +20,11 @@
             <!-- Slides -->
 
 
-            @if($sliders)
+            @if ($sliders)
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
                         <img src="{{ asset('images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
-                             class="object-cover w-full h-[inherit]">
+                            class="object-cover w-full h-[inherit]">
 
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                         <div class="absolute top-[22rem]">
@@ -38,7 +38,7 @@
             @else
                 <div class="swiper-slide">
                     <img src="{{ asset('images/institute/front_view.jpg') }}" alt="front_view"
-                         class="object-cover w-full h-[inherit]">
+                        class="object-cover w-full h-[inherit]">
 
                     <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                     <div class="absolute top-[22rem]">
@@ -92,8 +92,7 @@
             <x-apa.apa-item action="#">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)"
-                        src="{{ asset(mix('images/apa/citizen.svg')) }}">
+        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)" src="{{ asset(mix('images/apa/citizen.svg')) }}">
             <x-apa.apa-item action="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
             <x-apa.apa-item action="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
             <x-apa.apa-item action="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
@@ -135,21 +134,11 @@
     <div class="history card">
         <h4 class="card__title">
             History:</h4>
-        <p>Between 1911 A.D. and 1913, the British government established 25 Peripatetic Schools and 9
-            Weaving Schools in undivided India. and 1929 A.D. to teach Bengalis how to make yarn into
-            textiles. District weaving was the name given to the textile schools. In Khulna, one of
-            them,
-            the current Dinajpur Textile Institute, was founded in 1926 AD. It was moved from Khulna to
-            Dinajpur in the academic year 1960–1961, entirely thanks to one of the inventive kids from
-            Dinajpur. The former Dinajpur District Weaving School used to offer a one-year vocational
-            course. In
-            the
-            year 1980 AD, the government changed the name of the District Weaving School to District
-            Textile
-            Institute, abolishing the one-year artisan program and introducing a two-year certificate
-            program. Later, a 3-year diploma-in-textile technology <a href="{{ route('history') }}"
-                                                                      class="text-amber-500 hover:text-amber-600 transition-all font-semibold">Read
-                More...</a>
+        <p>
+            {{ substr($history->history, 0, 900) }}
+            <a href="{{ route('history') }}" class="text-amber-500 hover:text-amber-600 transition-all font-semibold">
+                Read More...
+            </a>
         </p>
 
     </div>

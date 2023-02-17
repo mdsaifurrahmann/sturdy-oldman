@@ -10,8 +10,12 @@ class pageIndexController extends Controller
 {
     public function home()
     {
-        $sliders = json_decode(DB::table('home_data')->where('target', 'slider')->value('data'));
-        return view('frontend.home', compact('sliders'));
+        $data = DB::table('data')->get();
+
+        $sliders = json_decode($data[0]->data);
+        $history = json_decode($data[1]->data);
+
+        return view('frontend.home', compact('sliders', 'history'));
     }
 
     public function infrastructure()
@@ -21,7 +25,8 @@ class pageIndexController extends Controller
 
     public function history()
     {
-        return view('frontend.pages.history');
+        $history = json_decode(\DB::table('data')->where('target', 'history')->value('data'));
+        return view('frontend.pages.history', compact('history'));
     }
 
     public function principal()
@@ -111,5 +116,13 @@ class pageIndexController extends Controller
         }
 
         return view('area52.home.slider.add-slider');
+    }
+
+    public function updatehistory()
+    {
+
+        $history = json_decode(\DB::table('data')->where('target', 'history')->value('data'));
+
+        return view('area52.history', compact('history'));
     }
 }
