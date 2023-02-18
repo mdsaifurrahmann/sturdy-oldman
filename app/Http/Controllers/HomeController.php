@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,8 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\File;
 use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\MachineRequest;
 
 class HomeController extends Controller
 {
@@ -111,7 +114,90 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Slider Deleted Successfully');
     }
 
-    public function history()
+
+    public function machine(Request $request)
     {
+
+        $getDesc = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
+
+        if (isset($request->description)) {
+            $request->validate([
+                'description' => 'string',
+            ]);
+            $data = [
+                'description' => $request->description,
+            ];
+        } else {
+            $data = [
+                'description' => $getDesc->description,
+            ];
+        }
+
+        $machine = $request->machine;
+
+        $prevItems = $getDesc->items;
+
+        foreach ($machine as $key => $value) {
+            $machine = 'machine.' . $key . '.name';
+
+
+            if (!empty($request->input($machine))) {
+                $request->validate([
+                    $machine => 'string',
+                ]);
+
+                $info = $request->input($machine);
+
+                $data['items'][] = $info;
+            }
+        }
+
+        if (!empty($request->input($machine))) {
+            $merge = array_merge($prevItems, $data['items']);
+        } else {
+            $merge = $prevItems;
+        }
+
+
+
+        $final = [
+            'description' => $data['description'],
+            'items' => $merge,
+        ];
+
+        DB::table('data')->where('target', 'machinery')->update([
+            'data' => json_encode($final),
+        ]);
+
+        return redirect()->back()->with('success', 'Machinery Items updated Successfully');
+    }
+
+    public function machineDestroy($id)
+    {
+        $data = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
+
+        $list = $data->items;
+
+        $reinsert = array();
+
+        foreach ($list as $key => $value) {
+
+            if ($key == $id) {
+                continue;
+            } else {
+                array_push($reinsert, $value);
+            }
+        }
+
+        DB::table('data')->where('target', 'machinery')->update([
+            'data' => json_encode(
+                [
+                    'description' => $data->description,
+                    'items' => $reinsert,
+                ]
+            ),
+        ]);
+
+        return redirect()->back()->with('success', 'Machinery Items Deleted Successfully');
     }
 }

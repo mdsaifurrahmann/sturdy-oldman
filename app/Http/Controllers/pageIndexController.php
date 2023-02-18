@@ -14,8 +14,9 @@ class pageIndexController extends Controller
 
         $sliders = json_decode($data[0]->data);
         $history = json_decode($data[1]->data);
+        $machinery = json_decode($data->where('target', 'machinery')->value('data'));
 
-        return view('frontend.home', compact('sliders', 'history'));
+        return view('frontend.home', compact('sliders', 'history', 'machinery'));
     }
 
     public function infrastructure()
@@ -124,5 +125,13 @@ class pageIndexController extends Controller
         $history = json_decode(\DB::table('data')->where('target', 'history')->value('data'));
 
         return view('area52.history', compact('history'));
+    }
+
+    public function machine()
+    {
+        $machinery = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
+        $list = $machinery->items;
+        return view('area52.home.machine.machine', compact('machinery', 'list'));
+        // dd($list);
     }
 }

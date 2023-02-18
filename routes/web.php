@@ -47,6 +47,10 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
             Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
             Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
         });
+
+        Route::post('machine', [HomeController::class, 'machine'])->name('machine');
+        Route::get('machinery', [pageIndexController::class, 'machine'])->name('machinery');
+        Route::delete('machine/delete/{id}', [HomeController::class, 'machineDestroy'])->name('machine-delete');
     });
 
     Route::prefix('history')->group(function () {

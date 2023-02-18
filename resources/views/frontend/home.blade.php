@@ -149,20 +149,21 @@
             Pieces of Machinery:</h4>
         <div>
             <p>
-                Workshop and Laboratory Facilities Diploma-in-Engineering courses are divided into 60
-                percent practical and 40 percent theoretical parts. There are workshops and laboratories
-                equipped with modern equipment for conducting practical classes. The subject teachers
-                conduct the practical classes and the workshops help. Department based workshops and
-                laboratories:
+                {{ $machinery->description }}
             </p>
             <h5 class="my-3 font-semibold text-gray-800">List of Machinery:</h5>
             <ul class="grid grid-cols-1 xs:grid-cols-2 xm:grid-cols-4 gap-3 list-decimal list-inside arrow text-gray-600">
-                <li>Construction Shop</li>
+                {{-- <li>Construction Shop</li>
                 <li>Plumbing Shop</li>
                 <li>Material Testing Lab</li>
                 <li>Soil Mechanics Lab</li>
                 <li>Survey Lab</li>
-                <li>Wood shop</li>
+                <li>Wood shop</li> --}}
+
+
+                @foreach ($machinery->items as $item)
+                    <li>{{ $item }}</li>
+                @endforeach
             </ul>
         </div>
 
