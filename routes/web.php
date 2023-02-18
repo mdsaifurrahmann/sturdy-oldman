@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageIndexController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\principal;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,11 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
     Route::prefix('history')->group(function () {
         Route::get('/', [pageIndexController::class, 'updatehistory'])->name('update-history');
         Route::post('update', [HistoryController::class, 'update'])->name('update-history');
+    });
+
+    Route::prefix('principal')->group(function () {
+        Route::get('/', [pageIndexController::class, 'updatePrincipal'])->name('update-principal');
+        Route::post('update', [principal::class, 'update'])->name('principal-update');
     });
 });
 

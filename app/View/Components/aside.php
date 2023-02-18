@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
 
 class aside extends Component
 {
@@ -23,6 +24,8 @@ class aside extends Component
      */
     public function render()
     {
-        return view('components.aside');
+        $id = 1;
+        $principal = DB::table('principal')->where('id', $id)->get()->first();
+        return view('components.aside', compact('principal'));
     }
 }

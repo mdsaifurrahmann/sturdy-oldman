@@ -11,12 +11,13 @@ class pageIndexController extends Controller
     public function home()
     {
         $data = DB::table('data')->get();
+        $principal = DB::table('principal')->where('id', 1)->get()->first();
 
         $sliders = json_decode($data[0]->data);
         $history = json_decode($data[1]->data);
         $machinery = json_decode($data->where('target', 'machinery')->value('data'));
 
-        return view('frontend.home', compact('sliders', 'history', 'machinery'));
+        return view('frontend.home', compact('sliders', 'history', 'machinery', 'principal'));
     }
 
     public function infrastructure()
@@ -32,7 +33,9 @@ class pageIndexController extends Controller
 
     public function principal()
     {
-        return view('frontend.pages.principal');
+        $id = 1;
+        $principal = DB::table('principal')->where('id', $id)->get()->first();
+        return view('frontend.pages.principal', compact('principal'));
     }
 
     public function formerPrincipals()
@@ -132,6 +135,12 @@ class pageIndexController extends Controller
         $machinery = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
         $list = $machinery->items;
         return view('area52.home.machine.machine', compact('machinery', 'list'));
-        // dd($list);
+    }
+
+    public function updatePrincipal()
+    {
+        $id = 1;
+        $principal = DB::table('principal')->where('id', $id)->get()->first();
+        return view('area52.principal.principal', compact('principal'));
     }
 }

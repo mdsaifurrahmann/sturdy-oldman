@@ -153,14 +153,6 @@
             </p>
             <h5 class="my-3 font-semibold text-gray-800">List of Machinery:</h5>
             <ul class="grid grid-cols-1 xs:grid-cols-2 xm:grid-cols-4 gap-3 list-decimal list-inside arrow text-gray-600">
-                {{-- <li>Construction Shop</li>
-                <li>Plumbing Shop</li>
-                <li>Material Testing Lab</li>
-                <li>Soil Mechanics Lab</li>
-                <li>Survey Lab</li>
-                <li>Wood shop</li> --}}
-
-
                 @foreach ($machinery->items as $item)
                     <li>{{ $item }}</li>
                 @endforeach
@@ -174,19 +166,16 @@
         {{-- <h4 class="card__title">Message From Principal:</h4> --}}
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
             <div class="sm:col-span-1 flex justify-center">
-                <img src="{{ asset(mix('images/avatars/principal.jpg')) }}" alt="Principle Says" class="rounded-full">
+                <img src="{{ asset('images/principal/' . $principal->pip) }}" alt="Principle Says" class="rounded-full">
             </div>
 
             <div class="sm:col-span-3 flex flex-col">
                 <p class="quote indent-8">
-                    Workshop and Laboratory Facilities Diploma-in-Engineering courses are divided into 60
-                    percent practical and 40 percent theoretical parts. There are workshops and laboratories
-                    equipped with modern equipment for conducting practical classes. The subject teachers
-                    conduct the practical classes and the workshops help. Department based workshops and</p>
+                    {{ $principal->message }}</p>
                 <p class="block mt-2">
-                    <strong><i>MD. Atiqur Rahman Prodhan</i></strong>
-                    <i class="block">Principal in Charge</i>
-                    <i class="block">Textile Institute, Dinajpur</i>
+                    <strong><i>{{ $principal->principal_name }}</i></strong>
+                    <i class="block">{{ $principal->position }}</i>
+                    <i class="block">{{ $principal->institute }}</i>
                 </p>
             </div>
         </div>

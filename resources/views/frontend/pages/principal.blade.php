@@ -23,18 +23,18 @@
 
 
         <div class="mt-4">
-            <img src="{{ asset(mix('images/institute/principal.jpg')) }}" alt="front-view"
+            <img src="{{ asset('images/principal/' . $principal->pi) }}" alt="front-view"
                 class="rounded w-full h-[400px] object-cover block mx-auto">
             <p class="my-4 text-justify indent-4">
-                {{ __('One of the fundamental needs as a human being is clothing. Thus textile industries have been constituting a major part of the industrial society since the very beginning of industrial era. To cope with the ever increasing competitive world of industries, our country has established numerous textile mills reaching the pick of success gaining one of the topmost positions in the third world. But to encourage these industries by building up a young generation as the future pioneers in this sector, different textile engineering colleges and vocational institutions under Ministry of Textile & Jute have been playing an important part. Textile Institute at Pulhat in the district of Dinajpur is among these institutions playing a vital role providing textile education to the people of the northern area of our country. Since 1994 it’s been delivering Diploma degrees to its students. Despite some limitations, with the earnest efforts of the students and teachers jointly, this institute has gained one of the top positions among the northern educational institutes of our country. We hope that these little drawbacks will soon be overcome to deliver better exposure. My greetings to all the concerned stakeholders of this institute.') }}
+                {{ __($principal->description) }}
             </p>
 
 
             <p class="text-left block text-gray-600">
-                <strong><i>MD. Atiqur Rahman Prodhan</i></strong>
-                <i class="block">B.Sc in Textile Engineering</i>
-                <i class="block">Principal in Charge</i>
-                <i class="block">Textile Institute, Dinajpur</i>
+                <strong><i>{{ $principal->principal_name }}</i></strong>
+                <i class="block">{{ $principal->qop }}</i>
+                <i class="block">{{ $principal->position }}</i>
+                <i class="block">{{ $principal->institute }}</i>
             </p>
         </div>
 

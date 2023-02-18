@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\File;
-use PhpParser\Node\Stmt\TryCatch;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\MachineRequest;
 
 class HomeController extends Controller
 {

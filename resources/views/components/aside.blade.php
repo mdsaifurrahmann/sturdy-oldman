@@ -4,13 +4,12 @@
     <div class="!p-6 card principle mt-4 lg:mt-0">
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
-                <img src="{{ asset(mix('images/avatars/principal.jpg')) }}"
-                     alt="principle of dinajpur textile institute">
+                <img src="{{ asset('images/principal/' . $principal->pip) }}" alt="principle of dinajpur textile institute">
             </div>
             <div class="principle__info">
-                <h4 class="text-lg font-semibold text-gray-800">MD. Atiqur Rahman Prodhan</h4>
-                <p class="text-gray-500">Principal in Charge</p>
-                <p class="text-gray-500">Textile Institute, Dinajpur</p>
+                <h4 class="text-lg font-semibold text-gray-800">{{ $principal->principal_name }}</h4>
+                <p class="text-gray-500">{{ $principal->position }}</p>
+                <p class="text-gray-500">{{ $principal->institute }}</p>
             </div>
         </div>
         <div class="btn__group">
