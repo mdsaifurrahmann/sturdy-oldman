@@ -4,7 +4,8 @@
     <div class="!p-6 card principle mt-4 lg:mt-0">
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
-                <img src="{{ asset('images/principal/' . $principal->pip) }}" alt="principle of dinajpur textile institute">
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
+                    alt="principle of dinajpur textile institute">
             </div>
             <div class="principle__info">
                 <h4 class="text-lg font-semibold text-gray-800">{{ $principal->principal_name }}</h4>
@@ -70,7 +71,8 @@
     <div class="card mb-4">
         <h4 class="card__title">Emergency Hotlines:</h4>
 
-        <img src="{{ asset(mix('images/apa/helpline.jpg')) }}" alt="hotlines" class="mix-blend-multiply">
+        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/helpline.jpg'))) }}"
+            alt="hotlines" class="mix-blend-multiply">
     </div>
 
 

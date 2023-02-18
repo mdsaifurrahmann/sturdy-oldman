@@ -23,8 +23,8 @@
             @if ($sliders)
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
-                        <img src="{{ asset('images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
-                            class="object-cover w-full h-[inherit]">
+                        <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/slider/' . $slide->image))) }}"
+                            alt="{{ $slide->title }}" class="object-cover w-full h-[inherit]">
 
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                         <div class="absolute top-[22rem]">
@@ -85,42 +85,48 @@
 
     {{-- APA --}}
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <x-apa.apa-grid title="বার্ষিক কর্মসম্পাদন চুক্তি" src="{{ asset(mix('images/apa/apa.png')) }}">
+        <x-apa.apa-grid title="বার্ষিক কর্মসম্পাদন চুক্তি"
+            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/apa.png'))) }}">
             <x-apa.apa-item action="#">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</x-apa.apa-item>
             <x-apa.apa-item action="#">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</x-apa.apa-item>
             <x-apa.apa-item action="#">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
             <x-apa.apa-item action="#">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)" src="{{ asset(mix('images/apa/citizen.svg')) }}">
+        <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/citizen.svg'))) }}">
             <x-apa.apa-item action="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
             <x-apa.apa-item action="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
             <x-apa.apa-item action="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
             <x-apa.apa-item action="#">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="জাতীয় শুদ্ধাচার কৌশল" src="{{ asset(mix('images/apa/nis.png')) }}">
+        <x-apa.apa-grid title="জাতীয় শুদ্ধাচার কৌশল"
+            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/nis.png'))) }}">
             <x-apa.apa-item action="#">জাতীয় শুদ্ধাচার কৌশল</x-apa.apa-item>
             <x-apa.apa-item action="#">কমিটিসমূহ</x-apa.apa-item>
             <x-apa.apa-item action="#">কর্মপরিকল্পনা</x-apa.apa-item>
             <x-apa.apa-item action="#">প্রতিবেদনসমূহ</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="উদ্ভাবনী কার্যক্রম" src="{{ asset(mix('images/apa/idea.svg')) }}">
+        <x-apa.apa-grid title="উদ্ভাবনী কার্যক্রম"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/idea.svg'))) }}">
             <x-apa.apa-item action="#">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</x-apa.apa-item>
             <x-apa.apa-item action="#">ইনোভেশন টিম</x-apa.apa-item>
             <x-apa.apa-item action="#">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</x-apa.apa-item>
             <x-apa.apa-item action="#">উদ্ভাবনী প্রকল্পসমূহ</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="তথ্য অধিকার" src="{{ asset(mix('images/apa/info.svg')) }}">
+        <x-apa.apa-grid title="তথ্য অধিকার"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/info.svg'))) }}">
             <x-apa.apa-item action="#">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল কর্তৃপক্ষ</x-apa.apa-item>
             <x-apa.apa-item action="#">আবেদন ও আপিল ফরম</x-apa.apa-item>
             <x-apa.apa-item action="#">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</x-apa.apa-item>
             <x-apa.apa-item action="#">আইন/বিধি/কমিটি/নির্দেশিকা</x-apa.apa-item>
         </x-apa.apa-grid>
 
-        <x-apa.apa-grid title="অভিযোগ প্রতিকার ব্যবস্থাপনা" src="{{ asset(mix('images/apa/flag.svg')) }}">
+        <x-apa.apa-grid title="অভিযোগ প্রতিকার ব্যবস্থাপনা"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/flag.svg'))) }}">
             <x-apa.apa-item action="#">অনিক ও আপিল কর্মকর্তাগণ</x-apa.apa-item>
             <x-apa.apa-item action="#">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
                 প্রতিবেদন
@@ -166,7 +172,8 @@
         {{-- <h4 class="card__title">Message From Principal:</h4> --}}
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
             <div class="sm:col-span-1 flex justify-center">
-                <img src="{{ asset('images/principal/' . $principal->pip) }}" alt="Principle Says" class="rounded-full">
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
+                    alt="Principle Says" class="rounded-full">
             </div>
 
             <div class="sm:col-span-3 flex flex-col">

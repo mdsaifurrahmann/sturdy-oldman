@@ -23,7 +23,8 @@
 
 
         <div class="mt-4">
-            <img src="{{ asset('images/institute/' . $history->image) }}" alt="front-view" class="rounded">
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/' . $history->image))) }}"
+                alt="front-view" class="rounded">
             <p class="my-4 text-justify indent-4">
                 {{ __($history->history) }}
             </p>

@@ -3,7 +3,8 @@
     <div class="container">
         <div class="footer-grid">
             <div class="grid-1 xm:col-span-2">
-                <img src="{{ asset(mix('images/logo/bangladesh.png')) }}" alt="republic of bangladesh">
+                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/logo/bangladesh.png'))) }}"
+                    alt="republic of bangladesh">
                 <p>Government of the People's Republic of Bangladesh</p>
             </div>
 
