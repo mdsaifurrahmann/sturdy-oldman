@@ -109,7 +109,7 @@
 
 
             @if ($principals->count() > 0)
-                @foreach ($principals as $key => $principal)
+                @foreach ($principals as $principal)
                     <div class="row d-flex align-items-center">
 
                         <div class="col-md-3 col-12">
@@ -144,7 +144,7 @@
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
 
-                                <form action="{{ route('former-principal-delete', $key + 1) }}" method="POST">
+                                <form action="{{ route('former-principal-delete', $principal->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <label class="form-label">Delete</label>
