@@ -14,6 +14,14 @@ class principal extends Controller
     public function update(PrincipalRequest $request, PrincipalModel $principal)
     {
 
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $request->validated();
 
         $principal = PrincipalModel::where('id', '1')->get()->first();

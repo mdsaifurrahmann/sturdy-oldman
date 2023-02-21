@@ -11,6 +11,15 @@ class formerPrincipal extends Controller
 {
     public function addPrincipal(formerPrincipalRequest $request)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $request->validated();
         $name = $request->name;
         $designation = $request->designation;
@@ -37,6 +46,15 @@ class formerPrincipal extends Controller
 
     public function destroy($id)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         DB::table('former_principals')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Principal removed successfully');
     }
@@ -45,6 +63,15 @@ class formerPrincipal extends Controller
 
     public function addEmployee(formerPrincipalRequest $request)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $request->validated();
         $name = $request->name;
         $designation = $request->designation;
@@ -71,6 +98,15 @@ class formerPrincipal extends Controller
 
     public function employeeDestroy($id)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         DB::table('former_employees')->where('id', $id)->delete();
         return redirect()->back()->with('success', 'Employee/Officer removed successfully');
     }

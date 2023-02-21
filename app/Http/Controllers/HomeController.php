@@ -114,6 +114,14 @@ class HomeController extends Controller
     public function machine(Request $request)
     {
 
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $getDesc = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
 
         if (isset($request->description)) {
@@ -170,6 +178,16 @@ class HomeController extends Controller
 
     public function machineDestroy($id)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+
         $data = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
 
         $list = $data->items;

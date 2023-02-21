@@ -13,6 +13,14 @@ class HistoryController extends Controller
     public function update(HistoryRequest $request)
     {
 
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $request->validated();
 
         $retrive = json_decode(\DB::table('data')->where('target', 'history')->value('data'));
