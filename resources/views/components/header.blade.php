@@ -38,7 +38,7 @@
                 <a href="#" class="menu-link">Administration</a>
                 <ul class="layer__2">
                     <li class="menu-item"><a href="{{ route('former-principals') }}" class="menu-link">Former
-                            principals</a></li>
+                            Principals</a></li>
                     <li class="menu-item"><a href="{{ route('ex-employees') }}" class="menu-link">Ex-Officers and
                             Employees</a></li>
                     <li class="menu-item"><a href="#" class="menu-link">Citizen Charter</a></li>
@@ -50,7 +50,7 @@
 
                 <ul class="layer__2">
                     <li class="menu-item"><a href="{{ route('history') }}" class="menu-link">History</a></li>
-                    <li class="menu-item"><a href="{{ route('principal') }}" class="menu-link">Principle</a></li>
+                    <li class="menu-item"><a href="{{ route('principal') }}" class="menu-link">Principal</a></li>
                     <li class="menu-item"><a href="{{ route('infrastructure') }}" class="menu-link">Infrastructure</a>
                     </li>
                 </ul>

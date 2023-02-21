@@ -40,12 +40,14 @@ class pageIndexController extends Controller
 
     public function formerPrincipals()
     {
-        return view('frontend.pages.former-principals');
+        $principals = DB::table('former_principals')->get();
+        return view('frontend.pages.former-principals', compact('principals'));
     }
 
     public function exEmployees()
     {
-        return view('frontend.pages.ex-employees');
+        $employees = DB::table('former_employees')->get();
+        return view('frontend.pages.ex-employees', compact('employees'));
     }
 
     public function notices()

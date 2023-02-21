@@ -43,16 +43,42 @@
             ]
         },
         {
-            "url": "authenticated/govern/history",
-            "name": "History",
-            "icon": "align-left",
-            "slug": "authenticated/govern/history"
+            "name": "About Us",
+            "icon": "info",
+            "slug": "",
+            "submenu": [
+                {
+                    "url": "authenticated/govern/about/history",
+                    "name": "History",
+                    "icon": "align-left",
+                    "slug": "update-history"
+                },
+                {
+                    "url": "authenticated/govern/about/principal",
+                    "name": "Principal",
+                    "icon": "smile",
+                    "slug": "update-principal"
+                }
+            ]
         },
         {
-            "url": "authenticated/govern/principal",
-            "name": "Principal",
-            "icon": "smile",
-            "slug": "principal"
+            "name": "Administration",
+            "icon": "users",
+            "slug": "",
+            "submenu": [
+                {
+                    "url": "authenticated/govern/administration/former-principals",
+                    "name": "Former Principals",
+                    "icon": "circle",
+                    "slug": "former-principal-list"
+                },
+                {
+                    "url": "authenticated/govern/administration/former-employees",
+                    "name": "Former Officers/Employees",
+                    "icon": "circle",
+                    "slug": "former-employee-list"
+                }
+            ]
         }
     ]
 }

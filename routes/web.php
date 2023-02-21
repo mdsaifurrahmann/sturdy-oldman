@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\formerPrincipal;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageIndexController;
 use App\Http\Controllers\HomeController;
@@ -54,14 +55,26 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::delete('machine/delete/{id}', [HomeController::class, 'machineDestroy'])->name('machine-delete');
     });
 
-    Route::prefix('history')->group(function () {
+    Route::prefix('about/history')->group(function () {
         Route::get('/', [pageIndexController::class, 'updatehistory'])->name('update-history');
         Route::post('update', [HistoryController::class, 'update'])->name('update-history');
     });
 
-    Route::prefix('principal')->group(function () {
+    Route::prefix('about/principal')->group(function () {
         Route::get('/', [pageIndexController::class, 'updatePrincipal'])->name('update-principal');
         Route::post('update', [principal::class, 'update'])->name('principal-update');
+    });
+
+    Route::prefix('administration/former-principals')->group(function () {
+        Route::get('/', [formerPrincipal::class, 'principalList'])->name('former-principal-list');
+        Route::post('update', [formerPrincipal::class, 'addPrincipal'])->name('former-principal-update');
+        Route::delete('delete/{id}', [formerPrincipal::class, 'destroy'])->name('former-principal-delete');
+    });
+
+    Route::prefix('administration/former-employees')->group(function () {
+        Route::get('/', [formerPrincipal::class, 'employeeList'])->name('former-employee-list');
+        Route::post('update', [formerPrincipal::class, 'addEmployee'])->name('former-employee-update');
+        Route::delete('delete/{id}', [formerPrincipal::class, 'employeeDestroy'])->name('former-employee-delete');
     });
 });
 

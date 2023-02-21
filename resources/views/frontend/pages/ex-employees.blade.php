@@ -25,61 +25,38 @@
 
         <div class="mt-4 overflow-auto">
 
-            {{-- list of former principals with table --}}
-            <table class="">
-                <thead>
-                    <tr>
-                        <th>{{ __('Serial') }}</th>
-                        <th class="px-16">{{ __('Name') }}</th>
-                        <th>{{ __('Designation') }}</th>
-                        <th class="px-8">{{ __('Duration') }}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2019 to 31.12.2020</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2019 to 31.12.2020</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2019 to 31.12.2020</td>
-                    </tr>
-                    <tr>
-                        <th>4</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2019 to 31.12.2020</td>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2019 to 31.12.2020</td>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2019 to 31.12.2020</td>
-                    </tr>
-                    <tr>
-                        <th>7</th>
-                        <td>Dr. Md. Abdul Mannan</td>
-                        <td>Principal</td>
-                        <td>01.01.2020 to Present </td>
-                    </tr>
-                </tbody>
-            </table>
+
+            @if ($employees->count() <= 0)
+                <div class="text-center">
+                    <h3 class="text-2xl text-gray-600">{{ __('No data found!') }}</h3>
+                </div>
+            @else
+                {{-- list of former principals with table --}}
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th>{{ __('Serial') }}</th>
+                            <th class="px-16">{{ __('Name') }}</th>
+                            <th>{{ __('Designation') }}</th>
+                            <th class="px-8">{{ __('Duration') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach ($employees as $key => $employee)
+                            <tr>
+                                <th>{{ $key + 1 }}</th>
+                                <td class="capitalize">{{ $employee->name }}</td>
+                                <td class="capitalize">{{ $employee->designation }}</td>
+                                <td>{{ $employee->from }} to {{ $employee->to }}</td>
+                            </tr>
+                        @endforeach
+
+                    </tbody>
+                </table>
+            @endif
+
+
 
 
         </div>
