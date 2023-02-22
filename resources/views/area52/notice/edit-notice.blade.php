@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Add Notice')
+@section('title', 'Edit Notice')
 @section('ins-name', 'Dinajpur Textile Institute')
 @section('description', 'Dinajpur Textile Institute')
 @section('keywords', 'Dinajpur Textile Institute')

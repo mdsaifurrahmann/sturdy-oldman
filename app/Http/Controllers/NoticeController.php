@@ -77,7 +77,7 @@ class NoticeController extends Controller
 
                 $file = $request->file('notice.' . $key . '.attach');
 
-                $filename = time() . Str::random(16) . '-notice-' . $key . '.' . $file->extension();
+                $filename = time() . Str::random(16) . '-notice-' . $file->getClientOriginalName();
 
                 $destinationPath = public_path() . '/notices';
 
@@ -195,12 +195,12 @@ class NoticeController extends Controller
                 if ($request->hasFile('notice.' . $key . '.attach')) {
                     $request->validate(
                         [
-                            'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:1024',
+                            'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
                         ],
                         [
                             'notice.' . $key . '.attach.file' => 'Attachment must be a file',
                             'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
-                            'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 1024 kilobytes',
+                            'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 Megabytes',
                         ]
                     );
 

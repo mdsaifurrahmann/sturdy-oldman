@@ -12,12 +12,17 @@ class pageIndexController extends Controller
     {
         $data = DB::table('data')->get();
         $principal = DB::table('principal')->where('id', 1)->get()->first();
+        $notices = DB::table('notices')
+            ->select('id', 'title')
+            ->latest('created_at')
+            ->take(5)
+            ->get();
 
         $sliders = json_decode($data[0]->data);
         $history = json_decode($data[1]->data);
         $machinery = json_decode($data->where('target', 'machinery')->value('data'));
 
-        return view('frontend.home', compact('sliders', 'history', 'machinery', 'principal'));
+        return view('frontend.home', compact('sliders', 'history', 'machinery', 'principal', 'notices'));
     }
 
     public function infrastructure()
@@ -52,12 +57,21 @@ class pageIndexController extends Controller
 
     public function notices()
     {
-        return view('frontend.pages.notice.notice-list');
+        $notice = DB::table('notices')->select('id', 'title', 'date', 'time')->latest('created_at')->get();
+        return view('frontend.pages.notice.notice-list', compact('notice'));
     }
 
-    public function noticeDetails($name)
+    public function noticeDetails($id, $name)
     {
-        return view('frontend.pages.notice.single', compact('name'));
+        $notice = DB::table('notices')->where('id', $id)->get()->first();
+        $attachments = json_decode($notice->file);
+        return view('frontend.pages.notice.single', compact('name', 'notice', 'attachments'));
+    }
+
+    public function noticeDownload($name)
+    {
+        $path = public_path('notices/' . $name);
+        return response()->download($path);
     }
 
     public function stipends()

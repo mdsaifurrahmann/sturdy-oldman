@@ -1,6 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
-@section('title', __('Ex-Officers and Employees'))
+@section('title', __($notice->title))
 @section('ins-name', 'Dinajpur Textile Institute')
 @section('description', 'Dinajpur Textile Institute')
 @section('keywords', 'Dinajpur Textile Institute')
@@ -16,25 +16,21 @@
 
     <div class="card text-gray-800">
         <h2 class="font-semibold text-2xl mb-2">
-            {{ __($name) }}
+            {{ __($notice->title) }}
         </h2>
         <div class="flex flex-row gap-4">
-            <span class="inline text-gray-400 date">{{Date('d-M-Y')}}</span>
-            <span class="inline text-gray-400 time">{{Date('h:i:s A')}}</span>
+            <span class="inline text-gray-400 date">{{ __($notice->date) }}</span>
+            <span class="inline text-gray-400 time">{{__($notice->time)}}</span>
         </div>
 
 
         <div class="mt-4 overflow-auto">
 
-            <x-detail detail="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam beatae, consequatur et, id
-                incidunt maiores mollitia nisi nobis quaerat quia reiciendis, repellat temporibus ut vitae voluptate
-                voluptatibus! Asperiores, consequuntur?">
+            <x-detail detail="{{__($notice->desc)}}">
 
-                <x-attachment action="{{route('admission-details','name')}}">Download Notice.Pdf</x-attachment>
-                <x-attachment action="{{route('admission-details','name')}}">Download Notice.Pdf</x-attachment>
-                <x-attachment action="{{route('admission-details','name')}}">Download Notice.Pdf</x-attachment>
-                <x-attachment action="{{route('admission-details','name')}}">Download Notice.Pdf</x-attachment>
-                <x-attachment action="{{route('admission-details','name')}}">Download Notice.Pdf</x-attachment>
+                @foreach($attachments as $file)
+                    <x-attachment action="{{route('notice-download', $file)}}">{{substr($file, 34)}}</x-attachment>
+                @endforeach
 
             </x-detail>
 

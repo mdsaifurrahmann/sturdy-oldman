@@ -5,18 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="gallery single &amp; contact done. heading to backend">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2023_02_21_173814_notices.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/area52/notice/add-notice.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/area52/notice/edit-notice.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/area52/notice/notice-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/scripts/forms/form-repeater.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scripts/forms/form-repeater.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/scripts/forms/pickers/form-pickers.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scripts/forms/pickers/form-pickers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/area52/home/machine/machine.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/area52/home/machine/machine.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/area52/home/slider/list-slider.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/area52/home/slider/list-slider.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/area52/notice/edit-notice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/area52/notice/edit-notice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -246,7 +241,7 @@
       <workItem from="1676415338872" duration="4529000" />
       <workItem from="1677012740210" duration="92000" />
       <workItem from="1677012847837" duration="2506000" />
-      <workItem from="1677088398404" duration="10632000" />
+      <workItem from="1677088398404" duration="14536000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>
@@ -294,11 +289,6 @@
             <State />
           </value>
         </entry>
-      </map>
-    </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="03b3f23a-bffd-4214-aa34-c8f2b6fa23b2" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>

@@ -19,14 +19,13 @@
             {{ __('Notice Board:') }}
         </h2>
 
-
         <div class="mt-4 overflow-auto">
 
             <x-down-table>
-
-                <x-down-raw title="Notice about stiept." date="{{Date('h:i:s A, d-M-Y')}}"
-                            action="{{route('notice-details', 'test')}}"/>
-
+                @foreach($notice as $item)
+                    <x-down-raw title="{{__($item->title)}}" date="{{$item->time}}, {{$item->date}}"
+                                action="{{route('notice-details', [$item->id, $item->title])}}"/>
+                @endforeach
             </x-down-table>
 
 
