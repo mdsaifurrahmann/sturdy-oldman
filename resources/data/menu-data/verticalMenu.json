@@ -23,13 +23,13 @@
                         {
                             "url": "authenticated/govern/homepage/slider/add",
                             "name": "Add Slider",
-                            "icon": "circle",
+                            "icon": "plus",
                             "slug": "slider"
                         },
                         {
                             "url": "authenticated/govern/homepage/slider/list",
                             "name": "Slider List",
-                            "icon": "circle",
+                            "icon": "list",
                             "slug": "slider-list"
                         }
                     ]
@@ -77,6 +77,25 @@
                     "name": "Former Officers/Employees",
                     "icon": "circle",
                     "slug": "former-employee-list"
+                }
+            ]
+        },
+        {
+            "name": "Notice",
+            "icon": "bell",
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "Add Notice",
+                    "icon": "plus",
+                    "slug": "add-notice-form",
+                    "url": "authenticated/govern/notice"
+                },
+                {
+                    "name": "Notice List",
+                    "icon": "list",
+                    "slug": "notice-list",
+                    "url": "authenticated/govern/notice/list"
                 }
             ]
         }

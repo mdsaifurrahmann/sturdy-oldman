@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageIndexController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\principal;
 
 /*
@@ -75,6 +76,17 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('/', [formerPrincipal::class, 'employeeList'])->name('former-employee-list');
         Route::post('update', [formerPrincipal::class, 'addEmployee'])->name('former-employee-update');
         Route::delete('delete/{id}', [formerPrincipal::class, 'employeeDestroy'])->name('former-employee-delete');
+    });
+
+
+    Route::prefix('notice')->group(function () {
+        Route::get('/', [NoticeController::class, 'index'])->name('add-notice-form');
+        Route::post('add', [NoticeController::class, 'addNotice'])->name('add-notice');
+        Route::get('list', [NoticeController::class, 'view'])->name('notice-list');
+        Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('notice-delete');
+        Route::get('edit/{id}', [NoticeController::class, 'edit'])->name('edit-notice');
+        Route::post('update-file/{id}/{key}', [NoticeController::class, 'updateFile'])->name('update-notice-file');
+        Route::post('update/{id}', [NoticeController::class, 'update'])->name('update-notice');
     });
 });
 

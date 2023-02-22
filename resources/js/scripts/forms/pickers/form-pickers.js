@@ -24,7 +24,8 @@
   if (timePickr.length) {
     timePickr.flatpickr({
       enableTime: true,
-      noCalendar: true
+      noCalendar: true,
+      dateFormat: 'h:i K',
     });
   }
 
@@ -79,8 +80,8 @@
       inline: true
     });
   }
-  // /*******  Pick-a-date Picker  *****/
-  // // Basic date
+  /*******  Pick-a-date Picker  *****/
+  // Basic date
   // $('.pickadate').pickadate();
 
   // // Format Date Picker
