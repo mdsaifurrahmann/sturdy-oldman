@@ -137,14 +137,14 @@ class APAContoller extends Controller
 
     public function destroy($id)
     {
-        $retrive = DB::table('notices')->where('id', $id)->first();
+        $retrive = DB::table('apa')->where('id', $id)->first();
         $file = json_decode($retrive->file);
         foreach ($file as $single) {
-            if (File::exists(public_path() . '/notices/' . $single)) {
-                File::delete(public_path() . '/notices/' . $single);
+            if (File::exists(public_path() . '/apa/' . $single)) {
+                File::delete(public_path() . '/apa/' . $single);
             }
         }
-        DB::table('notices')->where('id', $id)->delete();
+        DB::table('apa')->where('id', $id)->delete();
 
         return redirect()->back()->with('success', 'Notice deleted successfully');
     }
