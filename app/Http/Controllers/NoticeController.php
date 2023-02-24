@@ -19,6 +19,8 @@ class NoticeController extends Controller
     public function view()
     {
         $notices = DB::table('notices')
+            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
+            ->select('notices.*', 'notice_categories.name as category_name')
             ->latest('created_at')
             ->paginate(10);
 

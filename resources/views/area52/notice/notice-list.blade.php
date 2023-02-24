@@ -43,11 +43,18 @@
                     @foreach ($notices as $notice)
                         <div class="row d-flex align-items-center">
 
-                            <div class="col-md-6 col-12">
+                            <div class="col-md-3 col-12">
                                 <div class="mb-1">
                                     <input type="text" class="form-control disable" aria-describedby="sliderTitle"
                                            readonly
                                            value="{{ $notice->title }}"/>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <div class="mb-1">
+                                    <input type="text" class="form-control disable" aria-describedby="sliderTitle"
+                                           readonly
+                                           value="{{ $notice->category_name }}"/>
                                 </div>
                             </div>
                             <div class="col-md-2 col-12">
