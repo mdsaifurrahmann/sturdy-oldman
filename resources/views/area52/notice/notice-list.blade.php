@@ -81,11 +81,14 @@
                         </div>
                         <hr>
                     @endforeach
+                    {{ $notices->links('pagination::bootstrap-5') }}
                 @else
                     <div class="text-center">
                         <strong>No Notice Found!</strong>
                     </div>
                 @endif
+
+
             </div>
         </div>
     </div>

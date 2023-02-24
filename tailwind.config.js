@@ -6,6 +6,7 @@ module.exports = {
         './resources/views/layouts/**/*.blade.php',
         './resources/views/components/**/*.blade.php',
         './resources/views/auth/**/*.blade.php',
+        './resources/views/vendor/pagination/**/*.blade.php',
     ],
     presets: [],
     darkMode: 'media', // or 'class'

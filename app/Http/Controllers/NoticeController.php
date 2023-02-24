@@ -12,12 +12,15 @@ class NoticeController extends Controller
 
     public function index()
     {
-        return view('area52.notice.add-notice');
+        $categories = DB::table('notice_categories')->get();
+        return view('area52.notice.add-notice', compact('categories'));
     }
 
     public function view()
     {
-        $notices = DB::table('notices')->get();
+        $notices = DB::table('notices')
+            ->latest('created_at')
+            ->paginate(10);
 
         return view('area52.notice.notice-list', compact('notices'));
     }
@@ -29,6 +32,7 @@ class NoticeController extends Controller
                 'title' => 'required|string',
                 'date' => 'required|date',
                 'time' => 'required|string',
+                'category_id' => 'required|int',
             ],
             [
                 'title.required' => 'Title is required',
@@ -40,6 +44,7 @@ class NoticeController extends Controller
         $title = $request->title;
         $date = $request->date;
         $time = $request->time;
+        $category_id = $request->category_id;
 
         if (!empty($request->desc)) {
             $desc = $request->desc;
@@ -92,6 +97,7 @@ class NoticeController extends Controller
             'desc' => $desc,
             'date' => $date,
             'time' => $time,
+            'category_id' => $category_id,
             'file' => json_encode($data),
             'updated_at' => now(),
             'created_at' => now(),
@@ -104,11 +110,13 @@ class NoticeController extends Controller
 
     public function edit($id)
     {
-        $notice = DB::table('notices')->where('id', $id)->first();
+        $notice = DB::table('notices')->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')->select('notices.*', 'notice_categories.name as category_name')->where('notices.id', $id)->first();
 
         $attachment = json_decode($notice->file);
 
-        return view('area52.notice.edit-notice', compact('notice', 'attachment'));
+        $categories = DB::table('notice_categories')->get();
+
+        return view('area52.notice.edit-notice', compact('notice', 'attachment', 'categories'));
     }
 
     public function destroy($id)
@@ -167,6 +175,7 @@ class NoticeController extends Controller
                 'desc' => 'required|string',
                 'date' => 'required|date',
                 'time' => 'required|string',
+                'category_id' => 'required|int',
             ],
             [
                 'title.required' => 'Title is required',
@@ -179,6 +188,7 @@ class NoticeController extends Controller
         $title = $request->title;
         $date = $request->date;
         $time = $request->time;
+        $category_id = $request->category_id;
 
         if (!empty($request->desc)) {
             $desc = $request->desc;
@@ -234,6 +244,7 @@ class NoticeController extends Controller
             'desc' => $desc,
             'date' => $date,
             'time' => $time,
+            'category_id' => $category_id,
             'file' => json_encode($merge),
             'updated_at' => now(),
         ];

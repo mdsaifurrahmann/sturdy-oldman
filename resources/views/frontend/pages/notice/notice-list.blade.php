@@ -1,15 +1,13 @@
 @extends('layouts.fullLayoutClient')
 
-@section('title', __('Ex-Officers and Employees'))
+@section('title', __('Notice List'))
 @section('ins-name', 'Dinajpur Textile Institute')
 @section('description', 'Dinajpur Textile Institute')
 @section('keywords', 'Dinajpur Textile Institute')
 {{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')
-
     <link rel="stylesheet" href="{{ asset(mix('css/client/infrastructure.css')) }}">
-
 @stop
 
 @section('main-content')
@@ -26,7 +24,10 @@
                     <x-down-raw title="{{__($item->title)}}" date="{{$item->time}}, {{$item->date}}"
                                 action="{{route('notice-details', [$item->id, $item->title])}}"/>
                 @endforeach
+
+
             </x-down-table>
+            {{$notice->links('vendor.pagination.custom')}}
 
 
         </div>

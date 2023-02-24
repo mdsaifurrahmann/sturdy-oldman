@@ -57,7 +57,11 @@ class pageIndexController extends Controller
 
     public function notices()
     {
-        $notice = DB::table('notices')->select('id', 'title', 'date', 'time')->latest('created_at')->get();
+        $notice = DB::table('notices')
+            ->select('id', 'title', 'date', 'time')
+            ->latest('created_at')
+            ->latest('created_at')
+            ->paginate(10);
         return view('frontend.pages.notice.notice-list', compact('notice'));
     }
 

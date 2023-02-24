@@ -47,25 +47,39 @@
                 @csrf
 
                 <div class="row d-flex align-items-end">
-                    <div class="col-md-4 col-12">
+                    <div class="col-md-3 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="title">Title</label>
                             <input type="text" class="form-control" id="title" aria-describedby="title"
                                    placeholder="Ex: Welcome to DTI" name="title" value="{{ $notice->title }}"/>
                         </div>
                     </div>
-                    <div class="col-md-4 col-12">
+                    <div class="col-md-3 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="fp-default">Date</label>
                             <input type="text" id="fp-default" class="form-control flatpickr-basic"
                                    placeholder="YYYY-MM-DD" name="date" value="{{ $notice->date }}"/>
                         </div>
                     </div>
-                    <div class="col-md-4 col-12 position-relative">
+                    <div class="col-md-3 col-12 position-relative">
                         <div class="mb-1">
                             <label class="form-label" for="time">Time</label>
                             <input type="text" id="fp-time" class="form-control flatpickr-time text-start"
                                    placeholder="8:00 AM" name="time" value="{{ $notice->time }}"/>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-12 position-relative">
+                        <div class="mb-1">
+                            <label class="form-label" for="category">Category</label>
+                            <select name="category_id" id="category" class="form-select">
+
+                                @foreach($categories as $key => $cat)
+                                    <option
+                                        value="{{ $cat->id }}" {{ $cat->id == $notice->category_id ? 'selected' : '' }}>{{ $cat->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
                         </div>
                     </div>
                     <div class="col-12">

@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             NukeOperator::class,
             NukeMaster::class,
             Data::class,
+            noticeCategories::class,
+            principal::class,
         ]);
     }
 }
