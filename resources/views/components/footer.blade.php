@@ -3,7 +3,8 @@
     <div class="container">
         <div class="footer-grid">
             <div class="grid-1 xm:col-span-2">
-                <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/logo/bangladesh.png'))) }}"
+                <img
+                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/logo/bangladesh.png'))) }}"
                     alt="republic of bangladesh">
                 <p>Government of the People's Republic of Bangladesh</p>
             </div>
@@ -24,9 +25,9 @@
             <div class="grid-2 xm:col-span-2">
                 <h4>Quick Links</h4>
                 <ul class="arrow">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Admission</a></li>
-                    <li><a href="#">Exam Result</a></li>
+                    <li><a href="{{route('history')}}">History</a></li>
+                    <li><a href="{{route('admission')}}">Admission</a></li>
+                    <li><a href="{{route('stipend')}}">Stipend</a></li>
                     <li><a href="#">Student Database</a></li>
                     <li><a href="#">Web mail</a></li>
                 </ul>
@@ -48,7 +49,7 @@
         <div class="flex justify-center md:justify-between md:flex-row items-center md:items-start flex-col container">
             <p class="text-sm ">© {{ date('Y') }} Copyright Textile Institute Dinajpur</p>
             <p class="text-sm ">Powered by: <a href="https://codebumble.net" target="_blank" rel="dofollow"
-                    class="transition-all underline decoration-transparent hover:decoration-gray-400 underline-offset-4 text-sm">Codebumble
+                                               class="transition-all underline decoration-transparent hover:decoration-gray-400 underline-offset-4 text-sm">Codebumble
                     Inc.</a>
             </p>
         </div>

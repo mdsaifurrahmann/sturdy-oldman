@@ -2,6 +2,12 @@
 {!! Helper::updatePageConfig($pageConfigs) !!}
 @endisset
 
+
+@php
+    $id = 1;
+    $info = Illuminate\Support\Facades\DB::table('institute_info')->first();
+@endphp
+
     <!DOCTYPE html>
 @php $configData = Helper::applClasses(); @endphp
 
@@ -14,32 +20,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - @yield('ins-name')</title>
-    <meta name="description" content="@yield('description')">
-    <meta name="keywords" content="@yield('keywords')">
+    <title>@yield('title') - {{$info->institute_name}}</title>
+    <meta name="description" content="{{$info->meta_desc}}">
+    <meta name="keywords" content="{{$info->meta_keywords}}">
     <meta name="author" content="Codebumble Inc.">
     <meta name="generator" content="Codebumble Inc.">
     <!-- Primary Meta Tags -->
-    <meta name="title" content="@yield('title') - @yield('ins-name')">
+    <meta name="title" content="@yield('title') - {{$info->institute_name}}">
     <meta name="description" content="@yield('description')">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ env('APP_URL') }}">
-    <meta property="og:title" content="@yield('title') - @yield('ins-name')">
-    <meta property="og:description" content="@yield('description')">
-    <meta property="og:image" content="@yield('og-img')">
+    <meta property="og:title" content="@yield('title') - {{$info->institute_name}}">
+    <meta property="og:description" content="{{$info->meta_desc}}">
+    <meta property="og:image" content="{{'/images/meta/'.$info->meta_og_image}}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ env('APP_URL') }}">
-    <meta property="twitter:title" content="@yield('title') - @yield('ins-name')">
-    <meta property="twitter:description" content="@yield('description')">
-    <meta property="twitter:image" content="@yield('og-img')">
+    <meta property="twitter:title" content="@yield('title') - {{$info->institute_name}}">
+    <meta property="twitter:description" content="{{$info->meta_desc}}">
+    <meta property="twitter:image" content="{{'/images/meta/'.$info->meta_og_image}}">
 
     {{-- Links --}}
-    <link rel="apple-touch-icon" href="{{ asset('images/ico/favicon-32x32.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.ico') }}">
+    <link rel="apple-touch-icon"
+          href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'. $info->favicon))) }}">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'. $info->favicon))) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap" rel="stylesheet">
@@ -53,7 +61,8 @@
 
 
 {{-- Include Startkit Content --}}
-<x-header/>
+<x-header image_left="{{$info->image_left}}" logo="{{$info->logo}}" image_right="{{$info->image_right}}"
+          institute_name="{{$info->institute_name}}"/>
 
 
 <main>
