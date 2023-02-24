@@ -7,6 +7,7 @@ use App\Http\Requests\PrincipalRequest;
 use App\Models\PrincipalModel;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 
 class principal extends Controller
@@ -44,7 +45,7 @@ class principal extends Controller
                 File::delete(public_path('images/principal/' . $principal->pip));
             }
 
-            $pipFile =  $request->file('pip');
+            $pipFile = $request->file('pip');
             $pipNameHandler = time() . '-principal-passport-' . Str::random(16) . '.' . $pipFile->extension();
             $pipFile->move(public_path('images/principal/'), $pipNameHandler);
         } else {

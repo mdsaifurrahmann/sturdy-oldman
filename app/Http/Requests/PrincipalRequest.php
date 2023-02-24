@@ -28,8 +28,8 @@ class PrincipalRequest extends FormRequest
             'qop' => 'required|string',
             'position' => 'required|string',
             'institute' => 'required|string',
-            'pi' => 'required|mimes:jpeg,jpg,png|max:1024',
-            'pip' => 'required|mimes:jpeg,jpg,png|max:1024',
+            'pi' => 'mimes:jpeg,jpg,png|max:1024',
+            'pip' => 'mimes:jpeg,jpg,png|max:1024',
             'description' => 'required|string',
             'message' => 'required|string',
         ];
@@ -47,12 +47,10 @@ class PrincipalRequest extends FormRequest
             'qop.required' => 'Qualification of Principal is required',
             'position.required' => 'Position is required',
             'institute.required' => 'Institute Name is required',
-            'pi.required' => 'Principal image is required',
             'pip.max' => 'Principal image (Passport Size) must be less than 1MB',
             'pi.max' => 'Principal image must be less than 1MB',
             'pi.mimes' => 'Principal image must be a file of type: jpeg, jpg, png',
             'pip.mimes' => 'Principal image (Passport Size) must be a file of type: jpeg, jpg, png',
-            'pip.required' => 'Principal image (Passport Size) is required',
             'description.required' => 'Description is required',
             'message.required' => 'Message is required',
         ];
