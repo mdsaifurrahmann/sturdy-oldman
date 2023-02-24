@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Facades\DB;
 
 class header extends Component
 {
@@ -23,7 +24,6 @@ class header extends Component
      */
     public function render()
     {
-        $hello = 'Hello World';
-        return view('components.header', compact('hello'));
+        return view('components.header');
     }
 }

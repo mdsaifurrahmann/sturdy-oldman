@@ -127,7 +127,8 @@ class pageIndexController extends Controller
 
     public function contact()
     {
-        return view('frontend.pages.contact');
+        $info = DB::table('institute_info')->first();
+        return view('frontend.pages.contact', compact('info'));
     }
 
 

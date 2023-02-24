@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             principal::class,
             apaCategories::class,
             apaItems::class,
+            InstituteInfo::class,
         ]);
     }
 }

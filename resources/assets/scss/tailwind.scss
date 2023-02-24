@@ -174,7 +174,7 @@ ul.attachment {
         @apply col-span-4;
 
         img {
-            @apply w-44 md:w-60 object-cover;
+            @apply w-52 md:w-[21rem] object-cover;
         }
     }
 

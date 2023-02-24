@@ -31,24 +31,27 @@
                         class="rounded-full h-3.5 w-3.5 bg-amber-400 animate-ping absolute opacity-75 overflow-hidden ping"></div>
                     <h4 class="relative left-6 text-2xl text-gray-800 text-left font-bold my-2">We're located at</h4>
                 </div>
-                <h4 class="text-lg text-gray-700 text-left font-semibold">Dinajpur</h4>
+                <h4 class="text-lg text-gray-700 text-left font-semibold">{{__($info->location)}}</h4>
 
                 <p class="text-gray-700 font-semibold">Pulhat - Uttar Faridpur Gorstan Rd, Dinajpur,
                     Bangladesh</p>
-                <p><span class="font-semibold text-gray-700">Phone:</span>: <a href="tel:+8802588817549"
-                                                                               class="text-gray-600">+880
-                        2588-817549</a> , <a href="tel:+8802588817550"
-                                             class="text-gray-600">+880
-                        2588-817550</a>
+                <p><span class="font-semibold text-gray-700">Phone:</span>: <a href="tel:{{__($info->phone)}}"
+                                                                               class="text-gray-600">{{__($info->phone)}}</a>
+                    , <a
+                        href="tel:{{__($info->phone_2)}}"
+                        class="text-gray-600">{{__($info->phone_2)}}</a>
                 </p>
-                <p><span class="font-semibold text-gray-700">Email:</span> <a href="mailto:info.dtec@yahoo.com"
+                <p><span class="font-semibold text-gray-700">Email:</span> <a href="mailto:{{__($info->email)}}"
                                                                               class="text-gray-600">
-                        info.dtec@yahoo.com</a></p>
-                <p><span class="font-semibold text-gray-700">Website: </span><a href="/" class="text-gray-600">www.dtec.edu.bd</a>
+                        {{__($info->email)}}</a></p>
+                <p><span class="font-semibold text-gray-700">Website: </span><a href="{{$info->website}}"
+                                                                                class="text-gray-600">{{$info->website}}</a>
                 </p>
             </div>
             <div class="rounded overflow-hidden h-[200px] w-full object-cover">
-                <img src="{{asset(mix('images/institute/front_view.jpg'))}}" alt="dti">
+                <img
+                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$info->institute_image))) }}"
+                    alt="dti">
             </div>
         </div>
 

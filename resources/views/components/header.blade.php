@@ -1,20 +1,29 @@
+@props(
+    [
+        'image_left',
+        'logo',
+        'image_right',
+        'institute_name'
+    ]
+);
+
 <header>
     <div class="container">
         <div class="logo-area">
             <div class="joyonti">
                 <img
-                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/pages/Home/50.png'))) }}"
-                    alt="Joyonti">
+                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$image_left))) }}"
+                    alt="{{$image_left}}">
             </div>
             <div class="logo">
                 <img
-                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/pages/Home/Logo.png'))) }}"
-                    alt="Textile Institute Dinajpur">
+                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$logo))) }}"
+                    alt="{{$institute_name}}">
             </div>
             <div class="mujib-borsho">
                 <img
-                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/pages/Home/M100.png'))) }}"
-                    alt="Mujib Borsho">
+                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$image_right))) }}"
+                    alt="{{$image_right}}">
             </div>
         </div>
     </div>
@@ -23,7 +32,7 @@
         {{-- hamburger menu --}}
         <div class="container xm:hidden flex justify-between p-4 bg-amber-400 border-b border-amber-500">
             <div>
-                <span class="font-semibold text-gray-800">Dinajpur Textile Institute</span>
+                <span class="font-semibold text-gray-800">{{$institute_name}}</span>
             </div>
 
             <div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\principal;
 use App\Http\Controllers\APAContoller;
+use App\Http\Controllers\InstituteInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,8 @@ Route::get('apa/download/{name}', [pageIndexController::class, 'apaDownload'])->
 
 Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(function () {
     Route::get('/', [pageIndexController::class, 'govern'])->name('govern');
+    Route::get('institution', [InstituteInfoController::class, 'index'])->name('institute-info');
+    Route::post('institution', [InstituteInfoController::class, 'update'])->name('institute-info-update');
 
     Route::prefix('homepage')->group(function () {
         Route::prefix('slider')->group(function () {

@@ -2,6 +2,11 @@
 {!! Helper::updatePageConfig($pageConfigs) !!}
 @endisset
 
+@php
+    $id = 1;
+    $info = Illuminate\Support\Facades\DB::table('institute_info')->first();
+@endphp
+
     <!DOCTYPE html>
 @php $configData = Helper::applClasses(); @endphp
 
@@ -38,8 +43,10 @@
     <meta property="twitter:image" content="@yield('og-img')">
 
     {{-- Links --}}
-    <link rel="apple-touch-icon" href="{{ asset('images/ico/favicon-32x32.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/logo/favicon.ico') }}">
+    <link rel="apple-touch-icon"
+          href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'. $info->favicon))) }}">
+    <link rel="shortcut icon" type="image/x-icon"
+          href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'. $info->favicon))) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap" rel="stylesheet">
@@ -55,7 +62,8 @@
 
 
 {{-- Include Startkit Content --}}
-<x-header/>
+<x-header image_left="{{$info->image_left}}" logo="{{$info->logo}}" image_right="{{$info->image_right}}"
+          institute_name="{{$info->institute_name}}"/>
 
 
 <main>
@@ -69,7 +77,9 @@
             </div> {{-- End of main content --}
 
                 {{-- Aside/Left bar --}}
-            <x-aside/>
+            <x-aside principalImage="{{$principal->pip}}" principalName="{{$principal->principal_name}}"
+                     principalPosition="{{$principal->position}}"
+                     principalInstitute="{{$principal->institute}}"/>
         </div>
     </div>
 </main>

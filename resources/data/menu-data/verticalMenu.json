@@ -11,6 +11,12 @@
             "slug": ""
         },
         {
+            "name": "Institution",
+            "icon": "briefcase",
+            "slug": "institute-info",
+            "url": "authenticated/govern/institution"
+        },
+        {
             "name": "Home Page",
             "icon": "home",
             "slug": "",
