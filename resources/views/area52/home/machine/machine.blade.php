@@ -1,9 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'Machinery')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 
 @section('content')
 
@@ -42,12 +39,13 @@
                         <div class="mb-1">
                             <label class="form-label" for="description">Description</label>
                             <textarea type="text" class="form-control" id="description" aria-describedby="description"
-                                placeholder="Ex: Welcome to DTI" name="description">{{ $machinery->description }}</textarea>
+                                      placeholder="Ex: Welcome to DTI"
+                                      name="description">{{ $machinery->description }}</textarea>
                         </div>
                     </div>
                 </div>
 
-                <hr />
+                <hr/>
                 <div data-repeater-list="machine">
                     <div data-repeater-item>
                         <div class="row d-flex align-items-end">
@@ -55,20 +53,20 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="name">Machinery Items</label>
                                     <input type="text" class="form-control" id="name" aria-describedby="name"
-                                        placeholder="Ex: Welcome to DTI" name="name" />
+                                           placeholder="Ex: Welcome to DTI" name="name"/>
                                 </div>
                             </div>
                             <div class="col-md-2 col-12">
                                 <div class="mb-1">
                                     <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete
-                                        type="button">
+                                            type="button">
                                         <i data-feather="x" class="me-25"></i>
                                         <span>Delete</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr/>
                     </div>
                 </div>
                 <div class="row">
@@ -78,7 +76,7 @@
                             <span>Add New</span>
                         </button>
 
-                        <button class="btn btn-primary" type="submit"> Submit </button>
+                        <button class="btn btn-primary" type="submit"> Submit</button>
                     </div>
                 </div>
             </form>
@@ -100,7 +98,7 @@
                     <div class="col-md-10 col-12">
                         <div class="mb-1">
                             <input type="text" class="form-control disable" aria-describedby="sliderTitle" readonly
-                                value="{{ $item }}" />
+                                   value="{{ $item }}"/>
                         </div>
                     </div>
                     <div class="col-md-2 col-12">

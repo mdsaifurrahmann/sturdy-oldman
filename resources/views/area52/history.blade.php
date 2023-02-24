@@ -1,9 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'History')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 
 @section('content')
 
@@ -41,7 +38,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="PageTitle">Page Title</label>
                                     <input type="text" class="form-control" id="PageTitle" aria-describedby="PageTitle"
-                                        placeholder="Ex: Welcome to DTI" name="title" value="{{ $history->title }}" />
+                                           placeholder="Ex: Welcome to DTI" name="title" value="{{ $history->title }}"/>
                                 </div>
                             </div>
 
@@ -49,7 +46,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="historyImage">Institute Image</label>
                                     <input type="file" class="form-control" id="historyImage"
-                                        aria-describedby="historyImage" name="image" />
+                                           aria-describedby="historyImage" name="image"/>
                                 </div>
                             </div>
 
@@ -57,16 +54,17 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="history">History</label>
                                     <textarea type="text" class="form-control" id="history" aria-describedby="history"
-                                        placeholder="Ex: We're at the top of the world" name="history">{{ $history->history }}</textarea>
+                                              placeholder="Ex: We're at the top of the world"
+                                              name="history">{{ $history->history }}</textarea>
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit"> Submit </button>
+                        <button class="btn btn-primary" type="submit"> Submit</button>
                     </div>
                 </div>
             </form>

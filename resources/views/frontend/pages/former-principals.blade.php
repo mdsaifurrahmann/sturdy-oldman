@@ -1,10 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
 @section('title', __('Former Principals'))
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
-{{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')
 
@@ -22,7 +18,6 @@
         </h2>
 
 
-
         @if ($principals->count() <= 0)
             <div class="text-center">
                 <h3 class="text-2xl text-gray-600">{{ __('No data found!') }}</h3>
@@ -33,23 +28,23 @@
                 {{-- list of former principals with table --}}
                 <table>
                     <thead>
-                        <tr>
-                            <th>{{ __('Serial') }}</th>
-                            <th class="px-16">{{ __('Name') }}</th>
-                            <th>{{ __('Designation') }}</th>
-                            <th class="px-8">{{ __('Duration') }}</th>
-                        </tr>
+                    <tr>
+                        <th>{{ __('Serial') }}</th>
+                        <th class="px-16">{{ __('Name') }}</th>
+                        <th>{{ __('Designation') }}</th>
+                        <th class="px-8">{{ __('Duration') }}</th>
+                    </tr>
                     </thead>
                     <tbody>
 
-                        @foreach ($principals as $key => $principal)
-                            <tr>
-                                <th>{{ $key + 1 }}</th>
-                                <td class="capitalize">{{ $principal->name }}</td>
-                                <td class="capitalize">{{ $principal->designation }}</td>
-                                <td>{{ $principal->from }} to {{ $principal->to }}</td>
-                            </tr>
-                        @endforeach
+                    @foreach ($principals as $key => $principal)
+                        <tr>
+                            <th>{{ $key + 1 }}</th>
+                            <td class="capitalize">{{ $principal->name }}</td>
+                            <td class="capitalize">{{ $principal->designation }}</td>
+                            <td>{{ $principal->from }} to {{ $principal->to }}</td>
+                        </tr>
+                    @endforeach
 
 
                     </tbody>
@@ -61,9 +56,6 @@
         @endif
 
     </div>
-
-
-
 
 @stop
 

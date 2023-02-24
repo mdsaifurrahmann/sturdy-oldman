@@ -1,9 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
 @section('title', __('Principal'))
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 {{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')
@@ -21,9 +18,9 @@
         </h2>
 
 
-
         <div class="mt-4">
-            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/principal/' . $principal->pi))) }}"
+            <img
+                src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/principal/' . $principal->pi))) }}"
                 alt="front-view" class="rounded w-full h-[400px] object-cover block mx-auto">
             <p class="my-4 text-justify indent-4">
                 {{ __($principal->description) }}
@@ -39,9 +36,6 @@
         </div>
 
     </div>
-
-
-
 
 @stop
 

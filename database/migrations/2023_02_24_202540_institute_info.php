@@ -33,7 +33,9 @@ return new class extends Migration {
             $table->string('youtube')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('whatsapp')->nullable();
-
+            $table->text('meta_desc')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_og_image')->nullable();
             $table->timestamps();
         });
     }

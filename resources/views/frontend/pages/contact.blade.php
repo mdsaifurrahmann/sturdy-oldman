@@ -1,10 +1,6 @@
 @extends('layouts.WideLayoutClient')
 
 @section('title', __('Contact Us'))
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
-{{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')
 

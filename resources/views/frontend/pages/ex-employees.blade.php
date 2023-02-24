@@ -1,10 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
 @section('title', __('Ex-Officers and Employees'))
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
-{{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')
 
@@ -22,7 +18,6 @@
         </h2>
 
 
-
         <div class="mt-4 overflow-auto">
 
 
@@ -34,37 +29,32 @@
                 {{-- list of former principals with table --}}
                 <table class="">
                     <thead>
-                        <tr>
-                            <th>{{ __('Serial') }}</th>
-                            <th class="px-16">{{ __('Name') }}</th>
-                            <th>{{ __('Designation') }}</th>
-                            <th class="px-8">{{ __('Duration') }}</th>
-                        </tr>
+                    <tr>
+                        <th>{{ __('Serial') }}</th>
+                        <th class="px-16">{{ __('Name') }}</th>
+                        <th>{{ __('Designation') }}</th>
+                        <th class="px-8">{{ __('Duration') }}</th>
+                    </tr>
                     </thead>
                     <tbody>
 
-                        @foreach ($employees as $key => $employee)
-                            <tr>
-                                <th>{{ $key + 1 }}</th>
-                                <td class="capitalize">{{ $employee->name }}</td>
-                                <td class="capitalize">{{ $employee->designation }}</td>
-                                <td>{{ $employee->from }} to {{ $employee->to }}</td>
-                            </tr>
-                        @endforeach
+                    @foreach ($employees as $key => $employee)
+                        <tr>
+                            <th>{{ $key + 1 }}</th>
+                            <td class="capitalize">{{ $employee->name }}</td>
+                            <td class="capitalize">{{ $employee->designation }}</td>
+                            <td>{{ $employee->from }} to {{ $employee->to }}</td>
+                        </tr>
+                    @endforeach
 
                     </tbody>
                 </table>
             @endif
 
 
-
-
         </div>
 
     </div>
-
-
-
 
 @stop
 

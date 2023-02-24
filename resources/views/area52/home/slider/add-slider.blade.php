@@ -1,9 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'Slider')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 
 @section('content')
 
@@ -48,7 +45,8 @@
             <h4 class="card-title">Add Slider</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('slider-store') }}" method="POST" class="slider-repeater" enctype="multipart/form-data">
+            <form action="{{ route('slider-store') }}" method="POST" class="slider-repeater"
+                  enctype="multipart/form-data">
                 @csrf
                 <div data-repeater-list="slider">
                     <div data-repeater-item>
@@ -57,7 +55,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="sliderImage">Select Image</label>
                                     <input type="file" class="form-control" id="sliderImage"
-                                        aria-describedby="sliderImage" name="image" />
+                                           aria-describedby="sliderImage" name="image"/>
                                 </div>
                             </div>
 
@@ -65,28 +63,30 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="sliderTitle">Slider Title</label>
                                     <input type="text" class="form-control" id="sliderTitle"
-                                        aria-describedby="sliderTitle" placeholder="Ex: Welcome to DTI" name="title" />
+                                           aria-describedby="sliderTitle" placeholder="Ex: Welcome to DTI"
+                                           name="title"/>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="sliderDesc">Slider Description</label>
-                                    <input type="text" class="form-control" id="sliderDesc" aria-describedby="sliderDesc"
-                                        placeholder="Ex: We're at the top of the world" name="desc" />
+                                    <input type="text" class="form-control" id="sliderDesc"
+                                           aria-describedby="sliderDesc"
+                                           placeholder="Ex: We're at the top of the world" name="desc"/>
                                 </div>
                             </div>
                             <div class="col-md-2 col-12">
                                 <div class="mb-1">
                                     <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete
-                                        type="button">
+                                            type="button">
                                         <i data-feather="x" class="me-25"></i>
                                         <span>Delete</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr/>
                     </div>
                 </div>
                 <div class="row">
@@ -96,7 +96,7 @@
                             <span>Add New</span>
                         </button>
 
-                        <button class="btn btn-primary" type="submit"> Submit </button>
+                        <button class="btn btn-primary" type="submit"> Submit</button>
                     </div>
                 </div>
             </form>

@@ -1,10 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
 @section('title', __('Admission News'))
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
-{{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')
     <link rel="stylesheet" href="{{ asset(mix('css/client/infrastructure.css')) }}">
@@ -26,7 +22,7 @@
                 @endforeach
             </x-down-table>
             {{$admission->links('vendor.pagination.custom')}}
-            
+
         </div>
 
     </div>

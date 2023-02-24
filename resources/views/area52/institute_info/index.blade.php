@@ -1,9 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'Institute Information')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 
 @section('content')
 
@@ -100,6 +97,25 @@
                         </div>
                     </div>
 
+                    <div class="col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="meta_desc">Meta Description (For SEO)</label>
+                            <input type="text" name="meta_desc" id="meta_desc" class="form-control"
+                                   placeholder="Textile Institute Dinajpur is a leading institute in Dinajpur..."
+                                   value="{{ $errors->any() ? old('meta_desc') : $institute_info->meta_desc}}">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="meta_keywords">Meta Keywords (For SEO)</label>
+                            <input type="text" name="meta_keywords" id="meta_keywords" class="form-control"
+                                   placeholder="Dinajpur, Textile, Institute, Leading, Bangladesh, Govt, TOP"
+                                   value="{{ $errors->any() ? old('meta_keywords') : $institute_info->meta_keywords}}">
+                        </div>
+                    </div>
+
+
                     <div class="col-md-4 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="logo">Logo</label>
@@ -121,17 +137,24 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-4 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="image_left">Left Image (Logo)</label>
                             <input type="file" name="image_left" id="image_left" class="form-control">
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-12">
+                    <div class="col-md-4 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="image_right">Right Image (Logo)</label>
                             <input type="file" name="image_right" id="image_right" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="meta_og_image">Social Media Thumbnail (For SEO)</label>
+                            <input type="file" name="meta_og_image" id="meta_og_image" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -153,26 +176,58 @@
 
         <div class="card-body">
             <div class="row d-flex align-items-end">
-                <div class="col-md-4 col-12">
-                    <img src="{{ asset('images/institute/' . $institute_info->logo) }}" alt="Principal"
-                         style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
-                </div>
-                <div class="col-md-4 col-12">
-                    <img src="{{ asset('images/institute/' . $institute_info->favicon) }}" alt="Principal"
-                         style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
-                </div>
-                <div class="col-md-4 col-12">
-                    <img src="{{ asset('images/institute/' . $institute_info->institute_image) }}" alt="Principal"
-                         style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
-                </div>
-                <div class="col-md-4 col-12">
-                    <img src="{{ asset('images/institute/' . $institute_info->image_left) }}" alt="Principal"
-                         style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
-                </div>
-                <div class="col-md-4 col-12">
-                    <img src="{{ asset('images/institute/' . $institute_info->image_right) }}" alt="Principal"
-                         style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
-                </div>
+                @if($institute_info->logo != null)
+                    <div class="col-md-4 col-12">
+                        <img
+                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->logo))) }}"
+                            alt="{{$institute_info->logo}}"
+                            style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
+                    </div>
+                @endif
+
+                @if($institute_info->favicon != null)
+                    <div class="col-md-4 col-12">
+                        <img
+                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->favicon))) }}"
+                            alt="{{$institute_info->favicon}}"
+                            style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
+                    </div>
+                @endif
+
+                @if($institute_info->institute_image != null)
+                    <div class="col-md-4 col-12">
+                        <img
+                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->institute_image))) }}"
+                            alt="{{$institute_info->institute_image}}"
+                            style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
+                    </div>
+                @endif
+
+                @if($institute_info->image_left != null)
+                    <div class="col-md-4 col-12">
+                        <img
+                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->image_left))) }}"
+                            alt="{{$institute_info->image_left}}"
+                            style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
+                    </div>
+                @endif
+                @if($institute_info->image_right != null)
+                    <div class="col-md-4 col-12">
+                        <img
+                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->image_right))) }}"
+                            alt="{{ $institute_info->image_right}}"
+                            style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
+                    </div>
+                @endif
+
+                @if($institute_info->meta_og_image != null)
+                    <div class="col-md-4 col-12">
+                        <img
+                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/meta/'.$institute_info->meta_og_image))) }}"
+                            alt="{{$institute_info->meta_og_image}}"
+                            style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
+                    </div>
+                @endif
             </div>
         </div>
     </div>

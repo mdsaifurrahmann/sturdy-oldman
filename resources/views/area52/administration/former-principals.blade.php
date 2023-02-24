@@ -1,9 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'Former Principals')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 
 
 @section('vendor-style')
@@ -51,7 +48,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="name">Name</label>
                                     <input type="text" class="form-control" id="name" aria-describedby="name"
-                                        placeholder="Ex: Dr. Md. Abdul Mannan" name="name" />
+                                           placeholder="Ex: Dr. Md. Abdul Mannan" name="name"/>
                                 </div>
                             </div>
 
@@ -59,7 +56,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="designation">Designation</label>
                                     <select type="select" class="form-select" id="designation"
-                                        aria-describedby="designation" name="designation">
+                                            aria-describedby="designation" name="designation">
                                         <option disabled selected>Select Designation</option>
                                         <option value="principal">Principal</option>
                                         <option value="assistant principal">Assistant Principal</option>
@@ -74,25 +71,25 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="from">From</label>
                                     <input type="text" class="form-control flatpickr-basic flatpickr-input active"
-                                        id="from" aria-describedby="from" name="from" readonly="readonly"
-                                        placeholder="YYYY-MM-DD" />
+                                           id="from" aria-describedby="from" name="from" readonly="readonly"
+                                           placeholder="YYYY-MM-DD"/>
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="to">To</label>
                                     <input type="text" class="form-control flatpickr-basic flatpickr-input active"
-                                        id="to" aria-describedby="to" name="to" readonly="readonly"
-                                        placeholder="YYYY-MM-DD" />
+                                           id="to" aria-describedby="to" name="to" readonly="readonly"
+                                           placeholder="YYYY-MM-DD"/>
                                 </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit"> Submit </button>
+                        <button class="btn btn-primary" type="submit"> Submit</button>
                     </div>
                 </div>
             </form>
@@ -116,29 +113,29 @@
                             <div class="mb-1">
                                 <label class="form-label" for="name">Name</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="name"
-                                    readonly value="{{ $principal->name }}" id="name" />
+                                       readonly value="{{ $principal->name }}" id="name"/>
                             </div>
                         </div>
                         <div class="col-md-3 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="designation">Designation</label>
                                 <input type="text" class="form-control disable text-capitalize"
-                                    aria-describedby="designation" readonly value="{{ $principal->designation }}"
-                                    id="designation" />
+                                       aria-describedby="designation" readonly value="{{ $principal->designation }}"
+                                       id="designation"/>
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="from">From</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="from"
-                                    readonly value="{{ $principal->from }}" id="from" />
+                                       readonly value="{{ $principal->from }}" id="from"/>
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="to">To</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="to"
-                                    readonly value="{{ $principal->to }}" id="to" />
+                                       readonly value="{{ $principal->to }}" id="to"/>
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
@@ -170,13 +167,8 @@
             @endif
 
 
-
-
         </div>
     </div>
-
-
-
 
 @endsection
 

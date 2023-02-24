@@ -19,12 +19,6 @@ class InstituteInfoController extends Controller
         return view('area52.institute_info.index', compact('institute_info'));
     }
 
-    public function clientLayout()
-    {
-        $info = DB::table('institute_info')->first();
-        return view('layouts.fullLayoutClient', compact('info'));
-    }
-
     public function update(Request $request)
     {
 
@@ -51,6 +45,10 @@ class InstituteInfoController extends Controller
                 'youtube' => 'nullable|string',
                 'linkedin' => 'nullable|string',
                 'whatsapp' => 'nullable|string',
+
+                'meta_desc' => 'nullable|string',
+                'meta_keywords' => 'nullable|string',
+                'meta_og_image' => 'nullable|image|mimes:jpeg,png,jpg|max:512',
             ],
             [
                 'institute_name.required' => 'Institute name is required',
@@ -72,6 +70,11 @@ class InstituteInfoController extends Controller
                 'youtube.string' => 'Youtube must be a valid url',
                 'linkedin.string' => 'Linkedin must be a valid url',
                 'whatsapp.string' => 'Whatsapp must be a valid url',
+                'meta_desc.string' => 'Meta description must be a string',
+                'meta_keywords.string' => 'Meta keywords must be a string',
+                'meta_og_image.image' => 'Meta og image must be a image',
+                'meta_og_image.mimes' => 'Meta og image must be a jpeg,png,jpg',
+                'meta_og_image.max' => 'Meta og image must be less than 512kb',
             ]
         );
 
@@ -89,6 +92,9 @@ class InstituteInfoController extends Controller
         $youtube = $request->youtube;
         $linkedin = $request->linkedin;
         $whatsapp = $request->whatsapp;
+        $meta_desc = $request->meta_desc;
+        $meta_keywords = $request->meta_keywords;
+        $meta_og_image = $request->meta_og_image;
 
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
@@ -125,6 +131,13 @@ class InstituteInfoController extends Controller
         } else {
             $favicon_name = $retrive->favicon;
         }
+        if ($request->hasFile('meta_og_image')) {
+            $meta_image = $request->file('meta_og_image');
+            $meta_image_name = time() . Str::random(16) . '.' . Str::replace(' ', '-', $meta_image->getClientOriginalExtension());
+            $meta_image->move(public_path('images/meta'), $meta_image_name);
+        } else {
+            $meta_image_name = $retrive->meta_og_image;
+        }
 
         $data = [
             'institute_name' => $institute_name,
@@ -146,6 +159,10 @@ class InstituteInfoController extends Controller
             'image_left' => $image_left_name,
             'image_right' => $image_right_name,
             'favicon' => $favicon_name,
+            'meta_desc' => $meta_desc,
+            'meta_keywords' => $meta_keywords,
+            'meta_og_image' => $meta_image_name,
+
             'updated_at' => Carbon::now()->toDateTimeString(),
         ];
 
@@ -157,5 +174,11 @@ class InstituteInfoController extends Controller
         } else {
             return redirect()->back()->with('error', 'Institute info not updated')->withInput();
         }
+    }
+
+    public function meta()
+    {
+        $retrive = DB::table('meta')->where('id', 1)->first();
+        return view('admin.institute.meta', compact('retrive'));
     }
 }

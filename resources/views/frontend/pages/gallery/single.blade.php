@@ -1,11 +1,6 @@
 @extends('layouts.wideLayoutClient')
 
 @section('title', __($name))
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
-{{-- @section('og-img', 'Layout Blank') --}}
-
 @section('page-style')
 
     <link rel="stylesheet" href="{{ asset(mix('css/client/gallery.css')) }}">

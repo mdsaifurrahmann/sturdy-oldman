@@ -1,9 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'Slider')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
 
 @section('content')
 
@@ -44,19 +41,19 @@
                         <div class="col-md-3 col-12">
                             <div class="mb-1">
                                 <img src="{{ asset('/images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
-                                    width="120" height="70" style="object-fit: cover; border-radius: 6px">
+                                     width="120" height="70" style="object-fit: cover; border-radius: 6px">
                             </div>
                         </div>
                         <div class="col-md-3 col-12">
                             <div class="mb-1">
                                 <input type="text" class="form-control disable" aria-describedby="sliderTitle" readonly
-                                    value="{{ $slide->title }}" />
+                                       value="{{ $slide->title }}"/>
                             </div>
                         </div>
                         <div class="col-md-4 col-12">
                             <div class="mb-1">
                                 <input type="text" class="form-control disable" aria-describedby="sliderDesc" readonly
-                                    value="{{ $slide->desc }}" />
+                                       value="{{ $slide->desc }}"/>
                             </div>
                         </div>
                         <div class="col-md-2 col-12">

@@ -1,10 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
 @section('title', 'All Notices')
-@section('ins-name', 'Dinajpur Textile Institute')
-@section('description', 'Dinajpur Textile Institute')
-@section('keywords', 'Dinajpur Textile Institute')
-
 @section('content')
 
     @if (Session::has('success'))
