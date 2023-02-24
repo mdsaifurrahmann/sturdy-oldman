@@ -80,32 +80,38 @@ class pageIndexController extends Controller
 
     public function stipends()
     {
-        return view('frontend.pages.stipend.stipend-list');
+        $stipends = DB::table('notices')
+            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
+            ->where('notice_categories.name', 'stipend')
+            ->select('notices.*')
+            ->latest('created_at')
+            ->paginate(10);
+        return view('frontend.pages.stipend.stipend-list', compact('stipends'));
     }
 
-    public function stipendDetails($name)
-    {
-        return view('frontend.pages.stipend.single', compact('name'));
-    }
 
     public function admissionList()
     {
-        return view('frontend.pages.admission.admission-list');
+        $admission = DB::table('notices')
+            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
+            ->where('notice_categories.name', 'admission')
+            ->select('notices.*')
+            ->latest('created_at')
+            ->paginate(10);
+
+        return view('frontend.pages.admission.admission-list', compact('admission'));
     }
 
-    public function admissionDetails($name)
-    {
-        return view('frontend.pages.admission.single', compact('name'));
-    }
 
     public function jobs()
     {
-        return view('frontend.pages.job.job-list');
-    }
-
-    public function jobDetails($name)
-    {
-        return view('frontend.pages.job.single', compact('name'));
+        $jobs = DB::table('notices')
+            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
+            ->where('notice_categories.name', 'job corner')
+            ->select('notices.*')
+            ->latest('created_at')
+            ->paginate(10);
+        return view('frontend.pages.job.job-list', compact('jobs'));
     }
 
     public function gallery()

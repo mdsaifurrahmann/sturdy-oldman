@@ -30,11 +30,8 @@ Route::get('notice-list', [pageIndexController::class, 'notices'])->name('notice
 Route::get('admission', [pageIndexController::class, 'admissionList'])->name('admission');
 Route::get('stipend', [pageIndexController::class, 'stipends'])->name('stipend');
 Route::get('jobs', [pageIndexController::class, 'jobs'])->name('jobs');
-Route::get('admission/detail/{name}', [pageIndexController::class, 'admissionDetails'])->name('admission-details');
 Route::get('notice/detail/{id}/{name}', [pageIndexController::class, 'noticeDetails'])->name('notice-details');
 Route::get('notice/download/{name}', [pageIndexController::class, 'noticeDownload'])->name('notice-download');
-Route::get('stipend/detail/{name}', [pageIndexController::class, 'stipendDetails'])->name('stipend-details');
-Route::get('job/detail/{name}', [pageIndexController::class, 'jobDetails'])->name('job-details');
 Route::get('gallery', [pageIndexController::class, 'gallery'])->name('gallery');
 Route::get('album/{name}', [pageIndexController::class, 'gallerySingle'])->name('album');
 Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
