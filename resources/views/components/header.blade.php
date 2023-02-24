@@ -44,7 +44,7 @@
                             Principals</a></li>
                     <li class="menu-item"><a href="{{ route('ex-employees') }}" class="menu-link">Ex-Officers and
                             Employees</a></li>
-                    <li class="menu-item"><a href="#" class="menu-link">Citizen Charter</a></li>
+                    <li class="menu-item"><a href="{{route('sccc')}}" class="menu-link">Citizen Charter</a></li>
                 </ul>
             </li>
             <li

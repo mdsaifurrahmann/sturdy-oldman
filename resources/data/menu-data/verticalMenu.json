@@ -98,6 +98,25 @@
                     "url": "authenticated/govern/notice/list"
                 }
             ]
+        },
+        {
+            "name": "APA",
+            "icon": "bar-chart-2",
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "Add APA",
+                    "icon": "plus",
+                    "slug": "apa-add-form",
+                    "url": "authenticated/govern/apa"
+                },
+                {
+                    "name": "APA List",
+                    "icon": "list",
+                    "slug": "apa-list",
+                    "url": "authenticated/govern/apa/list"
+                }
+            ]
         }
     ]
 }

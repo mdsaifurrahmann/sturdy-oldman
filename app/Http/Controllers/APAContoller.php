@@ -7,27 +7,33 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
-class NoticeController extends Controller
-{
 
+class APAContoller extends Controller
+{
     public function index()
     {
-        $categories = DB::table('notice_categories')->get();
-        return view('area52.notice.add-notice', compact('categories'));
+        $categories = DB::table('apa_categories')->get();
+        $items = DB::table('apa_items')
+            ->join('apa_categories', 'apa_items.category_id', '=', 'apa_categories.id')
+            ->select('apa_items.*', 'apa_categories.name as category_name')
+            ->get();
+
+
+        return view('area52.apa.add-apa', compact('items', 'categories'));
     }
 
-    public function view()
+    public function list()
     {
-        $notices = DB::table('notices')
-            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
-            ->select('notices.*', 'notice_categories.name as category_name')
+        $apa = DB::table('apa')
+            ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
+            ->select('apa.*', 'apa_items.name as item_name')
             ->latest('created_at')
             ->paginate(10);
 
-        return view('area52.notice.notice-list', compact('notices'));
+        return view('area52.apa.apa-list', compact('apa'));
     }
 
-    public function addNotice(Request $request)
+    public function addAPA(Request $request)
     {
         $request->validate(
             [
@@ -54,15 +60,15 @@ class NoticeController extends Controller
             $desc = 'No description provided!';
         }
 
-        $attachment = $request->notice;
+        $attachment = $request->apa;
 
         if (empty($attachment)) {
             $request->validate(
                 [
-                    'notice' => 'required',
+                    'apa' => 'required',
                 ],
                 [
-                    'notice.required' => 'At least one attachment is required',
+                    'apa.required' => 'At least one attachment is required',
                 ]
             );
         }
@@ -70,23 +76,23 @@ class NoticeController extends Controller
         $data = [];
 
         foreach ($attachment as $key => $value) {
-            if ($request->hasFile('notice.' . $key . '.attach')) {
+            if ($request->hasFile('apa.' . $key . '.attach')) {
                 $request->validate(
                     [
-                        'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
+                        'apa.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
                     ],
                     [
-                        'notice.' . $key . '.attach.file' => 'Attachment must be a file',
-                        'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
-                        'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 megabytes',
+                        'apa.' . $key . '.attach.file' => 'Attachment must be a file',
+                        'apa.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
+                        'apa.' . $key . '.attach.max' => 'Attachment may not be greater than 10 megabytes',
                     ]
                 );
 
-                $file = $request->file('notice.' . $key . '.attach');
+                $file = $request->file('apa.' . $key . '.attach');
 
-                $filename = time() . Str::random(16) . '-notice-' . Str::replace(' ', '-', $file->getClientOriginalName());
+                $filename = time() . Str::random(16) . '-apa-' . Str::replace(' ', '-', $file->getClientOriginalName());
 
-                $destinationPath = public_path() . '/notices';
+                $destinationPath = public_path() . '/apa';
 
                 $file->move($destinationPath, $filename);
 
@@ -105,20 +111,28 @@ class NoticeController extends Controller
             'created_at' => now(),
         ];
 
-        DB::table('notices')->insert($gather);
+        DB::table('apa')->insert($gather);
 
-        return redirect()->back()->with('success', 'Notice added successfully');
+        return redirect()->back()->with('success', 'APA added successfully');
     }
 
     public function edit($id)
     {
-        $notice = DB::table('notices')->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')->select('notices.*', 'notice_categories.name as category_name')->where('notices.id', $id)->first();
+        $categories = DB::table('apa_categories')->get();
+        $items = DB::table('apa_items')
+            ->join('apa_categories', 'apa_items.category_id', '=', 'apa_categories.id')
+            ->select('apa_items.*', 'apa_categories.name as category_name')
+            ->get();
 
-        $attachment = json_decode($notice->file);
+        $apa = DB::table('apa')
+            ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
+            ->select('apa.*', 'apa_items.name as items_name')
+            ->where('apa.id', $id)
+            ->first();
 
-        $categories = DB::table('notice_categories')->get();
+        $attachment = json_decode($apa->file);
 
-        return view('area52.notice.edit-notice', compact('notice', 'attachment', 'categories'));
+        return view('area52.apa.edit-apa', compact('apa', 'attachment', 'categories', 'items'));
     }
 
     public function destroy($id)
@@ -137,12 +151,12 @@ class NoticeController extends Controller
 
     public function updateFile($id, $item)
     {
-        $getDB = DB::table('notices')->where('id', $id)->first();
+        $getDB = DB::table('apa')->where('id', $id)->first();
         $getFiles = json_decode($getDB->file);
 
         // delete single file
-        if (File::exists(public_path() . '/notices/' . $getFiles[$item])) {
-            File::delete(public_path() . '/notices/' . $getFiles[$item]);
+        if (File::exists(public_path() . '/apa/' . $getFiles[$item])) {
+            File::delete(public_path() . '/apa/' . $getFiles[$item]);
         }
 
         // push blank array to that key
@@ -162,14 +176,14 @@ class NoticeController extends Controller
             'updated_at' => now(),
         ];
 
-        DB::table('notices')->where('id', $id)->update($update);
+        DB::table('apa')->where('id', $id)->update($update);
 
         return redirect()->back()->with('success', 'File deleted successfully');
     }
 
     public function update(Request $request, $id)
     {
-        $retrive = DB::table('notices')->where('id', $id)->first();
+        $retrive = DB::table('apa')->where('id', $id)->first();
 
         $request->validate(
             [
@@ -198,29 +212,29 @@ class NoticeController extends Controller
             $desc = 'No description provided!';
         }
 
-        $attachment = $request->notice;
+        $attachment = $request->apa;
 
         $data = [];
 
-        if (!empty($request->notice)) {
+        if (!empty($request->apa)) {
             foreach ($attachment as $key => $value) {
-                if ($request->hasFile('notice.' . $key . '.attach')) {
+                if ($request->hasFile('apa.' . $key . '.attach')) {
                     $request->validate(
                         [
-                            'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
+                            'apa.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
                         ],
                         [
-                            'notice.' . $key . '.attach.file' => 'Attachment must be a file',
-                            'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
-                            'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 Megabytes',
+                            'apa.' . $key . '.attach.file' => 'Attachment must be a file',
+                            'apa.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
+                            'apa.' . $key . '.attach.max' => 'Attachment may not be greater than 10 Megabytes',
                         ]
                     );
 
-                    $file = $request->file('notice.' . $key . '.attach');
+                    $file = $request->file('apa.' . $key . '.attach');
 
-                    $filename = time() . Str::random(16) . '-notice-' . Str::replace(' ', '-', $file->getClientOriginalName());
+                    $filename = time() . Str::random(16) . '-apa-' . Str::replace(' ', '-', $file->getClientOriginalName());
 
-                    $destinationPath = public_path() . '/notices';
+                    $destinationPath = public_path() . '/apa';
 
                     $file->move($destinationPath, $filename);
 
@@ -251,8 +265,8 @@ class NoticeController extends Controller
             'updated_at' => now(),
         ];
 
-        DB::table('notices')->where('id', $id)->update($gather);
+        DB::table('apa')->where('id', $id)->update($gather);
 
-        return redirect()->back()->with('success', 'Notice updated successfully');
+        return redirect()->back()->with('success', 'APA updated successfully');
     }
 }

@@ -9,6 +9,7 @@
 /public/css-rtl
 /public/vendors
 /public/notices
+/public/apa
 /storage/*.key
 /vendor
 .env

@@ -83,52 +83,52 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <x-apa.apa-grid title="বার্ষিক কর্মসম্পাদন চুক্তি"
                         src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/apa.png'))) }}">
-            <x-apa.apa-item action="#">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</x-apa.apa-item>
-            <x-apa.apa-item action="#">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</x-apa.apa-item>
-            <x-apa.apa-item action="#">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
-            <x-apa.apa-item action="#">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('apa-gct')}}">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('apc')}}">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('mer')}}">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('mssl')}}">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)"
                         src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/citizen.svg'))) }}">
-            <x-apa.apa-item action="#">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
-            <x-apa.apa-item action="#">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
-            <x-apa.apa-item action="#">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
-            <x-apa.apa-item action="#">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('sccc')}}">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('fpo')}}">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('qamer')}}">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('laws')}}">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="জাতীয় শুদ্ধাচার কৌশল"
                         src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/nis.png'))) }}">
-            <x-apa.apa-item action="#">জাতীয় শুদ্ধাচার কৌশল</x-apa.apa-item>
-            <x-apa.apa-item action="#">কমিটিসমূহ</x-apa.apa-item>
-            <x-apa.apa-item action="#">কর্মপরিকল্পনা</x-apa.apa-item>
-            <x-apa.apa-item action="#">প্রতিবেদনসমূহ</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('nps')}}">জাতীয় শুদ্ধাচার কৌশল</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('committees')}}">কমিটিসমূহ</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('schedule')}}">কর্মপরিকল্পনা</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('reports')}}">প্রতিবেদনসমূহ</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="উদ্ভাবনী কার্যক্রম"
                         src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/idea.svg'))) }}">
-            <x-apa.apa-item action="#">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</x-apa.apa-item>
-            <x-apa.apa-item action="#">ইনোভেশন টিম</x-apa.apa-item>
-            <x-apa.apa-item action="#">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</x-apa.apa-item>
-            <x-apa.apa-item action="#">উদ্ভাবনী প্রকল্পসমূহ</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('compendiums')}}">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('innovation-team')}}">ইনোভেশন টিম</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('aiap')}}">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('innovative-projects')}}">উদ্ভাবনী প্রকল্পসমূহ</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="তথ্য অধিকার"
                         src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/info.svg'))) }}">
-            <x-apa.apa-item action="#">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল কর্তৃপক্ষ</x-apa.apa-item>
-            <x-apa.apa-item action="#">আবেদন ও আপিল ফরম</x-apa.apa-item>
-            <x-apa.apa-item action="#">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</x-apa.apa-item>
-            <x-apa.apa-item action="#">আইন/বিধি/কমিটি/নির্দেশিকা</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('roaa')}}">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল কর্তৃপক্ষ</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('appeal-form')}}">আবেদন ও আপিল ফরম</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('vdi')}}">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('guidelines')}}">আইন/বিধি/কমিটি/নির্দেশিকা</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="অভিযোগ প্রতিকার ব্যবস্থাপনা"
                         src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/flag.svg'))) }}">
-            <x-apa.apa-item action="#">অনিক ও আপিল কর্মকর্তাগণ</x-apa.apa-item>
-            <x-apa.apa-item action="#">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
+            <x-apa.apa-item action="{{route('appellate-officers')}}">অনিক ও আপিল কর্মকর্তাগণ</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('cer')}}">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
                 প্রতিবেদন
             </x-apa.apa-item>
-            <x-apa.apa-item action="#">অভিযোগ দাখিল (অনলাইনে আবেদন)</x-apa.apa-item>
-            <x-apa.apa-item action="#">আইন/বিধি/নীতিমালা/পরিপত্র</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('complaint-filing')}}">অভিযোগ দাখিল (অনলাইনে আবেদন)</x-apa.apa-item>
+            <x-apa.apa-item action="{{route('complaint-laws')}}">আইন/বিধি/নীতিমালা/পরিপত্র</x-apa.apa-item>
         </x-apa.apa-grid>
     </div>
 

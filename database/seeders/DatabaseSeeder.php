@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             Data::class,
             noticeCategories::class,
             principal::class,
+            apaCategories::class,
+            apaItems::class,
         ]);
     }
 }

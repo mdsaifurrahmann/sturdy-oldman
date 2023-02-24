@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Routing\Router;
 
 class pageIndexController extends Controller
 {
@@ -128,6 +129,113 @@ class pageIndexController extends Controller
     {
         return view('frontend.pages.contact');
     }
+
+
+    public function apa()
+    {
+        $currentRoute = app('router')->current();
+
+        if ($currentRoute->getName() == 'apa-gct') {
+            $id = '1';
+
+        }
+        if ($currentRoute->getName() == 'apc') {
+            $id = '2';
+        }
+        if ($currentRoute->getName() == 'mer') {
+            $id = '3';
+        }
+        if ($currentRoute->getName() == 'mssl') {
+            $id = '4';
+        }
+        if ($currentRoute->getName() == 'sccc') {
+            $id = '5';
+        }
+        if ($currentRoute->getName() == 'fpo') {
+            $id = '6';
+        }
+        if ($currentRoute->getName() == 'qamer') {
+            $id = '7';
+        }
+        if ($currentRoute->getName() == 'laws') {
+            $id = '8';
+        }
+        if ($currentRoute->getName() == 'nps') {
+            $id = '9';
+        }
+        if ($currentRoute->getName() == 'committees') {
+            $id = '10';
+        }
+        if ($currentRoute->getName() == 'schedule') {
+            $id = '11';
+        }
+        if ($currentRoute->getName() == 'reports') {
+            $id = '12';
+        }
+        if ($currentRoute->getName() == 'compendiums') {
+            $id = '13';
+        }
+        if ($currentRoute->getName() == 'innovation-team') {
+            $id = '14';
+        }
+        if ($currentRoute->getName() == 'aiap') {
+            $id = '15';
+        }
+        if ($currentRoute->getName() == 'innovative-projects') {
+            $id = '16';
+        }
+        if ($currentRoute->getName() == 'roaa') {
+            $id = '17';
+        }
+        if ($currentRoute->getName() == 'appeal-form') {
+            $id = '18';
+        }
+        if ($currentRoute->getName() == 'vdi') {
+            $id = '19';
+        }
+        if ($currentRoute->getName() == 'guidelines') {
+            $id = '20';
+        }
+        if ($currentRoute->getName() == 'appellate-officers') {
+            $id = '21';
+        }
+        if ($currentRoute->getName() == 'cer') {
+            $id = '22';
+        }
+        if ($currentRoute->getName() == 'complaint-filing') {
+            $id = '23';
+        }
+        if ($currentRoute->getName() == 'complaint-laws') {
+            $id = '24';
+        }
+
+
+        $data = DB::table('apa')
+            ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
+            ->where('apa_items.id', $id)
+            ->select('apa.*', 'apa_items.name as name')
+            ->latest('created_at')
+            ->paginate(10);
+
+        $name = DB::table('apa_items')->where('id', $id)->value('name');
+
+        return view('frontend.pages.apa.apa-list', compact('data', 'name'));
+
+    }
+
+    public function apaDownload($name)
+    {
+        $path = public_path('apa/' . $name);
+        return response()->download($path);
+    }
+
+    public function apaSingle($id, $name)
+    {
+        $apa = DB::table('apa')->where('id', $id)->get()->first();
+        $attachments = json_decode($apa->file);
+        return view('frontend.pages.apa.single', compact('name', 'apa', 'attachments'));
+    }
+
 
     //    Backend Being
     public function govern()

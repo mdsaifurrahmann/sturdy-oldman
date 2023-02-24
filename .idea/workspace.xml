@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="gallery single &amp; contact done. heading to backend" />
+    <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="gallery single &amp; contact done. heading to backend">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/APAContoller.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2023_02_24_141508_apa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2023_02_24_150622_apa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/apaCategories.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeders/apaItems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/area52/apa/add-apa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/area52/apa/apa-list.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/area52/apa/edit-apa.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/apa/apa-list.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/pages/apa/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/menu-data/verticalMenu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/scripts/forms/form-repeater.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/scripts/forms/form-repeater.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +185,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/Md. Saifur Rahman/sturdy-oldman/resources/views/layouts",
+    "last_opened_file_path": "C:/Users/Md. Saifur Rahman/sturdy-oldman/resources/views/area52/apa",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -183,11 +205,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\area52\apa" />
+      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\apa" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\layouts" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\panels" />
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\auth" />
-      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\scss\frontend" />
-      <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\frontend\pages\gallery" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\vandor\pagination" />
@@ -234,7 +256,7 @@
       <workItem from="1677012740210" duration="92000" />
       <workItem from="1677012847837" duration="2506000" />
       <workItem from="1677088398404" duration="14913000" />
-      <workItem from="1677231756654" duration="13020000" />
+      <workItem from="1677231756654" duration="34698000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>
