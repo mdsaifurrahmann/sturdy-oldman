@@ -77,9 +77,7 @@
             </div> {{-- End of main content --}
 
                 {{-- Aside/Left bar --}}
-            <x-aside principalImage="{{$principal->pip}}" principalName="{{$principal->principal_name}}"
-                     principalPosition="{{$principal->position}}"
-                     principalInstitute="{{$principal->institute}}"/>
+            <x-aside/>
         </div>
     </div>
 </main>
