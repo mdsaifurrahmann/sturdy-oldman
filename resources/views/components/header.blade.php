@@ -5,7 +5,7 @@
         'image_right',
         'institute_name'
     ]
-);
+)
 
 <header>
     <div class="container">

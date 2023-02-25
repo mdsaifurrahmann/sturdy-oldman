@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\File;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -76,6 +77,7 @@ class HomeController extends Controller
     public function sliderList()
     {
 
+
         if (!Auth::check()) {
             redirect()->route('login');
         }
@@ -90,6 +92,15 @@ class HomeController extends Controller
 
     public function destroy($id)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $data = json_decode(DB::table('data')->where('target', 'slider')->value('data'));
 
         $reinsert = array();
@@ -113,7 +124,6 @@ class HomeController extends Controller
 
     public function machine(Request $request)
     {
-
         if (!Auth::check()) {
             redirect()->route('login');
         }
@@ -163,7 +173,6 @@ class HomeController extends Controller
         }
 
 
-
         $final = [
             'description' => $data['description'],
             'items' => $merge,
@@ -178,6 +187,7 @@ class HomeController extends Controller
 
     public function machineDestroy($id)
     {
+
 
         if (!Auth::check()) {
             redirect()->route('login');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -15,12 +16,29 @@ class InstituteInfoController extends Controller
 
     public function index()
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $institute_info = DB::table('institute_info')->first();
         return view('area52.institute_info.index', compact('institute_info'));
     }
 
     public function update(Request $request)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
 
         $retrive = DB::table('institute_info')->first();
 
@@ -174,11 +192,5 @@ class InstituteInfoController extends Controller
         } else {
             return redirect()->back()->with('error', 'Institute info not updated')->withInput();
         }
-    }
-
-    public function meta()
-    {
-        $retrive = DB::table('meta')->where('id', 1)->first();
-        return view('admin.institute.meta', compact('retrive'));
     }
 }

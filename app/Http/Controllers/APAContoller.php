@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -10,8 +11,17 @@ use Illuminate\Support\Facades\File;
 
 class APAContoller extends Controller
 {
+
     public function index()
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $categories = DB::table('apa_categories')->get();
         $items = DB::table('apa_items')
             ->join('apa_categories', 'apa_items.category_id', '=', 'apa_categories.id')
@@ -24,6 +34,14 @@ class APAContoller extends Controller
 
     public function list()
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $apa = DB::table('apa')
             ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
             ->select('apa.*', 'apa_items.name as item_name')
@@ -35,6 +53,14 @@ class APAContoller extends Controller
 
     public function addAPA(Request $request)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $request->validate(
             [
                 'title' => 'required|string',
@@ -118,6 +144,14 @@ class APAContoller extends Controller
 
     public function edit($id)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $categories = DB::table('apa_categories')->get();
         $items = DB::table('apa_items')
             ->join('apa_categories', 'apa_items.category_id', '=', 'apa_categories.id')
@@ -137,6 +171,14 @@ class APAContoller extends Controller
 
     public function destroy($id)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $retrive = DB::table('apa')->where('id', $id)->first();
         $file = json_decode($retrive->file);
         foreach ($file as $single) {
@@ -151,6 +193,14 @@ class APAContoller extends Controller
 
     public function updateFile($id, $item)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $getDB = DB::table('apa')->where('id', $id)->first();
         $getFiles = json_decode($getDB->file);
 
@@ -183,6 +233,15 @@ class APAContoller extends Controller
 
     public function update(Request $request, $id)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $retrive = DB::table('apa')->where('id', $id)->first();
 
         $request->validate(

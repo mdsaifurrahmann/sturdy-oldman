@@ -18,7 +18,7 @@ class NukeMaster extends Seeder
      */
     public function run()
     {
-        $user = User::create([
+        $user1 = User::create([
             'username' => 'saifur',
             'name' => 'saifur',
             'email' => 'md.saifurrahmann029@gmail.com',
@@ -26,6 +26,15 @@ class NukeMaster extends Seeder
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'),
         ]);
-        $user->assignRole('nuke', 'admin');
+        $user1->assignRole('nuke', 'admin');
+
+        $user2 = User::create([
+            'username' => 'saifurx',
+            'name' => 'saifurx',
+            'email' => 'md.saifurrahmann30@gmail.com',
+            'mobile' => '01700000001',
+            'email_verified_at' => now(),
+            'password' => bcrypt('12345678'),
+        ]);
     }
 }

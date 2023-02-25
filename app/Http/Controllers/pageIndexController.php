@@ -259,6 +259,13 @@ class pageIndexController extends Controller
 
     public function updatehistory()
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
 
         $history = json_decode(\DB::table('data')->where('target', 'history')->value('data'));
 
@@ -267,6 +274,14 @@ class pageIndexController extends Controller
 
     public function machine()
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $machinery = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
         $list = $machinery->items;
         return view('area52.home.machine.machine', compact('machinery', 'list'));
@@ -274,6 +289,14 @@ class pageIndexController extends Controller
 
     public function updatePrincipal()
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+        
         $id = 1;
         $principal = DB::table('principal')->where('id', $id)->get()->first();
         return view('area52.principal.principal', compact('principal'));

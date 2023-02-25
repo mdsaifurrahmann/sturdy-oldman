@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -10,14 +11,33 @@ use Illuminate\Support\Facades\File;
 class NoticeController extends Controller
 {
 
+
     public function index()
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $categories = DB::table('notice_categories')->get();
         return view('area52.notice.add-notice', compact('categories'));
     }
 
     public function view()
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+
         $notices = DB::table('notices')
             ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
             ->select('notices.*', 'notice_categories.name as category_name')
@@ -29,6 +49,14 @@ class NoticeController extends Controller
 
     public function addNotice(Request $request)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $request->validate(
             [
                 'title' => 'required|string',
@@ -112,6 +140,15 @@ class NoticeController extends Controller
 
     public function edit($id)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+
         $notice = DB::table('notices')->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')->select('notices.*', 'notice_categories.name as category_name')->where('notices.id', $id)->first();
 
         $attachment = json_decode($notice->file);
@@ -123,6 +160,16 @@ class NoticeController extends Controller
 
     public function destroy($id)
     {
+
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+
         $retrive = DB::table('notices')->where('id', $id)->first();
         $file = json_decode($retrive->file);
         foreach ($file as $single) {
@@ -137,6 +184,15 @@ class NoticeController extends Controller
 
     public function updateFile($id, $item)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+
         $getDB = DB::table('notices')->where('id', $id)->first();
         $getFiles = json_decode($getDB->file);
 
@@ -169,6 +225,15 @@ class NoticeController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+
         $retrive = DB::table('notices')->where('id', $id)->first();
 
         $request->validate(
