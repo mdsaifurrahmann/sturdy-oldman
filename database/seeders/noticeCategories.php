@@ -20,6 +20,7 @@ class noticeCategories extends Seeder
             'Admission',
             'Job Corner',
             'Stipend',
+            'News',
         ];
 
         foreach ($categories as $category) {

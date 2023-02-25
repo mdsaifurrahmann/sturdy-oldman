@@ -7,6 +7,17 @@
     ]
 )
 
+@php
+
+    $news =\Illuminate\Support\Facades\DB::table('notices')
+            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
+            ->where('notice_categories.name', 'news')
+            ->select('notices.*')
+            ->latest('created_at')
+            ->take(3)
+            ->get();
+@endphp
+
 <header>
     <div class="container">
         <div class="logo-area">
@@ -94,13 +105,16 @@
 
     <div class="flex news">
         <div>
-            <p class="inline-block news-item"><a href="">যেহেতু মানব অধিকারের প্রতি অবজ্ঞা এবং ঘৃণার ফলে
-                    মানুবের
-                    বিবেক লাঞ্ছিত বোধ করে এমন সব বর্বরোচিত</a></p>
-            <p class="inline-block news-item"><a href="">যেহেতু মানব অধিকারের প্রতি অবজ্ঞা এবং ঘৃণার ফলে
-                    মানুবের
-                    বিবেক লাঞ্ছিত বোধ করে এমন সব বর্বরোচিত</a></p>
-        </div>
 
+            @foreach( $news as $item )
+                <p class="inline-block news-item">
+                    <a href="{{route('notice-details',[$item->id, $item->title])}}">
+                        {{__($item->title)}}
+                    </a>
+                </p>
+            @endforeach
+
+
+        </div>
     </div>
 </header>

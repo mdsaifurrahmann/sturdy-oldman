@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="gallery single &amp; contact done. heading to backend">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/APAContoller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/APAContoller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HistoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InstituteInfoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InstituteInfoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoticeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/formerPrincipal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/formerPrincipal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/pageIndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/NukeMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/NukeMaster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/noticeCategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/noticeCategories.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -247,7 +240,7 @@
       <workItem from="1677012847837" duration="2506000" />
       <workItem from="1677088398404" duration="14913000" />
       <workItem from="1677231756654" duration="48471000" />
-      <workItem from="1677335767024" duration="4720000" />
+      <workItem from="1677335767024" duration="5898000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>
