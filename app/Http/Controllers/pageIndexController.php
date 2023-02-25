@@ -117,12 +117,20 @@ class pageIndexController extends Controller
 
     public function gallery()
     {
-        return view('frontend.pages.gallery.album');
+        $albums = DB::table('albums')->get();
+        return view('frontend.pages.gallery.album', compact('albums'));
     }
 
-    public function gallerySingle($name)
+    public function gallerySingle($id, $name)
     {
-        return view('frontend.pages.gallery.single', compact('name'));
+        $retrieve = DB::table('gallery')
+            ->join('albums', 'albums.id', '=', 'gallery.album_id')
+            ->select('gallery.images', 'albums.name as album_name', 'albums.description as album_description', 'albums.created_at as album_created_at')
+            ->where('album_id', $id)
+            ->first();
+
+        $images = json_decode($retrieve->images);
+        return view('frontend.pages.gallery.single', compact('retrieve', 'images'));
     }
 
     public function contact()
@@ -296,7 +304,7 @@ class pageIndexController extends Controller
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
-        
+
         $id = 1;
         $principal = DB::table('principal')->where('id', $id)->get()->first();
         return view('area52.principal.principal', compact('principal'));

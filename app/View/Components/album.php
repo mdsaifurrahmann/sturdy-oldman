@@ -10,20 +10,18 @@ class album extends Component
     public $image;
     public $title;
     public $date;
-    public $time;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($action, $image, $title, $date, $time)
+    public function __construct($action, $image, $title, $date)
     {
         $this->action = $action;
         $this->image = $image;
         $this->title = $title;
         $this->date = $date;
-        $this->time = $time;
     }
 
     /**

@@ -1,6 +1,6 @@
 @extends('layouts.wideLayoutClient')
 
-@section('title', __($name))
+@section('title', __($retrieve->album_name))
 @section('page-style')
 
     <link rel="stylesheet" href="{{ asset(mix('css/client/gallery.css')) }}">
@@ -10,38 +10,27 @@
 
     <div class="card text-gray-800">
         <h2 class="font-semibold text-2xl mb-2">
-            {{ __($name) }}
+            {{ __($retrieve->album_name) }}
         </h2>
         <div class="flex flex-row gap-4">
-            <span class="inline text-gray-400 date">{{Date('d-M-Y')}}</span>
-            <span class="inline text-gray-400 time">{{Date('h:i:s A')}}</span>
+            <span class="inline text-gray-400 date">{{ substr($retrieve->album_created_at, 0, 10)  }}</span>
+            <span class="inline text-gray-400 time">{{substr($retrieve->album_created_at, 12)}}</span>
         </div>
 
 
         <div class="mt-4 overflow-hidden">
 
             <div id="animated-thumbnails" class="gallery grid-cols-6">
-                <a href="{{asset(mix('images/profile/post-media/2.jpg'))}}" data-lg-size="3840-2160">
-                    <img alt="img1" src="{{asset(mix('images/profile/post-media/2.jpg'))}}"/>
-                </a>
-                <a href="{{asset(mix('images/profile/post-media/25.jpg'))}}" data-lg-size="3840-2160">
-                    <img alt="img2" src="{{asset(mix('images/profile/post-media/25.jpg'))}}"/>
-                </a>
-                <a href="{{asset(mix('images/profile/post-media/25.jpg'))}}">
-                    <img alt="img2" src="{{asset(mix('images/profile/post-media/25.jpg'))}}"/>
-                </a>
-                <a href="{{asset(mix('images/profile/post-media/25.jpg'))}}">
-                    <img alt="img2" src="{{asset(mix('images/profile/post-media/25.jpg'))}}"/>
-                </a>
-                <a href="{{asset(mix('images/profile/post-media/25.jpg'))}}">
-                    <img alt="img2" src="{{asset(mix('images/profile/post-media/25.jpg'))}}"/>
-                </a>
-                <a href="{{asset(mix('images/profile/post-media/25.jpg'))}}">
-                    <img alt="img2" src="{{asset(mix('images/profile/post-media/25.jpg'))}}"/>
-                </a>
-                <a href="{{asset(mix('images/profile/post-media/25.jpg'))}}">
-                    <img alt="img2" src="{{asset(mix('images/profile/post-media/25.jpg'))}}"/>
-                </a>
+
+                @foreach($images as $image)
+                    <a href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/gallery/'.$image->image))) }}"
+                       data-lg-size="3840-2160">
+                        <img alt="{{ $image->title }}"
+                             src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/gallery/'.$image->image))) }}"/>
+                    </a>
+                @endforeach
+
+
             </div>
 
 

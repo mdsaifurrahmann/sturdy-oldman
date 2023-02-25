@@ -123,6 +123,31 @@
                     "url": "authenticated/govern/apa/list"
                 }
             ]
+        },
+        {
+            "name": "Gallery",
+            "icon": "image",
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "Add Album",
+                    "icon": "plus",
+                    "slug": "albums-view",
+                    "url": "authenticated/govern/gallery/albums"
+                },
+                {
+                    "name": "Add Images to Album",
+                    "icon": "plus",
+                    "slug": "add-images",
+                    "url": "authenticated/govern/gallery/add-images"
+                },
+                {
+                    "name": "Album List",
+                    "icon": "list",
+                    "slug": "album-list",
+                    "url": "authenticated/govern/gallery/album/list"
+                }
+            ]
         }
     ]
 }

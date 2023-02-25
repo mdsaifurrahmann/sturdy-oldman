@@ -22,10 +22,16 @@
 
             <!-- album list -->
             <div class="grid grid-cols-3 gap-6">
-                <x-album action="{{route('album','album-1')}}"
-                         image="{{asset(mix('images/profile/post-media/2.jpg'))}}" title="Album 1"
-                         date="{{Date('Y')}}"
-                         time="{{Date('H')}}"/>
+
+                @foreach($albums as $album)
+                    <x-album action="{{route('album',[$album->id, $album->name])}}"
+                             image="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/album_covers/'.$album->cover_image))) }}"
+                             title="{{$album->name}}"
+                             desc="{{__($album->description)}}"
+                             date="{{$album->created_at}}"
+                    />
+                @endforeach
+
             </div>
 
 

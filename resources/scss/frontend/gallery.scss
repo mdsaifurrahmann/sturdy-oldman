@@ -1,10 +1,10 @@
 @import "../lightgallery/scss/lightgallery-bundle";
 
 .gallery {
-    @apply relative grid gap-1 overflow-hidden;
+    @apply relative grid gap-2 overflow-hidden;
 
     a {
-        @apply max-h-48 max-w-full rounded overflow-hidden;
+        @apply max-h-48 max-w-full rounded overflow-hidden drop-shadow-md;
 
         img {
             @apply overflow-hidden inline-block object-cover;

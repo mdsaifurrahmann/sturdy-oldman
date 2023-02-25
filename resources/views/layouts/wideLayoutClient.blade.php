@@ -74,7 +74,7 @@
 </main>
 
 
-<x-footer/>
+<x-footer name="{{$info->institute_name}}" address="{{$info->address}}" phone="{{$info->phone}}"/>
 <!-- End: Content-->
 
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\principal;
 use App\Http\Controllers\APAContoller;
 use App\Http\Controllers\InstituteInfoController;
+use App\Http\Controllers\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::get('jobs', [pageIndexController::class, 'jobs'])->name('jobs');
 Route::get('notice/detail/{id}/{name}', [pageIndexController::class, 'noticeDetails'])->name('notice-details');
 Route::get('notice/download/{name}', [pageIndexController::class, 'noticeDownload'])->name('notice-download');
 Route::get('gallery', [pageIndexController::class, 'gallery'])->name('gallery');
-Route::get('album/{name}', [pageIndexController::class, 'gallerySingle'])->name('album');
+Route::get('album/{id}/{name}', [pageIndexController::class, 'gallerySingle'])->name('album');
 Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
 
 //APA Routes
@@ -129,6 +130,19 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('edit/{id}', [APAContoller::class, 'edit'])->name('edit-apa');
         Route::post('update-file/{id}/{key}', [APAContoller::class, 'updateFile'])->name('update-apa-file');
         Route::post('update/{id}', [APAContoller::class, 'update'])->name('update-apa');
+    });
+
+    Route::prefix('gallery')->group(function () {
+        Route::get('albums', [GalleryController::class, 'createAlbumView'])->name('albums-view');
+        Route::post('albums', [GalleryController::class, 'createAlbum'])->name('create-albums');
+        Route::delete('albums/delete/{id}', [GalleryController::class, 'deleteAlbum'])->name('delete-albums');
+
+        Route::get('add-images', [GalleryController::class, 'addImagesToAlbum'])->name('add-images');
+        Route::post('add-images', [GalleryController::class, 'addImages'])->name('add-images');
+
+        Route::get('album/list', [GalleryController::class, 'albumList'])->name('album-list');
+        Route::get('album/{id}', [GalleryController::class, 'albumImages'])->name('album-images');
+        Route::delete('album/delete/{id}/{image}', [GalleryController::class, 'deleteImage'])->name('delete-album-image');
     });
 });
 

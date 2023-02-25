@@ -1,3 +1,11 @@
+@props(
+    [
+        'name',
+        'phone',
+        'address'
+    ]
+)
+
 <footer class="footer">
 
     <div class="container">
@@ -36,10 +44,9 @@
 
             <div class="grid-contact xm:col-span-2">
                 <h4>Contact</h4>
-                <p>Textile Institute Dinajpur</p>
-                <p>Pulhat, Sadar Dinajpur</p>
-                <p>Dinajpur-5200, Bangladesh</p>
-                <p>Phone: <a href="">+880 1550 155555</a></p>
+                <p>{{$name}}</p>
+                <p>{{$address}}</p>
+                <p>Phone: <a href="tel:{{$phone}}">{{$phone}}</a></p>
             </div>
         </div>
     </div>
