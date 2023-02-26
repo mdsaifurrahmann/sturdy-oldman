@@ -24,9 +24,9 @@ if (window.outerWidth > 990) {
 }
 
 window.addEventListener('resize', () => {
-    location.reload();
     //     check window width
-    if (window.outerWidth > 990) {
+    if (window.innerWidth > 990) {
+        location.reload();
         layer__2.forEach((e) => {
             e.classList.contains('open') ? e.classList.remove('open') : '';
             e.getAttribute('style') ? e.removeAttribute('style') : '';

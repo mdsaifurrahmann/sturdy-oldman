@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\View\Component;
 
 class footer extends Component
@@ -13,7 +14,7 @@ class footer extends Component
      */
     public function __construct()
     {
-        //
+        App::setLocale('bn');
     }
 
     /**

@@ -28,10 +28,10 @@
 
 
             <p class="text-left block text-gray-600">
-                <strong><i>{{ $principal->principal_name }}</i></strong>
-                <i class="block">{{ $principal->qop }}</i>
-                <i class="block">{{ $principal->position }}</i>
-                <i class="block">{{ $principal->institute }}</i>
+                <strong><i>{{ __($principal->principal_name) }}</i></strong>
+                <i class="block">{{ __($principal->qop) }}</i>
+                <i class="block">{{ __($principal->position) }}</i>
+                <i class="block">{{ __($principal->institute) }}</i>
             </p>
         </div>
 

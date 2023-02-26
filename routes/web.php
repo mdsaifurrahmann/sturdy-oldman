@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\formerPrincipal;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageIndexController;
 use App\Http\Controllers\HomeController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\principal;
 use App\Http\Controllers\APAContoller;
 use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,7 @@ use App\Http\Controllers\GalleryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 // public route
 Route::get('/', [pageIndexController::class, 'home'])->name('home');

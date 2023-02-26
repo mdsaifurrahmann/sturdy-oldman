@@ -14,39 +14,42 @@
                 <img
                     src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/logo/bangladesh.png'))) }}"
                     alt="republic of bangladesh">
-                <p>Government of the People's Republic of Bangladesh</p>
+                <p>{{__("Government of the People's Republic of Bangladesh")}}</p>
             </div>
 
             <div class="grid-2 xm:col-span-3">
-                <h4>Useful Links</h4>
+                <h4>{{__("Useful Links")}}</h4>
                 <ul class="arrow">
-                    <li><a href="http://https//motj.gov.bd/" target="_blank">Ministry of Textile and Jute</a></li>
-                    <li><a href="http://www.dot.gov.bd/" target="_blank">Department of Textiles</a></li>
-                    <li><a href="http://bteb.gov.bd/" target="_blank">Bangladesh Technical Education Board (BTEB)</a>
+                    <li><a href="http://https//motj.gov.bd/" target="_blank">{{__("Ministry of Textile and Jute")}}</a>
                     </li>
-                    <li><a href="http://dinajpur.gov.bd/" target="_blank">District Administration, Dinajpur</a></li>
-                    <li><a href="http://zpdinajpur.gov.bd/" target="_blank">Zilla Parishad, Dinajpur</a></li>
+                    <li><a href="http://www.dot.gov.bd/" target="_blank">{{__("Department of Textiles")}}</a></li>
+                    <li><a href="http://bteb.gov.bd/"
+                           target="_blank">{{__("Bangladesh Technical Education Board (BTEB)")}}</a>
+                    </li>
+                    <li><a href="http://dinajpur.gov.bd/"
+                           target="_blank">{{__("District Administration, Dinajpur")}}</a></li>
+                    <li><a href="http://zpdinajpur.gov.bd/" target="_blank">{{__("Zilla Parishad, Dinajpur")}}</a></li>
                 </ul>
             </div>
 
 
             <div class="grid-2 xm:col-span-2">
-                <h4>Quick Links</h4>
+                <h4>{{__("Quick Links")}}</h4>
                 <ul class="arrow">
-                    <li><a href="{{route('history')}}">History</a></li>
-                    <li><a href="{{route('admission')}}">Admission</a></li>
-                    <li><a href="{{route('stipend')}}">Stipend</a></li>
-                    <li><a href="#">Student Database</a></li>
-                    <li><a href="#">Web mail</a></li>
+                    <li><a href="{{route('history')}}">{{__("History")}}</a></li>
+                    <li><a href="{{route('admission')}}">{{__("Admission")}}</a></li>
+                    <li><a href="{{route('stipend')}}">{{__("Stipend")}}</a></li>
+                    <li><a href="#">{{__("Student Database")}}</a></li>
+                    <li><a href="#">{{__("Web mail")}}</a></li>
                 </ul>
             </div>
 
 
             <div class="grid-contact xm:col-span-2">
-                <h4>Contact</h4>
+                <h4>{{__("Contact")}}</h4>
                 <p>{{$name}}</p>
-                <p>{{$address}}</p>
-                <p>Phone: <a href="tel:{{$phone}}">{{$phone}}</a></p>
+                <p>{{__($address)}}</p>
+                <p>{{__("Phone")}}: <a href="tel:{{$phone}}">{{$phone}}</a></p>
             </div>
         </div>
     </div>

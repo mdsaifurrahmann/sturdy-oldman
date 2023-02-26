@@ -1,6 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
-@section('title', 'Infrastructure')
+@section('title', __("Infrastructure"))
 {{-- @section('og-img', 'Layout Blank') --}}
 
 @section('page-style')

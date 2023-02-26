@@ -1,7 +1,6 @@
 @extends('layouts/fullLayoutClient')
 
-@section('title', 'Home')
-{{-- @section('og-img', 'Layout Blank') --}}
+@section('title', __('Home'))
 
 @section('page-style')
     <link rel="stylesheet" href="{{ asset(mix('css/client/home.css')) }}">
@@ -27,7 +26,7 @@
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                         <div class="absolute top-[22rem]">
                             <div class="p-8">
-                                <h1 class="text-xl font-bold text-white">{{ $slide->title }}</h1>
+                                <h1 class="text-xl font-bold text-white">{{ __($slide->title) }}</h1>
                                 <p class="text-base text-white">{{ $slide->desc }}</p>
                             </div>
                         </div>
@@ -58,7 +57,7 @@
 
     {{-- Notice Board --}}
     <div class="mb-4 card">
-        <h4 class="card__title">Latest Notices:</h4>
+        <h4 class="card__title">{{__("Latest Notices:")}}</h4>
         <ul class="flex flex-col justify-center gap-3 md:px-4 arrow">
 
             @foreach($notices as $notice)
@@ -72,8 +71,7 @@
 
         </ul>
 
-        <a href="{{ route('notices') }}" class="btn bg-amber-400 self-end mt-6 text-sm">View
-            All Notices</a>
+        <a href="{{ route('notices') }}" class="btn bg-amber-400 self-end mt-6 text-sm">{{__("View All Notices")}}</a>
     </div>
 
     {{-- APA --}}
@@ -132,11 +130,11 @@
     {{-- History --}}
     <div class="history card">
         <h4 class="card__title">
-            History:</h4>
+            {{__("History")}}:</h4>
         <p>
             {{ substr($history->history, 0, 900) }}
             <a href="{{ route('history') }}" class="text-amber-500 hover:text-amber-600 transition-all font-semibold">
-                Read More...
+                {{__("Read More...")}}
             </a>
         </p>
 
@@ -145,12 +143,12 @@
 
     <div class="machinery card">
         <h4 class="card__title">
-            Pieces of Machinery:</h4>
+            {{__("Pieces of Machinery:")}}</h4>
         <div>
             <p>
                 {{ $machinery->description }}
             </p>
-            <h5 class="my-3 font-semibold text-gray-800">List of Machinery:</h5>
+            <h5 class="my-3 font-semibold text-gray-800">{{__("List of Machinery")}}:</h5>
             <ul class="grid grid-cols-1 xs:grid-cols-2 xm:grid-cols-4 gap-3 list-decimal list-inside arrow text-gray-600">
                 @foreach ($machinery->items as $item)
                     <li>{{ $item }}</li>
@@ -175,8 +173,8 @@
                     {{ $principal->message }}</p>
                 <p class="block mt-2">
                     <strong><i>{{ $principal->principal_name }}</i></strong>
-                    <i class="block">{{ $principal->position }}</i>
-                    <i class="block">{{ $principal->institute }}</i>
+                    <i class="block">{{ __($principal->position) }}</i>
+                    <i class="block">{{ __($principal->institute) }}</i>
                 </p>
             </div>
         </div>

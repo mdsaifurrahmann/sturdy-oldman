@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\View\Component;
 
 class detail extends Component
@@ -17,6 +18,8 @@ class detail extends Component
     public function __construct($detail)
     {
         $this->detail = $detail;
+
+        App::setLocale('bn');
     }
 
     /**

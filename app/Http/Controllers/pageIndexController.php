@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\App;
 
 class pageIndexController extends Controller
 {
     public function home()
     {
+        App::getLocale('bn');
         $data = DB::table('data')->get();
         $principal = DB::table('principal')->where('id', 1)->get()->first();
         $notices = DB::table('notices')

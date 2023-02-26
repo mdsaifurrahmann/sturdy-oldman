@@ -20,7 +20,7 @@
 
         <div class="mt-4 overflow-hidden">
 
-            <div id="animated-thumbnails" class="gallery grid-cols-6">
+            <div id="animated-thumbnails" class="gallery lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
 
                 @foreach($images as $image)
                     <a href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/gallery/'.$image->image))) }}"

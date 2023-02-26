@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class header extends Component
      */
     public function __construct()
     {
-        //
+        App::setLocale('bn');
     }
 
     /**

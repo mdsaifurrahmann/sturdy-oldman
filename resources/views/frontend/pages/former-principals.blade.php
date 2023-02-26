@@ -14,12 +14,12 @@
 
     <div class="card text-center text-gray-800">
         <h2 class="font-semibold text-2xl text-center underline decoration-gray-800 underline-offset-4">
-            {{ __('List of Former Principals:') }}
+            {{ __('List of Former Principals') }}
         </h2>
 
 
         @if ($principals->count() <= 0)
-            <div class="text-center">
+            <div class="text-center mt-2">
                 <h3 class="text-2xl text-gray-600">{{ __('No data found!') }}</h3>
             </div>
         @else
