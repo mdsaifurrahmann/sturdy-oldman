@@ -14,8 +14,6 @@
     <div class="swiper main__slider h-[500px] rounded-lg">
         <div class="swiper-wrapper">
             <!-- Slides -->
-
-
             @if ($sliders)
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
