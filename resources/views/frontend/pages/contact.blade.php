@@ -46,7 +46,7 @@
             </div>
             <div class="rounded overflow-hidden h-[200px] w-full object-cover">
                 <img
-                    src="{{  !Illuminate\Support\Facades\File::exists('images/institute/'.$info->institute_image) ? "" : "data:image/png;base64," . base64_encode(file_get_contents(public_path('images/institute/'.$info->institute_image))) }}"
+                    src="{{ Illuminate\Support\Facades\File::exists('images/institute/'.$info->institute_image) ? "data:image/png;base64," . base64_encode(file_get_contents(public_path('images/institute/'.$info->institute_image)))  : ""}}"
                     alt="dti">
             </div>
         </div>
