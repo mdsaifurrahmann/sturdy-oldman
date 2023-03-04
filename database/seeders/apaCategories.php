@@ -25,10 +25,14 @@ class apaCategories extends Seeder
             'অভিযোগ প্রতিকার ব্যবস্থাপনা'
         ];
 
-        foreach ($cats as $cat) {
-            DB::table('apa_categories')->insert([
-                'name' => $cat,
-            ]);
+        if (DB::table("apa_categories")->count() === 0) {
+            foreach ($cats as $cat) {
+                DB::table('apa_categories')->insert([
+                    'name' => $cat,
+                ]);
+            }
         }
+
+
     }
 }

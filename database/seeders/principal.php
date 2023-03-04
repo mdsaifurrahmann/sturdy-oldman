@@ -15,15 +15,20 @@ class principal extends Seeder
      */
     public function run()
     {
-        DB::table('principal')->insert([
-            'principal_name' => 'Md. Saifur Rahman',
-            'qop' => 'PhD',
-            'position' => 'Principal',
-            'institute' => 'Dhaka University',
-            'pi' => 'principal.jpg',
-            'pip' => 'principal-passport.jpg',
-            'description' => 'Lor',
-            'message' => 'Lor'
-        ]);
+
+        if (DB::table('principal')->count() === 0) {
+            DB::table('principal')->insert([
+                'principal_name' => 'Md. Saifur Rahman',
+                'qop' => 'PhD',
+                'position' => 'Principal',
+                'institute' => 'Dhaka University',
+                'pi' => 'principal.jpg',
+                'pip' => 'principal-passport.jpg',
+                'description' => 'Lor',
+                'message' => 'Lor'
+            ]);
+        }
+
+
     }
 }

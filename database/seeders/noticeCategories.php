@@ -23,10 +23,14 @@ class noticeCategories extends Seeder
             'News',
         ];
 
-        foreach ($categories as $category) {
-            DB::table('notice_categories')->insert([
-                'name' => $category,
-            ]);
+
+        if (DB::table('notice_categories')->count() === 0) {
+            foreach ($categories as $category) {
+                DB::table('notice_categories')->insert([
+                    'name' => $category,
+                ]);
+            }
         }
+
     }
 }

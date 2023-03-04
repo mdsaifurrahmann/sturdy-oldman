@@ -179,7 +179,7 @@
                 @if($institute_info->logo != null)
                     <div class="col-md-4 col-12">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->logo))) }}"
+                            src="{{ !\Illuminate\Support\Facades\File::exists('images/institute/'.$institute_info->logo) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->logo))) }}"
                             alt="{{$institute_info->logo}}"
                             style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
                     </div>
@@ -188,7 +188,7 @@
                 @if($institute_info->favicon != null)
                     <div class="col-md-4 col-12">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->favicon))) }}"
+                            src="{{ !\Illuminate\Support\Facades\File::exists('images/institute/'.$institute_info->favicon) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->favicon))) }}"
                             alt="{{$institute_info->favicon}}"
                             style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
                     </div>
@@ -197,7 +197,7 @@
                 @if($institute_info->institute_image != null)
                     <div class="col-md-4 col-12">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->institute_image))) }}"
+                            src="{{!\Illuminate\Support\Facades\File::exists('images/institute/'.$institute_info->institute_image) ? "" : "data:image/png;base64,".  base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->institute_image))) }}"
                             alt="{{$institute_info->institute_image}}"
                             style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
                     </div>
@@ -206,7 +206,7 @@
                 @if($institute_info->image_left != null)
                     <div class="col-md-4 col-12">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->image_left))) }}"
+                            src="{{!\Illuminate\Support\Facades\File::exists('images/institute/'.$institute_info->image_left) ? "" :  "data:image/png;base64,".  base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->image_left))) }}"
                             alt="{{$institute_info->image_left}}"
                             style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
                     </div>
@@ -214,7 +214,7 @@
                 @if($institute_info->image_right != null)
                     <div class="col-md-4 col-12">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->image_right))) }}"
+                            src="{{!\Illuminate\Support\Facades\File::exists('images/institute/'.$institute_info->image_right) ? "" :  "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$institute_info->image_right))) }}"
                             alt="{{ $institute_info->image_right}}"
                             style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
                     </div>
@@ -223,7 +223,7 @@
                 @if($institute_info->meta_og_image != null)
                     <div class="col-md-4 col-12">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/meta/'.$institute_info->meta_og_image))) }}"
+                            src="{{!\Illuminate\Support\Facades\File::exists('images/meta/'.$institute_info->meta_og_image) ? "" : "data:image/png;base64,".  base64_encode(file_get_contents(public_path('images/meta/'.$institute_info->meta_og_image))) }}"
                             alt="{{$institute_info->meta_og_image}}"
                             style="width:100%; height:250px; object-fit:cover; border-radius:6px; margin-bottom: 1rem">
                     </div>

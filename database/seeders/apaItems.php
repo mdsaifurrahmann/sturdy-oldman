@@ -57,46 +57,51 @@ class apaItems extends Seeder
             'আইন/বিধি/নীতিমালা/পরিপত্র'
         ];
 
-        foreach ($items1 as $item) {
-            DB::table('apa_items')->insert([
-                'name' => $item,
-                'category_id' => 1,
-            ]);
-        }
+        if (DB::table('apa_items')->count() === 0) {
 
-        foreach ($items2 as $item) {
-            DB::table('apa_items')->insert([
-                'name' => $item,
-                'category_id' => 2,
-            ]);
-        }
 
-        foreach ($items3 as $item) {
-            DB::table('apa_items')->insert([
-                'name' => $item,
-                'category_id' => 3,
-            ]);
-        }
+            foreach ($items1 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 1,
+                ]);
+            }
 
-        foreach ($items4 as $item) {
-            DB::table('apa_items')->insert([
-                'name' => $item,
-                'category_id' => 4,
-            ]);
-        }
+            foreach ($items2 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 2,
+                ]);
+            }
 
-        foreach ($items5 as $item) {
-            DB::table('apa_items')->insert([
-                'name' => $item,
-                'category_id' => 5,
-            ]);
-        }
+            foreach ($items3 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 3,
+                ]);
+            }
 
-        foreach ($items6 as $item) {
-            DB::table('apa_items')->insert([
-                'name' => $item,
-                'category_id' => 6,
-            ]);
+            foreach ($items4 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 4,
+                ]);
+            }
+
+            foreach ($items5 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 5,
+                ]);
+            }
+
+            foreach ($items6 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 6,
+                ]);
+            }
+
         }
 
 
