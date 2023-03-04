@@ -23,17 +23,17 @@
         <div class="logo-area">
             <div class="joyonti">
                 <img
-                    src="{{ !Illuminate\Support\Facades\File::exists(asset('images/institute/'.$image_left)) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$image_left))) }}"
+                    src="{{ Illuminate\Support\Facades\File::exists(asset('images/institute/'.$image_left)) ? "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$image_left))) : ""}}"
                     alt="{{$image_left}}">
             </div>
             <div class="logo">
                 <img
-                    src="{{ !Illuminate\Support\Facades\File::exists(asset('images/institute/'.$logo)) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$logo))) }}"
+                    src="{{ Illuminate\Support\Facades\File::exists('images/institute/'.$logo) ? "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$logo))) : ""}}"
                     alt="{{$institute_name}}">
             </div>
             <div class="mujib-borsho">
                 <img
-                    src="{{ !Illuminate\Support\Facades\File::exists(asset('images/institute/'.$image_right)) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$image_right))) }}"
+                    src="{{ Illuminate\Support\Facades\File::exists('images/institute/'.$image_right) ? "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$image_right))) : ""}}"
                     alt="{{$image_right}}">
             </div>
         </div>
