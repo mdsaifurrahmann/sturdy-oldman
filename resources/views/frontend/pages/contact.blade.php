@@ -1,4 +1,4 @@
-@extends('layouts.WideLayoutClient')
+@extends('layouts.wideLayoutClient')
 
 @section('title', __('Contact Us'))
 
