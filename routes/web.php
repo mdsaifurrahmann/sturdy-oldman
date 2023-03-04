@@ -93,7 +93,7 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
     });
 
     Route::prefix('about/history')->group(function () {
-        Route::get('/', [pageIndexController::class, 'updatehistory'])->name('update-history');
+        Route::get('/', [pageIndexController::class, 'updatehistory'])->name('get-update-history');
         Route::post('update', [HistoryController::class, 'update'])->name('update-history');
     });
 
