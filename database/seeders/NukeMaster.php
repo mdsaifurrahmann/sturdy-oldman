@@ -19,7 +19,7 @@ class NukeMaster extends Seeder
      */
     public function run()
     {
-        if (!DB::table('users')->count() === 0) {
+        if (DB::table('users')->count() === 0) {
             $user1 = User::create([
                 'username' => 'saifur',
                 'name' => 'saifur',

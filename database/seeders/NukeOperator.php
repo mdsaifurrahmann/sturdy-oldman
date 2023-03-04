@@ -17,7 +17,7 @@ class NukeOperator extends Seeder
      */
     public function run()
     {
-        if (!DB::table('roles')->count() === 0) {
+        if (DB::table('roles')->count() === 0) {
             Role::create(['name' => 'nuke']);
             Role::create(['name' => 'admin']);
             Role::create(['name' => 'moderator']);
