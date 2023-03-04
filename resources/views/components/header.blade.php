@@ -23,7 +23,7 @@
         <div class="logo-area">
             <div class="joyonti">
                 <img
-                    src="{{ Illuminate\Support\Facades\File::exists(asset('images/institute/'.$image_left)) ? "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$image_left))) : ""}}"
+                    src="{{ Illuminate\Support\Facades\File::exists('images/institute/'.$image_left) ? "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/institute/'.$image_left))) : ""}}"
                     alt="{{$image_left}}">
             </div>
             <div class="logo">
