@@ -20,7 +20,7 @@
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
                         <img
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/slider/' . $slide->image))) }}"
+                            src="{{!Illuminate\Support\Facades\File::exists('images/slider/' . $slide->image) ? "" : "data:image/png;base64," . base64_encode(file_get_contents(public_path('images/slider/' . $slide->image)))}}"
                             alt="{{ $slide->title }}" class="object-cover w-full h-[inherit]">
 
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
@@ -164,7 +164,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
             <div class="sm:col-span-1 flex justify-center">
                 <img
-                    src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
+                    src="{{ !Illuminate\Support\Facades\File::exists(asset('images/principal/' . $principal->pip)) ? "" : "data:image/png;base64," . base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
                     alt="Principle Says" class="rounded-full">
             </div>
 

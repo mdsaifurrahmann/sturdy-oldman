@@ -25,7 +25,7 @@
 
                 @foreach($albums as $album)
                     <x-album action="{{route('album',[$album->id, $album->name])}}"
-                             image="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/album_covers/'.$album->cover_image))) }}"
+                             image="{{  !Illuminate\Support\Facades\File::exists('images/album_covers/'.$album->cover_image) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/album_covers/'.$album->cover_image))) }}"
                              title="{{$album->name}}"
                              desc="{{__($album->description)}}"
                              date="{{$album->created_at}}"
