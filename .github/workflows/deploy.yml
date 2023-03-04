@@ -98,11 +98,7 @@ jobs:
     name: Migrating Database
     runs-on: ubuntu-latest
     needs:
-      [
-        create-deployment-environment,
-        prepare-release-on-server,
-        active-release,
-      ]
+      [ create-deployment-environment, prepare-release-on-server, active-release ]
     steps:
       - name: Migration Init
         uses: appleboy/ssh-action@master
@@ -125,12 +121,7 @@ jobs:
     name: Cleaning Up Artifacts
     runs-on: ubuntu-latest
     needs:
-      [
-        create-deployment-environment,
-        prepare-release-on-server,
-        active-release,
-        migrating-db,
-      ]
+      [ create-deployment-environment, prepare-release-on-server, active-release, migrating-db ]
     steps:
       - name: Clean up server junk
         uses: appleboy/ssh-action@master
