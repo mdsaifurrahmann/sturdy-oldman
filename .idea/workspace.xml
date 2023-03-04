@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="Gallery Done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/NukeMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/NukeMaster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/NukeOperator.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/NukeOperator.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +201,7 @@
       <workItem from="1677231756654" duration="48471000" />
       <workItem from="1677335767024" duration="28845000" />
       <workItem from="1677416339378" duration="12159000" />
-      <workItem from="1677951817176" duration="8490000" />
+      <workItem from="1677951817176" duration="9264000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>

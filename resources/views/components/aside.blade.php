@@ -1,3 +1,10 @@
+@php
+
+    $id = 1;
+    $principal = DB::table('principal')->where('id', $id)->get()->first();
+
+@endphp
+
 <div class="col-span-1">
 
     {{-- Principle --}}

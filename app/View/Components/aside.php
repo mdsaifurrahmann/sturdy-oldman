@@ -25,8 +25,6 @@ class aside extends Component
      */
     public function render()
     {
-        $id = 1;
-        $principal = DB::table('principal')->where('id', $id)->get()->first();
-        return view('components.aside', compact('principal'));
+        return view('components.aside');
     }
 }
