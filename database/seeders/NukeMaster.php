@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\DB;
 
 
 class NukeMaster extends Seeder
@@ -18,23 +19,27 @@ class NukeMaster extends Seeder
      */
     public function run()
     {
-        $user1 = User::create([
-            'username' => 'saifur',
-            'name' => 'saifur',
-            'email' => 'md.saifurrahmann029@gmail.com',
-            'mobile' => '01700000000',
-            'email_verified_at' => now(),
-            'password' => bcrypt('12345678'),
-        ]);
-        $user1->assignRole('nuke', 'admin');
+        if (!DB::table('users')->count() === 0) {
+            $user1 = User::create([
+                'username' => 'saifur',
+                'name' => 'saifur',
+                'email' => 'md.saifurrahmann029@gmail.com',
+                'mobile' => '01700000000',
+                'email_verified_at' => now(),
+                'password' => bcrypt('12345678'),
+            ]);
+            $user1->assignRole('nuke', 'admin');
 
-        $user2 = User::create([
-            'username' => 'saifurx',
-            'name' => 'saifurx',
-            'email' => 'md.saifurrahmann30@gmail.com',
-            'mobile' => '01700000001',
-            'email_verified_at' => now(),
-            'password' => bcrypt('12345678'),
-        ]);
+            $user2 = User::create([
+                'username' => 'saifurx',
+                'name' => 'saifurx',
+                'email' => 'md.saifurrahmann30@gmail.com',
+                'mobile' => '01700000001',
+                'email_verified_at' => now(),
+                'password' => bcrypt('12345678'),
+            ]);
+        }
+
+
     }
 }
