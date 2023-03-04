@@ -140,7 +140,7 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::post('albums', [GalleryController::class, 'createAlbum'])->name('create-albums');
         Route::delete('albums/delete/{id}', [GalleryController::class, 'deleteAlbum'])->name('delete-albums');
 
-        Route::get('add-images', [GalleryController::class, 'addImagesToAlbum'])->name('add-images');
+        Route::get('add-images', [GalleryController::class, 'addImagesToAlbum'])->name('get-add-images');
         Route::post('add-images', [GalleryController::class, 'addImages'])->name('add-images');
 
         Route::get('album/list', [GalleryController::class, 'albumList'])->name('album-list');
