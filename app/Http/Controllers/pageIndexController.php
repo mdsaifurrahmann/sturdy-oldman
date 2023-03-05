@@ -128,6 +128,7 @@ class pageIndexController extends Controller
 
         if (DB::table('gallery')->count() === 0) {
             $retrieve = DB::table('albums')->where('id', $id)->get()->first();
+            $images = [];
         } else {
             $retrieve = DB::table('gallery')
                 ->join('albums', 'albums.id', '=', 'gallery.album_id')
@@ -136,8 +137,6 @@ class pageIndexController extends Controller
                 ->first();
             $images = json_decode($retrieve->images);
         }
-
-        $images = [];
 
 
         return view('frontend.pages.gallery.single', compact('retrieve', 'images'));
