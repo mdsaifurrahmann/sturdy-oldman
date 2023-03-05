@@ -125,13 +125,21 @@ class pageIndexController extends Controller
 
     public function gallerySingle($id, $name)
     {
-        $retrieve = DB::table('gallery')
-            ->join('albums', 'albums.id', '=', 'gallery.album_id')
-            ->select('gallery.images', 'albums.name as album_name', 'albums.description as album_description', 'albums.created_at as album_created_at')
-            ->where('album_id', $id)
-            ->first();
 
-        $images = json_decode($retrieve->images);
+        if (DB::table('gallery')->count() === 0) {
+            $retrieve = DB::table('albums')->where('id', $id)->get()->first();
+        } else {
+            $retrieve = DB::table('gallery')
+                ->join('albums', 'albums.id', '=', 'gallery.album_id')
+                ->select('gallery.images', 'albums.name as name', 'albums.description as description', 'albums.created_at as created_at')
+                ->where('album_id', $id)
+                ->first();
+            $images = json_decode($retrieve->images);
+        }
+
+        $images = [];
+
+
         return view('frontend.pages.gallery.single', compact('retrieve', 'images'));
     }
 

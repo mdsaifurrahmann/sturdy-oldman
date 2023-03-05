@@ -1,5 +1,5 @@
-@props([
-    'desc'])
+{{--@props([--}}
+{{--    'desc'])--}}
 
 <a href="{{$action}}">
     <div class="item ">
@@ -9,9 +9,9 @@
         <h3 class="title">
             {{$title}}
         </h3>
-        <p class="text-left pb-3 px-6">
-            {{$desc}}
-        </p>
+        {{--        <p class="text-left pb-3 px-6">--}}
+        {{--            {{$desc}}--}}
+        {{--        </p>--}}
         <div class="times">
             <span>{{$date}}</span>
         </div>

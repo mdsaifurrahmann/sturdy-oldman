@@ -70,9 +70,14 @@ class GalleryController extends Controller
 
     public function deleteAlbum($id)
     {
-        $check = DB::table('gallery')->where('album_id', $id)->exists();
+        $check = DB::table('gallery')
+            ->where('album_id', $id)
+            ->value('images');
 
-        if ($check) {
+
+        $counter = count(json_decode($check));
+
+        if ($counter != 0) {
             return redirect()->back()->with('error', 'Can not delete album, because it has images.');
         } else {
             $retrive = DB::table('albums')->where('id', $id)->first();
@@ -81,7 +86,7 @@ class GalleryController extends Controller
                 File::delete(public_path() . '/images/album_covers/' . $file);
             }
 
-
+            DB::table('gallery')->where('album_id', $id)->delete();
             DB::table('albums')->where('id', $id)->delete();
             return redirect()->back()->with('success', 'Album deleted successfully');
         }

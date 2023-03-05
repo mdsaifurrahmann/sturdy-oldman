@@ -1,6 +1,6 @@
 @extends('layouts.wideLayoutClient')
 
-@section('title', __($retrieve->album_name))
+@section('title', __($retrieve->name))
 @section('page-style')
 
     <link rel="stylesheet" href="{{ asset(mix('css/client/gallery.css')) }}">
@@ -10,13 +10,19 @@
 
     <div class="card text-gray-800">
         <h2 class="font-semibold text-2xl mb-2">
-            {{ __($retrieve->album_name) }}
+            {{ __($retrieve->name) }}
         </h2>
         <div class="flex flex-row gap-4">
-            <span class="inline text-gray-400 date">{{ substr($retrieve->album_created_at, 0, 10)  }}</span>
-            <span class="inline text-gray-400 time">{{substr($retrieve->album_created_at, 12)}}</span>
+            <span class="inline text-gray-400 date">{{ substr($retrieve->created_at, 0, 10)  }}</span>
+            <span class="inline text-gray-400 time">{{substr($retrieve->created_at, 12)}}</span>
         </div>
 
+
+        @if(empty($images))
+
+            <h3 class="mt-2 text-center font-bold text-xl text-gray-700">No Image Found</h3>
+
+        @endif
 
         <div class="mt-4 overflow-hidden">
 
@@ -29,7 +35,6 @@
                              src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/gallery/'.$image->image))) }}"/>
                     </a>
                 @endforeach
-
 
             </div>
 

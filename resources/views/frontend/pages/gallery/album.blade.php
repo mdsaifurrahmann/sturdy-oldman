@@ -24,12 +24,25 @@
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-6">
 
                 @foreach($albums as $album)
-                    <x-album action="{{route('album',[$album->id, $album->name])}}"
-                             image="{{  !Illuminate\Support\Facades\File::exists('images/album_covers/'.$album->cover_image) ? "" : "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/album_covers/'.$album->cover_image))) }}"
-                             title="{{$album->name}}"
-                             desc="{{__($album->description)}}"
-                             date="{{$album->created_at}}"
-                    />
+
+                    <a href="{{route('album',[$album->id, $album->name])}}">
+                        <div class="item ">
+                            <div class="image ">
+                                <img
+                                    src="{{ Illuminate\Support\Facades\File::exists('images/album_covers/'.$album->cover_image) ? "data:image/png;base64,". base64_encode(file_get_contents(public_path('images/album_covers/'.$album->cover_image))) : ""}}"
+                                    alt="">
+                            </div>
+                            <h3 class="title">
+                                {{$album->name}}
+                            </h3>
+                            <p class="text-left pb-3 px-6">
+                                {{__($album->description)}}
+                            </p>
+                            <div class="times">
+                                <span>{{$album->created_at}}</span>
+                            </div>
+                        </div>
+                    </a>
                 @endforeach
 
             </div>
