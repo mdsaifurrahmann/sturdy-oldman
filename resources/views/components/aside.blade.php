@@ -12,7 +12,7 @@
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
                 <img
-                    src="{{ !Illuminate\Support\Facades\File::exists(asset('images/principal/' . $principal->pip)) ? "" : "data:image/png;base64,".base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
+                    src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? "" : "data:image/png;base64,".base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
                     alt="principle of dinajpur textile institute">
             </div>
             <div class="principle__info">
