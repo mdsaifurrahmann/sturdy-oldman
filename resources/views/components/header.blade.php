@@ -16,6 +16,8 @@
             ->latest('created_at')
             ->take(3)
             ->get();
+
+    App::setLocale('bn');
 @endphp
 
 <header>
