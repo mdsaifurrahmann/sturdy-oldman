@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="Gallery Done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/custom.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/custom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/data/menu-data/horizontalMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/menu-data/horizontalMenu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/horizontalMenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/horizontalMenu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/horizontalSubmenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/horizontalSubmenu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/submenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/submenu.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

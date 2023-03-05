@@ -1,38 +1,156 @@
 {
-  "menu": [
-    {
-      "url": "home",
-      "name": "Home",
-      "icon": "home",
-      "slug": "home"
-    },
-    {
-      "name": "Page Layouts",
-      "icon": "layout",
-      "dropdown": "1",
-      "slug": "",
-      "submenu": [
+    "menu": [
         {
-          "url": "layouts/full",
-          "name": "Layout Full",
-          "slug": "layout-full"
+            "url": "authenticated/govern",
+            "name": "Dashboard",
+            "icon": "activity",
+            "slug": "govern"
         },
         {
-          "url": "layouts/without-menu",
-          "name": "Without Menu",
-          "slug": "without-menu"
+            "name": "Institution",
+            "icon": "briefcase",
+            "slug": "institute-info",
+            "url": "authenticated/govern/institution"
         },
         {
-          "url": "layouts/empty",
-          "name": "Layout Empty",
-          "slug": "layout-empty"
+            "name": "Home Page",
+            "icon": "home",
+            "dropdown": 1,
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "Sliders",
+                    "icon": "sliders",
+                    "slug": "",
+                    "dropdown": 1,
+                    "submenu": [
+                        {
+                            "url": "authenticated/govern/homepage/slider/add",
+                            "name": "Add Slider",
+                            "icon": "plus",
+                            "slug": "slider"
+                        },
+                        {
+                            "url": "authenticated/govern/homepage/slider/list",
+                            "name": "Slider List",
+                            "icon": "list",
+                            "slug": "slider-list"
+                        }
+                    ]
+                },
+                {
+                    "name": "Machinery",
+                    "icon": "truck",
+                    "slug": "machinery",
+                    "url": "authenticated/govern/homepage/machinery"
+                }
+            ]
         },
         {
-          "url": "layouts/blank",
-          "name": "Layout Blank",
-          "slug": "layout-blank"
+            "name": "About Us",
+            "icon": "info",
+            "slug": "",
+            "dropdown": 1,
+            "submenu": [
+                {
+                    "url": "authenticated/govern/about/history",
+                    "name": "History",
+                    "icon": "align-left",
+                    "slug": "get-update-history"
+                },
+                {
+                    "url": "authenticated/govern/about/principal",
+                    "name": "Principal",
+                    "icon": "smile",
+                    "slug": "update-principal"
+                }
+            ]
+        },
+        {
+            "name": "Administration",
+            "icon": "users",
+            "slug": "",
+            "dropdown": 1,
+            "submenu": [
+                {
+                    "url": "authenticated/govern/administration/former-principals",
+                    "name": "Former Principals",
+                    "icon": "circle",
+                    "slug": "former-principal-list"
+                },
+                {
+                    "url": "authenticated/govern/administration/former-employees",
+                    "name": "Former Officers/Employees",
+                    "icon": "circle",
+                    "slug": "former-employee-list"
+                }
+            ]
+        },
+        {
+            "name": "Notice",
+            "icon": "bell",
+            "slug": "",
+            "dropdown": 1,
+            "submenu": [
+                {
+                    "name": "Add Notice",
+                    "icon": "plus",
+                    "slug": "add-notice-form",
+                    "url": "authenticated/govern/notice"
+                },
+                {
+                    "name": "Notice List",
+                    "icon": "list",
+                    "slug": "notice-list",
+                    "url": "authenticated/govern/notice/list"
+                }
+            ]
+        },
+        {
+            "name": "APA",
+            "icon": "bar-chart-2",
+            "slug": "",
+            "dropdown": 1,
+            "submenu": [
+                {
+                    "name": "Add APA",
+                    "icon": "plus",
+                    "slug": "apa-add-form",
+                    "url": "authenticated/govern/apa"
+                },
+                {
+                    "name": "APA List",
+                    "icon": "list",
+                    "slug": "apa-list",
+                    "url": "authenticated/govern/apa/list"
+                }
+            ]
+        },
+        {
+            "name": "Gallery",
+            "icon": "image",
+            "slug": "",
+            "dropdown": 1,
+            "submenu": [
+                {
+                    "name": "Add Album",
+                    "icon": "plus",
+                    "slug": "albums-view",
+                    "url": "authenticated/govern/gallery/albums"
+                },
+                {
+                    "name": "Add Images to Album",
+                    "icon": "plus",
+                    "slug": "get-add-images",
+                    "url": "authenticated/govern/gallery/add-images"
+                },
+                {
+                    "name": "Album List",
+                    "icon": "list",
+                    "slug": "album-list",
+                    "url": "authenticated/govern/gallery/album/list"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }
