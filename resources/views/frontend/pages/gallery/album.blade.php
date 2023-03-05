@@ -20,6 +20,10 @@
 
         <div class="my-4">
 
+            @if($albums)
+                <h3 class="mt-2 text-center font-bold text-xl text-gray-700">{{__("No Album Found")}}</h3>
+            @endif
+
             <!-- album list -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-6">
 

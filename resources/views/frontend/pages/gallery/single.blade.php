@@ -20,7 +20,7 @@
 
         @if(empty($images))
 
-            <h3 class="mt-2 text-center font-bold text-xl text-gray-700">No Image Found</h3>
+            <h3 class="mt-2 text-center font-bold text-xl text-gray-700">{{__("No Image Found")}}</h3>
 
         @endif
 
