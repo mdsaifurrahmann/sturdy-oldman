@@ -374,6 +374,9 @@ module.exports = {
             DEFAULT: '1',
         },
         fontFamily: {
+            solaimanlipi: [
+                'solaimanlipi'
+            ],
             sans: [
                 'ui-sans-serif',
                 'system-ui',

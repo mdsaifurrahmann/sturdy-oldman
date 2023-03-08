@@ -28,8 +28,8 @@
     <meta name="author" content="Codebumble Inc.">
     <meta name="generator" content="Codebumble Inc.">
     <!-- Primary Meta Tags -->
-    <meta name="title" content="@yield('title') - {{__('lol')}}">
-    <meta name="description" content="@yield('description')">
+    <meta name="title"
+          content="@yield('title') - {{$getLocale == 'bn' ? 'টেক্সটাইল ইনস্টিটিউট, দিনাজপুর'  : __($info->institute_name)}}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -59,14 +59,14 @@
     {{-- Include core + vendor Styles --}}
     @include('panels/stylesClient')
 
+    {{-- Include core + vendor Styles --}}
+    @include('panels/stylesClient')
 </head>
 
 <body class="blank-page bg-slate-100 overflow-x-hidden" data-col="blank-page" data-asset-path="{{ asset('/') }}">
 
 
-{{-- Include Startkit Content --}}
-<x-header image_left="{{$info->image_left}}" logo="{{$info->logo}}" image_right="{{$info->image_right}}"
-          institute_name="{{$info->institute_name}}"/>
+@include('components.header')
 
 
 <main>

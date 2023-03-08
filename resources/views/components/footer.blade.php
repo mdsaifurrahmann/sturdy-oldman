@@ -6,7 +6,7 @@
     ]
 )
 
-<footer class="footer">
+<footer class="footer {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
 
     <div class="container">
         <div class="footer-grid">

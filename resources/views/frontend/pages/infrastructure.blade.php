@@ -12,7 +12,7 @@
 
     <!-- page title -->
 
-    <div class="card">
+    <div class="card {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         {{--        <h2 class="card__title">Infrastructure:</h2>--}}
 
         <div class="infrastructure__title">

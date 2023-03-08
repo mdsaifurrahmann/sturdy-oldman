@@ -12,7 +12,8 @@
 
     <!-- page title -->
 
-    <section class="card text-center text-gray-800 mb-2">
+    <section
+        class="card text-center text-gray-800 mb-2 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <h2 class="font-semibold text-2xl text-center underline decoration-gray-800 underline-offset-4">
             {{ __('Photo Album') }}
         </h2>

@@ -18,7 +18,8 @@
 
     <!-- page title -->
 
-    <div class="card text-center text-gray-800">
+    <div
+        class="card text-center text-gray-800 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
 
         <div class="mb-4 grid md:grid-cols-2 overflow-auto md:px-20 gap-8 items-center">
             <div class="text-left">

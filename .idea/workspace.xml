@@ -5,12 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="Gallery Done">
+      <change afterPath="$PROJECT_DIR$/resources/images/apa/ask.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/images/apa/innovation.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/custom.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/custom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/data/menu-data/horizontalMenu.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/data/menu-data/horizontalMenu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/horizontalMenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/horizontalMenu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/horizontalSubmenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/horizontalSubmenu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/submenu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/submenu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/apa/citizen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/apa/citizen.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/apa/flag.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/apa/idea.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/images/apa/info.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/apa/info.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/bn.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bn.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/aside.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/apa/apa-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/apa/apa-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/apa/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/apa/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/ex-employees.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/ex-employees.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/former-principals.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/former-principals.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/album.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/album.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/history.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/infrastructure.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/infrastructure.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/principal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/principal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/wideLayoutClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/wideLayoutClient.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

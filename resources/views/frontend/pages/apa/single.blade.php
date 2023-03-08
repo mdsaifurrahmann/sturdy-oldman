@@ -10,7 +10,7 @@
 
 @section('main-content')
 
-    <div class="card text-gray-800">
+    <div class="card text-gray-800 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <h2 class="font-semibold text-2xl mb-2">
             {{ __($apa->title) }}
         </h2>

@@ -72,6 +72,7 @@ Route::get('complaint-laws', [pageIndexController::class, 'apa'])->name('complai
 Route::get('apa/details/{id}/{name}', [pageIndexController::class, 'apaSingle'])->name('apa-single');
 Route::get('apa/download/{name}', [pageIndexController::class, 'apaDownload'])->name('apa-download');
 
+
 // Authenticated Route
 
 Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(function () {

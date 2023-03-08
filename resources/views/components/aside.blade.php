@@ -1,30 +1,32 @@
 @php
+    app()->setLocale('bn');
 
-    $id = 1;
-    $principal = DB::table('principal')->where('id', $id)->get()->first();
+    if(Route::currentRouteName() != 'home'){
+        $id = 1;
+        $principal = DB::table('principal')->where('id', $id)->get()->first();
+    }
 
 @endphp
 
 <div class="col-span-1">
 
     {{-- Principle --}}
-    <div class="!p-6 card principle mt-4 lg:mt-0">
+    <div
+        class="!p-6 card principle mt-4 lg:mt-0 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <div class="flex flex-col justify-center items-center">
             <div class="principle-img">
                 <img
                     src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? "" : "data:image/png;base64,".base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
                     alt="principle of dinajpur textile institute">
             </div>
-            <div class="principle__info">
+            <div
+                class="principle__info">
                 <h4 class="text-lg font-semibold text-gray-800">{{ __($principal->principal_name) }}</h4>
                 <p class="text-gray-500">{{ __($principal->position) }}</p>
                 <p class="text-gray-500">{{ __($principal->institute) }}</p>
             </div>
         </div>
         <div class="btn__group">
-            <a href="#" class="btn__item call">
-                {{__("Call")}}
-            </a>
             <a href="{{ route('principal') }}" class="btn__item details">
                 {{__("Details")}}
             </a>
@@ -32,7 +34,7 @@
     </div>
 
     {{-- E-Service --}}
-    <div class="card mb-4">
+    <div class="card mb-4 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <h4 class="card__title">{{__("e-Service")}}:</h4>
 
         <ul class="arrow flex flex-col gap-3">
@@ -46,7 +48,7 @@
 
 
     {{-- Web Mail --}}
-    <div class="card mb-4">
+    <div class="card mb-4 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <h4 class="card__title">{{__("Webmail")}}</h4>
 
         <a href="https://dtec.edu.bd/webmail" class="btn bg-amber-400 text-sm justify-center block">Login to Webmail</a>
@@ -54,7 +56,7 @@
     </div>
 
     {{-- useful link --}}
-    <div class="card mb-4">
+    <div class="card mb-4 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <h4 class="card__title">{{__("Useful Links")}}:</h4>
 
         <ul class="arrow flex flex-col gap-3">
@@ -75,7 +77,7 @@
 
 
     {{-- useful link --}}
-    <div class="card mb-4">
+    <div class="card mb-4 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
         <h4 class="card__title">{{__("Emergency Hotlines")}}:</h4>
 
         <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/helpline.jpg'))) }}"

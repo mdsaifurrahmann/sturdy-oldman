@@ -65,10 +65,7 @@
 <body class="blank-page bg-slate-100 overflow-x-hidden" data-col="blank-page" data-asset-path="{{ asset('/') }}">
 
 
-{{-- Include Startkit Content --}}
-<x-header image_left="{{$info->image_left}}" logo="{{$info->logo}}" image_right="{{$info->image_right}}"
-          institute_name="{{__($info->institute_name)}}"/>
-
+@include('components.header')
 
 <main>
     <div class="container">
@@ -81,7 +78,8 @@
             </div> {{-- End of main content --}
 
                 {{-- Aside/Left bar --}}
-            <x-aside/>
+            {{--            <x-aside/>--}}
+            @include('components.aside')
         </div>
     </div>
 </main>
