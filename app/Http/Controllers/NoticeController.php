@@ -101,11 +101,11 @@ class NoticeController extends Controller
             if ($request->hasFile('notice.' . $key . '.attach')) {
                 $request->validate(
                     [
-                        'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
+                        'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx,jpg,png,jpeg|max:10240',
                     ],
                     [
                         'notice.' . $key . '.attach.file' => 'Attachment must be a file',
-                        'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
+                        'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx, jpg, png, jpeg',
                         'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 megabytes',
                     ]
                 );
@@ -272,11 +272,11 @@ class NoticeController extends Controller
                 if ($request->hasFile('notice.' . $key . '.attach')) {
                     $request->validate(
                         [
-                            'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
+                            'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx,jpg,png,jpeg|max:10240',
                         ],
                         [
                             'notice.' . $key . '.attach.file' => 'Attachment must be a file',
-                            'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx',
+                            'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx, jpg, jpeg, png',
                             'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 Megabytes',
                         ]
                     );

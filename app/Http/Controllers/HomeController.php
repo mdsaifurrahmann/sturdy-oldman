@@ -74,6 +74,11 @@ class HomeController extends Controller
         }
     }
 
+    public function sliderUpdate()
+    {
+        return view('area52.home.slider.update-slider');
+    }
+
     public function sliderList()
     {
 
