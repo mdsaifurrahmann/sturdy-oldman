@@ -74,8 +74,15 @@ class GalleryController extends Controller
             ->where('album_id', $id)
             ->value('images');
 
+        // dd($check);
 
-        $counter = count(json_decode($check));
+        if ($check != null) {
+            $counter = count(json_decode($check));
+        } else {
+            $counter = 0;
+        }
+
+        // $counter = count(json_decode($check));
 
         if ($counter != 0) {
             return redirect()->back()->with('error', 'Can not delete album, because it has images.');
@@ -177,8 +184,6 @@ class GalleryController extends Controller
 
 
         return redirect()->back()->with('success', 'Images added to album successfully');
-
-
     }
 
     /*
@@ -206,7 +211,16 @@ class GalleryController extends Controller
             ->where('album_id', $id)
             ->first();
 
-        $images = json_decode($retrieve->images);
+        if ($retrieve == null) {
+            $retrieve = DB::table('albums')
+                ->select('albums.name as album_name', 'albums.description as album_description', 'albums.cover_image as album_cover', 'albums.id as album_id')
+                ->where('albums.id', $id)
+                ->first();
+            $images = [];
+        } else {
+            $images = json_decode($retrieve->images);
+        }
+
 
 
         return view('area52.gallery.album-view', compact('images', 'retrieve'));
