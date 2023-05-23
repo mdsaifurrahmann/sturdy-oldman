@@ -120,6 +120,7 @@ class pageIndexController extends Controller
     public function gallery()
     {
         $albums = DB::table('albums')->get();
+
         return view('frontend.pages.gallery.album', compact('albums'));
     }
 
@@ -129,16 +130,25 @@ class pageIndexController extends Controller
         if (DB::table('gallery')->count() === 0) {
             $retrieve = DB::table('albums')->where('id', $id)->get()->first();
             $images = [];
-        } else {
-            $retrieve = DB::table('gallery')
-                ->join('albums', 'albums.id', '=', 'gallery.album_id')
-                ->select('gallery.images', 'albums.name as name', 'albums.description as description', 'albums.created_at as created_at')
-                ->where('album_id', $id)
+        }
+
+        $retrieve = DB::table('gallery')
+            ->join('albums', 'albums.id', '=', 'gallery.album_id')
+            ->select('gallery.images', 'albums.name as name', 'albums.description as description', 'albums.created_at as created_at')
+            ->where('album_id', $id)
+            ->first();
+
+        if ($retrieve == null) {
+            $retrieve = DB::table('albums')
+                ->select('albums.name', 'albums.description', 'albums.created_at')
+                ->where('albums.id', $id)
                 ->first();
+            $images = [];
+        } else {
             $images = json_decode($retrieve->images);
         }
 
-
+        // dd($retrieve);
         return view('frontend.pages.gallery.single', compact('retrieve', 'images'));
     }
 
@@ -155,7 +165,6 @@ class pageIndexController extends Controller
 
         if ($currentRoute->getName() == 'apa-gct') {
             $id = '1';
-
         }
         if ($currentRoute->getName() == 'apc') {
             $id = '2';
@@ -238,7 +247,6 @@ class pageIndexController extends Controller
         $name = DB::table('apa_items')->where('id', $id)->value('name');
 
         return view('frontend.pages.apa.apa-list', compact('data', 'name'));
-
     }
 
     public function apaDownload($name)
