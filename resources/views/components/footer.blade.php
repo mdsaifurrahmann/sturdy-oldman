@@ -39,7 +39,7 @@
                     <li><a href="{{route('history')}}">{{__("History")}}</a></li>
                     <li><a href="{{route('admission')}}">{{__("Admission")}}</a></li>
                     <li><a href="{{route('stipend')}}">{{__("Stipend")}}</a></li>
-                    <li><a href="#">{{__("Student Database")}}</a></li>
+                    <li><a href="https://database.dtec.edu.bd/student-form" target="_blank">{{__("Student Database")}}</a></li>
                     <li><a href="#">{{__("Web mail")}}</a></li>
                 </ul>
             </div>
