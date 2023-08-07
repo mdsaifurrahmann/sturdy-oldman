@@ -22,17 +22,19 @@ class apaCategories extends Seeder
             'জাতীয় শুদ্ধাচার কৌশল',
             'উদ্ভাবনী কার্যক্রম',
             'তথ্য অধিকার',
-            'অভিযোগ প্রতিকার ব্যবস্থাপনা'
+            'অভিযোগ প্রতিকার ব্যবস্থাপনা',
+            'আইন, বিধি, নীতি, প্রজ্ঞাপন',
+            'আদেশ/বিজ্ঞপ্তি/প্রজ্ঞাপন/ফরম',
+            'নীতি/ প্রকাশনা/পরিদর্শন প্রতিবেদন',
+
         ];
 
-        if (DB::table("apa_categories")->count() === 0) {
+        if (DB::table("apa_types")->count() === 0) {
             foreach ($cats as $cat) {
-                DB::table('apa_categories')->insert([
+                DB::table('apa_type')->insert([
                     'name' => $cat,
                 ]);
             }
         }
-
-
     }
 }

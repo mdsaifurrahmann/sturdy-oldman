@@ -60,9 +60,9 @@
                     <li class="menu-item"><a href="{{ route('ex-employees') }}"
                             class="menu-link">{{ __('Ex-Officers and Employees') }}</a>
                     </li>
-                    <li class="menu-item"><a href="{{ route('sccc') }}"
+                    {{-- <li class="menu-item"><a href="{{ route('sccc') }}"
                             class="menu-link">{{ __('Citizen Charter') }}</a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
             <li

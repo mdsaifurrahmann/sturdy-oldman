@@ -16,7 +16,7 @@ class Data extends Seeder
     public function run()
     {
 
-        if (DB::table('data')->count() === 0) {
+        if (DB::table('data')->count() >= 0) {
             DB::table('data')->insert([
                 [
                     'target' => 'slider',

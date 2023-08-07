@@ -21,12 +21,23 @@ class pageIndexController extends Controller
             ->take(5)
             ->get();
 
+        $apaGrids = json_decode(DB::table('apa_categories')
+            ->join('apa_types', 'apa_categories.type_id', '=', 'apa_types.id')
+            ->select('apa_categories.*')
+            ->get());
+
+
+        $apaTypes = json_decode(DB::table('apa_types')->select('id', 'name', 'image')->get());
+
+        // dd(json_decode($apaGrids));
+
         $sliders = json_decode($data[0]->data);
         $history = json_decode($data[1]->data);
         $machinery = json_decode($data->where('target', 'machinery')->value('data'));
 
-        return view('frontend.home', compact('sliders', 'history', 'machinery', 'principal', 'notices'));
+        return view('frontend.home', compact('sliders', 'history', 'machinery', 'principal', 'notices', 'apaTypes', 'apaGrids'));
     }
+
 
     public function infrastructure()
     {
@@ -159,94 +170,116 @@ class pageIndexController extends Controller
     }
 
 
-    public function apa()
+    // public function apa($routeName)
+    // {
+    //     // $currentRoute = app('router')->current();
+
+    //     // if ($currentRoute->getName() == 'apa-gct') {
+    //     //     $id = '1';
+    //     // }
+    //     // if ($currentRoute->getName() == 'apc') {
+    //     //     $id = '2';
+    //     // }
+    //     // if ($currentRoute->getName() == 'mer') {
+    //     //     $id = '3';
+    //     // }
+    //     // if ($currentRoute->getName() == 'mssl') {
+    //     //     $id = '4';
+    //     // }
+    //     // if ($currentRoute->getName() == 'sccc') {
+    //     //     $id = '5';
+    //     // }
+    //     // if ($currentRoute->getName() == 'fpo') {
+    //     //     $id = '6';
+    //     // }
+    //     // if ($currentRoute->getName() == 'qamer') {
+    //     //     $id = '7';
+    //     // }
+    //     // if ($currentRoute->getName() == 'laws') {
+    //     //     $id = '8';
+    //     // }
+    //     // if ($currentRoute->getName() == 'nps') {
+    //     //     $id = '9';
+    //     // }
+    //     // if ($currentRoute->getName() == 'committees') {
+    //     //     $id = '10';
+    //     // }
+    //     // if ($currentRoute->getName() == 'schedule') {
+    //     //     $id = '11';
+    //     // }
+    //     // if ($currentRoute->getName() == 'reports') {
+    //     //     $id = '12';
+    //     // }
+    //     // if ($currentRoute->getName() == 'compendiums') {
+    //     //     $id = '13';
+    //     // }
+    //     // if ($currentRoute->getName() == 'innovation-team') {
+    //     //     $id = '14';
+    //     // }
+    //     // if ($currentRoute->getName() == 'aiap') {
+    //     //     $id = '15';
+    //     // }
+    //     // if ($currentRoute->getName() == 'innovative-projects') {
+    //     //     $id = '16';
+    //     // }
+    //     // if ($currentRoute->getName() == 'roaa') {
+    //     //     $id = '17';
+    //     // }
+    //     // if ($currentRoute->getName() == 'appeal-form') {
+    //     //     $id = '18';
+    //     // }
+    //     // if ($currentRoute->getName() == 'vdi') {
+    //     //     $id = '19';
+    //     // }
+    //     // if ($currentRoute->getName() == 'guidelines') {
+    //     //     $id = '20';
+    //     // }
+    //     // if ($currentRoute->getName() == 'appellate-officers') {
+    //     //     $id = '21';
+    //     // }
+    //     // if ($currentRoute->getName() == 'cer') {
+    //     //     $id = '22';
+    //     // }
+    //     // if ($currentRoute->getName() == 'complaint-filing') {
+    //     //     $id = '23';
+    //     // }
+    //     // if ($currentRoute->getName() == 'complaint-laws') {
+    //     //     $id = '24';
+    //     // }
+
+    //     $route_names = json_decode(DB::table('apa_categories')->select('route_name')->get());
+
+    //     $data = DB::table('apa')
+    //         ->join('apa_categories', 'apa.category_id', '=', 'apa_categories.id')
+    //         ->where('apa_categories.route_name', $route_name)
+    //         ->select('apa.*', 'apa_categories.name as name')
+    //         ->latest('created_at')
+    //         ->paginate(10);
+
+    //     // $name = DB::table('apa_items')->where('id', $id)->value('name');
+
+    //     return view('frontend.pages.apa.apa-list', ['route_names' => $route_names], compact('data'));
+    // }
+
+
+    public function apa($routeName)
     {
-        $currentRoute = app('router')->current();
+        $routeNames = DB::table('apa_categories')->pluck('route_name');
 
-        if ($currentRoute->getName() == 'apa-gct') {
-            $id = '1';
+        if (!$routeNames->contains($routeName)) {
+            abort(404);
         }
-        if ($currentRoute->getName() == 'apc') {
-            $id = '2';
-        }
-        if ($currentRoute->getName() == 'mer') {
-            $id = '3';
-        }
-        if ($currentRoute->getName() == 'mssl') {
-            $id = '4';
-        }
-        if ($currentRoute->getName() == 'sccc') {
-            $id = '5';
-        }
-        if ($currentRoute->getName() == 'fpo') {
-            $id = '6';
-        }
-        if ($currentRoute->getName() == 'qamer') {
-            $id = '7';
-        }
-        if ($currentRoute->getName() == 'laws') {
-            $id = '8';
-        }
-        if ($currentRoute->getName() == 'nps') {
-            $id = '9';
-        }
-        if ($currentRoute->getName() == 'committees') {
-            $id = '10';
-        }
-        if ($currentRoute->getName() == 'schedule') {
-            $id = '11';
-        }
-        if ($currentRoute->getName() == 'reports') {
-            $id = '12';
-        }
-        if ($currentRoute->getName() == 'compendiums') {
-            $id = '13';
-        }
-        if ($currentRoute->getName() == 'innovation-team') {
-            $id = '14';
-        }
-        if ($currentRoute->getName() == 'aiap') {
-            $id = '15';
-        }
-        if ($currentRoute->getName() == 'innovative-projects') {
-            $id = '16';
-        }
-        if ($currentRoute->getName() == 'roaa') {
-            $id = '17';
-        }
-        if ($currentRoute->getName() == 'appeal-form') {
-            $id = '18';
-        }
-        if ($currentRoute->getName() == 'vdi') {
-            $id = '19';
-        }
-        if ($currentRoute->getName() == 'guidelines') {
-            $id = '20';
-        }
-        if ($currentRoute->getName() == 'appellate-officers') {
-            $id = '21';
-        }
-        if ($currentRoute->getName() == 'cer') {
-            $id = '22';
-        }
-        if ($currentRoute->getName() == 'complaint-filing') {
-            $id = '23';
-        }
-        if ($currentRoute->getName() == 'complaint-laws') {
-            $id = '24';
-        }
-
 
         $data = DB::table('apa')
-            ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
-            ->where('apa_items.id', $id)
-            ->select('apa.*', 'apa_items.name as name')
+            ->join('apa_categories', 'apa.category_id', '=', 'apa_categories.id')
+            ->where('apa_categories.route_name', $routeName)
+            ->select('apa.*', 'apa_categories.name as name')
             ->latest('created_at')
             ->paginate(10);
 
-        $name = DB::table('apa_items')->where('id', $id)->value('name');
+        $name = DB::table('apa_categories')->where('route_name', $routeName)->value('name');
 
-        return view('frontend.pages.apa.apa-list', compact('data', 'name'));
+        return view('frontend.pages.apa.apa-list', ['route_names' => $routeNames, 'data' => $data, 'name' => $name]);
     }
 
     public function apaDownload($name)
@@ -257,7 +290,12 @@ class pageIndexController extends Controller
 
     public function apaSingle($id, $name)
     {
-        $apa = DB::table('apa')->where('id', $id)->get()->first();
+        $apa = DB::table('apa')
+            ->where('apa.id', $id)
+            ->join('apa_categories', 'apa.category_id', '=', 'apa_categories.id')
+            ->select('apa.*', 'apa_categories.name as category_name')
+            ->get()
+            ->first();
         $attachments = json_decode($apa->file);
         return view('frontend.pages.apa.single', compact('name', 'apa', 'attachments'));
     }

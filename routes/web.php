@@ -42,31 +42,38 @@ Route::get('gallery', [pageIndexController::class, 'gallery'])->name('gallery');
 Route::get('album/{id}/{name}', [pageIndexController::class, 'gallerySingle'])->name('album');
 Route::get('contact', [pageIndexController::class, 'contact'])->name('contact');
 
+
+
+// apa routes
+
+Route::get('apa/{routeName}', [pageIndexController::class, 'apa'])->name('apa.dynamic');
+
+
 //APA Routes
-Route::get('apa-gct', [pageIndexController::class, 'apa'])->name('apa-gct');
-Route::get('apc', [pageIndexController::class, 'apa'])->name('apc');
-Route::get('mer', [pageIndexController::class, 'apa'])->name('mer');
-Route::get('mssl', [pageIndexController::class, 'apa'])->name('mssl');
-Route::get('sccc', [pageIndexController::class, 'apa'])->name('sccc');
-Route::get('fpo', [pageIndexController::class, 'apa'])->name('fpo');
-Route::get('qamer', [pageIndexController::class, 'apa'])->name('qamer');
-Route::get('laws', [pageIndexController::class, 'apa'])->name('laws');
-Route::get('nps', [pageIndexController::class, 'apa'])->name('nps');
-Route::get('committees', [pageIndexController::class, 'apa'])->name('committees');
-Route::get('schedule', [pageIndexController::class, 'apa'])->name('schedule');
-Route::get('reports', [pageIndexController::class, 'apa'])->name('reports');
-Route::get('compendiums', [pageIndexController::class, 'apa'])->name('compendiums');
-Route::get('innovation-team', [pageIndexController::class, 'apa'])->name('innovation-team');
-Route::get('aiap', [pageIndexController::class, 'apa'])->name('aiap');
-Route::get('innovative-projects', [pageIndexController::class, 'apa'])->name('innovative-projects');
-Route::get('roaa', [pageIndexController::class, 'apa'])->name('roaa');
-Route::get('appeal-form', [pageIndexController::class, 'apa'])->name('appeal-form');
-Route::get('vdi', [pageIndexController::class, 'apa'])->name('vdi');
-Route::get('guidelines', [pageIndexController::class, 'apa'])->name('guidelines');
-Route::get('appellate-officers', [pageIndexController::class, 'apa'])->name('appellate-officers');
-Route::get('cer', [pageIndexController::class, 'apa'])->name('cer');
-Route::get('complaint-filing', [pageIndexController::class, 'apa'])->name('complaint-filing');
-Route::get('complaint-laws', [pageIndexController::class, 'apa'])->name('complaint-laws');
+// Route::get('apa-gct', [pageIndexController::class, 'apa'])->name('apa-gct');
+// Route::get('apc', [pageIndexController::class, 'apa'])->name('apc');
+// Route::get('mer', [pageIndexController::class, 'apa'])->name('mer');
+// Route::get('mssl', [pageIndexController::class, 'apa'])->name('mssl');
+// Route::get('sccc', [pageIndexController::class, 'apa'])->name('sccc');
+// Route::get('fpo', [pageIndexController::class, 'apa'])->name('fpo');
+// Route::get('qamer', [pageIndexController::class, 'apa'])->name('qamer');
+// Route::get('laws', [pageIndexController::class, 'apa'])->name('laws');
+// Route::get('nps', [pageIndexController::class, 'apa'])->name('nps');
+// Route::get('committees', [pageIndexController::class, 'apa'])->name('committees');
+// Route::get('schedule', [pageIndexController::class, 'apa'])->name('schedule');
+// Route::get('reports', [pageIndexController::class, 'apa'])->name('reports');
+// Route::get('compendiums', [pageIndexController::class, 'apa'])->name('compendiums');
+// Route::get('innovation-team', [pageIndexController::class, 'apa'])->name('innovation-team');
+// Route::get('aiap', [pageIndexController::class, 'apa'])->name('aiap');
+// Route::get('innovative-projects', [pageIndexController::class, 'apa'])->name('innovative-projects');
+// Route::get('roaa', [pageIndexController::class, 'apa'])->name('roaa');
+// Route::get('appeal-form', [pageIndexController::class, 'apa'])->name('appeal-form');
+// Route::get('vdi', [pageIndexController::class, 'apa'])->name('vdi');
+// Route::get('guidelines', [pageIndexController::class, 'apa'])->name('guidelines');
+// Route::get('appellate-officers', [pageIndexController::class, 'apa'])->name('appellate-officers');
+// Route::get('cer', [pageIndexController::class, 'apa'])->name('cer');
+// Route::get('complaint-filing', [pageIndexController::class, 'apa'])->name('complaint-filing');
+// Route::get('complaint-laws', [pageIndexController::class, 'apa'])->name('complaint-laws');
 
 // APA Single
 Route::get('apa/details/{id}/{name}', [pageIndexController::class, 'apaSingle'])->name('apa-single');
@@ -136,6 +143,18 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('edit/{id}', [APAContoller::class, 'edit'])->name('edit-apa');
         Route::post('update-file/{id}/{key}', [APAContoller::class, 'updateFile'])->name('update-apa-file');
         Route::post('update/{id}', [APAContoller::class, 'update'])->name('update-apa');
+
+        // add type
+        Route::get('add-type', [APAContoller::class, 'addTypeView'])->name('add-type-view');
+        Route::get('type-update/{id}', [APAContoller::class, 'typeEditView'])->name('type-update-view');
+
+        Route::post('add-types', [APAContoller::class, 'addType'])->name('add-type');
+        Route::delete('apa-type-delete/{id}', [APAContoller::class, 'typeDestroy'])->name('apa-type-delete');
+        Route::patch('update-type/{id}', [APAContoller::class, 'editType'])->name('type-update');
+
+        // add category
+        Route::get('add-category', [APAContoller::class, 'addCategoryView'])->name('add-category-view');
+        Route::post('add_category', [APAContoller::class, 'addCategory'])->name('add-category');
     });
 
     Route::prefix('gallery')->group(function () {

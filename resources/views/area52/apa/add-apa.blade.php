@@ -58,8 +58,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('add-apa') }}" method="POST" class="apa-repeater"
-                  enctype="multipart/form-data">
+            <form action="{{ route('add-apa') }}" method="POST" class="apa-repeater" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row d-flex align-items-end">
@@ -67,33 +66,33 @@
                         <div class="mb-1">
                             <label class="form-label" for="title">Title</label>
                             <input type="text" class="form-control" id="title" aria-describedby="title"
-                                   placeholder="Ex: Welcome to DTI" name="title" value="{{ old('title') }}"/>
+                                placeholder="Ex: Welcome to DTI" name="title" value="{{ old('title') }}" required />
                         </div>
                     </div>
                     <div class="col-md-3 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="fp-default">Date</label>
                             <input type="text" id="fp-default" class="form-control flatpickr-basic"
-                                   placeholder="YYYY-MM-DD" name="date" value="{{ old('date') }}"/>
+                                placeholder="YYYY-MM-DD" name="date" value="{{ old('date') }}" required />
                         </div>
                     </div>
                     <div class="col-md-3 col-12 position-relative">
                         <div class="mb-1">
                             <label class="form-label" for="time">Time</label>
                             <input type="text" id="fp-time" class="form-control flatpickr-time text-start"
-                                   placeholder="8:00 AM" name="time" value="{{ old('time') }}"/>
+                                placeholder="8:00 AM" name="time" value="{{ old('time') }}" required />
                         </div>
                     </div>
                     <div class="col-md-3 col-12 position-relative">
                         <div class="mb-1">
                             <label class="form-label" for="select2-nested">Category</label>
-                            <select name="category_id" id="select2-nested" class="form-select select2">
+                            <select name="category_id" id="select2-nested" class="form-select select2" required>
                                 <option value="">Select Category</option>
-                                @foreach($categories as $category)
-                                    <optgroup label="{{$category->name}}">
-                                        @foreach($items as $item)
-                                            @if($item->category_id == $category->id)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @foreach ($categories as $category)
+                                    <optgroup label="{{ $category->name }}">
+                                        @foreach ($items as $item)
+                                            @if ($item->type_id == $category->id)
+                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endif
                                         @endforeach
                                     </optgroup>
@@ -106,32 +105,32 @@
                         <div class="mb-1">
                             <label class="form-label" for="description">Description</label>
                             <textarea type="text" class="form-control" id="description" aria-describedby="description"
-                                      placeholder="Ex: Welcome to DTI" name="desc">{{ old('desc') }}</textarea>
+                                placeholder="Ex: Welcome to DTI" name="desc" required>{{ old('desc') }}</textarea>
                         </div>
                     </div>
                 </div>
 
-                <hr/>
+                <hr />
                 <div data-repeater-list="apa">
                     <div data-repeater-item>
                         <div class="row d-flex align-items-end">
                             <div class="col-md-10 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="attachment">Attachment</label>
-                                    <input type="file" class="form-control" id="attachment" name="attach"/>
+                                    <input type="file" class="form-control" id="attachment" name="attach" required />
                                 </div>
                             </div>
                             <div class="col-md-2 col-12">
                                 <div class="mb-1">
                                     <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete
-                                            type="button">
+                                        type="button">
                                         <i data-feather="x" class="me-25"></i>
                                         <span>Delete</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <hr/>
+                        <hr />
                     </div>
                 </div>
                 <div class="row">

@@ -21,7 +21,7 @@ return new class extends Migration {
             $table->string('time');
             $table->json('file');
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('apa_items');
+            $table->foreign('category_id')->references('id')->on('apa_categories');
         });
     }
 

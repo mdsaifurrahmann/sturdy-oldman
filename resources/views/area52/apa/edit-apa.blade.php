@@ -41,7 +41,7 @@
         </div>
         <div class="card-body">
             <form action="{{ route('update-apa', $apa->id) }}" method="POST" class="apa-repeater"
-                  enctype="multipart/form-data">
+                enctype="multipart/form-data">
                 @csrf
 
                 <div class="row d-flex align-items-end">
@@ -49,21 +49,21 @@
                         <div class="mb-1">
                             <label class="form-label" for="title">Title</label>
                             <input type="text" class="form-control" id="title" aria-describedby="title"
-                                   placeholder="Ex: Welcome to DTI" name="title" value="{{ $apa->title }}"/>
+                                placeholder="Ex: Welcome to DTI" name="title" value="{{ $apa->title }}" />
                         </div>
                     </div>
                     <div class="col-md-3 col-12">
                         <div class="mb-1">
                             <label class="form-label" for="fp-default">Date</label>
                             <input type="text" id="fp-default" class="form-control flatpickr-basic"
-                                   placeholder="YYYY-MM-DD" name="date" value="{{ $apa->date }}"/>
+                                placeholder="YYYY-MM-DD" name="date" value="{{ $apa->date }}" />
                         </div>
                     </div>
                     <div class="col-md-3 col-12 position-relative">
                         <div class="mb-1">
                             <label class="form-label" for="time">Time</label>
                             <input type="text" id="fp-time" class="form-control flatpickr-time text-start"
-                                   placeholder="8:00 AM" name="time" value="{{ $apa->time }}"/>
+                                placeholder="8:00 AM" name="time" value="{{ $apa->time }}" />
                         </div>
                     </div>
                     <div class="col-md-3 col-12 position-relative">
@@ -71,18 +71,19 @@
                             <label class="form-label" for="select2-nested">Category</label>
                             <select name="category_id" id="select2-nested" class="form-select select2">
 
-                                {{--                                @foreach($categories as $key => $cat)--}}
-                                {{--                                    <option--}}
-                                {{--                                        value="{{ $cat->id }}" {{ $cat->id == $notice->category_id ? 'selected' : '' }}>{{ $cat->name }}--}}
-                                {{--                                    </option>--}}
-                                {{--                                @endforeach--}}
+                                {{--                                @foreach ($categories as $key => $cat) --}}
+                                {{--                                    <option --}}
+                                {{--                                        value="{{ $cat->id }}" {{ $cat->id == $notice->category_id ? 'selected' : '' }}>{{ $cat->name }} --}}
+                                {{--                                    </option> --}}
+                                {{--                                @endforeach --}}
 
-                                @foreach($categories as $category)
-                                    <optgroup label="{{$category->name}}">
-                                        @foreach($items as $item)
-                                            @if($item->category_id == $category->id)
-                                                <option
-                                                    value="{{$item->id}}" {{$item->id == $apa->category_id ? 'selected' : ''}}>{{$item->name}}</option>
+                                @foreach ($categories as $category)
+                                    <optgroup label="{{ $category->name }}">
+                                        @foreach ($items as $item)
+                                            @if ($item->type_id == $category->id)
+                                                <option value="{{ $item->id }}"
+                                                    {{ $item->id == $apa->category_id ? 'selected' : '' }}>
+                                                    {{ $item->name }}</option>
                                             @endif
                                         @endforeach
                                     </optgroup>
@@ -95,32 +96,32 @@
                         <div class="mb-1">
                             <label class="form-label" for="description">Description</label>
                             <textarea type="text" class="form-control" id="description" aria-describedby="description"
-                                      placeholder="Ex: Welcome to DTI" name="desc">{{ $apa->desc }}</textarea>
+                                placeholder="Ex: Welcome to DTI" name="desc">{{ $apa->desc }}</textarea>
                         </div>
                     </div>
                 </div>
 
-                <hr/>
+                <hr />
                 <div data-repeater-list="apa">
                     <div data-repeater-item>
                         <div class="row d-flex align-items-end">
                             <div class="col-md-10 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="attachment">Attachment</label>
-                                    <input type="file" class="form-control" id="attachment" name="attach"/>
+                                    <input type="file" class="form-control" id="attachment" name="attach" />
                                 </div>
                             </div>
                             <div class="col-md-2 col-12">
                                 <div class="mb-1">
                                     <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete
-                                            type="button">
+                                        type="button">
                                         <i data-feather="x" class="me-25"></i>
                                         <span>Delete</span>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <hr/>
+                        <hr />
                     </div>
                 </div>
                 <div class="row">
@@ -147,20 +148,19 @@
         <div class="card-body">
             <div>
                 <div class="row d-flex align-items-end">
-                    @foreach($attachment as $key => $file)
+                    @foreach ($attachment as $key => $file)
                         <div class="col-md-10 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="attachment">Attachment</label>
                                 <input type="text" class="form-control" id="attachment" name="attach"
-                                       value="{{$file}}"/>
+                                    value="{{ $file }}" />
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
-                                <form action="{{route('update-apa-file', [$apa->id, $key])}}" method="POST">
+                                <form action="{{ route('update-apa-file', [$apa->id, $key]) }}" method="POST">
                                     @csrf
-                                    <button class="btn btn-outline-danger text-nowrap px-1"
-                                            type="submit">
+                                    <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
                                         <i data-feather="x" class="me-25"></i>
                                         <span>Delete</span>
                                     </button>
@@ -169,7 +169,7 @@
                         </div>
                     @endforeach
                 </div>
-                <hr/>
+                <hr />
             </div>
         </div>
     </div>

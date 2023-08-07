@@ -57,6 +57,29 @@ class apaItems extends Seeder
             'আইন/বিধি/নীতিমালা/পরিপত্র'
         ];
 
+        $items7 = [
+            'বস্ত্র আইন, ২০২৩',
+            'টেক্সটাইল শিক্ষা প্রতিষ্ঠান পরিদর্শন/পরিবীক্ষণ নির্দেশিকা-২০২০ (খসড়া)',
+            'বায়িং হাউজ নিবন্ধন প্রজ্ঞাপন',
+            'আইন ও বিধি'
+        ];
+
+        $items8 = [
+            'প্রজ্ঞাপন',
+            'পাসপোর্টের অনাপত্তিপত্র',
+            'নোটিশ/আদেশ/চিঠিপত্র',
+            'ফরম'
+        ];
+
+        $items9 = [
+            'আমদানী নীতি ২০১৫-১৮',
+            'পরিদর্শন প্রতিবেদন',
+            'আমাদের প্রকাশনা',
+            'বার্ষিক প্রতিবেদন'
+        ];
+
+
+
         if (DB::table('apa_items')->count() === 0) {
 
 
@@ -64,6 +87,7 @@ class apaItems extends Seeder
                 DB::table('apa_items')->insert([
                     'name' => $item,
                     'category_id' => 1,
+                    'route' => ''
                 ]);
             }
 
@@ -71,6 +95,7 @@ class apaItems extends Seeder
                 DB::table('apa_items')->insert([
                     'name' => $item,
                     'category_id' => 2,
+                    'route' => ''
                 ]);
             }
 
@@ -78,6 +103,7 @@ class apaItems extends Seeder
                 DB::table('apa_items')->insert([
                     'name' => $item,
                     'category_id' => 3,
+                    'route' => ''
                 ]);
             }
 
@@ -85,6 +111,7 @@ class apaItems extends Seeder
                 DB::table('apa_items')->insert([
                     'name' => $item,
                     'category_id' => 4,
+                    'route' => ''
                 ]);
             }
 
@@ -92,6 +119,7 @@ class apaItems extends Seeder
                 DB::table('apa_items')->insert([
                     'name' => $item,
                     'category_id' => 5,
+                    'route' => ''
                 ]);
             }
 
@@ -99,11 +127,33 @@ class apaItems extends Seeder
                 DB::table('apa_items')->insert([
                     'name' => $item,
                     'category_id' => 6,
+                    'route' => ''
                 ]);
             }
 
+            foreach ($items7 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 7,
+                    'route' => ''
+                ]);
+            }
+
+            foreach ($items8 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 8,
+                    'route' => ''
+                ]);
+            }
+
+            foreach ($items9 as $item) {
+                DB::table('apa_items')->insert([
+                    'name' => $item,
+                    'category_id' => 9,
+                    'route' => ''
+                ]);
+            }
         }
-
-
     }
 }

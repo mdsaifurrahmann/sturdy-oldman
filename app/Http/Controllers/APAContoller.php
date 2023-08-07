@@ -22,10 +22,10 @@ class APAContoller extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $categories = DB::table('apa_categories')->get();
-        $items = DB::table('apa_items')
-            ->join('apa_categories', 'apa_items.category_id', '=', 'apa_categories.id')
-            ->select('apa_items.*', 'apa_categories.name as category_name')
+        $categories = DB::table('apa_types')->get();
+        $items = DB::table('apa_categories')
+            ->join('apa_types', 'apa_categories.type_id', '=', 'apa_types.id')
+            ->select('apa_categories.*', 'apa_types.name as category_name')
             ->get();
 
 
@@ -43,8 +43,8 @@ class APAContoller extends Controller
         }
 
         $apa = DB::table('apa')
-            ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
-            ->select('apa.*', 'apa_items.name as item_name')
+            ->join('apa_categories', 'apa.category_id', '=', 'apa_categories.id')
+            ->select('apa.*', 'apa_categories.name as item_name')
             ->latest('created_at')
             ->paginate(10);
 
@@ -105,7 +105,7 @@ class APAContoller extends Controller
             if ($request->hasFile('apa.' . $key . '.attach')) {
                 $request->validate(
                     [
-                        'apa.' . $key . '.attach' => 'file|mimes:pdf,doc,docx|max:10240',
+                        'apa.' . $key . '.attach' => 'file|mimes:pdf,doc,docx,jpg,png,jpeg|max:10240',
                     ],
                     [
                         'apa.' . $key . '.attach.file' => 'Attachment must be a file',
@@ -152,15 +152,15 @@ class APAContoller extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $categories = DB::table('apa_categories')->get();
-        $items = DB::table('apa_items')
-            ->join('apa_categories', 'apa_items.category_id', '=', 'apa_categories.id')
-            ->select('apa_items.*', 'apa_categories.name as category_name')
+        $categories = DB::table('apa_types')->get();
+        $items = DB::table('apa_categories')
+            ->join('apa_types', 'apa_categories.type_id', '=', 'apa_types.id')
+            ->select('apa_categories.*', 'apa_types.name as category_name')
             ->get();
 
         $apa = DB::table('apa')
-            ->join('apa_items', 'apa.category_id', '=', 'apa_items.id')
-            ->select('apa.*', 'apa_items.name as items_name')
+            ->join('apa_categories', 'apa.category_id', '=', 'apa_categories.id')
+            ->select('apa.*', 'apa_categories.name as items_name')
             ->where('apa.id', $id)
             ->first();
 
@@ -305,8 +305,6 @@ class APAContoller extends Controller
                     $data[] = $filename;
 
                     $merge = array_merge($retriveFiles, $data);
-
-
                 }
             }
         } else {
@@ -327,5 +325,204 @@ class APAContoller extends Controller
         DB::table('apa')->where('id', $id)->update($gather);
 
         return redirect()->back()->with('success', 'APA updated successfully');
+    }
+
+    public function addTypeView()
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $apa_type = DB::table('apa_types')->orderBy('created_at')->latest('created_at')->paginate(20);
+
+        return view('area52.apa.add-type', compact('apa_type'));
+    }
+
+    public function addType(Request $request)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $request->validate(
+            [
+                'type' => 'required|string',
+                'image' => 'required|file|mimes:png,jpg,svg|max:512'
+            ],
+            [
+                'type.required' => 'APA Type is required',
+                'image.required' => 'Image is required',
+                'image.file' => 'Image must be a file',
+                'image.mimes' => 'Image must should be png, jpg or svg',
+                'image.max' => 'Maximum image upload size is 512KB'
+            ]
+        );
+
+        $type = $request->type;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+
+            $filename = time() . Str::random(16) . '-apa-type-' . Str::replace(' ', '-', $file->getClientOriginalName());
+
+            $destinationPath = public_path() . '/apa/types';
+
+            $file->move($destinationPath, $filename);
+        }
+
+
+        $gather = [
+            'name' => $type,
+            'image' => $filename,
+            'updated_at' => now(),
+            'created_at' => now(),
+        ];
+
+        DB::table('apa_types')->insert($gather);
+
+        return redirect()->back()->with('success', 'APA Type added successfully');
+    }
+
+    public function typeEditView($id)
+    {
+        $retrieve = DB::table('apa_types')->where('id', $id)->first();
+
+        return view('area52.apa.edit-type', compact('retrieve'));
+    }
+
+    public function editType(Request $request, $id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $retrieve = DB::table('apa_types')->where('id', $id)->first();
+
+        $request->validate(
+            [
+                'type' => 'required|string',
+                'image' => 'file|mimes:png,jpg,svg|max:512'
+            ],
+            [
+                'type.required' => 'APA Type is required',
+                'image.file' => 'Image must be a file',
+                'image.mimes' => 'Image must should be png, jpg or svg',
+                'image.max' => 'Maximum image upload size is 512KB'
+            ]
+        );
+
+        $type = $request->type;
+
+        if ($request->hasFile('image')) {
+
+            $retrieve = DB::table('apa_types')->where('id', $id)->value('image');
+            // delete single file
+            if (File::exists(public_path() . '/apa/types/' . $retrieve)) {
+                File::delete(public_path() . '/apa/types/' . $retrieve);
+            }
+
+            $file = $request->file('image');
+
+            $filename = time() . Str::random(16) . '-apa-type-' . Str::replace(' ', '-', $file->getClientOriginalName());
+
+            $destinationPath = public_path() . '/apa/types';
+
+            $file->move($destinationPath, $filename);
+        } else {
+            $filename = DB::table('apa_types')->where('id', $id)->value('image');
+        }
+
+        $gather = [
+            'name' => $type,
+            'image' => $filename,
+            'updated_at' => now(),
+        ];
+
+        DB::table('apa_types')->where('id', $id)->update($gather);
+
+        return redirect()->route('add-type-view')->with('success', 'APA Type updated successfully', compact('retrieve'));
+    }
+
+    public function typeDestroy($id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $retrieve = DB::table('apa_types')->where('id', $id)->value('image');
+        // delete single file
+        if (File::exists(public_path() . '/apa/types/' . $retrieve)) {
+            File::delete(public_path() . '/apa/types/' . $retrieve);
+        }
+
+        DB::table('apa_types')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'APA Type deleted successfully');
+    }
+
+    public function addCategoryView()
+    {
+        $retrieve = DB::table('apa_types')->get();
+        return view('area52.apa.add-category', compact('retrieve'));
+    }
+
+    public function addCategory(Request $request)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $request->validate(
+            [
+                'cat_name' => "required|string",
+                'type_id' => "required|int",
+                'route_name' => 'string|required|unique:apa_categories,route_name'
+            ],
+            [
+                'cat_name.required' => "Category name is required!",
+                'type_id.required' => 'APA Type is required!',
+                'route_name.required' => 'Route Name is required',
+                'cat_name.string' => 'Category Name must be string',
+                'type_id.int' => 'APA type value must be int',
+                'route_name.string' => 'Route Name must be string',
+                'route_name.unique' => 'Route name must be unique and related to your category name'
+            ]
+        );
+
+        $cat_name = $request->cat_name;
+        $type = $request->type_id;
+        $route_name = $request->route_name;
+
+        $data = [
+            'name' => $cat_name,
+            'type_id' => $type,
+            'route_name' => $route_name,
+            'created_at' => now(),
+            'updated_at' => now()
+        ];
+
+        \DB::table('apa_categories')->insert($data);
+
+        return redirect()->back()->with('success', 'APA Category created successfully!');
     }
 }

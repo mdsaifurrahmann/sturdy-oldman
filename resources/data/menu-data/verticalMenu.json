@@ -106,6 +106,25 @@
             ]
         },
         {
+            "name": "APA Categories",
+            "icon": "list",
+            "slug": "",
+            "submenu": [
+                {
+                    "name": "Add APA Type",
+                    "icon": "plus",
+                    "slug": "add-type-view",
+                    "url": "authenticated/govern/apa/add-type"
+                },
+                {
+                    "name": "Add APA Category",
+                    "icon": "plus",
+                    "slug": "add-category-view",
+                    "url": "authenticated/govern/apa/add-category"
+                }
+            ]
+        },
+        {
             "name": "APA",
             "icon": "bar-chart-2",
             "slug": "",

@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,17 +13,19 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('apa_categories', function (Blueprint $table) {
+        Schema::create('apa_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('image');
             $table->timestamps();
         });
 
-        Schema::create('apa_items', function (Blueprint $table) {
+        Schema::create('apa_categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('apa_categories');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('apa_types');
+            $table->string('route_name')->unique();
             $table->timestamps();
         });
     }
@@ -34,7 +37,7 @@ return new class extends Migration {
      */
     public function down()
     {
+        Schema::dropIfExists('apa_types');
         Schema::dropIfExists('apa_categories');
-        Schema::dropIfExists('apa_items');
     }
 };

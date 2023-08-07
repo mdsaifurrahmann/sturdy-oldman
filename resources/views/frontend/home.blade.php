@@ -17,15 +17,18 @@
             @if ($sliders)
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
-                        <img
-                            src="{{!Illuminate\Support\Facades\File::exists('images/slider/' . $slide->image) ? "" : "data:image/png;base64," . base64_encode(file_get_contents(public_path('images/slider/' . $slide->image)))}}"
+                        <img src="{{ !Illuminate\Support\Facades\File::exists('images/slider/' . $slide->image) ? '' : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/slider/' . $slide->image))) }}"
                             alt="{{ $slide->title }}" class="object-cover w-full h-[inherit]">
 
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                         <div class="absolute top-[22rem]">
                             <div class="p-8">
-                                <h1 class="text-xl font-bold text-white {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">{{ __($slide->title) }}</h1>
-                                <p class="text-base text-white {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">{{ $slide->desc }}</p>
+                                <h1
+                                    class="text-xl font-bold text-white {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
+                                    {{ __($slide->title) }}</h1>
+                                <p
+                                    class="text-base text-white {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
+                                    {{ $slide->desc }}</p>
                             </div>
                         </div>
                     </div>
@@ -33,7 +36,7 @@
             @else
                 <div class="swiper-slide">
                     <img src="{{ asset('images/institute/front_view.jpg') }}" alt="front_view"
-                         class="object-cover w-full h-[inherit]">
+                        class="object-cover w-full h-[inherit]">
 
                     <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                     <div class="absolute top-[22rem]">
@@ -55,12 +58,14 @@
 
     {{-- Notice Board --}}
     <div class="mb-4 card">
-        <h4 class="card__title {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">{{__("Latest Notices:")}}</h4>
+        <h4 class="card__title {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
+            {{ __('Latest Notices:') }}</h4>
         <ul class="flex flex-col justify-center gap-3 md:px-4 arrow">
 
-            @foreach($notices as $notice)
-                <li class="notice-item {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
-                    <a href="{{route('notice-details', [$notice->id, $notice->title])}}">
+            @foreach ($notices as $notice)
+                <li
+                    class="notice-item {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
+                    <a href="{{ route('notice-details', [$notice->id, $notice->title]) }}">
                         {{ __($notice->title) }}
                     </a>
                 </li>
@@ -70,89 +75,129 @@
         </ul>
 
         <a href="{{ route('notices') }}"
-           class="btn bg-amber-400 self-end mt-6 text-sm {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">{{__("View All Notices")}}</a>
+            class="btn bg-amber-400 self-end mt-6 text-sm {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">{{ __('View All Notices') }}</a>
     </div>
 
     {{-- APA --}}
     <div
-        class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
+        class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
 
-        <x-apa.apa-grid title="জাতীয় শুদ্ধাচার কৌশল"
-                        src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/nis.png'))) }}">
-            <x-apa.apa-item action="{{route('nps')}}">জাতীয় শুদ্ধাচার কৌশল</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('committees')}}">কমিটিসমূহ</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('schedule')}}">কর্মপরিকল্পনা</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('reports')}}">প্রতিবেদনসমূহ</x-apa.apa-item>
+
+        @foreach ($apaTypes as $type)
+            <x-apa.apa-grid title="{{ $type->name }}"
+                src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('apa/types/' . $type->image))) }}">
+
+
+                @foreach ($apaGrids as $gridItem)
+                    @if ($gridItem->type_id == $type->id)
+                        <x-apa.apa-item
+                            action="{{ route('apa.dynamic', ['routeName' => $gridItem->route_name]) }}">{{ $gridItem->name }}</x-apa.apa-item>
+                    @endif
+                @endforeach
+            </x-apa.apa-grid>
+        @endforeach
+
+
+        {{-- <x-apa.apa-grid title="জাতীয় শুদ্ধাচার কৌশল"
+            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/nis.png'))) }}">
+            <x-apa.apa-item action="{{ route('nps') }}">জাতীয় শুদ্ধাচার কৌশল</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('committees') }}">কমিটিসমূহ</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('schedule') }}">কর্মপরিকল্পনা</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('reports') }}">প্রতিবেদনসমূহ</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)"
-                        src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/citizen.svg'))) }}">
-            <x-apa.apa-item action="{{route('sccc')}}">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('fpo')}}">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('qamer')}}">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('laws')}}">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</x-apa.apa-item>
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/citizen.svg'))) }}">
+            <x-apa.apa-item action="{{ route('sccc') }}">সেবা প্রদান প্রতিশ্রুতি (সিটিজেনস চার্টার)</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('fpo') }}">ফোকাল পয়েন্ট কর্মকর্তা/পরিবীক্ষণ কমিটি</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('qamer') }}">ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('laws') }}">আইন/বিধি/নীতিমালা/পরিপত্র/নির্দেশিকা/প্রজ্ঞাপন</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="বার্ষিক কর্মসম্পাদন চুক্তি"
-                        src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/apa.png'))) }}">
-            <x-apa.apa-item action="{{route('apa-gct')}}">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('apc')}}">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('mer')}}">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('mssl')}}">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
+            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/apa/apa.png'))) }}">
+            <x-apa.apa-item action="{{ route('apa-gct') }}">এপিএ নির্দেশিকা/পরিপত্র/এপিএ টিম</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('apc') }}">বার্ষিক কর্মসম্পাদন চুক্তিসমূহ</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('mer') }}">পরিবীক্ষণ ও মূল্যায়ন প্রতিবেদন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('mssl') }}">এপিএ এমএস সফটওয়্যার লিংক</x-apa.apa-item>
         </x-apa.apa-grid>
 
 
         <x-apa.apa-grid title="অভিযোগ প্রতিকার ব্যবস্থাপনা"
-                        src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/ask.svg'))) }}">
-            <x-apa.apa-item action="{{route('appellate-officers')}}">অনিক ও আপিল কর্মকর্তাগণ</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('cer')}}">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/ask.svg'))) }}">
+            <x-apa.apa-item action="{{ route('appellate-officers') }}">অনিক ও আপিল কর্মকর্তাগণ</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('cer') }}">মাসিক/ত্রৈমাসিক/বার্ষিক পরিবীক্ষণ/মূল্যায়ন
                 প্রতিবেদন
             </x-apa.apa-item>
-            <x-apa.apa-item action="{{route('complaint-filing')}}">অভিযোগ দাখিল (অনলাইনে আবেদন)</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('complaint-laws')}}">আইন/বিধি/নীতিমালা/পরিপত্র</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('complaint-filing') }}">অভিযোগ দাখিল (অনলাইনে আবেদন)</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('complaint-laws') }}">আইন/বিধি/নীতিমালা/পরিপত্র</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="তথ্য অধিকার"
-                        src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/info.svg'))) }}">
-            <x-apa.apa-item action="{{route('roaa')}}">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল কর্তৃপক্ষ</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('appeal-form')}}">আবেদন ও আপিল ফরম</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('vdi')}}">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('guidelines')}}">আইন/বিধি/কমিটি/নির্দেশিকা</x-apa.apa-item>
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/info.svg'))) }}">
+            <x-apa.apa-item action="{{ route('roaa') }}">দায়িত্বপ্রাপ্ত কর্মকর্তা ও আপীল কর্তৃপক্ষ</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('appeal-form') }}">আবেদন ও আপিল ফরম</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('vdi') }}">স্বপ্রণোদিতভাবে প্রকাশযোগ্য তথ্য</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('guidelines') }}">আইন/বিধি/কমিটি/নির্দেশিকা</x-apa.apa-item>
         </x-apa.apa-grid>
 
         <x-apa.apa-grid title="উদ্ভাবনী কার্যক্রম"
-                        src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/innovation.svg'))) }}">
-            <x-apa.apa-item action="{{route('compendiums')}}">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('innovation-team')}}">ইনোভেশন টিম</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('aiap')}}">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</x-apa.apa-item>
-            <x-apa.apa-item action="{{route('innovative-projects')}}">উদ্ভাবনী প্রকল্পসমূহ</x-apa.apa-item>
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/innovation.svg'))) }}">
+            <x-apa.apa-item action="{{ route('compendiums') }}">প্রজ্ঞাপন/পরিপত্র/নীতিমালা/সংকলন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovation-team') }}">ইনোভেশন টিম</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('aiap') }}">বার্ষিক উদ্ভাবন কর্মপরিকল্পনা</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovative-projects') }}">উদ্ভাবনী প্রকল্পসমূহ</x-apa.apa-item>
         </x-apa.apa-grid>
 
+        <x-apa.apa-grid title="আইন, বিধি, নীতি, প্রজ্ঞাপন"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/innovation.svg'))) }}">
+            <x-apa.apa-item action="{{ route('compendiums') }}">বস্ত্র আইন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovation-team') }}">টেক্সটাইল শিক্ষা প্রতিষ্ঠান পরিদর্শন/পরিবীক্ষণ
+                নির্দেশিকা (খসড়া)</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('aiap') }}">বায়িং হাউজ নিবন্ধন প্রজ্ঞাপন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovative-projects') }}">আইন ও বিধি</x-apa.apa-item>
+        </x-apa.apa-grid>
+
+        <x-apa.apa-grid title="আদেশ/বিজ্ঞপ্তি/প্রজ্ঞাপন/ফরম"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/innovation.svg'))) }}">
+            <x-apa.apa-item action="{{ route('compendiums') }}">প্রজ্ঞাপন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovation-team') }}">পাসপোর্টের অনাপত্তিপত্র</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('aiap') }}">নোটিশ/আদেশ/চিঠিপত্র</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovative-projects') }}">ফরম</x-apa.apa-item>
+        </x-apa.apa-grid>
+
+        <x-apa.apa-grid title="নীতি/ প্রকাশনা/পরিদর্শন প্রতিবেদন"
+            src="data:image/svg+xml;base64,{{ base64_encode(file_get_contents(public_path('images/apa/innovation.svg'))) }}">
+            <x-apa.apa-item action="{{ route('compendiums') }}">আমদানী নীতি</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovation-team') }}">পরিদর্শন প্রতিবেদন</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('aiap') }}">আমাদের প্রকাশনা</x-apa.apa-item>
+            <x-apa.apa-item action="{{ route('innovative-projects') }}">বার্ষিক প্রতিবেদন</x-apa.apa-item>
+        </x-apa.apa-grid> --}}
 
     </div>
 
     {{-- History --}}
-    <div class="history card {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
+    <div class="history card {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
         <h4 class="card__title">
-            {{__("History")}}:</h4>
+            {{ __('History') }}:</h4>
         <p>
             {{ substr($history->history, 0, 900) }}
             <a href="{{ route('history') }}" class="text-amber-500 hover:text-amber-600 transition-all font-semibold">
-                {{__("Read More...")}}
+                {{ __('Read More...') }}
             </a>
         </p>
 
     </div>
 
 
-    <div class="machinery card {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
+    <div class="machinery card {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
         <h4 class="card__title">
-            {{__("Pieces of Machinery:")}}</h4>
+            {{ __('Pieces of Machinery:') }}</h4>
         <div>
             <p>
                 {{ $machinery->description }}
             </p>
-            <h5 class="my-3 font-semibold text-gray-800">{{__("List of Machinery")}}:</h5>
+            <h5 class="my-3 font-semibold text-gray-800">{{ __('List of Machinery') }}:</h5>
             <ul class="grid grid-cols-1 xs:grid-cols-2 xm:grid-cols-4 gap-3 list-decimal list-inside arrow text-gray-600">
                 @foreach ($machinery->items as $item)
                     <li>{{ $item }}</li>
@@ -163,12 +208,11 @@
     </div>
 
 
-    <div class="message card {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
+    <div class="message card {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
         {{-- <h4 class="card__title">Message From Principal:</h4> --}}
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
             <div class="sm:col-span-1 flex justify-center">
-                <img
-                    src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? "" : "data:image/png;base64," . base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
+                <img src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? '' : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
                     alt="Principle Says" class="rounded-full">
             </div>
 
