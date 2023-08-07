@@ -81,7 +81,12 @@ class pageIndexController extends Controller
 
     public function noticeDetails($id, $name)
     {
-        $notice = DB::table('notices')->where('id', $id)->get()->first();
+        $notice = DB::table('notices')
+            ->where('notices.id', $id)
+            ->join('notice_categories', 'notices.category_id', '=', 'notice_categories.id')
+            ->select('notices.*', 'notice_categories.name as category_name')
+            ->get()
+            ->first();
         $attachments = json_decode($notice->file);
         return view('frontend.pages.notice.single', compact('name', 'notice', 'attachments'));
     }

@@ -9,22 +9,23 @@
 
 @section('main-content')
 
-    <div class="card text-gray-800 {{\Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : ''}}">
+    <div class="card text-gray-800 {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
         <h2 class="font-semibold text-2xl mb-2">
             {{ __($notice->title) }}
         </h2>
         <div class="flex flex-row gap-4">
+            <span class="inline text-gray-400 folder">{{ __($notice->category_name) }}</span>
             <span class="inline text-gray-400 date">{{ __($notice->date) }}</span>
-            <span class="inline text-gray-400 time">{{__($notice->time)}}</span>
+            <span class="inline text-gray-400 time">{{ __($notice->time) }}</span>
         </div>
 
 
         <div class="mt-4 overflow-auto">
 
-            <x-detail detail="{{__($notice->desc)}}">
+            <x-detail detail="{{ __($notice->desc) }}">
 
-                @foreach($attachments as $file)
-                    <x-attachment action="{{route('notice-download', $file)}}">{{substr($file, 34)}}</x-attachment>
+                @foreach ($attachments as $file)
+                    <x-attachment action="{{ route('notice-download', $file) }}">{{ substr($file, 34) }}</x-attachment>
                 @endforeach
 
             </x-detail>
