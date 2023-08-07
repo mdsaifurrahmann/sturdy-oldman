@@ -85,7 +85,7 @@
 
         @foreach ($apaTypes as $type)
             <x-apa.apa-grid title="{{ $type->name }}"
-                src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('apa/types/' . $type->image))) }}">
+                src="data:image/{{ pathinfo($type->image, PATHINFO_EXTENSION) == 'svg' ? 'svg+xml' : 'png' }};base64,{{ base64_encode(file_get_contents(public_path('apa/types/' . $type->image))) }}">
 
                 @foreach ($apaGrids as $gridItem)
                     @if ($gridItem->type_id == $type->id)
