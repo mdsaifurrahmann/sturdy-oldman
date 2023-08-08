@@ -23,7 +23,7 @@
             @apply hidden xs:block md:hidden xm:block md:col-span-1;
 
             img {
-                @apply w-[84px] h-[84px] object-cover;
+                @apply w-[84px] h-[84px] object-cover mix-blend-darken;
             }
         }
 

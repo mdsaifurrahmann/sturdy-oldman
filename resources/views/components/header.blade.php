@@ -15,16 +15,22 @@
     <div class="container">
         <div class="logo-area">
             <div class="joyonti">
-                <img src="{{ Illuminate\Support\Facades\File::exists('images/institute/' . $info->image_left) ? 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->image_left))) : '' }}"
-                    alt="{{ $info->image_left }}">
+                @if (Illuminate\Support\Facades\File::exists('images/institute/' . $info->image_left))
+                    <img src="{{ Illuminate\Support\Facades\File::exists('images/institute/' . $info->image_left) ? 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->image_left))) : '' }}"
+                        alt="{{ $info->image_left }}">
+                @endif
             </div>
             <div class="logo">
-                <img src="{{ Illuminate\Support\Facades\File::exists('images/institute/' . $info->logo) ? 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->logo))) : '' }}"
-                    alt="{{ __($info->institute_name) }}">
+                @if (Illuminate\Support\Facades\File::exists('images/institute/' . $info->logo))
+                    <img src="{{ Illuminate\Support\Facades\File::exists('images/institute/' . $info->logo) ? 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->logo))) : '' }}"
+                        alt="{{ __($info->institute_name) }}">
+                @endif
             </div>
             <div class="mujib-borsho">
-                <img src="{{ Illuminate\Support\Facades\File::exists('images/institute/' . $info->image_right) ? 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->image_right))) : '' }}"
-                    alt="{{ $info->image_right }}">
+                @if (Illuminate\Support\Facades\File::exists('images/institute/' . $info->image_right))
+                    <img src="{{ Illuminate\Support\Facades\File::exists('images/institute/' . $info->image_right) ? 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->image_right))) : '' }}"
+                        alt="{{ $info->image_right }}">
+                @endif
             </div>
         </div>
     </div>
@@ -60,9 +66,9 @@
                     <li class="menu-item"><a href="{{ route('ex-employees') }}"
                             class="menu-link">{{ __('Ex-Officers and Employees') }}</a>
                     </li>
-                    {{-- <li class="menu-item"><a href="{{ route('sccc') }}"
+                    <li class="menu-item"><a href="{{ route('apa.dynamic', 'sccc') }}"
                             class="menu-link">{{ __('Citizen Charter') }}</a>
-                    </li> --}}
+                    </li>
                 </ul>
             </li>
             <li

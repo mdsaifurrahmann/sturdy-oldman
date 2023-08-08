@@ -17,7 +17,7 @@
             @if ($sliders)
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
-                        <img src="{{ !Illuminate\Support\Facades\File::exists('images/slider/' . $slide->image) ? '' : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/slider/' . $slide->image))) }}"
+                        <img src="{{ !Illuminate\Support\Facades\File::exists('images/slider/' . $slide->image) ? 'data:image/svg+xml;base64,' . base64_encode(file_get_contents(public_path('apa/types/fallback.svg'))) : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/slider/' . $slide->image))) }}"
                             alt="{{ $slide->title }}" class="object-cover w-full h-[inherit]">
 
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
@@ -85,7 +85,7 @@
 
         @foreach ($apaTypes as $type)
             <x-apa.apa-grid title="{{ $type->name }}"
-                src="data:image/{{ pathinfo($type->image, PATHINFO_EXTENSION) == 'svg' ? 'svg+xml' : 'png' }};base64,{{ base64_encode(file_get_contents(public_path('apa/types/' . $type->image))) }}">
+                src="data:image/{{ \Illuminate\Support\Facades\File::exists(public_path('apa/types/' . $type->image)) ? (pathinfo($type->image, PATHINFO_EXTENSION) == 'svg' ? 'svg+xml' : 'png') : 'svg+xml' }};base64,{{ \Illuminate\Support\Facades\File::exists(public_path('apa/types/' . $type->image)) ? base64_encode(file_get_contents(public_path('apa/types/' . $type->image))) : base64_encode(file_get_contents(public_path('apa/types/fallback.svg'))) }}">
 
                 @foreach ($apaGrids as $gridItem)
                     @if ($gridItem->type_id == $type->id)
@@ -134,7 +134,7 @@
         {{-- <h4 class="card__title">Message From Principal:</h4> --}}
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
             <div class="sm:col-span-1 flex justify-center">
-                <img src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? '' : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
+                <img src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? 'data:image/svg+xml;base64,' . base64_encode(file_get_contents(public_path('apa/types/fallback.svg'))) : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
                     alt="Principle Says" class="rounded-full">
             </div>
 
