@@ -11,7 +11,8 @@ use App\Http\Controllers\principal;
 use App\Http\Controllers\APAContoller;
 use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
-
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -141,6 +142,11 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('album/{id}', [GalleryController::class, 'albumImages'])->name('album-images');
         Route::delete('album/delete/{id}/{image}', [GalleryController::class, 'deleteImage'])->name('delete-album-image');
     });
+});
+
+Route::group(['prefix' => 'dti/access'], function () {
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register')->middleware('verified');
+    Route::post('register', [RegisteredUserController::class, 'store'])->middleware('verified');
 });
 
 //Route::group(['prefix' => 'authenticated/govern'], function () {

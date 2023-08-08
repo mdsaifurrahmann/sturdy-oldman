@@ -74,7 +74,7 @@ return [
     |
     */
 
-    'prefix' => 'something',
+    'prefix' => 'dti/access',
 
     'domain' => null,
 
