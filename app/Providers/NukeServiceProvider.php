@@ -64,7 +64,7 @@ class NukeServiceProvider extends ServiceProvider
         Fortify::authenticateUsing(function (Request $request) {
             if (!$this->checkTooManyFailedAttempts()) {
 
-                return session()->put(['attempt-failed' => 'Too many attempts failed. IP Blocked for 1 Hours.', 'end_time' => time() + 3600]);
+                return session()->put(['attempt-failed' => 'Too many attempts failed. IP Blocked for 5 Minutes.', 'end_time' => time() + 300]);
             }
 
             $user = User::where('email', $request->email)
@@ -75,7 +75,7 @@ class NukeServiceProvider extends ServiceProvider
                 RateLimiter::clear($this->throttleKey());
                 return $user;
             } else {
-                RateLimiter::hit($this->throttleKey(), $seconds = 3600);
+                RateLimiter::hit($this->throttleKey(), $seconds = 300);
                 return session()->flash('error', 'You have ' . RateLimiter::remaining($this->throttleKey(), 2) . ' attempts left');
             }
 
