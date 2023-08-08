@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'APA Types')
+@section('title', 'APA Category')
 
 @section('content')
 
@@ -84,6 +84,81 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <h4>APA Categories</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row d-flex align-items-center">
+                <div class="col-md-3 col-12">
+                    <label class="form-label" for="cat_name">APA Category Name</label>
+                </div>
+                <div class="col-md-3 col-12">
+                    <label class="form-label" for="cat_name">APA Type</label>
+                </div>
+                <div class="col-md-3 col-12">
+                    <label class="form-label" for="cat_name">APA Route</label>
+                </div>
+            </div>
+            @if ($categories->count() > 0)
+                @foreach ($categories as $item)
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1 mb-md-0">
+                                <input type="text" class="form-control disable" aria-describedby="type" readonly
+                                    value="{{ $item->name }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1 mb-md-0">
+                                <input type="text" class="form-control disable" aria-describedby="type" readonly
+                                    value="{{ $item->type_name }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1 mb-md-0">
+                                <input type="text" class="form-control disable" aria-describedby="type" readonly
+                                    value="{{ $item->route_name }}" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-12">
+                            <div class="d-flex">
+                                <div class="mb-1 mb-md-0 me-1">
+                                    <form action="{{ route('edit-category', $item->id) }}" method="GET">
+                                        @csrf
+                                        <button class="btn btn-outline-warning text-nowrap px-2" type="submit">
+                                            <i data-feather="edit" class="me-25"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="mb-1">
+                                    <form action="{{ route('delete-category', $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger text-nowrap px-2" type="submit">
+                                            <i data-feather="x" class="me-25"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                @endforeach
+                {{ $categories->links('pagination::bootstrap-5') }}
+            @else
+                <div class="text-center">
+                    <strong>No APA Categories Found!</strong>
+                </div>
+            @endif
         </div>
     </div>
 

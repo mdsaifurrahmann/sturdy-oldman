@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Validation\Rule;
 
 
 class APAContoller extends Controller
@@ -337,7 +338,7 @@ class APAContoller extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $apa_type = DB::table('apa_types')->orderBy('created_at')->latest('created_at')->paginate(20);
+        $apa_type = DB::table('apa_types')->orderBy('created_at')->latest('created_at')->paginate(10);
 
         return view('area52.apa.add-type', compact('apa_type'));
     }
@@ -479,7 +480,16 @@ class APAContoller extends Controller
     public function addCategoryView()
     {
         $retrieve = DB::table('apa_types')->get();
-        return view('area52.apa.add-category', compact('retrieve'));
+
+
+        $categories = DB::table('apa_categories')
+            ->join('apa_types', 'apa_categories.type_id', '=', 'apa_types.id')
+            ->select('apa_categories.*', 'apa_types.name as type_name')
+            ->paginate(20);
+
+
+
+        return view('area52.apa.add-category', compact('retrieve', 'categories'));
     }
 
     public function addCategory(Request $request)
@@ -524,5 +534,85 @@ class APAContoller extends Controller
         \DB::table('apa_categories')->insert($data);
 
         return redirect()->back()->with('success', 'APA Category created successfully!');
+    }
+
+    public function editCategoryView($id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $retrieve = DB::table('apa_categories')
+            ->where('apa_categories.id', $id)
+            ->join('apa_types', 'apa_categories.type_id', '=', 'apa_types.id')
+            ->select('apa_categories.*', 'apa_types.name as type_name')
+            ->first();
+        $types = DB::table('apa_types')->get();
+
+        return view('area52.apa.edit-category', compact('retrieve', 'types'));
+    }
+
+    public function editCategory(Request $request, $id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $request->validate(
+            [
+                'cat_name' => "required|string",
+                'type_id' => "required|int",
+                'route_name' => ['string', 'required', Rule::unique('apa_categories', 'route_name')->ignore($id)]
+            ],
+            [
+                'cat_name.required' => "Category name is required!",
+                'type_id.required' => 'APA Type is required!',
+                'route_name.required' => 'Route Name is required',
+                'cat_name.string' => 'Category Name must be string',
+                'type_id.int' => 'APA type value must be int',
+                'route_name.string' => 'Route Name must be string',
+                'route_name.unique' => 'Route name must be unique and related to your category name'
+            ]
+        );
+
+        $cat_name = $request->cat_name;
+        $type = $request->type_id;
+        $route_name = $request->route_name;
+
+        $data = [
+            'name' => $cat_name,
+            'type_id' => $type,
+            'route_name' => $route_name,
+            'updated_at' => now()
+        ];
+
+        \DB::table('apa_categories')
+            ->where('id', $id)
+            ->update($data);
+
+        return redirect()->back()->with('success', 'APA Category updated successfully!');
+    }
+
+    public function destroyCategory($id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        DB::table('apa_categories')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'APA Category deleted successfully');
     }
 }

@@ -128,6 +128,10 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         // add category
         Route::get('add-category', [APAContoller::class, 'addCategoryView'])->name('add-category-view');
         Route::post('add_category', [APAContoller::class, 'addCategory'])->name('add-category');
+
+        Route::get('update-category/{id}', [APAContoller::class, 'editCategoryView'])->name('edit-category');
+        Route::patch('update-category/{id}', [APAContoller::class, 'editCategory'])->name('update-category');
+        Route::delete('delete-category/{id}', [APAContoller::class, 'destroyCategory'])->name('delete-category');
     });
 
     Route::prefix('gallery')->group(function () {

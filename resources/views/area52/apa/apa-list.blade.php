@@ -85,6 +85,9 @@
                         </div>
                         <hr>
                     @endforeach
+
+                    
+
                     {{ $apa->links('pagination::bootstrap-5') }}
                 @else
                     <div class="text-center">
