@@ -11,80 +11,65 @@
             "slug": ""
         },
         {
-            "name": "Institution",
+            "name": "Institute Info",
             "icon": "briefcase",
             "slug": "institute-info",
             "url": "authenticated/govern/institution"
         },
         {
-            "name": "Home Page",
-            "icon": "home",
+            "name": "Sliders",
+            "icon": "sliders",
             "slug": "",
             "submenu": [
                 {
-                    "name": "Sliders",
-                    "icon": "sliders",
-                    "slug": "",
-                    "submenu": [
-                        {
-                            "url": "authenticated/govern/homepage/slider/add",
-                            "name": "Add Slider",
-                            "icon": "plus",
-                            "slug": "slider"
-                        },
-                        {
-                            "url": "authenticated/govern/homepage/slider/list",
-                            "name": "Slider List",
-                            "icon": "list",
-                            "slug": "slider-list"
-                        }
-                    ]
+                    "url": "authenticated/govern/homepage/slider/add",
+                    "name": "Add Slider",
+                    "icon": "plus",
+                    "slug": "slider"
                 },
                 {
-                    "name": "Machinery",
-                    "icon": "truck",
-                    "slug": "machinery",
-                    "url": "authenticated/govern/homepage/machinery"
+                    "url": "authenticated/govern/homepage/slider/list",
+                    "name": "Slider List",
+                    "icon": "list",
+                    "slug": "slider-list"
                 }
             ]
         },
         {
-            "name": "About Us",
-            "icon": "info",
-            "slug": "",
-            "submenu": [
-                {
-                    "url": "authenticated/govern/about/history",
-                    "name": "History",
-                    "icon": "align-left",
-                    "slug": "update-history"
-                },
-                {
-                    "url": "authenticated/govern/about/principal",
-                    "name": "Principal",
-                    "icon": "smile",
-                    "slug": "update-principal"
-                }
-            ]
+            "name": "Machineries",
+            "icon": "truck",
+            "slug": "machinery",
+            "url": "authenticated/govern/homepage/machinery"
         },
         {
-            "name": "Administration",
-            "icon": "users",
-            "slug": "",
-            "submenu": [
-                {
-                    "url": "authenticated/govern/administration/former-principals",
-                    "name": "Former Principals",
-                    "icon": "circle",
-                    "slug": "former-principal-list"
-                },
-                {
-                    "url": "authenticated/govern/administration/former-employees",
-                    "name": "Former Officers/Employees",
-                    "icon": "circle",
-                    "slug": "former-employee-list"
-                }
-            ]
+            "url": "authenticated/govern/about/history",
+            "name": "History",
+            "icon": "align-left",
+            "slug": "update-history"
+        },
+        {
+            "url": "authenticated/govern/about/principal",
+            "name": "Principal",
+            "icon": "smile",
+            "slug": "update-principal"
+        },
+        {
+            "url": "authenticated/govern/administration/former-principals",
+            "name": "Former Principals",
+            "icon": "circle",
+            "slug": "former-principal-list"
+        },
+        {
+            "url": "authenticated/govern/administration/faculty",
+            "name": "Faculty/Officers/Employees",
+            "icon": "circle",
+            "slug": "faculty-add-view"
+        },
+        {
+            "url": "authenticated/govern/administration/former-employees",
+            "name": "Former Officers/Employees",
+            "icon": "circle",
+            "slug": "former-employee-list"
         },
         {
             "name": "Notice",
@@ -106,8 +91,8 @@
             ]
         },
         {
-            "name": "APA Categories",
-            "icon": "list",
+            "name": "APA",
+            "icon": "bar-chart-2",
             "slug": "",
             "submenu": [
                 {
@@ -121,14 +106,7 @@
                     "icon": "plus",
                     "slug": "add-category-view",
                     "url": "authenticated/govern/apa/add-category"
-                }
-            ]
-        },
-        {
-            "name": "APA",
-            "icon": "bar-chart-2",
-            "slug": "",
-            "submenu": [
+                },
                 {
                     "name": "Add APA",
                     "icon": "plus",
