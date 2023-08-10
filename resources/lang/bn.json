@@ -4,7 +4,8 @@
     "Welcome": "স্বাগতম",
     "Logout": "লগ আউট",
     "Former Principals": "সাবেক অধ্যক্ষগণ",
-    "Ex-Officers and Employees": "সাবেক কর্মকর্তা ও কর্মচারীবৃন্দ",
+    "Former Officers and Employees": "সাবেক কর্মকর্তা ও কর্মচারীবৃন্দ",
+    "Officers and Employees": "কর্মকর্তা ও কর্মচারীবৃন্দ",
     "Citizen Charter": "সিটিজেন চার্টার",
     "Contact Us": "যোগাযোগ",
     "About Us": "আমাদের সম্পর্কে",
@@ -62,7 +63,8 @@
     "Pulhat - Uttar Faridpur Gorstan Rd, Dinajpur, Bangladesh": "পুলহাট - উত্তর ফরিদপুর গোরস্থান রোড, দিনাজপুর, বাংলাদেশ",
     "List of Former Principals": "সাবেক অধ্যক্ষগনের তালিকা",
     "No data found!": "কোন তথ্য পাওয়া যায়নি!",
-    "List of Ex-Officers and Employees": "সাবেক কর্মচারী এবং কর্মকর্তাগনের তালিকা",
+    "List of Former Officers and Employees": "সাবেক কর্মচারী এবং কর্মকর্তাগনের তালিকা",
+    "List of Officers and Employees": "কর্মচারী এবং কর্মকর্তাগনের তালিকা",
     "Topics": "বিষয়বস্তু",
     "Date": "তারিখ",
     "Title": "শিরোনাম",
@@ -85,5 +87,7 @@
     "Website:": "ওয়েবসাইট",
     "Let us give you Direction": "ম্যাপে আমাদের ঠিকানা দেখুন",
     "No Image Found": "কোনো ছবি খুঁজে পাওয়া যায়নি",
-    "No Album Found": "কোনো এ্যালবাম খুঁজে পাওয়া যায়নি"
+    "No Album Found": "কোনো এ্যালবাম খুঁজে পাওয়া যায়নি",
+    "Designation": "পদবি",
+    "Duration": "স্থিতিকাল"
 }

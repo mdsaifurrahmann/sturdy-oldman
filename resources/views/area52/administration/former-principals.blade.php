@@ -37,7 +37,7 @@
             <h4 class="card-title">Former Principals</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('former-principal-update') }}" method="POST">
+            <form action="{{ route('former-principal-add') }}" method="POST">
                 @csrf
                 <div>
                     <div>
@@ -48,7 +48,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="name">Name</label>
                                     <input type="text" class="form-control" id="name" aria-describedby="name"
-                                           placeholder="Ex: Dr. Md. Abdul Mannan" name="name"/>
+                                        placeholder="Ex: Dr. Md. Abdul Mannan" name="name" />
                                 </div>
                             </div>
 
@@ -56,7 +56,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="designation">Designation</label>
                                     <select type="select" class="form-select" id="designation"
-                                            aria-describedby="designation" name="designation">
+                                        aria-describedby="designation" name="designation">
                                         <option disabled selected>Select Designation</option>
                                         <option value="principal">Principal</option>
                                         <option value="assistant principal">Assistant Principal</option>
@@ -71,20 +71,20 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="from">From</label>
                                     <input type="text" class="form-control flatpickr-basic flatpickr-input active"
-                                           id="from" aria-describedby="from" name="from" readonly="readonly"
-                                           placeholder="YYYY-MM-DD"/>
+                                        id="from" aria-describedby="from" name="from" readonly="readonly"
+                                        placeholder="YYYY-MM-DD" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="to">To</label>
                                     <input type="text" class="form-control flatpickr-basic flatpickr-input active"
-                                           id="to" aria-describedby="to" name="to" readonly="readonly"
-                                           placeholder="YYYY-MM-DD"/>
+                                        id="to" aria-describedby="to" name="to" readonly="readonly"
+                                        placeholder="YYYY-MM-DD" />
                                 </div>
                             </div>
                         </div>
-                        <hr/>
+                        <hr />
                     </div>
                 </div>
                 <div class="row">
@@ -113,43 +113,50 @@
                             <div class="mb-1">
                                 <label class="form-label" for="name">Name</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="name"
-                                       readonly value="{{ $principal->name }}" id="name"/>
+                                    readonly value="{{ $principal->name }}" id="name" />
                             </div>
                         </div>
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="designation">Designation</label>
                                 <input type="text" class="form-control disable text-capitalize"
-                                       aria-describedby="designation" readonly value="{{ $principal->designation }}"
-                                       id="designation"/>
+                                    aria-describedby="designation" readonly value="{{ $principal->designation }}"
+                                    id="designation" />
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="from">From</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="from"
-                                       readonly value="{{ $principal->from }}" id="from"/>
+                                    readonly value="{{ $principal->from }}" id="from" />
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="to">To</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="to"
-                                       readonly value="{{ $principal->to }}" id="to"/>
+                                    readonly value="{{ $principal->to }}" id="to" />
                             </div>
                         </div>
-                        <div class="col-md-2 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="mb-1">
+                                <label class="form-label d-block">Action</label>
+                                <div class="d-flex">
+                                    <a href="{{ route('former-principal-edit', $principal->id) }}"
+                                        class="btn btn-outline-warning text-nowrap px-1 me-1"><i data-feather="edit"
+                                            class="me-25"></i> Edit</a>
 
-                                <form action="{{ route('former-principal-delete', $principal->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <label class="form-label">Delete</label>
-                                    <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
-                                        <i data-feather="x" class="me-25"></i>
-                                        <span>Delete</span>
-                                    </button>
-                                </form>
+                                    <form action="{{ route('former-principal-delete', $principal->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
+                                            <i data-feather="x" class="me-25"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -1,15 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Former Officers / Employees')
-
-@section('vendor-style')
-    <!-- vendor css files -->
-    <link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/flatpickr/flatpickr.min.css')) }}">
-@endsection
-
-@section('page-style')
-    <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/pickers/form-flat-pickr.css')) }}">
-@endsection
+@section('title', 'Faculty Members')
 
 @section('content')
 
@@ -33,10 +24,11 @@
 
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Former Officers / Employees</h4>
+            <h4 class="card-title">Add Faculty Member</h4>
+            <span class="text-danger">Note: All fields are required!</span>
         </div>
         <div class="card-body">
-            <form action="{{ route('former-employee-add') }}" method="POST">
+            <form action="{{ route('faculty-add') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <div>
@@ -47,7 +39,8 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="name">Name</label>
                                     <input type="text" class="form-control" id="name" aria-describedby="name"
-                                        placeholder="Ex: Dr. Md. Abdul Mannan" name="name" />
+                                        placeholder="Ex: Dr. Md. Abdul Mannan" name="name" value="{{ old('name') }}"
+                                        required />
                                 </div>
                             </div>
 
@@ -55,7 +48,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="designation">Designation</label>
                                     <select type="select" class="form-select" id="designation"
-                                        aria-describedby="designation" name="designation">
+                                        aria-describedby="designation" name="designation" required>
                                         <option disabled selected>Select Designation</option>
                                         <option value="teacher">Teacher</option>
                                         <option value="assistant teacher">Assistant Teacher</option>
@@ -78,7 +71,6 @@
                                         <option value="manager">Manager</option>
                                         <option value="assistant manager">Assistant Manager</option>
 
-
                                     </select>
 
 
@@ -87,18 +79,46 @@
 
                             <div class="col-md-6 col-12">
                                 <div class="mb-1">
-                                    <label class="form-label" for="from">From</label>
-                                    <input type="text" class="form-control flatpickr-basic flatpickr-input active"
-                                        id="from" aria-describedby="from" name="from" readonly="readonly"
-                                        placeholder="YYYY-MM-DD" />
+                                    <label class="form-label" for="technology">Technology</label>
+
+                                    <select name="technology" id="technology" class="form-control"required>
+                                        <option selected disabled value="">Select Technology</option>
+                                        <option value="Textile Machine Design & Maintenance">Textile Machine Design &
+                                            Maintenance</option>
+                                        <option value="Yarn Manufacturing">Yarn Manufacturing</option>
+                                        <option value="Wet Processing">Wet Processing</option>
+                                        <option value="Apparel Manufacturing">Apparel Manufacturing</option>
+                                    </select>
+
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="mb-1">
-                                    <label class="form-label" for="to">To</label>
-                                    <input type="text" class="form-control flatpickr-basic flatpickr-input active"
-                                        id="to" aria-describedby="to" name="to" readonly="readonly"
-                                        placeholder="YYYY-MM-DD" />
+                                    <label class="form-label" for="to">Email</label>
+                                    <input type="email" class="form-control" id="to" aria-describedby="email"
+                                        name="email" placeholder="name@example.com" value="{{ old('email') }}"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="mb-1">
+                                    <label class="form-label" for="mobile">Mobile</label>
+                                    <input type="text" class="form-control" id="mobile" aria-describedby="mobile"
+                                        name="mobile" placeholder="019*******" value="{{ old('mobile') }}" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="mb-1">
+                                    <label class="form-label" for="phone">Phone</label>
+                                    <input type="text" class="form-control" id="phone" aria-describedby="phone"
+                                        name="phone" placeholder="0531******" value="{{ old('phone') }}" required />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-1">
+                                    <label class="form-label" for="image">Image</label>
+                                    <input type="file" class="form-control" id="image" aria-describedby="image"
+                                        name="image" required />
                                 </div>
                             </div>
                         </div>
@@ -107,7 +127,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit"> Submit</button>
+                        <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </div>
             </form>
@@ -118,24 +138,24 @@
 
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">List of Former Officers / Employees</h4>
+            <h4 class="card-title">List of Faculty Members</h4>
         </div>
         <div class="card-body">
 
 
-            @if ($employees->count() > 0)
+            @if ($members->count() > 0)
 
-                @foreach ($employees as $officer)
+                @foreach ($members as $officer)
                     <div class="row d-flex align-items-center">
 
                         <div class="col-md-3 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="name">Name</label>
-                                <input type="text" class="form-control disable text-capitalize" aria-describedby="name"
-                                    readonly value="{{ $officer->name }}" id="name" />
+                                <input type="text" class="form-control disable text-capitalize"
+                                    aria-describedby="name" readonly value="{{ $officer->name }}" id="name" />
                             </div>
                         </div>
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="designation">Designation</label>
                                 <input type="text" class="form-control disable text-capitalize"
@@ -145,29 +165,36 @@
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
-                                <label class="form-label" for="from">From</label>
+                                <label class="form-label" for="from">Technology</label>
                                 <input type="text" class="form-control disable text-capitalize"
-                                    aria-describedby="from" readonly value="{{ $officer->from }}" id="from" />
+                                    aria-describedby="from" readonly value="{{ $officer->technology }}" id="from" />
                             </div>
                         </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
-                                <label class="form-label" for="to">To</label>
+                                <label class="form-label" for="to">Mobile</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="to"
-                                    readonly value="{{ $officer->to }}" id="to" />
+                                    readonly value="{{ $officer->mobile }}" id="to" />
                             </div>
                         </div>
-                        <div class="col-md-2 col-12">
+                        <div class="col-md-3 col-12">
                             <div class="mb-1">
                                 <label class="form-label">Actions</label>
-                                <form action="{{ route('former-employee-delete', $officer->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
-                                        <i data-feather="x" class="me-25"></i>
-                                        <span>Delete</span>
-                                    </button>
-                                </form>
+                                <div class="d-flex">
+                                    <a href="{{ route('faculty-edit', $officer->id) }}"
+                                        class="btn btn-outline-warning text-nowrap px-1 me-2">
+                                        <i data-feather="edit" class="me-25"></i> Edit
+                                    </a>
+
+                                    <form action="{{ route('faculty-delete', $officer->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
+                                            <i data-feather="x" class="me-25"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -187,13 +214,4 @@
         </div>
     </div>
 
-@endsection
-
-@section('vendor-script')
-
-    <script src="{{ asset(mix('vendors/js/pickers/flatpickr/flatpickr.min.js')) }}"></script>
-@endsection
-@section('page-script')
-    <!-- Page js files -->
-    <script src="{{ asset(mix('js/scripts/forms/pickers/form-pickers.js')) }}"></script>
 @endsection

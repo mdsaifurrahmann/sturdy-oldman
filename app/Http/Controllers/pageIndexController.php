@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\faculty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class pageIndexController extends Controller
 {
@@ -67,6 +69,13 @@ class pageIndexController extends Controller
     {
         $employees = DB::table('former_employees')->get();
         return view('frontend.pages.ex-employees', compact('employees'));
+    }
+
+    public function faculty(faculty $faculty)
+    {
+        $retrieve = $faculty->get();
+        // dd($retrieve);
+        return view('frontend.pages.faculty', compact('retrieve'));
     }
 
     public function notices()
@@ -368,5 +377,17 @@ class pageIndexController extends Controller
         $id = 1;
         $principal = DB::table('principal')->where('id', $id)->get()->first();
         return view('area52.principal.principal', compact('principal'));
+    }
+
+    public function updateFormerPrincipal($id)
+    {
+        $retrieve = DB::table('former_principals')->where('id', $id)->get()->first();
+        return view('area52.administration.former-principal-edit', compact('retrieve'));
+    }
+
+    public function updateFormerEmployee($id)
+    {
+        $retrieve = DB::table('former_employees')->where('id', $id)->get()->first();
+        return view('area52.administration.former-employee-edit', compact('retrieve'));
     }
 }

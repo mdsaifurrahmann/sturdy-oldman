@@ -46,3 +46,13 @@ table.table-b {
         @apply text-left;
     }
 }
+
+// faculty
+.heading div,
+.values div {
+    @apply border border-gray-300 py-[0.3rem] px-[0.4rem] text-left;
+}
+
+.heading div {
+    @apply font-semibold;
+}

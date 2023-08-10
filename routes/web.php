@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\formerPrincipal;
+use App\Http\Controllers\FacultyController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\pageIndexController;
@@ -12,7 +13,6 @@ use App\Http\Controllers\APAContoller;
 use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +32,8 @@ Route::get('infrastructure', [pageIndexController::class, 'infrastructure'])->na
 Route::get('history', [pageIndexController::class, 'history'])->name('history');
 Route::get('principal', [pageIndexController::class, 'principal'])->name('principal');
 Route::get('former-principals', [pageIndexController::class, 'formerPrincipals'])->name('former-principals');
-Route::get('ex-employees', [pageIndexController::class, 'exEmployees'])->name('ex-employees');
+Route::get('former-employees', [pageIndexController::class, 'exEmployees'])->name('former-employees');
+Route::get('faculty', [pageIndexController::class, 'faculty'])->name('faculty');
 Route::get('notice-list', [pageIndexController::class, 'notices'])->name('notices');
 Route::get('admission', [pageIndexController::class, 'admissionList'])->name('admission');
 Route::get('stipend', [pageIndexController::class, 'stipends'])->name('stipend');
@@ -87,14 +88,27 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
 
     Route::prefix('administration/former-principals')->group(function () {
         Route::get('/', [formerPrincipal::class, 'principalList'])->name('former-principal-list');
-        Route::post('update', [formerPrincipal::class, 'addPrincipal'])->name('former-principal-update');
+        Route::post('add', [formerPrincipal::class, 'addPrincipal'])->name('former-principal-add');
+        Route::get('edit/{id}', [pageIndexController::class, 'updateFormerPrincipal'])->name('former-principal-edit');
+        Route::patch('update/{id}', [formerPrincipal::class, 'editPrincipal'])->name('former-principal-update');
         Route::delete('delete/{id}', [formerPrincipal::class, 'destroy'])->name('former-principal-delete');
     });
 
     Route::prefix('administration/former-employees')->group(function () {
         Route::get('/', [formerPrincipal::class, 'employeeList'])->name('former-employee-list');
-        Route::post('update', [formerPrincipal::class, 'addEmployee'])->name('former-employee-update');
+        Route::post('add', [formerPrincipal::class, 'addEmployee'])->name('former-employee-add');
+        Route::get('edit/{id}', [pageIndexController::class, 'updateFormerEmployee'])->name('former-employee-edit');
+        Route::patch('update/{id}', [formerPrincipal::class, 'editEmployee'])->name('former-employee-update');
         Route::delete('delete/{id}', [formerPrincipal::class, 'employeeDestroy'])->name('former-employee-delete');
+    });
+
+
+    Route::prefix('administration/faculty')->group(function () {
+        Route::get('/', [FacultyController::class, 'create'])->name('faculty-add-view');
+        Route::post('add', [FacultyController::class, 'store'])->name('faculty-add');
+        Route::get('edit/{id}', [FacultyController::class, 'edit'])->name('faculty-edit');
+        Route::patch('update/{id}', [FacultyController::class, 'update'])->name('faculty-update');
+        Route::delete('delete/{id}', [FacultyController::class, 'destroy'])->name('faculty-delete');
     });
 
 

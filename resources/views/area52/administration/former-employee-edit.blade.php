@@ -36,8 +36,9 @@
             <h4 class="card-title">Former Officers / Employees</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('former-employee-add') }}" method="POST">
+            <form action="{{ route('former-employee-update', $retrieve->id) }}" method="POST">
                 @csrf
+                @method('PATCH')
                 <div>
                     <div>
                         <div class="row d-flex align-items-end">
@@ -47,7 +48,8 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="name">Name</label>
                                     <input type="text" class="form-control" id="name" aria-describedby="name"
-                                        placeholder="Ex: Dr. Md. Abdul Mannan" name="name" />
+                                        placeholder="Ex: Dr. Md. Abdul Mannan" name="name"
+                                        value="{{ $retrieve->name }}" />
                                 </div>
                             </div>
 
@@ -56,7 +58,10 @@
                                     <label class="form-label" for="designation">Designation</label>
                                     <select type="select" class="form-select" id="designation"
                                         aria-describedby="designation" name="designation">
-                                        <option disabled selected>Select Designation</option>
+                                        <option disabled>Select Designation</option>
+                                        <option selected value="{{ $retrieve->designation }}">
+                                            {{ ucfirst($retrieve->designation) }}
+                                        </option>
                                         <option value="teacher">Teacher</option>
                                         <option value="assistant teacher">Assistant Teacher</option>
                                         <option value="department head">Department Head</option>
@@ -90,7 +95,7 @@
                                     <label class="form-label" for="from">From</label>
                                     <input type="text" class="form-control flatpickr-basic flatpickr-input active"
                                         id="from" aria-describedby="from" name="from" readonly="readonly"
-                                        placeholder="YYYY-MM-DD" />
+                                        placeholder="YYYY-MM-DD" value="{{ $retrieve->from }}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
@@ -98,7 +103,7 @@
                                     <label class="form-label" for="to">To</label>
                                     <input type="text" class="form-control flatpickr-basic flatpickr-input active"
                                         id="to" aria-describedby="to" name="to" readonly="readonly"
-                                        placeholder="YYYY-MM-DD" />
+                                        placeholder="YYYY-MM-DD" value="{{ $retrieve->to }}" />
                                 </div>
                             </div>
                         </div>
@@ -107,85 +112,13 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-primary" type="submit"> Submit</button>
+                        <button class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-
-
-    <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">List of Former Officers / Employees</h4>
-        </div>
-        <div class="card-body">
-
-
-            @if ($employees->count() > 0)
-
-                @foreach ($employees as $officer)
-                    <div class="row d-flex align-items-center">
-
-                        <div class="col-md-3 col-12">
-                            <div class="mb-1">
-                                <label class="form-label" for="name">Name</label>
-                                <input type="text" class="form-control disable text-capitalize" aria-describedby="name"
-                                    readonly value="{{ $officer->name }}" id="name" />
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12">
-                            <div class="mb-1">
-                                <label class="form-label" for="designation">Designation</label>
-                                <input type="text" class="form-control disable text-capitalize"
-                                    aria-describedby="designation" readonly value="{{ $officer->designation }}"
-                                    id="designation" />
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-12">
-                            <div class="mb-1">
-                                <label class="form-label" for="from">From</label>
-                                <input type="text" class="form-control disable text-capitalize"
-                                    aria-describedby="from" readonly value="{{ $officer->from }}" id="from" />
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-12">
-                            <div class="mb-1">
-                                <label class="form-label" for="to">To</label>
-                                <input type="text" class="form-control disable text-capitalize" aria-describedby="to"
-                                    readonly value="{{ $officer->to }}" id="to" />
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-12">
-                            <div class="mb-1">
-                                <label class="form-label">Actions</label>
-                                <form action="{{ route('former-employee-delete', $officer->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger text-nowrap px-1" type="submit">
-                                        <i data-feather="x" class="me-25"></i>
-                                        <span>Delete</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                @endforeach
-            @else
-                <div class="row d-flex align-items-center justify-content-center">
-                    <div class="col-12">
-
-                        <h4 class="text-center">Sorry! 0 Items Found!</h4>
-
-                    </div>
-                </div>
-
-            @endif
-
-        </div>
-    </div>
 
 @endsection
 

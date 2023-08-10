@@ -57,14 +57,17 @@
                 </a>
             </li>
             <li
-                class="menu-item has__child {{ request()->routeIs('former-principals') || request()->routeIs('ex-employees') ? 'active' : '' }}">
+                class="menu-item has__child {{ request()->routeIs('former-principals') || request()->routeIs('former-employees') || request()->routeIs('faculty') || request()->routeIs('apa.dynamic', 'sccc') ? 'active' : '' }}">
                 <a href="#" class="menu-link">{{ __('Administration') }}</a>
                 <ul class="layer__2">
                     <li class="menu-item"><a href="{{ route('former-principals') }}"
                             class="menu-link">{{ __('Former Principals') }}</a>
                     </li>
-                    <li class="menu-item"><a href="{{ route('ex-employees') }}"
-                            class="menu-link">{{ __('Ex-Officers and Employees') }}</a>
+                    <li class="menu-item"><a href="{{ route('faculty') }}"
+                            class="menu-link">{{ __('Officers and Employees') }}</a>
+                    </li>
+                    <li class="menu-item"><a href="{{ route('former-employees') }}"
+                            class="menu-link">{{ __('Former Officers and Employees') }}</a>
                     </li>
                     <li class="menu-item"><a href="{{ route('apa.dynamic', 'sccc') }}"
                             class="menu-link">{{ __('Citizen Charter') }}</a>

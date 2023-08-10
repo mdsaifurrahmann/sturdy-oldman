@@ -38,6 +38,34 @@ class formerPrincipal extends Controller
         return redirect()->back()->with('success', 'Principal added successfully');
     }
 
+    public function editPrincipal(formerPrincipalRequest $request, $id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $request->validated();
+        $name = $request->name;
+        $designation = $request->designation;
+        $from = $request->from;
+        $to = $request->to;
+
+        $data = [
+            'name' => $name,
+            'designation' => $designation,
+            'from' => $from,
+            'to' => $to,
+        ];
+
+        DB::table('former_principals')->where('id', $id)->update($data);
+
+        return redirect()->back()->with('success', 'Principal updated successfully');
+    }
+
     public function principalList()
     {
 
@@ -97,6 +125,34 @@ class formerPrincipal extends Controller
         DB::table('former_employees')->insert($data);
 
         return redirect()->back()->with('success', 'Employee/Officer added successfully');
+    }
+
+    public function editEmployee(formerPrincipalRequest $request, $id)
+    {
+        if (!Auth::check()) {
+            redirect()->route('login');
+        }
+
+        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        $request->validated();
+        $name = $request->name;
+        $designation = $request->designation;
+        $from = $request->from;
+        $to = $request->to;
+
+        $data = [
+            'name' => $name,
+            'designation' => $designation,
+            'from' => $from,
+            'to' => $to,
+        ];
+
+        DB::table('former_employees')->where('id', $id)->update($data);
+
+        return redirect()->back()->with('success', 'Employee/Officer updated successfully');
     }
 
     public function employeeList()
