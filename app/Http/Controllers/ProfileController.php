@@ -105,7 +105,7 @@ class ProfileController extends Controller
                 'state' => 'nullable|string',
                 'designation' => 'nullable|string',
                 'address' => 'nullable|string',
-                'profile_image' => 'nullable|image|mimes:jpeg,png,jpg|max:60',
+                'profile_image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
             ],
             [
                 'name.required' => 'The name field is required.',
@@ -147,7 +147,7 @@ class ProfileController extends Controller
 
                 $user->profile->update($profileData);
 
-                if ($request->hasFile('profile_image')) {
+                if ($request->hasFile('profile_image') && ($user->profile->update($profileData)) == 1) {
                     $file->move(public_path('images/profile/'), $nameHandler);
                 }
             }
