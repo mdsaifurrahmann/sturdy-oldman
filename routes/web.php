@@ -165,6 +165,7 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
     Route::prefix('administration/users/profile')->group(function () {
         Route::get('/', [ProfileController::class, 'profile'])->name('profile');
         Route::patch('update', [ProfileController::class, 'update'])->name('profile-update');
+        Route::delete('delete', [ProfileController::class, 'destroy'])->name('profile-delete');
     });
 });
 

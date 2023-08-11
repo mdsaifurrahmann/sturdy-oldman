@@ -50,7 +50,7 @@ $(function () {
     deactivateButton.onclick = function () {
       if (accountActivation.checked == true) {
         Swal.fire({
-          text: 'Are you sure you would like to deactivate your account?',
+          text: 'Are you sure you would like to DELETE your account?',
           icon: 'warning',
           showCancelButton: true,
           confirmButtonText: 'Yes',
@@ -64,15 +64,17 @@ $(function () {
             Swal.fire({
               icon: 'success',
               title: 'Deleted!',
-              text: 'Your file has been deleted.',
+              text: 'Your ACCCOUNT is deleted! Redirecting...',
               customClass: {
                 confirmButton: 'btn btn-success'
               }
-            });
+            })
+
+            deactivateAcc.submit();
           } else if (result.dismiss === Swal.DismissReason.cancel) {
             Swal.fire({
               title: 'Cancelled',
-              text: 'Deactivation Cancelled!!',
+              text: 'Deletion is Cancelled!!',
               icon: 'error',
               customClass: {
                 confirmButton: 'btn btn-success'

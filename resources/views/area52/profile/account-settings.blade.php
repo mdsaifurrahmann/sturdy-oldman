@@ -72,7 +72,7 @@
 
                         <div class="d-flex pb-2">
                             <a href="#" class="me-25">
-                                <img src="data:image/{{ \Illuminate\Support\Facades\File::exists(public_path('images/profile/' . $retrieve->profile_image)) ? (pathinfo($retrieve->profile_image, PATHINFO_EXTENSION) == 'svg' ? 'svg+xml' : 'png') : 'svg+xml' }};base64,{{ \Illuminate\Support\Facades\File::exists(public_path('images/profile/' . $retrieve->profile_image)) ? base64_encode(file_get_contents(public_path('images/profile/' . $retrieve->profile_image))) : base64_encode(file_get_contents(public_path('images/portrait/small/avatar-s-11.jpg'))) }}"
+                                <img src="data:image/png;base64,{{ $retrieve->profile_image && \Illuminate\Support\Facades\File::exists(public_path('images/profile/' . $retrieve->profile_image)) ? base64_encode(file_get_contents(public_path('images/profile/' . $retrieve->profile_image))) : base64_encode(file_get_contents(public_path('images/portrait/small/avatar-s-11.jpg'))) }}"
                                     id="account-upload-img" class="uploadedAvatar rounded me-50" alt="profile image"
                                     height="100" width="100" />
                             </a>
@@ -173,7 +173,10 @@
                         </div>
                     </div>
 
-                    <form id="formAccountDeactivation" class="validate-form" onsubmit="return false">
+                    <form action="{{ route('profile-delete') }}" method="POST" id="formAccountDeactivation"
+                        class="validate-form" enctype="multipart/form-data" onsubmit="return false">
+                        @csrf
+                        @method('DELETE')
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="accountActivation"
                                 id="accountActivation" data-msg="Please confirm you want to delete account" />

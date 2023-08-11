@@ -31,6 +31,7 @@ class ProfileController extends Controller
      */
     public function profile()
     {
+
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -166,8 +167,24 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user = Auth::user();
+        // Ensure the user has the necessary roles (e.g., 'nuke', 'admin', 'moderator')
+        if (!auth()->user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        if (File::exists(public_path('images/profile/' . $user->profile->profile_image))) {
+            File::delete(public_path('images/profile/' . $user->profile->profile_image));
+        }
+
+        $user->roles()->detach();
+        $user->profile->delete();
+        $user->delete();
+
+        DB::commit();
+
+        return redirect()->route('login')->with('success', 'User deleted successfully');
     }
 }
