@@ -7,9 +7,7 @@ $(function () {
     accountUploadBtn = $('#account-upload'),
     accountUserImage = $('.uploadedAvatar'),
     accountResetBtn = $('#account-reset'),
-    accountNumberMask = $('.account-number-mask'),
-    accountZipCode = $('.account-zip-code'),
-    select2 = $('.select2'),
+
     deactivateAcc = document.querySelector('#formAccountDeactivation'),
     deactivateButton = deactivateAcc.querySelector('.deactivate-account');
 
@@ -30,31 +28,6 @@ $(function () {
 
     accountResetBtn.on('click', function () {
       accountUserImage.attr('src', resetImage);
-    });
-  }
-
-  // jQuery Validation for all forms
-  // --------------------------------------------------------------------
-  if (form.length) {
-    form.each(function () {
-      var $this = $(this);
-
-      $this.validate({
-        rules: {
-          firstName: {
-            required: true
-          },
-          lastName: {
-            required: true
-          },
-          accountActivation: {
-            required: true
-          }
-        }
-      });
-      $this.on('submit', function (e) {
-        e.preventDefault();
-      });
     });
   }
 
@@ -109,36 +82,5 @@ $(function () {
         });
       }
     };
-  }
-
-  //phone
-  if (accountNumberMask.length) {
-    accountNumberMask.each(function () {
-      new Cleave($(this), {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
-    });
-  }
-
-  //zip code
-  if (accountZipCode.length) {
-    accountZipCode.each(function () {
-      new Cleave($(this), {
-        delimiter: '',
-        numeral: true
-      });
-    });
-  }
-
-  // For all Select2
-  if (select2.length) {
-    select2.each(function () {
-      var $this = $(this);
-      $this.wrap('<div class="position-relative"></div>');
-      $this.select2({
-        dropdownParent: $this.parent()
-      });
-    });
   }
 });

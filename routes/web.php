@@ -12,6 +12,7 @@ use App\Http\Controllers\principal;
 use App\Http\Controllers\APAContoller;
 use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ProfileController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
 /*
@@ -159,6 +160,11 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('album/list', [GalleryController::class, 'albumList'])->name('album-list');
         Route::get('album/{id}', [GalleryController::class, 'albumImages'])->name('album-images');
         Route::delete('album/delete/{id}/{image}', [GalleryController::class, 'deleteImage'])->name('delete-album-image');
+    });
+
+    Route::prefix('administration/users/profile')->group(function () {
+        Route::get('/', [ProfileController::class, 'profile'])->name('profile');
+        Route::patch('update', [ProfileController::class, 'update'])->name('profile-update');
     });
 });
 
