@@ -60,6 +60,31 @@
 
     {{-- Include core + vendor Styles --}}
     @include('panels/stylesClient')
+
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Textile Institute Dinajpur",
+        "description": "{{ __($info->meta_desc) }}",
+        "url": "https://dtec.edu.bd",
+        "foundingDate": "1926-01-01",
+        "location": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Dinajpur",
+                "addressCountry": "Bangladesh"
+            }
+        },
+        "logo": "{{asset('images/institute/' . $info->logo)}}",
+        "sameAs": [
+            "https://www.facebook.com/TextileInstituteDinajpur",
+            "https://twitter.com/TextileDinajpur"
+        ]
+    }
+    </script>
+
 </head>
 
 <body class="blank-page bg-slate-100 overflow-x-hidden" data-col="blank-page" data-asset-path="{{ asset('/') }}">

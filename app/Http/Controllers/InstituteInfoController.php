@@ -32,10 +32,6 @@ class InstituteInfoController extends Controller
     public function update(Request $request)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -93,6 +89,21 @@ class InstituteInfoController extends Controller
                 'meta_og_image.image' => 'Meta og image must be a image',
                 'meta_og_image.mimes' => 'Meta og image must be a jpeg,png,jpg',
                 'meta_og_image.max' => 'Meta og image must be less than 512kb',
+                'institute_image.image' => 'Institute image must be a image',
+                'institute_image.mimes' => 'Institute image must be a jpeg,png,jpg',
+                'institute_image.max' => 'Institute image must be less than 1024kb',
+                'logo.image' => 'Logo must be a image',
+                'logo.mimes' => 'Logo must be a jpeg,png,jpg',
+                'logo.max' => 'Logo must be less than 512kb',
+                'image_left.image' => 'Image left must be a image',
+                'image_left.mimes' => 'Image left must be a jpeg,png,jpg',
+                'image_left.max' => 'Image left must be less than 512kb',
+                'image_right.image' => 'Image right must be a image',
+                'image_right.mimes' => 'Image right must be a jpeg,png,jpg',
+                'image_right.max' => 'Image right must be less than 512kb',
+                'favicon.image' => 'Favicon must be a image',
+                'favicon.max' => 'Favicon must be less than 512kb',
+
             ]
         );
 
