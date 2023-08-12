@@ -175,10 +175,10 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
     });
 });
 
-Route::group(['prefix' => 'dti/access'], function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])->name('register')->middleware('verified');
-    Route::post('register', [RegisteredUserController::class, 'store'])->middleware('verified');
-});
+// Route::group(['prefix' => 'dti/access'], function () {
+//     Route::get('register', [RegisteredUserController::class, 'create'])->name('register')->middleware('verified');
+//     Route::post('register', [RegisteredUserController::class, 'store'])->middleware('verified');
+// });
 
 //Route::group(['prefix' => 'authenticated/govern'], function () {
 //    Route::group(['middleware' => ['auth', 'verified']], function () {
