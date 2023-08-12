@@ -14,58 +14,69 @@ $(function () {
 
       $this.validate({
         rules: {
-          password: {
+          current_password: {
             required: true
           },
-          'new-password': {
+          password: {
             required: true,
-            minlength: 8
+            minlength: 8,
+            password_strength: true
           },
-          'confirm-new-password': {
+          password_confirmation: {
             required: true,
             minlength: 8,
             equalTo: '#account-new-password'
           },
-          apiKeyName: {
-            required: true
-          }
+          // apiKeyName: {
+          //   required: true
+          // }
         },
         messages: {
-          'new-password': {
+          password: {
             required: 'Enter new password',
-            minlength: 'Enter at least 8 characters'
+            minlength: 'Password must be at least 8 characters long'
           },
-          'confirm-new-password': {
+          password_confirmation: {
             required: 'Please confirm new password',
             minlength: 'Enter at least 8 characters',
             equalTo: 'The password and its confirm are not the same'
           }
         }
       });
-      $this.on('submit', function (e) {
-        e.preventDefault();
-      });
+
+      $.validator.addMethod('password_strength', function (value) {
+        // Use regular expressions to check password strength
+        var hasUppercase = /[A-Z]/.test(value);
+        var hasLowercase = /[a-z]/.test(value);
+        var hasNumber = /\d/.test(value);
+        var hasSpecialChar = /[^A-Za-z0-9]/.test(value);
+
+        return hasUppercase && hasLowercase && hasNumber && hasSpecialChar;
+      }, 'Password must contain capital letters, small letters, special characters, and numbers.');
+      // $this.on('submit', function (e) {
+      //   e.preventDefault();
+      // });
     });
   }
 
   //phone
-  if (accountNumberMask.length) {
-    accountNumberMask.each(function () {
-      new Cleave($(this), {
-        phone: true,
-        phoneRegionCode: 'US'
-      });
-    });
-  }
+  // if (accountNumberMask.length) {
+  //   accountNumberMask.each(function () {
+  //     new Cleave($(this), {
+  //       phone: true,
+  //       phoneRegionCode: 'US'
+  //     });
+  //   });
+  // }
 
   // For all Select2
-  if (select2.length) {
-    select2.each(function () {
-      var $this = $(this);
-      $this.wrap('<div class="position-relative"></div>');
-      $this.select2({
-        dropdownParent: $this.parent()
-      });
-    });
-  }
+  // if (select2.length) {
+  //   select2.each(function () {
+  //     var $this = $(this);
+  //     $this.wrap('<div class="position-relative"></div>');
+  //     $this.select2({
+  //       dropdownParent: $this.parent()
+  //     });
+  //   });
+  // }
 });

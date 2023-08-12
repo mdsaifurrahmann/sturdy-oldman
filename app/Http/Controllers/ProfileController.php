@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Fortify\Contracts\PasswordUpdateResponse;
+use Laravel\Fortify\Contracts\UpdatesUserPasswords;
+use App\Rules\PasswordStrength;
 
 class ProfileController extends Controller
 {
@@ -68,15 +71,41 @@ class ProfileController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+
+    public function security()
     {
-        //
+        return view('area52.profile.account-settings-security');
+    }
+
+    /**
+     * Update the user's password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Laravel\Fortify\Contracts\UpdatesUserPasswords  $updater
+     * @return \Laravel\Fortify\Contracts\PasswordUpdateResponse
+     */
+    public function updatePassword(Request $request, UpdatesUserPasswords $updater)
+    {
+
+        $request->validate(
+            [
+                'current_password' => ['required', 'current_password'],
+                'password' => ['required', 'min:8', 'confirmed', new PasswordStrength],
+            ],
+            [
+                'current_password.current_password' => 'The current password is incorrect',
+                'current_password.required' => 'The current password is required',
+                'password.required' => 'The password field is required',
+                'password.min' => 'The password must be at least 8 characters',
+                'password.confirmed' => 'Confirmation password does not match',
+            ]
+        );
+
+        $updater->update($request->user(), $request->all());
+
+        $request->session()->flash('success', 'Password updated successfully!');
+
+        return app(PasswordUpdateResponse::class);
     }
 
     /**

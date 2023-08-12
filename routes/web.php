@@ -14,6 +14,7 @@ use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Laravel\Fortify\Http\Controllers\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -166,6 +167,11 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('/', [ProfileController::class, 'profile'])->name('profile');
         Route::patch('update', [ProfileController::class, 'update'])->name('profile-update');
         Route::delete('delete', [ProfileController::class, 'destroy'])->name('profile-delete');
+    });
+
+    Route::prefix('administration/users/profile/security')->group(function () {
+        Route::get('/', [ProfileController::class, 'security'])->name('security');
+        Route::put('/password', [ProfileController::class, 'updatePassword'])->name('update-password');
     });
 });
 

@@ -47,7 +47,7 @@
                 </li>
                 <!-- security -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('page/account-settings-security') }}">
+                    <a class="nav-link" href="{{ route('security') }}">
                         <i data-feather="lock" class="font-medium-3 me-50"></i>
                         <span class="fw-bold">Security</span>
                     </a>
