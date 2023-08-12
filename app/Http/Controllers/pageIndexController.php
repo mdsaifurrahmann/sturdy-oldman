@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class pageIndexController extends Controller
 {
@@ -318,7 +319,36 @@ class pageIndexController extends Controller
     //    Backend Being
     public function govern()
     {
-        return view('area52.govern');
+
+        $resourcePath = resource_path('data/quotes.json');
+
+        if (File::exists($resourcePath)) {
+            $quotes = File::get($resourcePath);
+            $data = json_decode($quotes, true);
+
+            if (!empty($data)) {
+                $randomIndex = array_rand($data);
+                $randomItem = $data[$randomIndex];
+            }
+        }
+
+        $counts = DB::select(
+            DB::raw('
+                SELECT
+                    (SELECT COUNT(*) FROM users) AS users,
+                    (SELECT COUNT(*) FROM notices) AS notices,
+                    (SELECT COUNT(*) FROM apa) AS apas,
+                    (SELECT COUNT(*) FROM faculty) AS faculty,
+                    (SELECT COUNT(*) FROM albums) AS albums
+            ')
+        );
+        $machineryItemCount = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
+
+        $counts = $counts[0];
+        $primaryArray = array_merge((array)$counts);
+        $primaryArray['machineries'] = count($machineryItemCount->items);
+
+        return view('area52.govern', compact('randomItem', 'primaryArray'));
     }
 
     public function slider()
