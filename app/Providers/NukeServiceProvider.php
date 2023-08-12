@@ -76,9 +76,8 @@ class NukeServiceProvider extends ServiceProvider
                 return $user;
             } else {
                 RateLimiter::hit($this->throttleKey(), $seconds = 300);
-                return session()->flash('error', 'You have ' . RateLimiter::remaining($this->throttleKey(), 2) . ' attempts left');
+                return session()->flash('error', 'You have ' . RateLimiter::remaining($this->throttleKey(), 3) . ' attempts left');
             }
-
         });
 
         Fortify::authenticateThrough(function (Request $request) {
@@ -98,7 +97,7 @@ class NukeServiceProvider extends ServiceProvider
      */
     public function checkTooManyFailedAttempts()
     {
-        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 2)) {
+        if (!RateLimiter::tooManyAttempts($this->throttleKey(), 3)) {
             return true;
         } else {
             return false;
