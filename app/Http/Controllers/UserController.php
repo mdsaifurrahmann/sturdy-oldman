@@ -99,7 +99,7 @@ class UserController extends Controller
             DB::commit();
 
             // Send email to the user
-            // Mail::to($user->email)->send(new UserUpdated($user));
+            Mail::to($user->email)->send(new UserUpdated($user));
 
             return redirect()->back()->with('success', 'User Updated Successfully');
         } catch (\Exception $e) {
