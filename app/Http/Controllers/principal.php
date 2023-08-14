@@ -15,11 +15,7 @@ class principal extends Controller
     public function update(PrincipalRequest $request, PrincipalModel $principal)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 

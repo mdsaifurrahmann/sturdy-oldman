@@ -94,7 +94,7 @@
                     </span>
                     <span class="user-status">Role:
                         @foreach (Auth::user()->getRoleNames() as $index => $role)
-                            <span>{{ $role }}</span>
+                            <span>{{ strtoupper($role) }}</span>
                             @if ($index < count(Auth::user()->getRoleNames()) - 1)
                                 &
                             @endif
@@ -111,8 +111,8 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                 <h6 class="dropdown-header">Manage Profile</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ Route::has('profile') ? route('profile') : 'javascript:void(0)' }}">
-                    <i class="me-50" data-feather="user"></i> Update Profile
+                <a class="dropdown-item" href="{{ route('profile-view', Auth::user()->username) }}">
+                    <i class="me-50" data-feather="user"></i>Profile
                 </a>
 
                 <a class="dropdown-item"

@@ -18,10 +18,6 @@ class HomeController extends Controller
     public function create(Request $request)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -76,16 +72,16 @@ class HomeController extends Controller
 
     public function sliderUpdate()
     {
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         return view('area52.home.slider.update-slider');
     }
 
     public function sliderList()
     {
 
-
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -97,11 +93,6 @@ class HomeController extends Controller
 
     public function destroy($id)
     {
-
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -129,9 +120,6 @@ class HomeController extends Controller
 
     public function machine(Request $request)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -194,9 +182,6 @@ class HomeController extends Controller
     {
 
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');

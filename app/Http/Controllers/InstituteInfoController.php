@@ -17,10 +17,6 @@ class InstituteInfoController extends Controller
     public function index()
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }

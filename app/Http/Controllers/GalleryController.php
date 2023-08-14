@@ -16,6 +16,11 @@ class GalleryController extends Controller
 
     public function createAlbumView()
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $albums = DB::table('albums')
             ->get();
         return view('area52.gallery.albums', compact('albums'));
@@ -27,6 +32,11 @@ class GalleryController extends Controller
 
     public function createAlbum(Request $request)
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $this->validate($request, [
             'album_name' => 'required|string',
             'album_description' => 'string|nullable',
@@ -70,6 +80,11 @@ class GalleryController extends Controller
 
     public function deleteAlbum($id)
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $check = DB::table('gallery')
             ->where('album_id', $id)
             ->value('images');
@@ -106,6 +121,11 @@ class GalleryController extends Controller
 
     public function addImagesToAlbum()
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $albums = DB::table('albums')
             ->select('id', 'name')
             ->get();
@@ -118,6 +138,11 @@ class GalleryController extends Controller
 
     public function addImages(Request $request)
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $this->validate($request, [
             'album_id' => 'required',
             'gallery.*' => 'required',
@@ -192,6 +217,11 @@ class GalleryController extends Controller
 
     public function albumList()
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $albums = DB::table('albums')
             ->select('id', 'name', 'description', 'cover_image')
             ->get();
@@ -205,6 +235,11 @@ class GalleryController extends Controller
 
     public function albumImages($id)
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $retrieve = DB::table('gallery')
             ->join('albums', 'albums.id', '=', 'gallery.album_id')
             ->select('gallery.images', 'albums.name as album_name', 'albums.description as album_description', 'albums.cover_image as album_cover', 'albums.id as album_id')
@@ -232,6 +267,11 @@ class GalleryController extends Controller
 
     public function deleteImage($id, $image)
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         $retrieve = DB::table('gallery')->where('album_id', $id)->first();
         $images = json_decode($retrieve->images);
         $new_images = [];

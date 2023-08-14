@@ -4,7 +4,8 @@
             "url": "authenticated/govern",
             "name": "Dashboard",
             "icon": "activity",
-            "slug": "govern"
+            "slug": "govern",
+            "permission": "4"
         },
         {
             "navheader": "Page Settings",
@@ -14,12 +15,14 @@
             "name": "Institute Info",
             "icon": "briefcase",
             "slug": "institute-info",
-            "url": "authenticated/govern/institution"
+            "url": "authenticated/govern/institution",
+            "permission": "3"
         },
         {
             "name": "Sliders",
             "icon": "sliders",
             "slug": "",
+            "permission": "3",
             "submenu": [
                 {
                     "url": "authenticated/govern/homepage/slider/add",
@@ -39,42 +42,49 @@
             "name": "Machineries",
             "icon": "truck",
             "slug": "machinery",
-            "url": "authenticated/govern/homepage/machinery"
+            "url": "authenticated/govern/homepage/machinery",
+            "permission": "3"
         },
         {
             "url": "authenticated/govern/about/history",
             "name": "History",
             "icon": "align-left",
-            "slug": "update-history"
+            "slug": "update-history",
+            "permission": "2"
         },
         {
             "url": "authenticated/govern/about/principal",
             "name": "Principal",
             "icon": "smile",
-            "slug": "update-principal"
+            "slug": "update-principal",
+            "permission": "2"
         },
         {
             "url": "authenticated/govern/administration/former-principals",
             "name": "Former Principals",
             "icon": "circle",
-            "slug": "former-principal-list"
+            "slug": "former-principal-list",
+            "permission": "3"
         },
         {
             "url": "authenticated/govern/administration/faculty",
             "name": "Faculty/Officers/Employees",
             "icon": "circle",
-            "slug": "faculty-add-view"
+            "slug": "faculty-add-view",
+            "permission": "2"
         },
         {
             "url": "authenticated/govern/administration/former-employees",
             "name": "Former Officers/Employees",
             "icon": "circle",
-            "slug": "former-employee-list"
+            "slug": "former-employee-list",
+            "permission": "2"
         },
         {
             "name": "Notice",
             "icon": "bell",
             "slug": "",
+            "permission": "3",
             "submenu": [
                 {
                     "name": "Add Notice",
@@ -94,6 +104,7 @@
             "name": "APA",
             "icon": "bar-chart-2",
             "slug": "",
+            "permission": "3",
             "submenu": [
                 {
                     "name": "Add APA Type",
@@ -125,6 +136,7 @@
             "name": "Gallery",
             "icon": "image",
             "slug": "",
+            "permission": "3",
             "submenu": [
                 {
                     "name": "Add Album",
@@ -145,6 +157,13 @@
                     "url": "authenticated/govern/gallery/album/list"
                 }
             ]
+        },
+        {
+            "name": "Users",
+            "icon": "user",
+            "slug": "users",
+            "url": "authenticated/govern/administration/users",
+            "permission": "2"
         }
     ]
 }

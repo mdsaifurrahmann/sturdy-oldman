@@ -1,6 +1,6 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Account')
+@section('title', 'Profile Update')
 
 @section('vendor-style')
     <!-- vendor css files -->
@@ -40,7 +40,7 @@
             <ul class="nav nav-pills mb-2">
                 <!-- Account -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ asset('page/account-settings-account') }}">
+                    <a class="nav-link active" href="{{ route('profile-update-view', $retrieve->username) }}">
                         <i data-feather="user" class="font-medium-3 me-50"></i>
                         <span class="fw-bold">Account</span>
                     </a>
@@ -57,7 +57,7 @@
             <!-- profile -->
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title">Profile Details</h4>
+                    <h4 class="card-title">Profile Update</h4>
                 </div>
                 <div class="card-body py-2 my-25">
                     <!-- header section -->
@@ -119,7 +119,7 @@
                                     @endif
                                     <option value="teacher">Teacher</option>
                                     <option value="operator">Operator</option>
-                                    <option value="manager">manager</option>
+                                    <option value="manager">Manager</option>
                                     <option value="IT Head">IT Head</option>
                                     <option value="Dept. head">Dept. Head</option>
                                     <option value="principal">Principal</option>

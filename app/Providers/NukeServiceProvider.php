@@ -63,7 +63,6 @@ class NukeServiceProvider extends ServiceProvider
         // Authenticate
         Fortify::authenticateUsing(function (Request $request) {
             if (!$this->checkTooManyFailedAttempts()) {
-
                 return session()->put(['attempt-failed' => 'Too many attempts failed. IP Blocked for 5 Minutes.', 'end_time' => time() + 300]);
             }
 
@@ -72,6 +71,11 @@ class NukeServiceProvider extends ServiceProvider
                 ->first();
 
             if ($user && Hash::check($request->password, $user->password)) {
+
+                if ($user->profile && $user->profile->status == '0') {
+                    return session()->flash('error', 'Your account is Inactive!');
+                }
+
                 RateLimiter::clear($this->throttleKey());
                 return $user;
             } else {

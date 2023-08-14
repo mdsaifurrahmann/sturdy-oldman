@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\PasswordUpdateResponse;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
 use App\Rules\PasswordStrength;
+use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {
@@ -32,15 +33,16 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile()
+    public function updateView($username)
     {
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $id = Auth::user()->id;
-        $retrieve = User::where('users.id', $id)
+        $username = Auth::user()->username;
+
+        $retrieve = User::where('users.username', $username)
             ->join('profile', 'users.id', '=', 'profile.user_id')
             ->select('users.*', 'profile.*')
             ->first();
@@ -49,16 +51,6 @@ class ProfileController extends Controller
         return view('area52.profile.account-settings', compact('retrieve'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -66,14 +58,38 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($username)
     {
-        //
+        $user = User::where('username', $username)->first();
+        $retrieve = User::with(['profile', 'roles'])->where('users.username', $username)->firstOrFail();
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
+        if (Auth::user()->hasRole(['nuke', 'admin'])) {
+            $roles = Role::all();
+            return view('area52.profile.user-view-account', compact('retrieve', 'roles'));
+        } elseif (Auth::user()->hasRole(['moderator', 'user'])) {
+            if (Auth::id() !== $retrieve->id) {
+                // return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+                abort('404', 'The page you\'re looking for does not exist');
+            }
+        }
+
+        // $retrieve = User::with(['profile', 'roles'])->where('users.username', $username)->firstOrFail();
+        // $roles = Role::all();
+        $roles = Role::all();
+
+        return view('area52.profile.user-view-account', compact('retrieve', 'roles'));
     }
 
 
     public function security()
     {
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
+
         return view('area52.profile.account-settings-security');
     }
 
@@ -86,6 +102,10 @@ class ProfileController extends Controller
      */
     public function updatePassword(Request $request, UpdatesUserPasswords $updater)
     {
+
+        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        }
 
         $request->validate(
             [
@@ -122,6 +142,7 @@ class ProfileController extends Controller
         }
 
         $id = Auth::user()->id;
+        $username = Auth::user()->username;
         $requestData = $request->all();
 
         $validator = Validator::make(
@@ -183,7 +204,7 @@ class ProfileController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Profile Updated Successfully');
+            return redirect()->route('profile-view', $username)->with('success', 'Profile Updated Successfully');
         } catch (\Exception $e) {
             DB::rollback();
             return back()->with('error', 'Something went wrong, Here are the details: ' . $e->getMessage());

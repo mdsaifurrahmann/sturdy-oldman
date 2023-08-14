@@ -36,14 +36,14 @@
             <ul class="nav nav-pills mb-2">
                 <!-- Account -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profile') }}">
+                    <a class="nav-link" href="{{ route('profile-update-view', Auth::user()->username) }}">
                         <i data-feather="user" class="font-medium-3 me-50"></i>
                         <span class="fw-bold">Account</span>
                     </a>
                 </li>
                 <!-- security -->
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ asset('page/account-settings-security') }}">
+                    <a class="nav-link active" href="{{ route('security') }}">
                         <i data-feather="lock" class="font-medium-3 me-50"></i>
                         <span class="fw-bold">Security</span>
                     </a>

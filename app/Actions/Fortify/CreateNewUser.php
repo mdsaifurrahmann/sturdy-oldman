@@ -35,10 +35,11 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+        $username = str_replace([' ', '.'], '_', $input['username']);
 
 
         $user = User::create([
-            'username' => $input['username'],
+            'username' => $username,
             'name' => $input['name'],
             'email' => $input['email'],
             'mobile' => $input['mobile'],
@@ -46,6 +47,8 @@ class CreateNewUser implements CreatesNewUsers
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        $user->assignRole('user');
 
         Profile::create([
             'user_id' => $user->id,

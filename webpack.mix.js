@@ -81,6 +81,7 @@ mix
   .js('resources/js/core/app.js', 'public/js/core')
   .js('resources/js/core/app-client.js', 'public/js/core')
   .js('resources/assets/js/scripts.js', 'public/js/core')
+  .js('resources/js/scripts/pages/app-user-list.js', 'public/js/core/pages/')
   .sass('resources/scss/base/themes/dark-layout.scss', 'public/css/base/themes', { sassOptions })
   .sass('resources/scss/base/themes/bordered-layout.scss', 'public/css/base/themes', { sassOptions })
   .sass('resources/scss/base/themes/semi-dark-layout.scss', 'public/css/base/themes', { sassOptions })

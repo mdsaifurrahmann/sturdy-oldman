@@ -14,13 +14,13 @@ $(function () {
     select = $('.select2'),
     dtContact = $('.dt-contact'),
     statusObj = {
-      1: { title: 'Pending', class: 'badge-light-warning' },
-      2: { title: 'Active', class: 'badge-light-success' },
-      3: { title: 'Inactive', class: 'badge-light-secondary' }
+      0: { title: 'Inactive', class: 'badge-light-danger' },
+      1: { title: 'Active', class: 'badge-light-success' },
+      // 2: { title: 'Inactive', class: 'badge-light-secondary' }
     }
 
   var assetPath = '../../../app-assets/',
-    userView = 'app-user-view-account.html'
+    userView = window.location.origin + "authenticated/govern/administration/users/view/profile/";
 
   if ($('body').attr('data-framework') === 'laravel') {
     assetPath = $('body').attr('data-asset-path')
@@ -31,7 +31,7 @@ $(function () {
     var $this = $(this)
     $this.wrap('<div class="position-relative"></div>')
     $this.select2({
-      // the following code is used to disable x-scrollbar when click in select input and
+      // the following code is used tao disable x-scrollbar when click in select input and
       // take 100% width in responsive also
       dropdownAutoWidth: true,
       width: '100%',
@@ -42,15 +42,47 @@ $(function () {
   // Users List datatable
   if (dtUserTable.length) {
     dtUserTable.DataTable({
-      ajax: assetPath + 'data/user-list.json', // JSON file to add data
+      ajax: window.location.origin + "/authenticated/govern/administration/users/response", // JSON file to add data
       columns: [
         // columns according to JSON
         { data: '' },
-        { data: 'full_name' },
-        { data: 'role' },
-        { data: 'current_plan' },
-        { data: 'billing' },
-        { data: 'status' },
+        { data: 'name' },
+        {
+          data: 'roles',
+          render: function (roles) {
+            var roleBadgeObj = {
+              user: '<span class="font-medium-3 text-warning me-50">' + feather.icons['meh'].toSvg() + '</span>',
+              moderator: '<span class="font-medium-3 text-success me-50">' + feather.icons['edit-2'].toSvg() + '</span>',
+              admin: '<span class="font-medium-3 text-info me-50">' + feather.icons['database'].toSvg() + '</span>',
+              nuke: '<span class="font-medium-3 text-danger me-50">' + feather.icons['slack'].toSvg() + '</span>'
+            };
+
+            return roles.map(function (role) {
+              return roleBadgeObj[role.name] + '<span class="text-capitalize">' + role.name + '</span>';
+            }).join(', ');
+          }
+        },
+        { data: 'mobile' },
+        {
+          data: 'profile.status',
+          render: function (data, type, full, meta) {
+            if (data === "0") {
+              return (
+                '<span class="badge rounded-pill badge-light-danger">' +
+                'Inactive' +
+                '</span>'
+              );
+            }
+
+            if (data === "1") {
+              return (
+                '<span class="badge rounded-pill badge-light-success">' +
+                'Active' +
+                '</span>'
+              );
+            }
+          }
+        },
         { data: '' }
       ],
       columnDefs: [
@@ -69,19 +101,19 @@ $(function () {
           targets: 1,
           responsivePriority: 4,
           render: function (data, type, full, meta) {
-            var $name = full['full_name'],
+            var $name = full['name'],
               $email = full['email'],
-              $image = full['avatar']
+              $image = full.profile.profile_image;
             if ($image) {
               // For Avatar image
               var $output =
-                '<img src="' + assetPath + 'images/avatars/' + $image + '" alt="Avatar" height="32" width="32">'
+                '<img src="' + window.location.origin + '/images/profile/' + $image + '" alt="Avatar" height="32" width="32">'
             } else {
               // For Avatar badge
               var stateNum = Math.floor(Math.random() * 6) + 1
               var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary']
               var $state = states[stateNum],
-                $name = full['full_name'],
+                $name = full['name'],
                 $initials = $name.match(/\b\w/g) || []
               $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase()
               $output = '<span class="avatar-content">' + $initials + '</span>'
@@ -98,9 +130,8 @@ $(function () {
               '</div>' +
               '</div>' +
               '<div class="d-flex flex-column">' +
-              '<a href="' +
-              userView +
-              '" class="user_name text-truncate text-body"><span class="fw-bolder">' +
+              '<a href="' + window.location.origin + "/authenticated/govern/administration/users/view/profile/" + full['username'] +
+              '" class="user_name text-truncate text-body text-capitalize"><span class="fw-bolder">' +
               $name +
               '</span></a>' +
               '<small class="emp_post text-muted">' +
@@ -112,41 +143,11 @@ $(function () {
           }
         },
         {
-          // User Role
-          targets: 2,
+          targets: 3,
           render: function (data, type, full, meta) {
-            var $role = full['role']
-            var roleBadgeObj = {
-              Subscriber: feather.icons['user'].toSvg({ class: 'font-medium-3 text-primary me-50' }),
-              Author: feather.icons['settings'].toSvg({ class: 'font-medium-3 text-warning me-50' }),
-              Maintainer: feather.icons['database'].toSvg({ class: 'font-medium-3 text-success me-50' }),
-              Editor: feather.icons['edit-2'].toSvg({ class: 'font-medium-3 text-info me-50' }),
-              Admin: feather.icons['slack'].toSvg({ class: 'font-medium-3 text-danger me-50' })
-            }
-            return "<span class='text-truncate align-middle'>" + roleBadgeObj[$role] + $role + '</span>'
-          }
-        },
-        {
-          targets: 4,
-          render: function (data, type, full, meta) {
-            var $billing = full['billing']
+            var $mobile = full['mobile']
 
-            return '<span class="text-nowrap">' + $billing + '</span>'
-          }
-        },
-        {
-          // User Status
-          targets: 5,
-          render: function (data, type, full, meta) {
-            var $status = full['status']
-
-            return (
-              '<span class="badge rounded-pill ' +
-              statusObj[$status].class +
-              '" text-capitalized>' +
-              statusObj[$status].title +
-              '</span>'
-            )
+            return '<span class="text-nowrap">' + $mobile + '</span>'
           }
         },
         {
@@ -161,14 +162,10 @@ $(function () {
               feather.icons['more-vertical'].toSvg({ class: 'font-small-4' }) +
               '</a>' +
               '<div class="dropdown-menu dropdown-menu-end">' +
-              '<a href="' +
-              userView +
-              '" class="dropdown-item">' +
+              '<a href="' + window.location.origin + "/authenticated/govern/administration/users/view/profile/" + full['username'] + '" class="dropdown-item">' +
               feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) +
               'Details</a>' +
-              '<a href="javascript:;" class="dropdown-item delete-record">' +
-              feather.icons['trash-2'].toSvg({ class: 'font-small-4 me-50' }) +
-              'Delete</a></div>' +
+              '</div>' +
               '</div>' +
               '</div>'
             )
@@ -192,61 +189,7 @@ $(function () {
       },
       // Buttons with Dropdown
       buttons: [
-        {
-          extend: 'collection',
-          className: 'btn btn-outline-secondary dropdown-toggle me-2',
-          text: feather.icons['external-link'].toSvg({ class: 'font-small-4 me-50' }) + 'Export',
-          buttons: [
-            {
-              extend: 'print',
-              text: feather.icons['printer'].toSvg({ class: 'font-small-4 me-50' }) + 'Print',
-              className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
-            },
-            {
-              extend: 'csv',
-              text: feather.icons['file-text'].toSvg({ class: 'font-small-4 me-50' }) + 'Csv',
-              className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
-            },
-            {
-              extend: 'excel',
-              text: feather.icons['file'].toSvg({ class: 'font-small-4 me-50' }) + 'Excel',
-              className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
-            },
-            {
-              extend: 'pdf',
-              text: feather.icons['clipboard'].toSvg({ class: 'font-small-4 me-50' }) + 'Pdf',
-              className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
-            },
-            {
-              extend: 'copy',
-              text: feather.icons['copy'].toSvg({ class: 'font-small-4 me-50' }) + 'Copy',
-              className: 'dropdown-item',
-              exportOptions: { columns: [1, 2, 3, 4, 5] }
-            }
-          ],
-          init: function (api, node, config) {
-            $(node).removeClass('btn-secondary')
-            $(node).parent().removeClass('btn-group')
-            setTimeout(function () {
-              $(node).closest('.dt-buttons').removeClass('btn-group').addClass('d-inline-flex mt-50')
-            }, 50)
-          }
-        },
-        {
-          text: 'Add New User',
-          className: 'add-new btn btn-primary',
-          attr: {
-            'data-bs-toggle': 'modal',
-            'data-bs-target': '#modals-slide-in'
-          },
-          init: function (api, node, config) {
-            $(node).removeClass('btn-secondary')
-          }
-        }
+
       ],
       // For responsive popup
       responsive: {
@@ -254,7 +197,7 @@ $(function () {
           display: $.fn.dataTable.Responsive.display.modal({
             header: function (row) {
               var data = row.data()
-              return 'Details of ' + data['full_name']
+              return 'Details of ' + data['name']
             }
           }),
           type: 'column',
@@ -289,54 +232,34 @@ $(function () {
       },
       initComplete: function () {
         // Adding role filter once table initialized
-        this.api()
-          .columns(2)
-          .every(function () {
-            var column = this
-            var label = $('<label class="form-label" for="UserRole">Role</label>').appendTo('.user_role')
-            var select = $(
-              '<select id="UserRole" class="form-select text-capitalize mb-md-0 mb-2"><option value=""> Select Role </option></select>'
-            )
-              .appendTo('.user_role')
-              .on('change', function () {
-                var val = $.fn.dataTable.util.escapeRegex($(this).val())
-                column.search(val ? '^' + val + '$' : '', true, false).draw()
-              })
+        this.api().columns(2).every(function () {
+          var column = this
+          var label = $('<label class="form-label" for="UserRole">Role</label>').appendTo('.user_role')
+          var select = $(
+            '<select id="UserRole" class="form-select text-capitalize mb-md-0 mb-2"><option value=""> Select Role </option></select>'
+          )
+            .appendTo('.user_role')
+            .on('change', function () {
+              var val = $.fn.dataTable.util.escapeRegex($(this).val())
+              column.search(val ? '^' + val + '$' : '', true, false).draw()
+            })
 
-            column
-              .data()
-              .unique()
-              .sort()
-              .each(function (d, j) {
-                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>')
-              })
-          })
-        // Adding plan filter once table initialized
-        this.api()
-          .columns(3)
-          .every(function () {
-            var column = this
-            var label = $('<label class="form-label" for="UserPlan">Plan</label>').appendTo('.user_plan')
-            var select = $(
-              '<select id="UserPlan" class="form-select text-capitalize mb-md-0 mb-2"><option value=""> Select Plan </option></select>'
-            )
-              .appendTo('.user_plan')
-              .on('change', function () {
-                var val = $.fn.dataTable.util.escapeRegex($(this).val())
-                column.search(val ? '^' + val + '$' : '', true, false).draw()
-              })
+          var rolesArray = column.data().toArray();
 
-            column
-              .data()
-              .unique()
-              .sort()
-              .each(function (d, j) {
-                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>')
-              })
-          })
-        // Adding status filter once table initialized
+          rolesArray.forEach(function (roleArray) {
+            if (Array.isArray(roleArray) && roleArray.length > 0) {
+              var roleNames = roleArray.map(function (role) {
+                return '<span class="text-capitalize">' + role.name + '</span>';
+              }).join(', ');
+
+              select.append('<option value="' + roleArray[0].name + '" class="text-capitalize">' + roleArray[0].name + '</option>');
+            }
+          });
+        })
+
+        // Status Filter
         this.api()
-          .columns(5)
+          .columns(4)
           .every(function () {
             var column = this
             var label = $('<label class="form-label" for="FilterTransaction">Status</label>').appendTo('.user_status')

@@ -14,9 +14,6 @@ class NoticeController extends Controller
 
     public function index()
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -28,10 +25,6 @@ class NoticeController extends Controller
 
     public function view()
     {
-
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -49,9 +42,6 @@ class NoticeController extends Controller
 
     public function addNotice(Request $request)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -140,9 +130,6 @@ class NoticeController extends Controller
 
     public function edit($id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -161,9 +148,6 @@ class NoticeController extends Controller
     public function destroy($id)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -184,9 +168,6 @@ class NoticeController extends Controller
 
     public function updateFile($id, $item)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -225,9 +206,6 @@ class NoticeController extends Controller
 
     public function update(Request $request, $id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');

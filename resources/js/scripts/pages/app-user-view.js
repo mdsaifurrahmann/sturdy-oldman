@@ -5,17 +5,17 @@
 
 ==========================================================================================*/
 (function () {
-  const suspendUser = document.querySelector('.suspend-user');
+  const deleteUser = document.querySelector('.delete-user');
 
   // Suspend User javascript
-  if (suspendUser) {
-    suspendUser.onclick = function () {
+  if (deleteUser) {
+    deleteUser.onclick = function () {
       Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert user!",
+        text: "Account will be deleted permanently",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'Yes, Suspend user!',
+        confirmButtonText: 'Yes, Delete user!',
         customClass: {
           confirmButton: 'btn btn-primary',
           cancelButton: 'btn btn-outline-danger ms-1'
@@ -31,10 +31,11 @@
               confirmButton: 'btn btn-success'
             }
           });
+          document.querySelector('#delete_external').submit();
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           Swal.fire({
             title: 'Cancelled',
-            text: 'Cancelled Suspension :)',
+            text: 'Cancelled deleting user :)',
             icon: 'error',
             customClass: {
               confirmButton: 'btn btn-success'
@@ -43,48 +44,5 @@
         }
       });
     };
-  }
-
-  //? Billing page have multiple buttons
-  // Cancel Subscription alert
-  const cancelSubscription = document.querySelectorAll('.cancel-subscription');
-
-  // Alert With Functional Confirm Button
-  if (cancelSubscription) {
-    cancelSubscription.forEach(cancelBtn => {
-      cancelBtn.onclick = function () {
-        Swal.fire({
-          text: 'Are you sure you would like to cancel your subscription?',
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Yes',
-          customClass: {
-            confirmButton: 'btn btn-primary',
-            cancelButton: 'btn btn-outline-danger ms-1'
-          },
-          buttonsStyling: false
-        }).then(function (result) {
-          if (result.value) {
-            Swal.fire({
-              icon: 'success',
-              title: 'Unsubscribed!',
-              text: 'Your subscription cancelled successfully.',
-              customClass: {
-                confirmButton: 'btn btn-success'
-              }
-            });
-          } else if (result.dismiss === Swal.DismissReason.cancel) {
-            Swal.fire({
-              title: 'Cancelled',
-              text: 'Unsubscription Cancelled!!',
-              icon: 'error',
-              customClass: {
-                confirmButton: 'btn btn-success'
-              }
-            });
-          }
-        });
-      };
-    });
   }
 })();

@@ -1,6 +1,6 @@
 @extends('layouts.fullLayoutClient')
 
-@section('title', __('Ex-Officers and Employees'))
+@section('title', __('Former Officers and Employees'))
 
 @section('page-style')
 

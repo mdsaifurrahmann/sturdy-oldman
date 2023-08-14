@@ -14,11 +14,7 @@ class HistoryController extends Controller
     public function update(HistoryRequest $request)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 

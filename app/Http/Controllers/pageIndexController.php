@@ -322,7 +322,7 @@ class pageIndexController extends Controller
     {
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         $resourcePath = resource_path('data/quotes.json');
@@ -359,7 +359,7 @@ class pageIndexController extends Controller
     public function slider()
     {
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         return view('area52.home.slider.add-slider');
@@ -367,8 +367,8 @@ class pageIndexController extends Controller
 
     public function updatehistory()
     {
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         $history = json_decode(\DB::table('data')->where('target', 'history')->value('data'));
@@ -379,7 +379,7 @@ class pageIndexController extends Controller
     public function machine()
     {
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         $machinery = json_decode(DB::table('data')->where('target', 'machinery')->value('data'));
@@ -390,7 +390,7 @@ class pageIndexController extends Controller
     public function updatePrincipal()
     {
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         $id = 1;
@@ -401,7 +401,7 @@ class pageIndexController extends Controller
     public function updateFormerPrincipal($id)
     {
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         $retrieve = DB::table('former_principals')->where('id', $id)->get()->first();
@@ -411,7 +411,7 @@ class pageIndexController extends Controller
     public function updateFormerEmployee($id)
     {
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
-            return view('layouts.not-authorized');
+            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
         $retrieve = DB::table('former_employees')->where('id', $id)->get()->first();

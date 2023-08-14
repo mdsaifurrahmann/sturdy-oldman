@@ -9,12 +9,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\principal;
-use App\Http\Controllers\APAContoller;
+use App\Http\Controllers\APAController;
 use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
-use Laravel\Fortify\Http\Controllers\RegisteredUserController;
-use Laravel\Fortify\Http\Controllers\PasswordController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -125,29 +124,29 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
     });
 
     Route::prefix('apa')->group(function () {
-        Route::get('/', [APAContoller::class, 'index'])->name('apa-add-form');
-        Route::post('add', [APAContoller::class, 'addAPA'])->name('add-apa');
-        Route::get('list', [APAContoller::class, 'list'])->name('apa-list');
-        Route::delete('delete/{id}', [APAContoller::class, 'destroy'])->name('apa-delete');
-        Route::get('edit/{id}', [APAContoller::class, 'edit'])->name('edit-apa');
-        Route::post('update-file/{id}/{key}', [APAContoller::class, 'updateFile'])->name('update-apa-file');
-        Route::post('update/{id}', [APAContoller::class, 'update'])->name('update-apa');
+        Route::get('/', [APAController::class, 'index'])->name('apa-add-form');
+        Route::post('add', [APAController::class, 'addAPA'])->name('add-apa');
+        Route::get('list', [APAController::class, 'list'])->name('apa-list');
+        Route::delete('delete/{id}', [APAController::class, 'destroy'])->name('apa-delete');
+        Route::get('edit/{id}', [APAController::class, 'edit'])->name('edit-apa');
+        Route::post('update-file/{id}/{key}', [APAController::class, 'updateFile'])->name('update-apa-file');
+        Route::post('update/{id}', [APAController::class, 'update'])->name('update-apa');
 
         // add type
-        Route::get('add-type', [APAContoller::class, 'addTypeView'])->name('add-type-view');
-        Route::get('type-update/{id}', [APAContoller::class, 'typeEditView'])->name('type-update-view');
+        Route::get('add-type', [APAController::class, 'addTypeView'])->name('add-type-view');
+        Route::get('type-update/{id}', [APAController::class, 'typeEditView'])->name('type-update-view');
 
-        Route::post('add-types', [APAContoller::class, 'addType'])->name('add-type');
-        Route::delete('apa-type-delete/{id}', [APAContoller::class, 'typeDestroy'])->name('apa-type-delete');
-        Route::patch('update-type/{id}', [APAContoller::class, 'editType'])->name('type-update');
+        Route::post('add-types', [APAController::class, 'addType'])->name('add-type');
+        Route::delete('apa-type-delete/{id}', [APAController::class, 'typeDestroy'])->name('apa-type-delete');
+        Route::patch('update-type/{id}', [APAController::class, 'editType'])->name('type-update');
 
         // add category
-        Route::get('add-category', [APAContoller::class, 'addCategoryView'])->name('add-category-view');
-        Route::post('add_category', [APAContoller::class, 'addCategory'])->name('add-category');
+        Route::get('add-category', [APAController::class, 'addCategoryView'])->name('add-category-view');
+        Route::post('add_category', [APAController::class, 'addCategory'])->name('add-category');
 
-        Route::get('update-category/{id}', [APAContoller::class, 'editCategoryView'])->name('edit-category');
-        Route::patch('update-category/{id}', [APAContoller::class, 'editCategory'])->name('update-category');
-        Route::delete('delete-category/{id}', [APAContoller::class, 'destroyCategory'])->name('delete-category');
+        Route::get('update-category/{id}', [APAController::class, 'editCategoryView'])->name('edit-category');
+        Route::patch('update-category/{id}', [APAController::class, 'editCategory'])->name('update-category');
+        Route::delete('delete-category/{id}', [APAController::class, 'destroyCategory'])->name('delete-category');
     });
 
     Route::prefix('gallery')->group(function () {
@@ -164,14 +163,26 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
     });
 
     Route::prefix('administration/users/profile')->group(function () {
-        Route::get('/', [ProfileController::class, 'profile'])->name('profile');
+        Route::get('{username}/update', [ProfileController::class, 'updateView'])->name('profile-update-view');
         Route::patch('update', [ProfileController::class, 'update'])->name('profile-update');
         Route::delete('delete', [ProfileController::class, 'destroy'])->name('profile-delete');
+    });
+
+    Route::prefix('administration/users/view/profile')->group(function () {
+        Route::get('/{username}', [ProfileController::class, 'show'])->name('profile-view');
     });
 
     Route::prefix('administration/users/profile/security')->group(function () {
         Route::get('/', [ProfileController::class, 'security'])->name('security');
         Route::put('/password', [ProfileController::class, 'updatePassword'])->name('update-password');
+    });
+
+    Route::prefix('administration/users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('users');
+        Route::get('/response', [UserController::class, 'response'])->name('response');
+        Route::delete('/delete/external/{id}', [UserController::class, 'destroy'])->name('external-delete');
+        Route::patch('/update/external/{id}', [UserController::class, 'updateUser'])->name('external-update');
+        // Route::put('/password', [UsersController::class, 'updatePassword'])->name('update-password');
     });
 });
 

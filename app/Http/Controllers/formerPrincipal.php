@@ -12,9 +12,6 @@ class formerPrincipal extends Controller
 {
     public function addPrincipal(formerPrincipalRequest $request)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -40,9 +37,6 @@ class formerPrincipal extends Controller
 
     public function editPrincipal(formerPrincipalRequest $request, $id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -69,10 +63,6 @@ class formerPrincipal extends Controller
     public function principalList()
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -85,11 +75,7 @@ class formerPrincipal extends Controller
     public function destroy($id)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+        if (!Auth::user()->hasRole('nuke|admin')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
@@ -101,9 +87,6 @@ class formerPrincipal extends Controller
     public function addEmployee(formerPrincipalRequest $request)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -129,10 +112,6 @@ class formerPrincipal extends Controller
 
     public function editEmployee(formerPrincipalRequest $request, $id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -157,9 +136,6 @@ class formerPrincipal extends Controller
 
     public function employeeList()
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -172,11 +148,8 @@ class formerPrincipal extends Controller
     public function employeeDestroy($id)
     {
 
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
+        if (!Auth::user()->hasRole('nuke|admin')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 

@@ -10,14 +10,11 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 
 
-class APAContoller extends Controller
+class APAController extends Controller
 {
 
     public function index()
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -35,10 +32,6 @@ class APAContoller extends Controller
 
     public function list()
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -54,9 +47,6 @@ class APAContoller extends Controller
 
     public function addAPA(Request $request)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -145,10 +135,6 @@ class APAContoller extends Controller
 
     public function edit($id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
@@ -172,9 +158,6 @@ class APAContoller extends Controller
 
     public function destroy($id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -194,9 +177,6 @@ class APAContoller extends Controller
 
     public function updateFile($id, $item)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -234,10 +214,6 @@ class APAContoller extends Controller
 
     public function update(Request $request, $id)
     {
-
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
@@ -330,12 +306,9 @@ class APAContoller extends Controller
 
     public function addTypeView()
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You have not enough permission to create APA Type');
         }
 
         $apa_type = DB::table('apa_types')->orderBy('created_at')->latest('created_at')->paginate(10);
@@ -345,12 +318,9 @@ class APAContoller extends Controller
 
     public function addType(Request $request)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You have not enough permission to create APA Type');
         }
 
         $request->validate(
@@ -394,6 +364,10 @@ class APAContoller extends Controller
 
     public function typeEditView($id)
     {
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You have not enough permission to Edit APA Type');
+        }
+
         $retrieve = DB::table('apa_types')->where('id', $id)->first();
 
         return view('area52.apa.edit-type', compact('retrieve'));
@@ -401,12 +375,9 @@ class APAContoller extends Controller
 
     public function editType(Request $request, $id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
         if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+            return redirect()->route('govern')->with('error', 'You have not enough permission to Edit APA Type');
         }
 
         $retrieve = DB::table('apa_types')->where('id', $id)->first();
@@ -458,12 +429,8 @@ class APAContoller extends Controller
 
     public function typeDestroy($id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
-
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to Delete APA Type or Category');
         }
 
         $retrieve = DB::table('apa_types')->where('id', $id)->value('image');
@@ -479,6 +446,11 @@ class APAContoller extends Controller
 
     public function addCategoryView()
     {
+
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to Add APA Type or Category');
+        }
+
         $retrieve = DB::table('apa_types')->get();
 
 
@@ -494,12 +466,9 @@ class APAContoller extends Controller
 
     public function addCategory(Request $request)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to Add APA Type or Category');
         }
 
         $request->validate(
@@ -538,12 +507,9 @@ class APAContoller extends Controller
 
     public function editCategoryView($id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to edit APA Type or Category');
         }
 
         $retrieve = DB::table('apa_categories')
@@ -558,12 +524,9 @@ class APAContoller extends Controller
 
     public function editCategory(Request $request, $id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to edit APA Type or Category');
         }
 
         $request->validate(
@@ -603,12 +566,9 @@ class APAContoller extends Controller
 
     public function destroyCategory($id)
     {
-        if (!Auth::check()) {
-            redirect()->route('login');
-        }
 
-        if (!Auth::user()->hasRole('nuke|admin|moderator')) {
-            return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
+        if (!Auth::user()->hasRole('nuke|admin')) {
+            return redirect()->route('govern')->with('error', 'You are not authorized to Delete APA Type or Category');
         }
 
         DB::table('apa_categories')->where('id', $id)->delete();

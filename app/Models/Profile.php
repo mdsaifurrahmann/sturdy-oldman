@@ -14,7 +14,8 @@ class Profile extends Model
         'zip',
         'designation',
         'address',
-        'profile_image'
+        'profile_image',
+        'status',
     ];
 
     protected $table = 'profile';

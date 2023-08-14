@@ -31,7 +31,7 @@ class FacultyController extends Controller
      */
     public function create(faculty $faculty)
     {
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
@@ -47,7 +47,7 @@ class FacultyController extends Controller
      */
     public function store(facultyRequest $request, faculty $faculty)
     {
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
@@ -103,7 +103,7 @@ class FacultyController extends Controller
     public function edit(faculty $faculty, $id)
     {
 
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
@@ -120,7 +120,7 @@ class FacultyController extends Controller
      */
     public function update(facultyRequest $request, faculty $faculty, $id)
     {
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
@@ -180,7 +180,7 @@ class FacultyController extends Controller
     public function destroy(faculty $faculty, $id)
     {
 
-        if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
+        if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
