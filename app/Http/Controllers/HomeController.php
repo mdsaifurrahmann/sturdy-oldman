@@ -32,11 +32,23 @@ class HomeController extends Controller
                     $title = 'slider.' . $key . '.title';
                     $desc = 'slider.' . $key . '.desc';
 
-                    $validator = $request->validate([
-                        $image => 'required|image|mimes:jpeg,png,jpg|max:1024',
-                        $title => 'required|string',
-                        $desc => 'required|string',
-                    ]);
+                    $validator = $request->validate(
+                        [
+                            $image => 'required|image|mimes:jpeg,png,jpg|max:1024',
+                            $title => 'required|string',
+                            $desc => 'required|string',
+                        ],
+                        [
+                            'slider.' . $key . '.image.required' => 'Please select image',
+                            'slider.' . $key . '.image.image' => 'Please select image',
+                            'slider.' . $key . '.image.mimes' => 'Image must be jpeg, png or jpg',
+                            'slider.' . $key . '.image.max' => 'Image size must be less than 1MB',
+                            'slider.' . $key . '.title.required' => 'Please enter title',
+                            'slider.' . $key . '.desc.required' => 'Please enter description',
+                            'slider.' . $key . '.title.string' => 'Title must be string',
+                            'slider.' . $key . '.desc.string' => 'Description must be string',
+                        ]
+                    );
 
                     $file = $request->file('slider.' . $key . '.image');
                     $fileName = time() . Str::random(16) . '-slider-' . $key . '.' . $file->extension();
@@ -70,14 +82,88 @@ class HomeController extends Controller
         }
     }
 
-    public function sliderUpdate()
+    public function sliderUpdateView($id)
     {
         if (!Auth::user()->hasRole(['nuke', 'admin', 'moderator'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        return view('area52.home.slider.update-slider');
+        $target = 'slider';
+
+        // Retrieve the existing JSON data
+        $retrievedData = json_decode(DB::table('data')->where('target', $target)->value('data'), true);
+
+        if (!is_array($retrievedData)) {
+            // Handle case where data is not a valid array
+            return redirect()->back()->with('error', 'Invalid data format');
+        }
+
+        $item = $retrievedData[$id] ?? null;
+
+
+        return view('area52.home.slider.update-slider', compact('item', 'id'));
     }
+
+    public function sliderUpdate(Request $request, $id)
+    {
+        $target = 'slider';
+
+        // Retrieve the existing JSON data
+        $retrievedData = json_decode(DB::table('data')->where('target', $target)->value('data'), true);
+
+        if (!is_array($retrievedData)) {
+            // Handle case where data is not a valid array
+            return redirect()->back()->with('error', 'Invalid data format');
+        }
+
+        $item = $retrievedData[$id] ?? null;
+
+        if (!$item) {
+            // Handle case where the index is out of bounds
+            return redirect()->back()->with('error', 'Invalid index');
+        }
+
+        $validator = $request->validate([
+            'title' => 'required|string',
+            'desc' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:1024',
+        ], [
+            'title.required' => 'Please enter title',
+            'desc.required' => 'Please enter description',
+            'image.image' => 'Please select a valid image',
+            'image.mimes' => 'Image must be jpeg, png or jpg',
+            'image.max' => 'Image size must be less than 1MB',
+            'title.string' => 'Title must be a string',
+            'desc.string' => 'Description must be a string',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Delete the old image file
+            File::exists(public_path('/images/slider/' . $item['image'])) ? File::delete(public_path('/images/slider/' . $item['image'])) : null;
+
+            $file = $request->file('image');
+            $fileName = time() . Str::random(16) . '-slider-' . $id . '.' . $file->extension();
+            $destinationPath = public_path('/images/slider');
+
+            // Move the new image file
+            $file->move($destinationPath, $fileName);
+            $item['image'] = $fileName;
+        }
+
+        $item['title'] = $request->input('title');
+        $item['desc'] = $request->input('desc');
+
+        // Update the specific item in the array
+        $retrievedData[$id] = $item;
+
+        // Update the 'data' column with modified JSON data
+        DB::table('data')->where('target', $target)->update([
+            'data' => json_encode($retrievedData),
+        ]);
+
+        return redirect()->back()->with('success', 'Slider Updated Successfully');
+    }
+
 
     public function sliderList()
     {

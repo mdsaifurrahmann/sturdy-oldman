@@ -45,59 +45,53 @@
             <h4 class="card-title">Update Slider</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('slider-store') }}" method="POST" class="slider-repeater" enctype="multipart/form-data">
+            <form action="{{ route('slider-update', $id) }}" method="POST" class="slider-repeater"
+                enctype="multipart/form-data">
                 @csrf
+                @method('PATCH')
                 <div data-repeater-list="slider">
-                    <div data-repeater-item>
-                        <div class="row d-flex align-items-end">
-                            <div class="col-md-3 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="sliderImage">Select Image</label>
-                                    <input type="file" class="form-control" id="sliderImage"
-                                        aria-describedby="sliderImage" name="image" />
-                                </div>
-                            </div>
 
-                            <div class="col-md-3 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="sliderTitle">Slider Title</label>
-                                    <input type="text" class="form-control" id="sliderTitle"
-                                        aria-describedby="sliderTitle" placeholder="Ex: Welcome to DTI" name="title" />
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-12">
-                                <div class="mb-1">
-                                    <label class="form-label" for="sliderDesc">Slider Description</label>
-                                    <input type="text" class="form-control" id="sliderDesc" aria-describedby="sliderDesc"
-                                        placeholder="Ex: We're at the top of the world" name="desc" />
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-12">
-                                <div class="mb-1">
-                                    <button class="btn btn-outline-danger text-nowrap px-1" data-repeater-delete
-                                        type="button">
-                                        <i data-feather="x" class="me-25"></i>
-                                        <span>Delete</span>
-                                    </button>
-                                </div>
+                    <div class="row d-flex align-items-end">
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="sliderImage">Select Image</label>
+                                <input type="file" class="form-control" id="sliderImage" aria-describedby="sliderImage"
+                                    name="image" />
                             </div>
                         </div>
-                        <hr />
+
+                        <div class="col-md-3 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="sliderTitle">Slider Title</label>
+                                <input type="text" class="form-control" id="sliderTitle" aria-describedby="sliderTitle"
+                                    placeholder="Ex: Welcome to DTI" name="title" value="{{ $item['title'] }}" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="sliderDesc">Slider Description</label>
+                                <input type="text" class="form-control" id="sliderDesc" aria-describedby="sliderDesc"
+                                    placeholder="Ex: We're at the top of the world" name="desc"
+                                    value="{{ $item['desc'] }}" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-12">
+                            <div class="mb-1">
+                                <button class="btn btn-primary" type="submit">Update</button>
+                            </div>
+                        </div>
                     </div>
+                    <hr />
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <button class="btn btn-icon btn-primary me-50" type="button" data-repeater-create>
-                            <i data-feather="plus" class="me-25"></i>
-                            <span>Add New</span>
-                        </button>
-
-                        <button class="btn btn-primary" type="submit"> Submit</button>
-                    </div>
+                    <img src="{{ asset('images/slider/' . $item['image']) }}" alt="something" class="p-0 mx-1 rounded"
+                        style="object-fit: cover; width: 300px">
                 </div>
-            </form>
         </div>
+        </form>
+    </div>
     </div>
 
 @stop
@@ -105,9 +99,7 @@
 
 @section('vendor-script')
     <!-- vendor files -->
-    <script src="{{ asset(mix('vendors/js/forms/repeater/jquery.repeater.min.js')) }}"></script>
 @stop
 @section('page-script')
     <!-- Page js files -->
-    <script src="{{ asset(mix('js/scripts/forms/form-repeater.js')) }}"></script>
 @stop

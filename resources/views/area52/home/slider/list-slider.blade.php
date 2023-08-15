@@ -38,27 +38,29 @@
             <div>
                 @foreach ($sliders as $key => $slide)
                     <div class="row d-flex align-items-center">
-                        <div class="col-md-3 col-12">
-                            <div class="mb-1">
-                                <img src="{{ asset('/images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
-                                     width="120" height="70" style="object-fit: cover; border-radius: 6px">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12">
-                            <div class="mb-1">
-                                <input type="text" class="form-control disable" aria-describedby="sliderTitle" readonly
-                                       value="{{ $slide->title }}"/>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-12">
-                            <div class="mb-1">
-                                <input type="text" class="form-control disable" aria-describedby="sliderDesc" readonly
-                                       value="{{ $slide->desc }}"/>
-                            </div>
-                        </div>
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
-
+                                <img src="{{ asset('/images/slider/' . $slide->image) }}" alt="{{ $slide->title }}"
+                                    width="120" height="70" style="object-fit: cover; border-radius: 6px">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xxl-4 col-12">
+                            <div class="mb-1">
+                                <input type="text" class="form-control disable" aria-describedby="sliderTitle" readonly
+                                    value="{{ $slide->title }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-xxl-3 col-12">
+                            <div class="mb-1">
+                                <input type="text" class="form-control disable" aria-describedby="sliderDesc" readonly
+                                    value="{{ $slide->desc }}" />
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-xxl-3 col-12">
+                            <div class="mb-1 d-flex">
+                                <a href="{{ route('slider-update-view', $key) }}"
+                                    class="btn btn-outline-warning text-nowrap me-1"><i data-feather="edit"
+                                        class="me-25"></i>Edit</a>
                                 <form action="{{ route('slider-delete', $key) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

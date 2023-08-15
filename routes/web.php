@@ -68,8 +68,8 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
             Route::post('add', [HomeController::class, 'create'])->name('slider-store');
             Route::get('list', [HomeController::class, 'sliderList'])->name('slider-list');
             Route::delete('delete/{id}', [HomeController::class, 'destroy'])->name('slider-delete');
-            Route::get('slider-update/{id}', [HomeController::class, 'sliderUpdate'])->name('slider-update-view');
-            // Route::Patch('slider-update/{id}', [HomeController::class, 'sliderUpdate'])->name('slider-update-view');
+            Route::get('slider-update/{id}', [HomeController::class, 'sliderUpdateView'])->name('slider-update-view');
+            Route::patch('slider-update/{id}', [HomeController::class, 'sliderUpdate'])->name('slider-update');
         });
 
         Route::post('machine', [HomeController::class, 'machine'])->name('machine');
