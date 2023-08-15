@@ -13,6 +13,7 @@ use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
 use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 
 class NukeServiceProvider extends ServiceProvider
@@ -62,6 +63,10 @@ class NukeServiceProvider extends ServiceProvider
 
         // Authenticate
         Fortify::authenticateUsing(function (Request $request) {
+
+            
+
+
             if (!$this->checkTooManyFailedAttempts()) {
                 return session()->put(['attempt-failed' => 'Too many attempts failed. IP Blocked for 5 Minutes.', 'end_time' => time() + 300]);
             }

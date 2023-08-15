@@ -83,6 +83,14 @@
                         </div>
                     @endif
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger py-1">
+                            @foreach ($errors->all() as $error)
+                                <div class="fw-bold text-center">{{ $error }}</div>
+                            @endforeach
+                        </div>
+                    @endif
+
                     @php
                         if (Session::has('attempt-failed')) {
                             if (Session::get('end_time') < time()) {
@@ -103,10 +111,8 @@
                                 <label for="login-email" class="form-label"> Username or Email </label>
                                 <input type="text" class="form-control" id="login-email" name="email"
                                     placeholder="Jhon or john@example.com" aria-describedby="login-email" tabindex="1"
-                                    autofocus />
-                                @error('email')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
+                                    autofocus required />
+
                             </div>
 
                             <div class="mb-1">
@@ -120,13 +126,10 @@
                                     <input type="password" class="form-control form-control-merge" id="login-password"
                                         name="password" tabindex="2"
                                         placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                                        aria-describedby="login-password" />
+                                        aria-describedby="login-password" required />
                                     <span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
                                 </div>
 
-                                @error('password')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
                             </div>
                             <div class="mb-1">
                                 <div class="form-check">
