@@ -128,14 +128,14 @@
                 @foreach ($employees as $officer)
                     <div class="row d-flex align-items-center">
 
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="name">Name</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="name"
                                     readonly value="{{ $officer->name }}" id="name" />
                             </div>
                         </div>
-                        <div class="col-md-3 col-12">
+                        <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="designation">Designation</label>
                                 <input type="text" class="form-control disable text-capitalize"
@@ -157,9 +157,18 @@
                                     readonly value="{{ $officer->to }}" id="to" />
                             </div>
                         </div>
-                        <div class="col-md-2 col-12">
-                            <div class="mb-1">
-                                <label class="form-label">Actions</label>
+                        <div class="col-md-4 col-12">
+                            <label class="form-label">Actions</label>
+                            <div class="mb-1 d-flex">
+
+
+                                <a href="{{ route('former-employee-edit', $officer->id) }}"
+                                    class="btn btn-outline-warning text-nowrap px-1 me-1">
+                                    <i data-feather="edit" class="me-25"></i>
+                                    Edit
+                                </a>
+
+
                                 <form action="{{ route('former-employee-delete', $officer->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
