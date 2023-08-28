@@ -56,27 +56,12 @@
                                     <label class="form-label" for="designation">Designation</label>
                                     <select type="select" class="form-select" id="designation"
                                         aria-describedby="designation" name="designation">
-                                        <option disabled selected>Select Designation</option>
-                                        <option value="teacher">Teacher</option>
-                                        <option value="assistant teacher">Assistant Teacher</option>
-                                        <option value="department head">Department Head</option>
-                                        <option value="professor">Professor</option>
-                                        <option value="assistant professor">Assistant Professor</option>
-                                        <option value="associate professor">Associate Professor</option>
-                                        <option value="lecturer">Lecturer</option>
-                                        <option value="assistant lecturer">Assistant Lecturer</option>
-                                        <option value="librarian">Librarian</option>
-                                        <option value="assistant librarian">Assistant Librarian</option>
-                                        <option value="accountant">Accountant</option>
-                                        <option value="assistant accountant">Assistant Accountant</option>
-                                        <option value="registrar">Registrar</option>
-                                        <option value="assistant registrar">Assistant Registrar</option>
-                                        <option value="director">Director</option>
-                                        <option value="assistant director">Assistant Director</option>
-                                        <option value="engineer">Engineer</option>
-                                        <option value="assistant engineer">Assistant Engineer</option>
-                                        <option value="manager">Manager</option>
-                                        <option value="assistant manager">Assistant Manager</option>
+                                        <option value="" selected>Select Designation</option>
+
+
+                                        @foreach ($designations as $designation)
+                                            <option value="{{ $designation->id }}">{{ $designation->designation }}</option>
+                                        @endforeach
 
 
                                     </select>
@@ -146,8 +131,8 @@
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="from">From</label>
-                                <input type="text" class="form-control disable text-capitalize"
-                                    aria-describedby="from" readonly value="{{ $officer->from }}" id="from" />
+                                <input type="text" class="form-control disable text-capitalize" aria-describedby="from"
+                                    readonly value="{{ $officer->from }}" id="from" />
                             </div>
                         </div>
                         <div class="col-md-2 col-12">

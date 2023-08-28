@@ -14,6 +14,8 @@ use App\Http\Controllers\InstituteInfoController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DesignationsController;
+use App\Models\Designations;
 
 /*
 |--------------------------------------------------------------------------
@@ -160,6 +162,14 @@ Route::middleware(['auth', 'verified'])->prefix('authenticated/govern')->group(f
         Route::get('album/list', [GalleryController::class, 'albumList'])->name('album-list');
         Route::get('album/{id}', [GalleryController::class, 'albumImages'])->name('album-images');
         Route::delete('album/delete/{id}/{image}', [GalleryController::class, 'deleteImage'])->name('delete-album-image');
+    });
+
+    Route::prefix('administration/designations')->group(function () {
+        Route::get('/', [DesignationsController::class, 'create'])->name('designations-view');
+        Route::post('/add', [DesignationsController::class, 'store'])->name('designations-add');
+        Route::get('/edit/{id}', [DesignationsController::class, 'edit'])->name('designations-edit');
+        Route::patch('update/{id}', [DesignationsController::class, 'update'])->name('designations-update');
+        Route::delete('delete/{id}', [DesignationsController::class, 'destroy'])->name('designations-delete');
     });
 
     Route::prefix('administration/users/profile')->group(function () {

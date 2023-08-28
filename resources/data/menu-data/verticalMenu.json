@@ -39,46 +39,62 @@
             ]
         },
         {
-            "name": "Machineries",
-            "icon": "truck",
-            "slug": "machinery",
-            "url": "authenticated/govern/homepage/machinery",
-            "permission": "3"
-        },
-        {
-            "url": "authenticated/govern/about/history",
-            "name": "History",
-            "icon": "align-left",
-            "slug": "update-history",
-            "permission": "2"
-        },
-        {
-            "url": "authenticated/govern/about/principal",
-            "name": "Principal",
+            "name": "Administrations",
             "icon": "smile",
-            "slug": "update-principal",
-            "permission": "2"
+            "slug": "",
+            "permission": "3",
+            "submenu": [
+                {
+                    "url": "authenticated/govern/about/principal",
+                    "name": "Principal",
+                    "icon": "circle",
+                    "slug": "update-principal",
+                    "permission": "2"
+                },
+                {
+                    "url": "authenticated/govern/administration/former-principals",
+                    "name": "Former Principals",
+                    "icon": "circle",
+                    "slug": "former-principal-list",
+                    "permission": "3"
+                },
+                {
+                    "url": "authenticated/govern/administration/faculty",
+                    "name": "Faculty/Officers/Employees",
+                    "icon": "circle",
+                    "slug": "faculty-add-view",
+                    "permission": "2"
+                },
+                {
+                    "url": "authenticated/govern/administration/former-employees",
+                    "name": "Former Faculty/Officers/Employees",
+                    "icon": "circle",
+                    "slug": "former-employee-list",
+                    "permission": "2"
+                }
+            ]
         },
         {
-            "url": "authenticated/govern/administration/former-principals",
-            "name": "Former Principals",
-            "icon": "circle",
-            "slug": "former-principal-list",
-            "permission": "3"
-        },
-        {
-            "url": "authenticated/govern/administration/faculty",
-            "name": "Faculty/Officers/Employees",
-            "icon": "circle",
-            "slug": "faculty-add-view",
-            "permission": "2"
-        },
-        {
-            "url": "authenticated/govern/administration/former-employees",
-            "name": "Former Officers/Employees",
-            "icon": "circle",
-            "slug": "former-employee-list",
-            "permission": "2"
+            "name": "About",
+            "icon": "bar-chart-2",
+            "slug": "",
+            "permission": "4",
+            "submenu": [
+                {
+                    "name": "Machineries",
+                    "icon": "truck",
+                    "slug": "machinery",
+                    "url": "authenticated/govern/homepage/machinery",
+                    "permission": "3"
+                },
+                {
+                    "url": "authenticated/govern/about/history",
+                    "name": "History",
+                    "icon": "align-left",
+                    "slug": "get-update-history",
+                    "permission": "2"
+                }
+            ]
         },
         {
             "name": "Notice",
@@ -164,6 +180,21 @@
             "slug": "users",
             "url": "authenticated/govern/administration/users",
             "permission": "2"
+        },
+        {
+            "name": "Settings",
+            "icon": "settings",
+            "slug": "",
+            "permission": "3",
+            "submenu": [
+                {
+                    "name": "Designations",
+                    "icon": "paperclip",
+                    "slug": "designations-view",
+                    "url": "authenticated/govern/administration/designations",
+                    "permission": "3"
+                }
+            ]
         }
     ]
 }

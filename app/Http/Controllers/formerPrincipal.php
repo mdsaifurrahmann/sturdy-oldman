@@ -68,8 +68,12 @@ class formerPrincipal extends Controller
         }
 
 
-        $principals = DB::table('former_principals')->get();
-        return view('area52.administration.former-principals', compact('principals'));
+        $principals = DB::table('former_principals')
+            ->join('designations', 'former_principals.designation', '=', 'designations.id')
+            ->select('former_principals.*', 'designations.designation as designation')
+            ->get();
+        $designations = DB::table('designations')->get();
+        return view('area52.administration.former-principals', compact('principals', 'designations'));
     }
 
     public function destroy($id)
@@ -141,8 +145,12 @@ class formerPrincipal extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $employees = DB::table('former_employees')->get();
-        return view('area52.administration.former-employee', compact('employees'));
+        $employees = DB::table('former_employees')
+            ->join('designations', 'former_employees.designation', '=', 'designations.id')
+            ->select('former_employees.*', 'designations.designation as designation')
+            ->get();
+        $designations = DB::table('designations')->get();
+        return view('area52.administration.former-employee', compact('employees', 'designations'));
     }
 
     public function employeeDestroy($id)

@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('principal', function (Blueprint $table) {
             $table->id();
-            $table->string('principal_name');
-            $table->string('qop');
-            $table->string('position');
-            $table->string('institute');
-            $table->text('pi');
-            $table->text('pip');
-            $table->mediumText('description');
-            $table->mediumText('message');
+            $table->string('principal_name')->default('Principal');
+            $table->string('qop')->default('QOP');
+            $table->unsignedBigInteger('position')->default(1);
+            $table->foreign('position')->references('id')->on('designations');
+            $table->string('institute')->default('Institute');
+            $table->text('pi')->default('PI');
+            $table->text('pip')->default('PI');
+            $table->mediumText('description')->default('Description');
+            $table->mediumText('message')->default('Message');
             $table->timestamps();
         });
     }

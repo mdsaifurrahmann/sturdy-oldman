@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('faculty', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('designation');
+            $table->unsignedBigInteger('designation')->default(1);
+            $table->foreign('designation')->references('id')->on('designations');
             $table->string('technology');
             $table->string('email');
             $table->string('mobile');

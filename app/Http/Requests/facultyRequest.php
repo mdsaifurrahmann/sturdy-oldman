@@ -27,9 +27,9 @@ class facultyRequest extends FormRequest
             'name' => 'required|string',
             'designation' => 'required|string',
             'technology' => 'required|string',
-            'phone' => 'required|integer',
+            'phone' => 'required',
             'email' => 'required|email',
-            'mobile' => 'required|integer',
+            'mobile' => 'required',
             'image' => 'max:512|mimes:jpeg,jpg,png'
         ];
     }
@@ -49,11 +49,9 @@ class facultyRequest extends FormRequest
             'technology.required' => 'Technology is required',
             'technology.string' => 'Technology should be a string',
             'phone.required' => 'Phone is required',
-            'phone.integer' => 'Phone should be a number',
             'email.required' => 'Email is required',
             'email.email' => 'Email should be a valid email',
             'mobile.required' => 'Mobile is required',
-            'mobile.integer' => 'Mobile should be a number',
             'image.max' => 'Image size should be less than 512kb',
             'image.mimes' => 'Image should be in png, jpg, jpeg format',
         ];

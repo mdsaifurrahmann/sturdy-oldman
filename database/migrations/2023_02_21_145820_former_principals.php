@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('former_principals', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('designation');
+            $table->unsignedBigInteger('designation')->default(1);
+            $table->foreign('designation')->references('id')->on('designations');
             $table->date('from');
             $table->date('to');
             $table->timestamps();

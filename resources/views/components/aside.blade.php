@@ -4,7 +4,9 @@
     if (Route::currentRouteName() != 'home') {
         $id = 1;
         $principal = DB::table('principal')
-            ->where('id', $id)
+            ->where('principal.id', $id)
+            ->join('designations', 'principal.position', '=', 'designations.id')
+            ->select('principal.*', 'designations.designation as position')
             ->get()
             ->first();
     }

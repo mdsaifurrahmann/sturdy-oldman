@@ -63,8 +63,11 @@
                                         <option selected value="{{ $retrieve->designation }}">
                                             {{ Illuminate\Support\Str::ucfirst($retrieve->designation) }}
                                         </option>
-                                        <option value="principal">Principal</option>
-                                        <option value="assistant principal">Assistant Principal</option>
+
+                                        @foreach ($designations as $designation)
+                                            <option value="{{ $designation->id }}">{{ $designation->designation }}</option>
+                                        @endforeach
+
                                     </select>
 
 

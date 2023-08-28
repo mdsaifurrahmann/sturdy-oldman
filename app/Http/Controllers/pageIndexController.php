@@ -17,8 +17,15 @@ class pageIndexController extends Controller
     public function home()
     {
         App::getLocale('bn');
+        $id = 1;
         $data = DB::table('data')->get();
-        $principal = DB::table('principal')->where('id', 1)->get()->first();
+        $principal = DB::table('principal')
+            ->where('principal.id', $id)
+            ->join('designations', 'principal.position', '=', 'designations.id')
+            ->select('principal.*', 'designations.designation as position')
+            ->get()
+            ->first();
+
         $notices = DB::table('notices')
             ->select('id', 'title')
             ->latest('created_at')
@@ -57,13 +64,21 @@ class pageIndexController extends Controller
     public function principal()
     {
         $id = 1;
-        $principal = DB::table('principal')->where('id', $id)->get()->first();
+        $principal = DB::table('principal')
+            ->where('principal.id', $id)
+            ->join('designations', 'principal.position', '=', 'designations.id')
+            ->select('principal.*', 'designations.designation as position')
+            ->get()
+            ->first();
         return view('frontend.pages.principal', compact('principal'));
     }
 
     public function formerPrincipals()
     {
-        $principals = DB::table('former_principals')->get();
+        $principals = DB::table('former_principals')
+            ->join('designations', 'former_principals.designation', '=', 'designations.id')
+            ->select('former_principals.*', 'designations.designation as designation')
+            ->get();
         return view('frontend.pages.former-principals', compact('principals'));
     }
 
@@ -395,7 +410,9 @@ class pageIndexController extends Controller
 
         $id = 1;
         $principal = DB::table('principal')->where('id', $id)->get()->first();
-        return view('area52.principal.principal', compact('principal'));
+        $designations = DB::table('designations')->get();
+
+        return view('area52.principal.principal', compact('principal', 'designations'));
     }
 
     public function updateFormerPrincipal($id)
@@ -404,8 +421,14 @@ class pageIndexController extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $retrieve = DB::table('former_principals')->where('id', $id)->get()->first();
-        return view('area52.administration.former-principal-edit', compact('retrieve'));
+        $retrieve = DB::table('former_principals')
+            ->where('former_principals.id', $id)
+            ->join('designations', 'former_principals.designation', '=', 'designations.id')
+            ->select('former_principals.*', 'designations.designation as designation')
+            ->get()
+            ->first();
+        $designations = DB::table('designations')->get();
+        return view('area52.administration.former-principal-edit', compact('retrieve', 'designations'));
     }
 
     public function updateFormerEmployee($id)
@@ -414,7 +437,13 @@ class pageIndexController extends Controller
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $retrieve = DB::table('former_employees')->where('id', $id)->get()->first();
-        return view('area52.administration.former-employee-edit', compact('retrieve'));
+        $retrieve = DB::table('former_employees')
+            ->where('former_employees.id', $id)
+            ->join('designations', 'former_employees.designation', '=', 'designations.id')
+            ->select('former_employees.*', 'designations.designation as designation')
+            ->get()
+            ->first();
+        $designations = DB::table('designations')->get();
+        return view('area52.administration.former-employee-edit', compact('retrieve', 'designations'));
     }
 }

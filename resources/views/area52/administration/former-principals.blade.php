@@ -58,8 +58,10 @@
                                     <select type="select" class="form-select" id="designation"
                                         aria-describedby="designation" name="designation">
                                         <option disabled selected>Select Designation</option>
-                                        <option value="principal">Principal</option>
-                                        <option value="assistant principal">Assistant Principal</option>
+
+                                        @foreach ($designations as $designation)
+                                            <option value="{{ $designation->id }}">{{ $designation->designation }}</option>
+                                        @endforeach
 
                                     </select>
 

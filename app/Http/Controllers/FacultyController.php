@@ -29,14 +29,19 @@ class FacultyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(faculty $faculty)
+    public function create()
     {
         if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $members = $faculty->get();
-        return view('area52.faculty.index', compact('members'));
+        $members = DB::table('faculty')
+            ->join('designations', 'faculty.designation', '=', 'designations.id')
+            ->select('faculty.*', 'designations.designation as designation')
+            ->get();
+
+        $designations = DB::table('designations')->get();
+        return view('area52.faculty.index', compact('members', 'designations'));
     }
 
     /**
@@ -100,15 +105,22 @@ class FacultyController extends Controller
      * @param  \App\Models\faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function edit(faculty $faculty, $id)
+    public function edit($id)
     {
 
         if (!Auth::user()->hasRole(['nuke', 'admin'])) {
             return redirect()->route('govern')->with('error', 'You are not authorized to access this page');
         }
 
-        $retrieve = $faculty->find($id);
-        return view('area52.faculty.edit', compact('retrieve'));
+
+        $retrieve = DB::table('faculty')
+            ->where('faculty.id', $id)
+            ->join('designations', 'faculty.designation', '=', 'designations.id')
+            ->select('faculty.*', 'designations.designation as designation')
+            ->first();
+
+        $designations = DB::table('designations')->get();
+        return view('area52.faculty.edit', compact('retrieve', 'designations'));
     }
 
     /**
