@@ -51,11 +51,12 @@
                                     <select type="select" class="form-select" id="designation"
                                         aria-describedby="designation" name="designation" required>
                                         <option disabled>Select Designation</option>
-                                        <option selected value="{{ $retrieve->designation }}">
-                                            {{ ucfirst($retrieve->designation) }}</option>
+                                        {{-- <option selected value="{{ $retrieve->designation }}">
+                                            {{ ucfirst($retrieve->designation) }}</option> --}}
 
                                         @foreach ($designations as $designation)
-                                            <option value="{{ $designation->id }}">{{ $designation->designation }}</option>
+                                            <option @if ($retrieve->designation == $designation->designation) selected @endif
+                                                value="{{ $designation->id }}">{{ $designation->designation }}</option>
                                         @endforeach
 
                                     </select>
@@ -101,7 +102,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="phone">Phone</label>
                                     <input type="text" class="form-control" id="phone" aria-describedby="phone"
-                                        name="phone" placeholder="0531******" value="{{ $retrieve->phone }}" required />
+                                        name="phone" placeholder="0531******" value="{{ $retrieve->phone }}" />
                                 </div>
                             </div>
                             <div class="col-12">

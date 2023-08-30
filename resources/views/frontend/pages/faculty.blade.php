@@ -43,30 +43,37 @@
 
                                             <div class="w-full xl:w-2/4 flex">
                                                 <div class="w-2/5 heading">
-                                                    <div class="!border-r-0 !xl:border-r">Name</div>
-                                                    <div class="!border-r-0 !xl:border-r !border-y-0">Designation</div>
-                                                    <div class="!border-r-0 !xl:border-r border-b-0 !xl:border-b">Technology
+                                                    <div class="!border-r-0 !xl:border-r">{{ __('Name') }}</div>
+                                                    <div class="!border-r-0 !xl:border-r !border-y-0">
+                                                        {{ __('Designation') }}</div>
+                                                    <div class="!border-r-0 !xl:border-r border-b-0 !xl:border-b">
+                                                        {{ __('Technology') }}
                                                     </div>
                                                 </div>
                                                 <div class="w-3/5 values">
                                                     <div class="!border-r !xl:border-r-0">{{ $single->name }}</div>
                                                     <div class="!border-r !xl:border-r-0 !border-y-0 capitalize">
-                                                        {{ $single->designation }}</div>
+                                                        {{ __($single->designation) }}</div>
                                                     <div
                                                         class="!border-r !xl:border-r-0 border-b-0 !xl:border-b text-ellipsis whitespace-nowrap overflow-hidden">
-                                                        {{ $single->technology }}</div>
+                                                        {{ __($single->technology) }}</div>
                                                 </div>
                                             </div>
                                             <div class="w-full xl:w-2/4 flex">
                                                 <div class="w-2/5 heading">
-                                                    <div class="!border-r-0">Email</div>
-                                                    <div class="!border-r-0 !border-y-0">Mobile</div>
-                                                    <div class="!border-r-0 ">Phone</div>
+                                                    <div class="!border-r-0">{{ __('Email') }}</div>
+                                                    <div class="!border-r-0 !border-y-0">{{ __('Mobile') }}</div>
+                                                    <div class="!border-r-0 ">{{ __('Phone') }}</div>
                                                 </div>
                                                 <div class="w-3/5 values">
-                                                    <div class="">{{ $single->email }}</div>
-                                                    <div class="!border-y-0">{{ $single->mobile }}</div>
-                                                    <div class="">{{ $single->phone }}</div>
+                                                    <div class="text-ellipsis whitespace-nowrap overflow-hidden">
+                                                        {{ __($single->email) }}</div>
+                                                    <div class="!border-y-0">{{ __($single->mobile) }}</div>
+                                                    @if (!empty($single->phone))
+                                                        <div class="">{{ __($single->phone) }}</div>
+                                                    @else
+                                                        <div class="">{{ __('Unavailable') }}</div>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -77,6 +84,9 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                {{ $retrieve->links('vendor.pagination.custom') }}
+
             @endif
 
 

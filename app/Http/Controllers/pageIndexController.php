@@ -84,14 +84,20 @@ class pageIndexController extends Controller
 
     public function exEmployees()
     {
-        $employees = DB::table('former_employees')->get();
+        $employees = DB::table('former_employees')
+            ->join('designations', 'former_employees.designation', '=', 'designations.id')
+            ->select('former_employees.*', 'designations.designation as designation')
+            ->get();
         return view('frontend.pages.ex-employees', compact('employees'));
     }
 
-    public function faculty(faculty $faculty)
+    public function faculty()
     {
-        $retrieve = $faculty->get();
-        // dd($retrieve);
+        $retrieve = DB::table('faculty')
+            ->join('designations', 'faculty.designation', '=', 'designations.id')
+            ->select('faculty.*', 'designations.designation as designation')
+            ->paginate(15);
+
         return view('frontend.pages.faculty', compact('retrieve'));
     }
 

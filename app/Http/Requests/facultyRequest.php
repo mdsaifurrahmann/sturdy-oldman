@@ -27,7 +27,7 @@ class facultyRequest extends FormRequest
             'name' => 'required|string',
             'designation' => 'required|string',
             'technology' => 'required|string',
-            'phone' => 'required',
+            'phone' => 'nullable',
             'email' => 'required|email',
             'mobile' => 'required',
             'image' => 'max:512|mimes:jpeg,jpg,png'
@@ -48,7 +48,6 @@ class facultyRequest extends FormRequest
             'designation.string' => 'Designation should be a string',
             'technology.required' => 'Technology is required',
             'technology.string' => 'Technology should be a string',
-            'phone.required' => 'Phone is required',
             'email.required' => 'Email is required',
             'email.email' => 'Email should be a valid email',
             'mobile.required' => 'Mobile is required',

@@ -180,7 +180,7 @@ class FacultyController extends Controller
 
 
 
-        return redirect()->back()->with('success', 'Faculty member updated successfully');
+        return redirect()->route('faculty-add-view')->with('success', 'Faculty member updated successfully');
     }
 
     /**

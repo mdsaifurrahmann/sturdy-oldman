@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('technology');
             $table->string('email');
             $table->string('mobile');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->text('image');
             $table->timestamps();
         });

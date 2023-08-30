@@ -111,7 +111,9 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                 <h6 class="dropdown-header">Manage Profile</h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('profile-view', Auth::user()->username) }}">
+
+                <a class="dropdown-item"
+                    href="{{ Route::has('profile-view') ? route('profile-view', Auth::user()->username) : '' }}">
                     <i class="me-50" data-feather="user"></i>Profile
                 </a>
 

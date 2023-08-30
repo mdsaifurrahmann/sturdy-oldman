@@ -129,7 +129,7 @@
 
     </div>
 
-
+    {{-- {{ dd($principal) }} --}}
     <div class="message card {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
         {{-- <h4 class="card__title">Message From Principal:</h4> --}}
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-6 justify-center items-center">
@@ -137,6 +137,8 @@
                 <img src="{{ !Illuminate\Support\Facades\File::exists('images/principal/' . $principal->pip) ? 'data:image/svg+xml;base64,' . base64_encode(file_get_contents(public_path('apa/types/fallback.svg'))) : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/principal/' . $principal->pip))) }}"
                     alt="Principle Says" class="rounded-full">
             </div>
+
+
 
             <div class="sm:col-span-3 flex flex-col">
                 <p class="quote indent-8">
