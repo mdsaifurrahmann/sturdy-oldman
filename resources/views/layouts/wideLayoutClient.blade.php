@@ -54,7 +54,7 @@
         href="{{ !Illuminate\Support\Facades\File::exists('images/institute/' . $info->favicon) ? '' : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/institute/' . $info->favicon))) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap" rel="stylesheet"> --}}
 
     {{-- Include core + vendor Styles --}}
     @include('panels/stylesClient')
