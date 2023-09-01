@@ -43,54 +43,7 @@ class NukeServiceProvider extends ServiceProvider
         });
 
         Fortify::loginView(function () {
-
-
-            $licenseKey = env('APP_LICENSE');
-            $domainName = request()->getHttpHost();
-
-            $client = new Client();
-
-            $serverHost = '127.0.0.1:8003';
-
-            $pingCommand = sprintf('ping -c 1 %s', escapeshellarg($serverHost));
-            $pingResult = shell_exec($pingCommand);
-
-
-            if (strpos($pingResult, '1 received') !== false) {
-                try {
-
-                    $response = $client->post('http://127.0.0.1:8000/validate', [
-                        'form_params' => [
-                            'key' => $licenseKey,
-                            'domain' => $domainName
-                        ],
-                    ]);
-
-                    $getResponse = json_decode($response->getBody(), true);
-
-                    if ($getResponse['status'] != 'valid') {
-                        return 'nice';
-                    }
-                    return view('auth.auth-login', compact('pingResult'));
-                } catch (\Exception $exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-
-                    if ($statusCode === 404) {
-                        // Handle the custom error message for key not found
-                        return 'License Key is Not Found!';
-                    } else {
-                        // Handle other ClientException scenarios
-                        return $response->getBody();
-                    }
-                }
-            } else {
-                return view('auth.auth-login');
-            }
-
-
-
-            // return view('auth.auth-login');
+            return view('auth.auth-login');
         });
 
         Fortify::registerView(function () {
