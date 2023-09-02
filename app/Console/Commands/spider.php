@@ -35,7 +35,7 @@ class spider extends Command
     {
         $modifiedFiles = [];
 
-        $communicationKey = config('custom.custom.communication_key');
+        $interface = config('custom.custom.interface');
 
         // Get the file hashes stored in the JSON file.
         $storedHashes = json_decode(Storage::get('spider/hash.json'), true)['hashes'] ?? [];
@@ -80,7 +80,7 @@ class spider extends Command
         }
 
         if (!empty($modifiedFiles)) {
-            Mail::send('email.solidity', ['communicationKey' => $communicationKey, 'modifiedFiles' => $modifiedFiles], function ($message) {
+            Mail::send('email.solidity', ['interface' => $interface, 'modifiedFiles' => $modifiedFiles], function ($message) {
                 $message->to('md.saifurrahmann029@gmail.com')
                     ->subject('File Integrity Check of ' . config('app.name'));
             });

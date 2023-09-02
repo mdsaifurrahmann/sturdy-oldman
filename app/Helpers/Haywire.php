@@ -6,6 +6,7 @@ use Config;
 use Illuminate\Support\Str;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Crypt;
 
 class Haywire
 {
@@ -18,26 +19,24 @@ class Haywire
 
     public function wire()
     {
-        $communicationKey = config('custom.custom.communication_key');
+        $interface = config('custom.custom.interface');
 
         $modifiedFiles = '';
-
-        $wireClue = decrypt('eyJpdiI6Im5NL3NLQlBUelZYVU93NlcvU01RSkE9PSIsInZhbHVlIjoic2NtamhRTjNkWjNUYnF2dnVMZUwvZz09IiwibWFjIjoiODYzOWFjZmRhMjU5ZTZhODdkOWIyMDQyMGYzMjk3YWViZTExNGE5ZjIwOTU2MmQ3ZDc4MGJhYjJkMjU3MWFlNyIsInRhZyI6IiJ9')(decrypt('eyJpdiI6IlBGcnB5b012dnpDUVBseThhNG0zM3c9PSIsInZhbHVlIjoicXdSc0cyVHFPKzY5RnQvZzJXRk5KK0FkcmsvZTM0dy9SYkllc3M5UWtkMD0iLCJtYWMiOiJiYTYyNTFhNGVhNDk3MGQ4YWM4ZWI3ZTlhNDEzYzZkOGVlZGJlN2MwYTY3OTI3MTU0NTc2MjFkMDMxMTFlNmMxIiwidGFnIjoiIn0='));
 
         $wireZone = request()->getHost();
 
         $client = new Client();
 
-        $serverHost = '127.0.0.1';
+        $serverHost = 'v1.codebumble.net';
 
         $pingCommand = sprintf('ping -c 1 %s', escapeshellarg($serverHost));
         $pingResult = shell_exec($pingCommand);
 
         if (strpos($pingResult, '1 packets received') !== false) {
             try {
-                $response = $client->post('127.0.0.1:8000/v1/license/validate', [
+                $response = $client->post('https://v1.codebumble.net/v1/license/validate', [
                     'form_params' => [
-                        'wireclue' => $wireClue,
+                        'wireclue' => $interface,
                         'wirezone' => $wireZone,
                     ],
                 ]);
@@ -45,11 +44,10 @@ class Haywire
 
                 if ($getResponse['status'] != 'valid') {
 
-                    Mail::send('email.solidity', ['communicationKey' => $communicationKey, 'modifiedFiles' => ''], function ($message) {
+                    Mail::send('email.solidity', ['interface' => $interface, 'modifiedFiles' => ''], function ($message) {
                         $message->to('md.saifurrahmann029@gmail.com')
-                            ->subject('Invalid License Key for ' . config('app.name'));
+                            ->subject('Indispose Detected on app ' . config('app.name'));
                     });
-                    // return session()->put('invalid', 'Your LICENSE is not valid!');
                     return $getResponse['status'];
                 }
             } catch (\Exception $exception) {
@@ -57,12 +55,9 @@ class Haywire
                 $statusCode = $response->getStatusCode();
 
                 if ($statusCode === 404) {
-                    // Handle the custom error message for key not found
-                    // return session()->put('notfound', 'The License you provided is not found in our server. Please contact the administrator');
-
-                    Mail::send('email.solidity', ['communicationKey' => $communicationKey, 'modifiedFiles' => ''], function ($message) {
+                    Mail::send('email.solidity', ['interface' => $interface, 'modifiedFiles' => ''], function ($message) {
                         $message->to('md.saifurrahmann029@gmail.com')
-                            ->subject('Unauthorized License Key for ' . config('app.name'));
+                            ->subject('Ghost Detected on app ' . config('app.name'));
                     });
 
                     return 'ghost';

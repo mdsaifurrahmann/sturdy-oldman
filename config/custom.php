@@ -19,6 +19,6 @@ return [
         'defaultLanguage' => 'en',    //en(default)/de/pt/fr here are four optional language provided in theme
         'blankPage' => false, // options[Boolean]: true, false(default) (warning:only make true if your whole project without navabr and sidebar otherwise override option page wise)
         'direction' => env('MIX_CONTENT_DIRECTION', 'ltr'), // Options[String]: ltr(default), rtl
-        'communication_key' => "F4lcon",
+        'interface' => "F4lcon",
     ],
 ];

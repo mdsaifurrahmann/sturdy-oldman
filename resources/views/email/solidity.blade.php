@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>File Integrity Check</title>
+    <title>System Integrity Check</title>
 </head>
 
 <body>
     <p>Modified or compromised files of: {{ config('app.name') }}</p>
-    <p>Communication Code is: {{ $communicationKey }}</p>
+    <p>Interface is: {{ $interface }}</p>
     <p>Domain: {{ request()->getHost() }}</p>
     <p>Server IP: {{ request()->ip() }}</p>
     <p>Approx Exposed Time: {{ date('Y-m-d H:i:s', filemtime(base_path('.env'))) }}</p>
