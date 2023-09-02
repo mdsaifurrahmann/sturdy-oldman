@@ -15,6 +15,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "spatie/laravel-cronless-schedule": "^1.1",
         "spatie/laravel-permission": "^5.9"
     },
     "require-dev": {
@@ -38,7 +39,8 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/Helpers/Helpers.php"
+            "app/Helpers/Helpers.php",
+            "app/Helpers/Haywire.php"
         ]
     },
     "scripts": {

@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Prodigy'),
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Spatie\CronlessSchedule\CronlessScheduleServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -180,6 +181,8 @@ return [
         App\Providers\MenuServiceProvider::class,
         App\Providers\NukeServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
+        App\Providers\HaywireServiceProvider::class,
+
 
     ],
 
@@ -197,6 +200,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Helper' => App\Helpers\Helpers::class,
         'Debugbar' => Barryvdh\Debugbar\Facades\Debugbar::class,
+        'Haywire' => App\Haywire\Haywire::class,
     ])->toArray(),
 
 ];
