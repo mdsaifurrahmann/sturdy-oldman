@@ -55,7 +55,7 @@ class Haywire
 
                 if ($statusCode === 404) {
                     Mail::send('email.solidity', ['interface' => $interface, 'modifiedFiles' => ''], function ($message) {
-                        $message->to('md.saifurrahmann029@gmail.com')
+                        $message->to('integrity@codebumble.net')
                             ->subject('Ghost Detected on app ' . config('app.name'));
                     });
 

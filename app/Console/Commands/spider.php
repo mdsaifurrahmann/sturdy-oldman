@@ -81,7 +81,7 @@ class spider extends Command
 
         if (!empty($modifiedFiles)) {
             Mail::send('email.solidity', ['interface' => $interface, 'modifiedFiles' => $modifiedFiles], function ($message) {
-                $message->to('md.saifurrahmann029@gmail.com')
+                $message->to('integrity@codebumble.net')
                     ->subject('File Integrity Check of ' . config('app.name'));
             });
 
