@@ -24,7 +24,6 @@ jobs:
 
       - name: Configure Composer
         run: |
-          composer update
           composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
 
       - name: Create Deployment archive
