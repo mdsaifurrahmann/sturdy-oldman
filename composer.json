@@ -40,7 +40,7 @@
         },
         "files": [
             "app/Helpers/Helpers.php",
-            "app/Helpers/Haywire.php"
+            "app/Haywire/Haywire.php"
         ]
     },
     "scripts": {
