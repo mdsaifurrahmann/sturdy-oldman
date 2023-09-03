@@ -60,7 +60,7 @@ class Haywire
 
                     return $getResponse['status'];
                 }
-            } catch (GuzzleHttp\Exception\RequestException $exception) {
+            } catch (\Exception $exception) {
                 $response = $exception->getResponse();
                 $statusCode = $response->getStatusCode();
 
