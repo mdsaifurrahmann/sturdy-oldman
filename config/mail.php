@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.titan.email'),
+            'host' => env('MAIL_HOST', 'smtp.mailgun.com'),
             'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'SSL'),
-            'username' => env('MAIL_USERNAME', 'exposed@codebumble.net'),
-            'password' => env('MAIL_PASSWORD', "4!)!J-.E[Lk*+g8"),
+            'username' => env('MAIL_USERNAME', ''),
+            'password' => env('MAIL_PASSWORD', ""),
             'timeout' => null,
         ],
 

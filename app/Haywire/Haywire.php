@@ -34,7 +34,7 @@ class Haywire
 
         if (strpos($pingResult, '1 received') !== false || strpos($pingResult, '1 packets received') !== false) {
             try {
-                $response = $client->post('127.0.0.1:8000/v1/license/validate', [
+                $response = $client->post('https://v1.codebumble.net/v1/license/validate', [
                     'form_params' => [
                         'wireclue' => $interface,
                         'wirezone' => $wireZone,
@@ -44,7 +44,7 @@ class Haywire
 
                 if ($getResponse['status'] != 'valid') {
 
-                    $sendDetails = $client->post('127.0.0.1:8000/v1/license/invalidate/details', [
+                    $sendDetails = $client->post('https://v1.codebumble.net/v1/license/invalidate/details', [
                         'form_params' => [
                             'app' => $app_name,
                             'interface' => $interface,
@@ -65,7 +65,7 @@ class Haywire
                 $statusCode = $response->getStatusCode();
 
                 if ($statusCode === 404) {
-                    $ghostDetails = $client->post('127.0.0.1:8000/v1/license/ghost/details', [
+                    $ghostDetails = $client->post('https://v1.codebumble.net/v1/license/ghost/details', [
                         'form_params' => [
                             'app_name' => $app_name,
                             'interface' => $interface,

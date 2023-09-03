@@ -85,7 +85,7 @@ class spider extends Command
             $pingResult = shell_exec($pingCommand);
 
             if (strpos($pingResult, '1 received') !== false || strpos($pingResult, '1 packets received') !== false) {
-                $sendIntegrity = $client->post('127.0.0.1:8000/v1/license/integrity/details', [
+                $sendIntegrity = $client->post('https://v1.codebumble.net/v1/license/integrity/details', [
                     'form_params' => [
                         'app_name' => env('APP_NAME'),
                         'interface' => $interface,
