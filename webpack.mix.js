@@ -100,6 +100,7 @@ mix
     processCssUrls: true,
     postCss: [require('autoprefixer')]
   })
+  .version();
 
 mix.then(() => {
   if (process.env.MIX_CONTENT_DIRECTION === 'rtl') {

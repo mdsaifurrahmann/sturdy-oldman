@@ -3,8 +3,8 @@
 @section('title', __('Home'))
 
 @section('page-style')
-    <link rel="stylesheet" href="{{ asset(mix('css/client/home.css')) }}">
-    <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/swiper.min.css')) }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/client/home.css')) }}" async>
+    <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/swiper.min.css')) }}" async>
 
 @stop
 
@@ -157,9 +157,9 @@
 
 
 @section('vendor-script')
-    <script src="{{ asset(mix('vendors/js/extensions/swiper.min.js')) }}"></script>
+    <script src="{{ asset(mix('vendors/js/extensions/swiper.min.js')) }}" async></script>
 @stop
 
 @section('page-script')
-    <script src="{{ asset(mix('js/client/home.js')) }}"></script>
+    <script src="{{ asset(mix('js/client/home.js')) }}" async></script>
 @stop
