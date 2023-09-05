@@ -119,7 +119,7 @@
             <p>
                 {{ $machinery->description }}
             </p>
-            <h5 class="my-3 font-semibold text-gray-800">{{ __('List of Machinery') }}:</h5>
+            <h3 class="my-3 font-semibold text-gray-800">{{ __('List of Machinery') }}:</h3>
             <ul class="grid grid-cols-1 xs:grid-cols-2 xm:grid-cols-4 gap-3 list-decimal list-inside arrow text-gray-600">
                 @foreach ($machinery->items as $item)
                     <li>{{ $item }}</li>
