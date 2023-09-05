@@ -85,7 +85,7 @@
         <h4 class="card__title">{{ __('Emergency Hotlines') }}:</h4>
 
         <img src="{{ !Illuminate\Support\Facades\File::exists('images/apa/helpline.jpg') ? 'data:image/svg+xml;base64,' . base64_encode(file_get_contents(public_path('apa/types/fallback.svg'))) : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/apa/helpline.jpg'))) }}"
-            alt="hotlines" class="mix-blend-multiply">
+            alt="hotlines" class="mix-blend-multiply" width="350" height="100">
     </div>
 
 

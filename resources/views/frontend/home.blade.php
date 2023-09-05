@@ -18,7 +18,7 @@
                 @foreach ($sliders as $key => $slide)
                     <div class="swiper-slide">
                         <img src="{{ !Illuminate\Support\Facades\File::exists('images/slider/' . $slide->image) ? 'data:image/svg+xml;base64,' . base64_encode(file_get_contents(public_path('apa/types/fallback.svg'))) : 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/slider/' . $slide->image))) }}"
-                            alt="{{ $slide->title }}" class="object-cover w-full h-[inherit]">
+                            alt="{{ $slide->title }}" class="object-cover w-full h-[inherit]" width="100" height="100">
 
                         <div class="absolute bottom-0 top-[22rem] w-full bg-black bg-opacity-30"></div>
                         <div class="absolute top-[22rem]">
