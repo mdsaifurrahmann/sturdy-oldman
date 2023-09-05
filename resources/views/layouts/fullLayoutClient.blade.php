@@ -55,7 +55,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     {{-- <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&display=swap" rel="stylesheet"> --}}
 
-    <style>
+    {{-- <style>
         .book {
             --color: rgb(251 191 36);
             --duration: 6.8s;
@@ -430,7 +430,7 @@
             width: 100vw;
             z-index: 11111;
         }
-    </style>
+    </style> --}}
 
     {{-- Include core + vendor Styles --}}
     @include('panels/stylesClient')
@@ -463,7 +463,7 @@
 
 <body class="blank-page bg-slate-100 overflow-x-hidden" data-col="blank-page" data-asset-path="{{ asset('/') }}">
 
-    <div class="preloader" id="preloader">
+    {{-- <div class="preloader" id="preloader">
         <div class="book">
             <div class="inner">
                 <div class="left"></div>
@@ -483,7 +483,7 @@
             </ul>
         </div>
         <h2 class="text-2xl text-amber-400 mt-8">{{ env('APP_NAME') }}</h2>
-    </div>
+    </div> --}}
 
 
 

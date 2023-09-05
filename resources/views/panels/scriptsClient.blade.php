@@ -7,10 +7,10 @@
 
 @yield('page-script')
 <!-- END: Page JS-->
-<script>
+{{-- <script>
     $(window).on("load", function() {
         var preloader = $("#preloader");
         preloader.fadeOut(500);
         preloader.remove();
     });
-</script>
+</script> --}}
