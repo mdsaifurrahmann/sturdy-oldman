@@ -1,5 +1,5 @@
 <!-- BEGIN: Vendor CSS-->
-{{-- <link rel="stylesheet" href="{{ asset(mix('vendors/css/vendors.min.css')) }}" /> --}}
+<link rel="stylesheet" href="{{ asset(mix('vendors/css/vendors.min.css')) }}" />
 
 @yield('vendor-style')
 <!-- END: Vendor CSS-->

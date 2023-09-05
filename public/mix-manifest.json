@@ -1,12 +1,9 @@
 {
-    "/js/client/gallery.js": "/js/client/gallery.js",
-    "/js/client/global__core.js": "/js/client/global__core.js",
-    "/js/client/global__jq.js": "/js/client/global__jq.js",
-    "/js/client/home.js": "/js/client/home.js",
     "/js/core/app-menu.js": "/js/core/app-menu.js",
     "/js/core/app.js": "/js/core/app.js",
-    "/js/core/app-client.js": "/js/core/app-client.js",
     "/js/core/scripts.js": "/js/core/scripts.js",
+    "/js/client/home.js": "/js/client/home.js",
+    "/js/client/gallery.js": "/js/client/gallery.js",
     "/js/core/pages/app-user-list.js": "/js/core/pages/app-user-list.js",
     "/css/base/plugins/extensions/ext-component-ratings.css": "/css/base/plugins/extensions/ext-component-ratings.css",
     "/css/base/plugins/extensions/ext-component-media-player.css": "/css/base/plugins/extensions/ext-component-media-player.css",
@@ -1312,6 +1309,8 @@
     "/images/illustration/verify-email-illustration.svg": "/images/illustration/verify-email-illustration.svg",
     "/images/institute/1691438842j3G2nUqCpvFwVOV2.jpg": "/images/institute/1691438842j3G2nUqCpvFwVOV2.jpg",
     "/images/institute/1691874476udw90snArueWWSfM.jpg": "/images/institute/1691874476udw90snArueWWSfM.jpg",
+    "/images/institute/1693891777Qeqbf2a89ivnZEjZ.png": "/images/institute/1693891777Qeqbf2a89ivnZEjZ.png",
+    "/images/institute/1693891811A7Vp2rZY3w9fXBoG.png": "/images/institute/1693891811A7Vp2rZY3w9fXBoG.png",
     "/images/institute/front_view.jpg": "/images/institute/front_view.jpg",
     "/images/institute/principal.jpg": "/images/institute/principal.jpg",
     "/images/jstree/themes/default/32px.png": "/images/jstree/themes/default/32px.png",
@@ -1465,5 +1464,7 @@
     "/images/slider/1676419846IFut8vzlqhmmShQ5-slider-0.jpg": "/images/slider/1676419846IFut8vzlqhmmShQ5-slider-0.jpg",
     "/images/slider/1692130653CdKA2bLm0AWYpBkH-slider-0.png": "/images/slider/1692130653CdKA2bLm0AWYpBkH-slider-0.png",
     "/images/slider/1692130796oC6AJEzahk8ZaVat-slider-2.jpg": "/images/slider/1692130796oC6AJEzahk8ZaVat-slider-2.jpg",
-    "/images/svg/google.svg": "/images/svg/google.svg"
+    "/images/svg/google.svg": "/images/svg/google.svg",
+    "/js/client/global.js": "/js/client/global.js",
+    "/js/client/client-vendors.js": "/js/client/client-vendors.js"
 }

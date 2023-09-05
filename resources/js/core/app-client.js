@@ -46,26 +46,26 @@ window.colors = {
 
 
 
-      setTimeout(function () {
-        $html.removeClass('loading').addClass('loaded')
-      }, 1200)
+      // setTimeout(function () {
+      //   $html.removeClass('loading').addClass('loaded')
+      // }, 1200)
 
 
 
 
 
-      //  Notifications & messages scrollable
-      $('.scrollable-container').each(function () {
-        var scrollable_container = new PerfectScrollbar($(this)[0], {
-          wheelPropagation: false
-        })
-      })
+      // //  Notifications & messages scrollable
+      // $('.scrollable-container').each(function () {
+      //   var scrollable_container = new PerfectScrollbar($(this)[0], {
+      //     wheelPropagation: false
+      //   })
+      // })
 
       // Reload Card
 
 
       // Add disabled class to input group when input is disabled
-      $('input:disabled, textarea:disabled').closest('.input-group').addClass('disabled')
+      // $('input:disabled, textarea:disabled').closest('.input-group').addClass('disabled')
 
 
 
@@ -79,34 +79,34 @@ window.colors = {
       Waves.attach("[class*='btn-outline-']")
       Waves.attach("[class*='btn-flat-']")
 
-      $('.form-password-toggle .input-group-text').on('click', function (e) {
-        e.preventDefault()
-        var $this = $(this),
-          inputGroupText = $this.closest('.form-password-toggle'),
-          formPasswordToggleIcon = $this,
-          formPasswordToggleInput = inputGroupText.find('input')
+      // $('.form-password-toggle .input-group-text').on('click', function (e) {
+      //   e.preventDefault()
+      //   var $this = $(this),
+      //     inputGroupText = $this.closest('.form-password-toggle'),
+      //     formPasswordToggleIcon = $this,
+      //     formPasswordToggleInput = inputGroupText.find('input')
 
-        if (formPasswordToggleInput.attr('type') === 'text') {
-          formPasswordToggleInput.attr('type', 'password')
-          if (feather) {
-            formPasswordToggleIcon.find('svg').replaceWith(feather.icons['eye'].toSvg({ class: 'font-small-4' }))
-          }
-        } else if (formPasswordToggleInput.attr('type') === 'password') {
-          formPasswordToggleInput.attr('type', 'text')
-          if (feather) {
-            formPasswordToggleIcon.find('svg').replaceWith(feather.icons['eye-off'].toSvg({ class: 'font-small-4' }))
-          }
-        }
-      })
+      //   if (formPasswordToggleInput.attr('type') === 'text') {
+      //     formPasswordToggleInput.attr('type', 'password')
+      //     if (feather) {
+      //       formPasswordToggleIcon.find('svg').replaceWith(feather.icons['eye'].toSvg({ class: 'font-small-4' }))
+      //     }
+      //   } else if (formPasswordToggleInput.attr('type') === 'password') {
+      //     formPasswordToggleInput.attr('type', 'text')
+      //     if (feather) {
+      //       formPasswordToggleIcon.find('svg').replaceWith(feather.icons['eye-off'].toSvg({ class: 'font-small-4' }))
+      //     }
+      //   }
+      // })
 
       // on window scroll button show/hide
-      $(window).on('scroll', function () {
-        if ($(this).scrollTop() > 400) {
-          $('.scroll-top').fadeIn()
-        } else {
-          $('.scroll-top').fadeOut()
-        }
-      })
+      // $(window).on('scroll', function () {
+      //   if ($(this).scrollTop() > 400) {
+      //     $('.scroll-top').fadeIn()
+      //   } else {
+      //     $('.scroll-top').fadeOut()
+      //   }
+      // })
 
       // Click event to scroll to top
       $('.scroll-top').on('click', function () {
@@ -117,47 +117,47 @@ window.colors = {
     });
 
     // To use feather svg icons with different sizes
-    function featherSVG(iconSize) {
-      // Feather Icons
-      if (iconSize == undefined) {
-        iconSize = '14'
-      }
-      return feather.replace({ width: iconSize, height: iconSize })
-    }
+    // function featherSVG(iconSize) {
+    //   // Feather Icons
+    //   if (iconSize == undefined) {
+    //     iconSize = '14'
+    //   }
+    //   return feather.replace({ width: iconSize, height: iconSize })
+    // }
 
     // jQuery Validation Global Defaults
-    if (typeof jQuery.validator === 'function') {
-      jQuery.validator.setDefaults({
-        errorElement: 'span',
-        errorPlacement: function (error, element) {
-          if (
-            element.parent().hasClass('input-group') ||
-            element.hasClass('select2') ||
-            element.attr('type') === 'checkbox'
-          ) {
-            error.insertAfter(element.parent())
-          } else if (element.hasClass('form-check-input')) {
-            error.insertAfter(element.parent().siblings(':last'))
-          } else {
-            error.insertAfter(element)
-          }
+    // if (typeof jQuery.validator === 'function') {
+    //   jQuery.validator.setDefaults({
+    //     errorElement: 'span',
+    //     errorPlacement: function (error, element) {
+    //       if (
+    //         element.parent().hasClass('input-group') ||
+    //         element.hasClass('select2') ||
+    //         element.attr('type') === 'checkbox'
+    //       ) {
+    //         error.insertAfter(element.parent())
+    //       } else if (element.hasClass('form-check-input')) {
+    //         error.insertAfter(element.parent().siblings(':last'))
+    //       } else {
+    //         error.insertAfter(element)
+    //       }
 
-          if (element.parent().hasClass('input-group')) {
-            element.parent().addClass('is-invalid')
-          }
-        },
-        highlight: function (element, errorClass, validClass) {
-          $(element).addClass('error')
-          if ($(element).parent().hasClass('input-group')) {
-            $(element).parent().addClass('is-invalid')
-          }
-        },
-        unhighlight: function (element, errorClass, validClass) {
-          $(element).removeClass('error')
-          if ($(element).parent().hasClass('input-group')) {
-            $(element).parent().removeClass('is-invalid')
-          }
-        }
-      })
-    }
+    //       if (element.parent().hasClass('input-group')) {
+    //         element.parent().addClass('is-invalid')
+    //       }
+    //     },
+    //     highlight: function (element, errorClass, validClass) {
+    //       $(element).addClass('error')
+    //       if ($(element).parent().hasClass('input-group')) {
+    //         $(element).parent().addClass('is-invalid')
+    //       }
+    //     },
+    //     unhighlight: function (element, errorClass, validClass) {
+    //       $(element).removeClass('error')
+    //       if ($(element).parent().hasClass('input-group')) {
+    //         $(element).parent().removeClass('is-invalid')
+    //       }
+    //     }
+    //   })
+    // }
   })(window, document, jQuery)

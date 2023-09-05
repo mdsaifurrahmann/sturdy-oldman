@@ -58,8 +58,8 @@ mixAssetsDir('scss/frontend/**/!(_)*.scss', (src, dest) =>
 
 
 // script js
-mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.scripts(src, dest))
-mixAssetsDir('js/frontend/**/*.js', (src, dest) => mix.js(src, 'public/js/client'))
+mixAssetsDir('js/scripts/**/*.js', (src, dest) => mix.minify(src, dest))
+// mixAssetsDir('js/frontend/**/*.js', (src, dest) => mix.js(src, 'public/js/client'))
 
 /*
  |--------------------------------------------------------------------------
@@ -79,8 +79,12 @@ mix.copyDirectory('resources/images', 'public/images')
 mix
   .js('resources/js/core/app-menu.js', 'public/js/core')
   .js('resources/js/core/app.js', 'public/js/core')
-  .js('resources/js/core/app-client.js', 'public/js/core')
+  // .js('resources/js/core/app-client.js', 'public/js/core')
   .js('resources/assets/js/scripts.js', 'public/js/core')
+  .combine(['resources/js/frontend/global__core.js', 'resources/js/frontend/global__jq.js'], 'public/js/client/global.js', true)
+  .combine(['resources/vendors/js/waves/waves.min.js', 'resources/vendors/js/pace/pace.min.js', 'resources/js/core/app-client.js'], 'public/js/client/client-vendors.js', true)
+  .js('resources/js/frontend/home.js', 'public/js/client/home.js')
+  .js('resources/js/frontend/gallery.js', 'public/js/client/gallery.js')
   .js('resources/js/scripts/pages/app-user-list.js', 'public/js/core/pages/')
   .sass('resources/scss/base/themes/dark-layout.scss', 'public/css/base/themes', { sassOptions })
   .sass('resources/scss/base/themes/bordered-layout.scss', 'public/css/base/themes', { sassOptions })
