@@ -100,8 +100,8 @@
 
     {{-- History --}}
     <div class="history card {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
-        <h4 class="card__title">
-            {{ __('History') }}:</h4>
+        <h2 class="card__title">
+            {{ __('History') }}:</h2>
         <p>
             {{ substr($history->history, 0, 900) }}
             <a href="{{ route('history') }}" class="text-amber-500 hover:text-amber-600 transition-all font-semibold">
@@ -113,8 +113,8 @@
 
 
     <div class="machinery card {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
-        <h4 class="card__title">
-            {{ __('Pieces of Machinery:') }}</h4>
+        <h2 class="card__title">
+            {{ __('Pieces of Machinery:') }}</h2>
         <div>
             <p>
                 {{ $machinery->description }}
