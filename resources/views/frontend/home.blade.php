@@ -58,8 +58,8 @@
 
     {{-- Notice Board --}}
     <div class="mb-4 card">
-        <h4 class="card__title {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
-            {{ __('Latest Notices:') }}</h4>
+        <h2 class="card__title {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
+            {{ __('Latest Notices:') }}</h2>
         <ul class="flex flex-col justify-center gap-3 md:px-4 arrow">
 
             @foreach ($notices as $notice)
