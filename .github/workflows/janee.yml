@@ -11,6 +11,11 @@ jobs:
     timeout-minutes: 2
 
     steps:
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Remove artifacts
         uses: c-hive/gha-remove-artifacts@v1.2.0
         with:
