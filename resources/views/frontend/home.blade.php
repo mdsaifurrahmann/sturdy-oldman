@@ -157,7 +157,7 @@
 
 
 @section('vendor-script')
-    <script src="{{ asset(mix('vendors/js/extensions/swiper.min.js')) }}" async></script>
+    <script src="{{ asset(mix('vendors/js/extensions/swiper.min.js')) }}"></script>
 @stop
 
 @section('page-script')
