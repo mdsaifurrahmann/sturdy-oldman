@@ -1,8 +1,8 @@
 @props(['title', 'src'])
 
 <div class="apa-block card">
-    <h4 class="title">
-        {{ $title }}</h4>
+    <h2 class="title">
+        {{ $title }}</h2>
     <div class="apa-grid">
         <div class="apa-block-img">
             <img src="{{ $src }}" alt="{{ $title }}">
