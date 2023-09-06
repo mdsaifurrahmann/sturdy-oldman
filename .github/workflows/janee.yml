@@ -1,6 +1,9 @@
 name: Remove old artifacts
 
 on:
+  push:
+    branches:
+    - backend-boi
   schedule:
     # Every day at 1am
     - cron: "59 23 * * *"
@@ -11,15 +14,10 @@ jobs:
     timeout-minutes: 2
 
     steps:
-      - name: Use Node.js 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
       - name: Remove artifacts
         uses: c-hive/gha-remove-artifacts@v1.2.0
         with:
-          age: "2 days"
+          age: "1 days"
           # Optional inputs
           # skip-tags: true
-          # skip-recent: 5
+          skip-recent: 2
