@@ -17,5 +17,6 @@ class faculty extends Model
         'mobile',
         'phone',
         'image',
+        'type'
     ];
 }

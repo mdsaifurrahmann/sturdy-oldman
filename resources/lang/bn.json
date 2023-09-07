@@ -65,7 +65,9 @@
     "List of Former Principals": "সাবেক অধ্যক্ষগনের তালিকা",
     "No data found!": "কোন তথ্য পাওয়া যায়নি!",
     "List of Former Officers and Employees": "সাবেক কর্মচারী এবং কর্মকর্তাগনের তালিকা",
-    "List of Officers and Employees": "কর্মচারী এবং কর্মকর্তাগনের তালিকা",
+    "List of Officers": "কর্মকর্তাগনের তালিকা",
+    "Officers": "কর্মকর্তাগণ",
+    "Employees": "কর্মচারীগণ",
     "Topics": "বিষয়বস্তু",
     "Date": "তারিখ",
     "Title": "শিরোনাম",
@@ -131,5 +133,6 @@
     "6": "৬",
     "7": "৭",
     "8": "৮",
-    "9": "৯"
+    "9": "৯",
+    "List of Employees": "কর্মচারীগণের তালিকা"
 }

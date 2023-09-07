@@ -95,10 +95,23 @@ class pageIndexController extends Controller
     {
         $retrieve = DB::table('faculty')
             ->join('designations', 'faculty.designation', '=', 'designations.id')
+            ->where('faculty.type', '1')
             ->select('faculty.*', 'designations.designation as designation')
             ->paginate(15);
 
         return view('frontend.pages.faculty', compact('retrieve'));
+    }
+
+
+    public function employee()
+    {
+        $retrieve = DB::table('faculty')
+            ->join('designations', 'faculty.designation', '=', 'designations.id')
+            ->where('faculty.type', '2')
+            ->select('faculty.*', 'designations.designation as designation')
+            ->paginate(15);
+
+        return view('frontend.pages.employee', compact('retrieve'));
     }
 
     public function notices()

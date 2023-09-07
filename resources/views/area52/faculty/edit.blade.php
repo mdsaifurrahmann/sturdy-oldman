@@ -105,11 +105,25 @@
                                         name="phone" placeholder="0531******" value="{{ $retrieve->phone }}" />
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="image">Image</label>
                                     <input type="file" class="form-control" id="image" aria-describedby="image"
-                                        name="image" />
+                                        name="image" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="mb-1">
+                                    <label class="form-label" for="type">Employee Type</label>
+
+                                    <select name="type" id="type" class="form-control select2">
+                                        <option value="">Choose Employee Type</option>
+                                        <option value="1" {{ $retrieve->type == 1 ? 'selected' : '' }}>Officer
+                                        </option>
+                                        <option value="2" {{ $retrieve->type == 2 ? 'selected' : '' }}>Employee
+                                        </option>
+                                    </select>
+
                                 </div>
                             </div>
                         </div>

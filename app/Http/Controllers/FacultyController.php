@@ -63,6 +63,7 @@ class FacultyController extends Controller
         $technology = $request->technology;
         $mobile = $request->mobile;
         $designation = $request->designation;
+        $type = $request->type;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -77,6 +78,7 @@ class FacultyController extends Controller
             'mobile' => $mobile,
             'designation' => $designation,
             'image' => $nameHandler,
+            'type' => $type,
             'created_at' => now(),
             'updated_at' => now(),
         ];
@@ -146,6 +148,7 @@ class FacultyController extends Controller
         $technology = $request->technology;
         $mobile = $request->mobile;
         $designation = $request->designation;
+        $type = $request->type;
 
         if ($request->hasFile('image')) {
             if (File::exists(public_path('images/faculty/' . $retrieve->image))) {
@@ -166,6 +169,7 @@ class FacultyController extends Controller
             'mobile' => $mobile,
             'designation' => $designation,
             'image' => $nameHandler,
+            'type' => $type,
             'updated_at' => now(),
         ];
 

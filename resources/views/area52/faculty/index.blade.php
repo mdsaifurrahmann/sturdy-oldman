@@ -65,8 +65,8 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="technology">Technology</label>
 
-                                    <select name="technology" id="technology" class="form-control"required>
-                                        <option selected disabled value="">Select Technology</option>
+                                    <select name="technology" id="technology" class="form-control">
+                                        <option selected value="">Select Technology</option>
                                         <option value="Textile Machine Design & Maintenance">Textile Machine Design &
                                             Maintenance</option>
                                         <option value="Yarn Manufacturing">Yarn Manufacturing</option>
@@ -80,8 +80,7 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="to">Email</label>
                                     <input type="email" class="form-control" id="to" aria-describedby="email"
-                                        name="email" placeholder="name@example.com" value="{{ old('email') }}"
-                                        required />
+                                        name="email" placeholder="name@example.com" value="{{ old('email') }}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
@@ -95,14 +94,27 @@
                                 <div class="mb-1">
                                     <label class="form-label" for="phone">Phone</label>
                                     <input type="text" class="form-control" id="phone" aria-describedby="phone"
-                                        name="phone" placeholder="0531******" value="{{ old('phone') }}" required />
+                                        name="phone" placeholder="0531******" value="{{ old('phone') }}" />
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="image">Image</label>
                                     <input type="file" class="form-control" id="image" aria-describedby="image"
                                         name="image" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="mb-1">
+                                    <label class="form-label" for="type">Employee
+                                        Type</label>
+
+                                    <select name="type" id="type" class="form-control select2" required>
+                                        <option value="" selected>Choose Employee Type</option>
+                                        <option value="1">Officer</option>
+                                        <option value="2">Employee</option>
+                                    </select>
+
                                 </div>
                             </div>
                         </div>
@@ -147,19 +159,20 @@
                                     id="designation" />
                             </div>
                         </div>
-                        <div class="col-md-2 col-12">
-                            <div class="mb-1">
-                                <label class="form-label" for="from">Technology</label>
-                                <input type="text" class="form-control disable text-capitalize"
-                                    aria-describedby="from" readonly value="{{ $officer->technology }}"
-                                    id="from" />
-                            </div>
-                        </div>
+
                         <div class="col-md-2 col-12">
                             <div class="mb-1">
                                 <label class="form-label" for="to">Mobile</label>
                                 <input type="text" class="form-control disable text-capitalize" aria-describedby="to"
                                     readonly value="{{ $officer->mobile }}" id="to" />
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-12">
+                            <div class="mb-1">
+                                <label class="form-label" for="from">Type</label>
+                                <input type="text" class="form-control disable text-capitalize"
+                                    aria-describedby="from" readonly
+                                    value="{{ $officer->type == 1 ? 'Officer' : 'Employee' }}" id="from" />
                             </div>
                         </div>
                         <div class="col-md-3 col-12">

@@ -37,6 +37,7 @@ Route::get('principal', [pageIndexController::class, 'principal'])->name('princi
 Route::get('former-principals', [pageIndexController::class, 'formerPrincipals'])->name('former-principals');
 Route::get('former-employees', [pageIndexController::class, 'exEmployees'])->name('former-employees');
 Route::get('faculty', [pageIndexController::class, 'faculty'])->name('faculty');
+Route::get('employee', [pageIndexController::class, 'employee'])->name('employees');
 Route::get('notice-list', [pageIndexController::class, 'notices'])->name('notices');
 Route::get('admission', [pageIndexController::class, 'admissionList'])->name('admission');
 Route::get('stipend', [pageIndexController::class, 'stipends'])->name('stipend');

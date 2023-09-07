@@ -63,8 +63,10 @@
                     <li class="menu-item"><a href="{{ route('former-principals') }}"
                             class="menu-link">{{ __('Former Principals') }}</a>
                     </li>
-                    <li class="menu-item"><a href="{{ route('faculty') }}"
-                            class="menu-link">{{ __('Officers and Employees') }}</a>
+                    <li class="menu-item"><a href="{{ route('faculty') }}" class="menu-link">{{ __('Officers') }}</a>
+                    </li>
+                    <li class="menu-item"><a href="{{ route('employees') }}"
+                            class="menu-link">{{ __('Employees') }}</a>
                     </li>
                     <li class="menu-item"><a href="{{ route('former-employees') }}"
                             class="menu-link">{{ __('Former Officers and Employees') }}</a>
