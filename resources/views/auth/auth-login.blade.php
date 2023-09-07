@@ -61,7 +61,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <h2 class="brand-text text-primary ms-1 mb-0">{{ env('APP_NAME') }}</h2>
+                        <h2 class="brand-text text-primary ms-1 mb-0">Prodigy</h2>
                     </a>
 
                     <h4 class="card-title mb-1 text-center">Welcome to {{ env('APP_NAME') }} 👋</h4>
