@@ -72,7 +72,7 @@
                                                 <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
                                                     {{ __($officer->email) }}</div>
                                                 <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
-                                                    {{ __($officer->phone) }}</div>
+                                                    {{ $officer->phone ? __($officer->phone) : __('Unavailable') }}</div>
                                             </div>
                                         </div>
                                     </div>
