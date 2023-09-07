@@ -5,40 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="Gallery Done">
-      <change afterPath="$PROJECT_DIR$/resources/images/apa/ask.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/images/apa/innovation.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/scss/tailwind.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/apa/citizen.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/apa/citizen.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/apa/flag.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/apa/idea.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/images/apa/info.svg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/images/apa/info.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/bn.json" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/bn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/aside.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/aside.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/admission/admission-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/apa/apa-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/apa/apa-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/apa/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/apa/single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/contact.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/ex-employees.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/ex-employees.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/former-principals.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/former-principals.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/album.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/album.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/gallery/single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/history.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/history.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/infrastructure.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/infrastructure.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/job/job-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/notice-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/notice/single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/principal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/principal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/pages/stipend/stipend-list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/wideLayoutClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/wideLayoutClient.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/panels/scriptsClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/scriptsClient.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,6 +153,16 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/uri-template" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-cronless-schedule" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/vendor/react/stream" />
+      <path value="$PROJECT_DIR$/vendor/react/event-loop" />
+      <path value="$PROJECT_DIR$/vendor/evenement/evenement" />
+      <path value="$PROJECT_DIR$/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/vendor/clue/stdio-react" />
+      <path value="$PROJECT_DIR$/vendor/clue/utf8-react" />
+      <path value="$PROJECT_DIR$/vendor/clue/term-react" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
     </include_path>
   </component>
   <component name="ProblemsViewState">
@@ -192,32 +176,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Md. Saifur Rahman/sturdy-oldman&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.24648283&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2022.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "full.screen.before.presentation.mode": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/mdsaifurrahmann/sturdy-oldman",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "settings.editor.splitter.proportion": "0.24648283",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2022.3.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mariadb&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Md. Saifur Rahman\sturdy-oldman\resources\views\area52\gallery" />
@@ -276,6 +261,7 @@
       <workItem from="1677335767024" duration="28845000" />
       <workItem from="1677416339378" duration="12159000" />
       <workItem from="1677951817176" duration="11150000" />
+      <workItem from="1694076109086" duration="90000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>
@@ -310,7 +296,6 @@
         <entry key="03b3f23a-bffd-4214-aa34-c8f2b6fa23b2">
           <value>
             <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -329,6 +314,7 @@
                   </entry>
                 </map>
               </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
             </State>
           </value>
         </entry>
