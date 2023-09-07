@@ -13,8 +13,8 @@
             {{ __($retrieve->name) }}
         </h2>
         <div class="flex flex-row gap-4">
-            <span class="inline text-gray-400 date">{{ substr($retrieve->created_at, 0, 10) }}</span>
-            <span class="inline text-gray-400 time">{{ substr($retrieve->created_at, 12) }}</span>
+            <span class="inline text-gray-400 date">{{ strtr(substr($retrieve->created_at, 0, 10), __('numbers')) }}</span>
+            <span class="inline text-gray-400 time">{{ strtr(substr($retrieve->created_at, 12), __('numbers')) }}</span>
         </div>
 
 
@@ -27,10 +27,10 @@
             <div id="animated-thumbnails" class="gallery lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1">
 
                 @foreach ($images as $image)
-                    <a href="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/gallery/' . $image->image))) }}"
+                    <a href="data:image/png;base64,{{ Illuminate\Support\Facades\File::exists('images/gallery/' . $image->image) ? base64_encode(file_get_contents(public_path('images/gallery/' . $image->image))) : '' }}"
                         data-lg-size="3840-2160">
                         <img alt="{{ $image->title }}"
-                            src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('images/gallery/' . $image->image))) }}" />
+                            src="data:image/png;base64,{{ Illuminate\Support\Facades\File::exists('images/gallery/' . $image->image) ? base64_encode(file_get_contents(public_path('images/gallery/' . $image->image))) : '' }}" />
                     </a>
                 @endforeach
 

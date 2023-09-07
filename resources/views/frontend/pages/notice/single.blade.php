@@ -15,8 +15,8 @@
         </h2>
         <div class="flex flex-row gap-4">
             <span class="inline text-gray-400 folder">{{ __($notice->category_name) }}</span>
-            <span class="inline text-gray-400 date">{{ __($notice->date) }}</span>
-            <span class="inline text-gray-400 time">{{ __($notice->time) }}</span>
+            <span class="inline text-gray-400 date">{{ strtr($notice->date, __('numbers')) }}</span>
+            <span class="inline text-gray-400 time">{{ strtr($notice->time, __('numbers')) }}</span>
         </div>
 
 

@@ -42,7 +42,7 @@
                                 {{ __($album->description) }}
                             </p>
                             <div class="times">
-                                <span>{{ $album->created_at }}</span>
+                                <span>{{ strtr($album->created_at, __('numbers')) }}</span>
                             </div>
                         </div>
                     </a>

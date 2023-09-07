@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="Gallery Done">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a0383129-ea0b-4417-9b79-4ab54d285ab4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sturdy-oldman.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/fullLayoutClient.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/panels/scriptsClient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/panels/scriptsClient.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="140c7a49-c121-4da5-b0d7-61f970a2d487" name="Changes" comment="Gallery Done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +252,7 @@
       <workItem from="1677335767024" duration="28845000" />
       <workItem from="1677416339378" duration="12159000" />
       <workItem from="1677951817176" duration="11150000" />
-      <workItem from="1694076109086" duration="90000" />
+      <workItem from="1694076109086" duration="691000" />
     </task>
     <task id="LOCAL-00001" summary="gallery single &amp; contact done. heading to backend">
       <created>1676154757261</created>

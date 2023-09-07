@@ -45,7 +45,7 @@
                 <h4>{{ __('Contact') }}</h4>
                 <p>{{ $name }}</p>
                 <p>{{ __($address) }}</p>
-                <p>{{ __('Phone') }}: <a href="tel:{{ $phone }}">{{ $phone }}</a></p>
+                <p>{{ __('Phone') }}: <a href="tel:{{ $phone }}">{{ strtr($phone, __('numbers')) }}</a></p>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
 
     <div class="credits">
         <div class="flex justify-center md:justify-between md:flex-row items-center md:items-start flex-col container">
-            <p class="text-sm ">© {{ date('Y') }} Copyright Textile Institute Dinajpur</p>
+            <p class="text-sm ">© {{ date('Y') }} Copyright {{ env('APP_NAME') }}</p>
             <p class="text-sm ">Powered by: <a href="https://codebumble.net" target="_blank" rel="dofollow"
                     class="transition-all underline decoration-transparent hover:decoration-gray-400 underline-offset-4 text-sm">Codebumble
                     Inc.</a>

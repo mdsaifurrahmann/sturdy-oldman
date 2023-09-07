@@ -23,7 +23,8 @@
             @else
                 <x-down-table>
                     @foreach ($jobs as $item)
-                        <x-down-raw title="{{ __($item->title) }}" date="{{ $item->time }}, {{ $item->date }}"
+                        <x-down-raw title="{{ __($item->title) }}"
+                            date="{{ strtr($item->time, __('numbers')) }}, {{ strtr($item->date, __('numbers')) }}"
                             action="{{ route('notice-details', [$item->id, $item->title]) }}" />
                     @endforeach
                 </x-down-table>

@@ -14,6 +14,7 @@
     "Infrastructure": "অবকাঠামো",
     "Gallery": "গ্যালারি",
     "Notices": "নোটিশ",
+    "Notice": "নোটিশ",
     "Admission": "ভর্তি",
     "Stipend": "স্টাইপেন্ড",
     "Job Corner": "জব কর্ণার",
@@ -75,6 +76,7 @@
     "Photo Album": "ফটো অ্যালবাম",
     "Photo Gallery": "ফটো গ্যালারি",
     "Photo": "ফটো",
+    "News": "নিউজ",
     "Admission News": "ভর্তি সংবাদ",
     "Admission Notice": "ভর্তি বিজ্ঞপ্তি",
     "Stipend News": "স্টিপেন্ড সংবাদ",
@@ -118,5 +120,16 @@
     "Cleaner": "পরিচ্ছন্নতা কর্মী",
     "Store Keeper": "ষ্টোর কিপার",
     "Physical instructor": "ফিজিক্যাল ইন্সট্রাক্টর",
-    "Unavailable": "নেই"
+    "Unavailable": "নেই",
+    "date": "d-m-Y",
+    "0": "০",
+    "1": "১",
+    "2": "২",
+    "3": "৩",
+    "4": "৪",
+    "5": "৫",
+    "6": "৬",
+    "7": "৭",
+    "8": "৮",
+    "9": "৯"
 }

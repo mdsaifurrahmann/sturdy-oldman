@@ -66,6 +66,7 @@
                 <li
                     class="notice-item {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
                     <a href="{{ route('notice-details', [$notice->id, $notice->title]) }}">
+                        ({{ strtr($notice->date, __('numbers')) }})
                         {{ __($notice->title) }}
                     </a>
                 </li>

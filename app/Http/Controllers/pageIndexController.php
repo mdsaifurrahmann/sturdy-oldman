@@ -27,7 +27,7 @@ class pageIndexController extends Controller
             ->first();
 
         $notices = DB::table('notices')
-            ->select('id', 'title')
+            ->select('id', 'title', 'date')
             ->latest('created_at')
             ->take(5)
             ->get();
