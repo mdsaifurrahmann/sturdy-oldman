@@ -97,7 +97,7 @@ class pageIndexController extends Controller
             ->join('designations', 'faculty.designation', '=', 'designations.id')
             ->where('faculty.type', '1')
             ->select('faculty.*', 'designations.designation as designation')
-            ->paginate(15);
+            ->paginate(1);
 
         return view('frontend.pages.faculty', compact('retrieve'));
     }

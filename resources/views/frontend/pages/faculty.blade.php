@@ -15,7 +15,7 @@
     <div
         class="card text-center text-gray-800 {{ \Illuminate\Support\Facades\App::getLocale() == 'bn' ? 'font-solaimanlipi' : '' }}">
         <h2 class="font-semibold text-2xl text-center underline decoration-gray-800 underline-offset-4">
-            {{ __('List of Officers and Employees') }}
+            {{ __('List of Officers') }}
         </h2>
 
 
