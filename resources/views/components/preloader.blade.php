@@ -377,28 +377,30 @@
     </style>
 @stop
 
-
-<div class="preloader" id="preloader">
-    <div class="book">
-        <div class="inner">
-            <div class="left"></div>
-            <div class="middle"></div>
-            <div class="right"></div>
+@section('preloader')
+    <div class="preloader" id="preloader">
+        <div class="book">
+            <div class="inner">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+            </div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <h2 class="text-2xl text-amber-400 mt-8">{{ env('APP_NAME') }}</h2>
     </div>
-    <h2 class="text-2xl text-amber-400 mt-8">{{ env('APP_NAME') }}</h2>
-</div>
+
+@stop
 
 
 @section('preloaderScript')

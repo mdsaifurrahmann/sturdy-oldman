@@ -55,6 +55,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+    @include('components.preloader')
     @yield('preloaderStyle')
 
     {{-- Include core + vendor Styles --}}
@@ -89,7 +90,7 @@
 
 <body class="blank-page bg-slate-100 overflow-x-hidden" data-col="blank-page" data-asset-path="{{ asset('/') }}">
 
-    @include('components.preloader')
+    @yield('preloader')
 
     @include('components.header')
 
