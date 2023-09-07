@@ -52,6 +52,13 @@
                     "permission": "2"
                 },
                 {
+                    "url": "authenticated/govern/administration/faculty",
+                    "name": "Officers & Employees",
+                    "icon": "circle",
+                    "slug": "faculty-add-view",
+                    "permission": "2"
+                },
+                {
                     "url": "authenticated/govern/administration/former-principals",
                     "name": "Former Principals",
                     "icon": "circle",
@@ -59,15 +66,8 @@
                     "permission": "3"
                 },
                 {
-                    "url": "authenticated/govern/administration/faculty",
-                    "name": "Faculty/Officers/Employees",
-                    "icon": "circle",
-                    "slug": "faculty-add-view",
-                    "permission": "2"
-                },
-                {
                     "url": "authenticated/govern/administration/former-employees",
-                    "name": "Former Faculty/Officers/Employees",
+                    "name": "Former Officers & Employees",
                     "icon": "circle",
                     "slug": "former-employee-list",
                     "permission": "2"

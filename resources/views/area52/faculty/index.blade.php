@@ -24,8 +24,8 @@
 
     <div class="card">
         <div class="card-header">
-            <h4 class="card-title">Add Faculty Member</h4>
-            <span class="text-danger">Note: All fields are required!</span>
+            <h4 class="card-title">Add Member</h4>
+            <span class="text-danger">Note: Name, Designation, Mobile, Image, Type fields are required!</span>
         </div>
         <div class="card-body">
             <form action="{{ route('faculty-add') }}" method="POST" enctype="multipart/form-data">
