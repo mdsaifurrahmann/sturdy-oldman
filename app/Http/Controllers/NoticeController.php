@@ -74,43 +74,47 @@ class NoticeController extends Controller
 
         $attachment = $request->notice;
 
-        if (empty($attachment)) {
-            $request->validate(
-                [
-                    'notice' => 'required',
-                ],
-                [
-                    'notice.required' => 'At least one attachment is required',
-                ]
-            );
-        }
+        // if (empty($attachment)) {
+        //     $request->validate(
+        //         [
+        //             'notice' => 'required',
+        //         ],
+        //         [
+        //             'notice.required' => 'At least one attachment is required',
+        //         ]
+        //     );
+        // }
 
         $data = [];
 
-        foreach ($attachment as $key => $value) {
-            if ($request->hasFile('notice.' . $key . '.attach')) {
-                $request->validate(
-                    [
-                        'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx,jpg,png,jpeg|max:10240',
-                    ],
-                    [
-                        'notice.' . $key . '.attach.file' => 'Attachment must be a file',
-                        'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx, jpg, png, jpeg',
-                        'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 megabytes',
-                    ]
-                );
+        if (!empty($attachment)) {
+            foreach ($attachment as $key => $value) {
+                if ($request->hasFile('notice.' . $key . '.attach')) {
+                    $request->validate(
+                        [
+                            'notice.' . $key . '.attach' => 'file|mimes:pdf,doc,docx,jpg,png,jpeg|max:10240',
+                        ],
+                        [
+                            'notice.' . $key . '.attach.file' => 'Attachment must be a file',
+                            'notice.' . $key . '.attach.mimes' => 'Attachment must be a file of type: pdf, doc, docx, jpg, png, jpeg',
+                            'notice.' . $key . '.attach.max' => 'Attachment may not be greater than 10 megabytes',
+                        ]
+                    );
 
-                $file = $request->file('notice.' . $key . '.attach');
+                    $file = $request->file('notice.' . $key . '.attach');
 
-                $filename = time() . Str::random(16) . '-notice-' . Str::replace(' ', '-', $file->getClientOriginalName());
+                    $filename = time() . Str::random(16) . '-notice-' . Str::replace(' ', '-', $file->getClientOriginalName());
 
-                $destinationPath = public_path() . '/notices';
+                    $destinationPath = public_path() . '/notices';
 
-                $file->move($destinationPath, $filename);
+                    $file->move($destinationPath, $filename);
 
-                $data[] = $filename;
+                    $data[] = $filename;
+                }
             }
         }
+
+
 
         $gather = [
             'title' => $title,
@@ -275,8 +279,6 @@ class NoticeController extends Controller
                     $data[] = $filename;
 
                     $merge = array_merge($retriveFiles, $data);
-
-
                 }
             }
         } else {
