@@ -47,12 +47,15 @@
                                                 <div class="border border-gray-300 p-1">{{ __('Mobile') }}</div>
                                             </div>
                                             <div class="grid grid-rows-2 item">
-                                                <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
+                                                <div
+                                                    class="border border-gray-300 p-1 whitespace-nowrap overflow-hidden text-ellipsis">
                                                     {{ __($officer->name) }}</div>
-                                                <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
+                                                <div
+                                                    class="border border-gray-300 p-1 whitespace-nowrap overflow-hidden text-ellipsis">
                                                     {{ __($officer->technology) }}
                                                 </div>
-                                                <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
+                                                <div
+                                                    class="border border-gray-300 p-1 whitespace-nowrap overflow-hidden text-ellipsis">
                                                     {{ __($officer->mobile) }}</div>
                                             </div>
                                         </div>
@@ -66,12 +69,15 @@
                                                     {{ __('Phone') }}</div>
                                             </div>
                                             <div class="grid grid-rows-2 item">
-                                                <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
+                                                <div
+                                                    class="border border-gray-300 p-1 whitespace-nowrap overflow-hidden text-ellipsis">
                                                     {{ __($officer->designation) }}
                                                 </div>
-                                                <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
+                                                <div
+                                                    class="border border-gray-300 p-1 whitespace-nowrap overflow-hidden text-ellipsis">
                                                     {{ __($officer->email) }}</div>
-                                                <div class="border border-gray-300 p-1 whitespace-nowrap overflow-x-auto">
+                                                <div
+                                                    class="border border-gray-300 p-1 whitespace-nowrap overflow-hidden text-ellipsis">
                                                     {{ $officer->phone ? __($officer->phone) : __('Unavailable') }}</div>
                                             </div>
                                         </div>

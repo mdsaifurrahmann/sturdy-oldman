@@ -31,14 +31,14 @@
                 <p class="text-sm text-gray-700 leading-5">
                     {!! __('Showing') !!}
                     @if ($paginator->firstItem())
-                        <span class="font-medium">{{ __($paginator->firstItem()) }}</span>
+                        <span class="font-medium">{{ strtr($paginator->firstItem(), __('numbers')) }}</span>
                         {!! __('to') !!}
-                        <span class="font-medium">{{ __($paginator->lastItem()) }}</span>
+                        <span class="font-medium">{{ strtr($paginator->lastItem(), __('numbers')) }}</span>
                     @else
                         {{ __($paginator->count()) }}
                     @endif
                     {!! __('of') !!}
-                    <span class="font-medium">{{ __($paginator->total()) }}</span>
+                    <span class="font-medium">{{ strtr($paginator->total(), __('numbers')) }}</span>
                     {!! __('results') !!}
                 </p>
             </div>
@@ -68,7 +68,7 @@
                         @if (is_string($element))
                             <span aria-disabled="true">
                                 <span
-                                    class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 cursor-default leading-5 h-full">{{ $element }}</span>
+                                    class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 cursor-default leading-5 h-full">{{ __($element) }}</span>
                             </span>
                         @endif
 
@@ -78,13 +78,13 @@
                                 @if ($page == $paginator->currentPage())
                                     <span aria-current="page">
                                         <span
-                                            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 h-full">{{ __($page) }}</span>
+                                            class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-500 bg-white border border-gray-300 cursor-default leading-5 h-full">{{ strtr($page, __('numbers')) }}</span>
                                     </span>
                                 @else
                                     <a href="{{ $url }}"
                                         class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 leading-5 hover:text-gray-500 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
                                         aria-label="{{ __('Go to page :page', ['page' => $page]) }}">
-                                        {{ __($page) }}
+                                        {{ strtr($page, __('numbers')) }}
                                     </a>
                                 @endif
                             @endforeach
